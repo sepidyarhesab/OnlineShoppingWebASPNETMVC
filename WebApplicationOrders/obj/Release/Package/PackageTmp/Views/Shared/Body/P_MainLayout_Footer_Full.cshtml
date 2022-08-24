@@ -1,0 +1,161 @@
+﻿@using System.Web.Razor.Generator
+@using OrdersGeneral.Repository.General
+@using OrdersSettings.Repository.Settings
+
+
+<div class="site-footer footer-mgt">
+    <div class="container-fluit pd-20">
+        <div class="site-footer__widgets">
+            @{
+                var query = Repfooter.RepInformationFooter();
+                if (query.Count > 0)
+                {
+                    foreach (var item in query)
+                    {
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-5">
+                                <div class="site-footer__widget footer-contacts">
+                                    <h5 class="footer-contacts__title">تماس با ما</h5>
+                                    <div class="footer-contacts__text">@item.Note</div>
+                                    <ul class="footer-contacts__contacts">
+                                        <li><i class="footer-contacts__icon fas fa-globe-americas"></i> @item.Address</li>
+                                        <li><i class="footer-contacts__icon far fa-envelope"></i> @item.Email</li>
+                                        <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> <span class="ltr_text">@item.Phone</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="site-footer__widget footer-links">
+                                    <h5 class="footer-links__title">اطلاعات</h5>
+                                    <ul class="footer-links__list">
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">درباره ما</a></li>
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">نحوه ارسال</a></li>
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">تماس با ما</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            @*<div class="col-6 col-md-3 col-lg-2">
+                                    <div class="site-footer__widget footer-links">
+                                        <h5 class="footer-links__title">حساب کاربری</h5>
+                                        <ul class="footer-links__list">
+
+                                            <li class="footer-links__item"><a href="" class="footer-links__link">سابقه خرید</a></li>
+                                            <li class="footer-links__item"><a href="" class="footer-links__link">علاقه‌مندی‌ها</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>*@
+                            <div class="col-12 col-md-12 col-lg-4">
+                                <div class="site-footer__widget footer-newsletter">
+                                    <h5 class="footer-newsletter__title">خبرنامه</h5>
+                                    <div class="footer-newsletter__text">جهت اطلاع از آخرین اخبار و تخفیفات کافیست شماره موبایل خود را وارد کنید</div>
+                                    @{
+
+                                        using (Html.BeginForm("NewsLetter", "Default", FormMethod.Post))
+                                        {
+                                            <form action="" class="footer-newsletter__form">
+                                                <label class="sr-only" for="footer-newsletter-address">شماره موبایل خود را وارد کنید</label>
+                                                <input type="text" class="footer-newsletter__form-input form-control" id="Phone" name="Phone" placeholder="... شماره موبایل" dir="ltr">
+                                                <button class="footer-newsletter__form-button btn btn-primary btn-block" style="margin-top: 10px">عضویت در تخفیفان</button>
+                                            </form>
+
+                                        }
+                                    }
+
+                                </div>
+                                <div class="site-footer__widget footer-newsletter">
+                                    <div class="footer-newsletter__text">گواهینامه های ما</div>
+                                    <div class="row">
+                                        
+                                        @{
+                                            var rep = new RepMetaConfiguration();
+                                            var result = RepMetaConfiguration.RepositoryMetaConfiguration();
+                                            if (result.Count > 0)
+                                            {
+                                                foreach (var itemm in result)
+                                                {
+                                                    <li class="footer-newsletter__social-link mg-left">
+                                                        @itemm.Note
+                                                    </li>
+                                                }
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-9">
+                                <div class="footer-newsletter__text footer-newsletter__text--social">ما را در شبکه های اجتماعی دنبال کنید</div>
+                                
+                                <ul class="footer-newsletter__social-links ul-footer-mg">
+                                <div class="row">
+                                    @{
+
+                                        var querySocialMedia = RepSocialMedia.RepositorySocialMedia();
+                                        if (querySocialMedia.Count > 0)
+                                        {
+                                            foreach (var management in querySocialMedia)
+                                            {
+                                                <div class="col-md-2 mg-lb">
+                                                    <li class="footer-newsletter__social-link mg-left">
+
+                                                        @{
+                                                            switch (@management.Class)
+                                                            {
+                                                                case "Instagram":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/instabanner.png" class="img-width" alt="Instagram"/>
+                                                                    </a>
+                                                                    break;
+                                                                case "Twitter":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/twitter.png" class="img-width" alt="Twitter"/>
+                                                                    </a>
+                                                                    break;
+                                                                case "Whatsapp":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/whats.png" class="img-width" alt="Whatsapp"/>
+                                                                    </a>
+                                                                    break;
+                                                                case "Youtube":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/youtube.png" class="img-width" alt="Youtube"/>
+                                                                    </a>
+                                                                    break;
+                                                                case "Telegram":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/telegram.png" class="img-width" alt="Telegram"/>
+                                                                    </a>
+                                                                    break;
+                                                                case "Facebook":
+                                                                    <a href="@management.Url" target="_blank">
+                                                                        <img src="~/Helper/Layouts/images/SocialMedia/facebook.png" class="img-width" alt="Facebook"/>
+                                                                    </a>
+                                                                    break;
+                                                            }
+                                                        }
+
+                                                    </li>
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                </div>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+        <div class="site-footer__bottom">
+            @*<div class="site-footer__copyright">ارائه شده توسط <a href="https://sepidyarhesab.com"> شرکت سپیدیارحساب آراد </a></div>*@
+            <div class="site-footer__copyright">ارائه شده توسط <a href="https://sepidyarhesab.com"> شرکت سپیدیارحساب آراد </a></div>
+            <div class="site-footer__payments"><img src="/Helper/Layouts/Images/payments.png" alt="payments"></div>
+        </div>
+    </div>
+</div>

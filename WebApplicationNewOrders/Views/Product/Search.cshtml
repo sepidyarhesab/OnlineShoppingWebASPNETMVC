@@ -1,0 +1,186 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    ViewBag.Title = "جستجو";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+@{
+
+    if (Model != null)
+    {
+        <div class="page-header">
+            <div class="page-header__container container">
+                <div class="page-header__breadcrumb">
+                    <nav aria-label="breadcrumb" class="card mb-0 contact-us box-shadows" style="padding: 10px">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/Default">خانه</a>
+                                <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                    <use xlink:href="/Helper/Layouts/Images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                </svg>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="">@ViewBag.Title</a>
+                                @*<svg class="breadcrumb-arrow" width="6px" height="9px">
+                                    <use xlink:href="/Helper/Layouts/Images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                </svg>*@
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="page-header__title">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @*<div class="shop-layout shop-layout--sidebar--start">*@
+                @*@Html.Partial("Product/P_Search_Sliders")*@
+                @*<div class="shop-layout__content">*@
+                    <div class="block">
+                        <div class="products-view">
+                            <div class="products-view__options">
+                                <div class="view-options">
+                                    <div class="view-options__layout">
+                                        @Html.Partial("Product/P_Search_Switcher__List")
+                                    </div>
+                                    <div class="view-options__legend">در حال نمایش  @Model.Count() محصول</div>
+                                    <div class="view-options__divider"></div>
+                                    @*<div class="view-options__control">
+                                        <label for="">مرتب‌سازی بر اساس</label>
+                                        <div>
+                                            <select class="form-control form-control-sm" name="status" id="status" onchange="pricefiltering(this);">
+                                                <option value="Default" selected="selected">پیش فرض</option>
+                                                <option value="Max">گران ترین</option>
+                                                <option value="Min">ارزان ترین</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                    @*<div class="view-options__control">
+                                        <label for="">نمایش</label>
+                                        <div>
+                                            <select class="form-control form-control-sm" name="" id="">
+                                                <option value="">12</option>
+                                                <option value="">24</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                            <div class="products-view__list products-list" data-layout="list" data-with-features="false">
+                                <div class="products-list__body">
+
+                                    @{
+                                        if (Model != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                <div class="products-list__item">
+                                                    <div class="product-card">
+                                                        <button class="product-card__quickview" type="button">
+                                                            <svg width="16px" height="16px">
+                                                                <use xlink:href="/Helper/Layouts/Images/sprite.svg#quickview-16"></use>
+                                                            </svg> <span class="fake-svg-icon"></span>
+                                                        </button>
+                                                        <div class="product-card__badges-list">
+                                                            <div class="product-card__badge product-card__badge--new">جدید</div>
+                                                        </div>
+                                                        <div class="product-card__image">
+                                                            <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})"><img src="@item.FileName" alt="@item.PrimaryTitle"></a>
+                                                        </div>
+                                                        <div class="product-card__info">
+                                                            <div class="product-card__name"><a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})"><h4>@item.PrimaryTitle</h4></a></div>
+                                                            <div class="product-card__name"><small> کد کالا : </small>@item.Code</div>
+                                                            <div class="product-card__name">@item.SecondaryTitle</div>
+                                                            @Html.Partial("Product/P_Product_Sidebar")
+                                                            
+                                                            <ul class="product-card__features-list">
+                                                                @{
+
+                                                                    foreach (var productProperty in item.PropertyList)
+                                                                    {
+                                                                        @productProperty.Key
+                                                                        <li>  @productProperty.Value</li>
+                                                                    }
+
+
+                                                                }
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                        <div class="product-card__actions">
+                                                            
+                                                            <div class="product-card__name"><small> موجودی : </small> <span class="@item.QuantityClass">@item.QuantityTitle</span></div>
+                                                            @{
+                                                                var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+                                                                if (item.Discount > 0)
+                                                                {
+                                                                    <div class="widget-products__prices ">
+                                                                        <del class="product-card__prices">@string.Format("{0:##,###}", item.Fee, "Fee") تومان</del>
+                                                                        <br />
+                                                                        <span class="product-card__prices" style="color:red;">@string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="product-card__prices text-danger">@string.Format("{0:##,###}", item.Fee, "") تومان</div>
+                                                                }
+
+                                                            }
+                                                            
+                                                            <div class="product-card__buttons">
+                                                                <a class="btn btn-primary btn-block" href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">مشاهده محصول</a>
+                                                                @*<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" onclick="AddToCart('@item.Code','@item.PrimaryTitle','@item.Fee');SuccessAdd('@item.PrimaryTitle')">افزودن به سبد</button>*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="products-view__pagination">
+                                @Html.PagedListPager(Model, page => Url.Action("Search",
+                                    new { page }), new PagedListRenderOptions()
+                                    {
+                                        LiElementClasses = new List<string> { "page-item" },
+                                        ContainerDivClasses = new List<string> { "products-view__pagination" },
+                                        UlElementClasses = new List<string> { "pagination justify-content-center" },
+                                        PageCountAndCurrentLocationFormat = "page-item active",
+                                        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                    })
+                            </div>
+                        </div>
+                    </div>
+                @*</div>*@
+            @*</div>*@
+        </div>
+    }
+}
+
+
+<script>
+    function pricefiltering(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        var url = window.location.href;
+        var myArray = url.split("/");
+        var word = myArray[5];
+        $.ajax({
+            url: "/SepidarProduct/Categories",
+            type: "Post",
+            data: { id: word, price: x }
+        }).done(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+            location.reload(true);
+        }).fail(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+        });
+    }
+</script>

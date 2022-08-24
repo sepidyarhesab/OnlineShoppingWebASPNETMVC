@@ -1,0 +1,260 @@
+﻿@using System.Web.Configuration
+@model IEnumerable<OrdersOrders.ViewModels.Orders.VMOrders.VmOrderItem>
+<html class=" ">
+<head>
+
+    <link href="~/Helper/Layouts/css/Invoice-Template.css" rel="stylesheet" />
+
+</head>
+<body class="breakpoint" style="width: 100%">
+    <div id="__next" data-reactroot="">
+        <div class="h-100 d-flex flex-column bg-000 ai-center">
+            <div class="fixed w-full top-0 left-0 bg-000 z-4 w-100 shadow-1-bottom BaseLayoutDesktop_BaseLayoutDesktop__header__CYMZY" id="base_layout_desktop_fixed_header" width="1912" height="0"></div><div id="base_layout_desktop_side_bar" class="fixed h-100 left-0 top-0 overflow-y-auto d-none d-flex-lg flex-column BaseLayoutDesktop_BaseLayoutDesktop__sideBar__4zCCX" width="0" height="669"></div><div class="grow-1 bg-000 d-flex flex-column w-100 ai-center shrink-0 BaseLayoutDesktop_BaseLayoutDesktop__content__qBCkO" style="padding-top: 0px; padding-left: 0px; padding-bottom: 0px;">
+                <div id="base_layout_desktop_static_header" class="w-100"></div><div id="base_layout_desktop_sticky_header" class="sticky bg-000 z-3 w-100 BaseLayoutDesktop_BaseLayoutDesktop__stickyHeader__EDgOE"></div><div class="grow-1 bg-000 d-flex flex-column w-100 ai-center BaseLayoutDesktop_BaseLayoutDesktop__content__qBCkO container-xl-w">
+                    <div class="PageLoader_PageLoader--hasPageContainer__lznbR d-none"></div><div class="h-full">
+                        <div class="px-4 pb-4 d-flex jc-between ai-center">
+
+
+                        </div><div class="bg-100 pt-2 overflow-auto hide-scrollbar overflow-hidden">
+                            <div class="bg-000 p-5 px-0-lg orderInvoce_orderInvoice__aMH3C">
+                                <div>
+
+
+                                    <meta charset="UTF-8">
+                                    <meta id="vp" name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <title>فاکتور فروش</title>
+                                    <style>
+                                    </style>
+
+                                    @{ if (Model != null)
+                                        {
+                                            decimal sum = 0;
+                            <div class="page">
+                                <h1 style="text-align: center;">
+                                    صورت حساب الکترونیکی
+                                    فروش کالا
+                                </h1>
+                                <table class="header-table" style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 1.8cm; height: 3cm;vertical-align: middle;padding-bottom: 4px;">
+                                                <div class="header-item-wrapper">
+                                                    <div class="portait" style="margin:5px">فروشنده</div>
+                                                </div>
+                                            </td>
+                                            <td style="padding: 0 4px 4px;height:3.4cm;">
+                                                <div class="bordered grow header-item-data">
+                                                    <table class="grow centered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 7cm">
+                                                                    @{ string CompanyName = WebConfigurationManager.AppSettings["CompanyName"];
+                                                        <span class="label">فروشنده:</span> @CompanyName }
+                                                                </td>
+                                                                <td style="width: 5cm">
+                                                                    @{ string PageAdmin = WebConfigurationManager.AppSettings["PageAdmin"];
+                                                        <span class="label">پیج اینستاگرام:</span> @PageAdmin }
+                                                                </td>
+                                                             
+                                                             
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    @{ string address = WebConfigurationManager.AppSettings["AddressAdmin"];
+                                                        <span class="label">نشانی شرکت:</span> @address }
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label">کدپستی:</span> ۱۵۱۷۸۶۳۳۳۲
+                                                                </td>
+                                                                <td>
+                                                                    @{ string PhoneAdmin = WebConfigurationManager.AppSettings["PhoneAdmin"]; }
+                                                                    <span class="label">شماره فروشنده:</span>
+                                                                    @PhoneAdmin
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            @*<td style="width: 7cm; height: 2cm; padding: 0 4px 4px 0;">
+                                                <div class="bordered" style="text-align: center; height: 100%; padding: 0.4cm 0.2cm;">
+                                                    <div class="flex">
+                                                        <div class="font-small">شماره فاکتور:</div>
+                                                        <div class="flex-grow" style="text-align: left">@Model.First().OrderCode</div>
+                                                    </div>
+                                                    <div class="flex">
+                                                        <div>تاریخ:</div>
+                                                        <div class="flex-grow" style="text-align: left">@Model.First().Datetime</div>
+                                                    </div>
+                                                    <div class="flex" style="margin-bottom: 4px;">
+                                                        <div>پیگیری:</div>
+                                                        <div class="flex-grow font-medium" style="text-align: left">@Model.First().Id</div>
+                                                    </div>
+                                                </div>
+                                            </td>*@
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 2cm; height: 3cm;vertical-align: center; padding: 0 0 4px">
+                                                <div class="header-item-wrapper">
+                                                    <div class="portait" style="margin: 20px">خریدار</div>
+                                                </div>
+                                            </td>
+                                            <td style="height: 3.4cm;vertical-align: center; padding: 0 4px 4px">
+                                                <div class="bordered header-item-data">
+                                                    <table style="height: 100%" class="centered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 6.7cm">
+                                                                    <span class="label">خریدار:</span> @Model.First().Name @Model.First().Family
+                                                                </td>
+                                                                <td style="width: 6.7cm">
+                                                                    <span class="label">شماره موبایل</span> @Model.First().Phone
+                                                                </td>
+                                                             
+                                                           
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="4">
+                                                                    <span class="label">نشانی:</span> @Model.First().Address
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <span class="label">شماره تماس:</span>@Model.First().Phone
+                                                                </td>
+                                                         
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            @*<td style="width: 7cm;padding: 0 4px 4px 0;">
+                                                <div class="bordered" style="text-align: center; height: 100%;">
+                                                    <div class="flex" style="margin-bottom: 4px;">
+                                                        <div>شماره تراکنش:</div>
+                                                        <div class="flex-grow font-medium" style="text-align: left">@Model.First().TransactionCode</div>
+                                                    </div>
+                                                    <div class="flex" style="margin-bottom: 4px;">
+                                                        <div>کد رهگیری:</div>
+                                                        <div class="flex-grow font-medium" style="text-align: left">@Model.First().DeliveryCode</div>
+                                                    </div>
+                                                    <div class="flex" style="margin-bottom: 4px;">
+                                                        <div>شماره پیگیری:</div>
+                                                        <div class="flex-grow font-medium" style="text-align: left">@Model.First().OrderCode</div>
+                                                    </div>
+                                                </div>
+                                            </td>*@
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="content-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10%">ردیف</th>
+                                            <th style="width: 30%">عکس</th>
+                                            <th style="width: 30%">شرح کالا</th>
+                                            <th style="width: 10%">تعداد</th>
+                                            <th style="width: 30%">رنگ</th>
+                                            <th style="width: 30%">سایز</th>
+                                            <th style="width: 30%">مبلغ واحد (ریال)</th>
+                                            <th style="width: 30%">مبلغ کل (ریال)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int row = 1;
+                                            foreach (var item in Model)
+                                            {
+                                                sum += item.Quantity * item.Fee;
+
+                            <tr>
+                                <td>@row</td>
+                                <td>
+                                    <div class="title"><img src="@item.FileName" width="30" height="50" alt="@item.Title"/></div>
+                                </td> 
+                                <td>
+                                    <div class="title">@item.Title</div>
+                                </td>
+                                <td>@item.Quantity <small> عدد </small></td>
+                                <td>@item.ColorTitle</td>
+                                <td>@item.SizeTitle</td>
+                                <td>
+                                    <span class="ltr">
+                                        @string.Format("{0:##,###}", item.Fee, "Price")
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ltr">
+                                        @string.Format("{0:##,###}", item.SumRow, "Price")
+                                    </span>
+                                </td>
+
+                            </tr> row++;
+                                                row++;
+                                            } }
+
+
+
+                                        <tr>
+                                            <td colspan="6">
+                                                <b>جمع کل</b>
+                                            </td>
+                                            <td><span class="ltr">
+                                                @string.Format("{0:##,###}", sum,"Price")
+                                            </span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="6">
+                                                جمع کل پس از کسر تخفیف با احتساب مالیات و عوارض (ریال):
+                                            </td>
+                                            <td colspan="4" class="font-small">
+                                                <span class="ltr">
+                                                    @string.Format("{0:##,###}", sum,"Price")
+                                                </span>
+                                            </td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">
+                                                اعتبار مالیاتی قابل استفاده توسط خریدار
+                                            </td>
+                                            <td colspan="7" class="font-small">
+                                            </td>
+                                        </tr>
+                                        <tr style="background: #fff">
+                                            <td colspan="11" style="height: 2.5cm;vertical-align: top">
+                                                <div class="flex">
+                       
+                                                    <div class="flex-grow">تاریخ ثبت سفارش:</div>
+                                                </div>
+                                                <div class="flex">
+                                       
+                                                    <div class="flex-grow">@Model.First().Datetime</div>
+                               
+
+
+                                                </div>
+                                                <h3>
+                                                </h3>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div> } }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="pos-absolute z-2 d-flex flex-column ai-end hide-scrollbar layout_Layout__eyRoc d-none"><div class="grow-1 bg-000 radius-large-lg d-flex flex-column overflow-hidden layout_Layout__content__6lcnp"><header class="w-full bg-primary-500 color-white px-5 py-2"><div class="d-flex ai-center jc-between"><h2 class="text-h4">پشتیبانی آنلاین</h2><div class="d-flex pointer"><svg><use xlink:href="#arrowLeft"></use></svg></div></div></header><div class=""></div></div></div><div class="pos-relative"><button class="d-flex ai-center jc-between text-button-1 FabButton_module_FabButton__dcfe299b FabButton_module_FabButton_Medium__dcfe299b FabButton_module_FabButton_Primary__dcfe299b p-3 pos-fixed d-inline-block z-1 layout_Layout__CTAButton__0wnlR"><div class="d-flex ai-center jc-center"><div class="d-flex FabButton_module_FabButton__icon__dcfe299b"></div></div></button></div>
+
+                </div>
+            </div><div class="w-100 bg-000 z-3 fixed left-0 bottom-0 d-flex ai-center jc-center" width="1912" height="0"><div class="shadow-1-top m-auto radius container-xl-w" id="base_layout_desktop_fixed_footer"></div></div>
+        </div><div id="modal-root"><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div></div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+@{
+    ViewBag.Title = "افزودن محصول|ProductAdd";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+                    @using (Html.BeginForm("ProductGenerate", "DiscountManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        var rep = new RepProducts();
+                        @Html.AntiForgeryToken()
+                        <div class="box-header">
+                            <i class="fa fa-plus"></i>
+                            <h3 class="box-title">افزودن تخفیف جدید  </h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="PrimaryTitle">کد</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="نام تخفیف" type="text" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <label class="control-label col-md-2" for="Discount">درصد تخفیف </label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصد تخفیف" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <hr />
+                                    <label class="control-label col-md-2">دسته بندی</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control " id="CategoriesRef" name="CategoriesRef">
+                                            @{
+                                                var category = rep.RepositorySubCategoryManagmentDropDown();
+
+                                                foreach (var item in category)
+                                                {
+                                                    <option selected="@(item.Code == "1" ? "selected" : string.Empty)" value="@item.Id">@item.PrimaryTitle</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                  
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="box-footer clearfix">
+                            <div class="col-md-12 col-md-offset-9">
+                                <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                <a href="/DiscountManager/ProductIndex" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

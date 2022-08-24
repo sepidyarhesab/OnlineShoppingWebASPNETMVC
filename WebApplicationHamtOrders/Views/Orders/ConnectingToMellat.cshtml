@@ -1,0 +1,123 @@
+﻿@using OrdersSettings.Repository.Settings
+@model string
+@{
+    ViewBag.Title = "اتصال به بانک ملت|ConnectingToMellat";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="row mb-4">
+    <div class="col-xl-12 col-lg-10 col-md-10 mb-md-0 mb-3">
+        <div class="checkout-section shadow-around">
+            <div class="checkout-step">
+                <ul>
+                    <li>
+                        <a href="#"><span>سبد خرید</span></a>
+                    </li>
+                    <li>
+                        <span>اتمام خرید و ارسال</span>
+                    </li>
+                    <li class="active">
+                        <span>اتصال به درگاه بانکی</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="checkout-message">
+                <div class="checkout-message-failed mb-3">
+                    <div class="icon-message failed-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    ارتباط با بانک ...<br />
+                    شما در حال انتقال به درگاه بانک ملت میباشید ...
+                </div>
+            </div>
+            <div class="block-empty__actions">
+                @{
+                    if (Model != null)
+                    {
+                        var token = Model;
+                        <script src="/Helper/Admin/jquery.min.js"></script>
+                        <form action="https://bpm.shaparak.ir/pgwchannel/startpay.mellat" method="post" id="paymentform">
+                            <input type="hidden" name="RefId" value="@token" />
+                            <input type="hidden" name="mobileNo" value="@token" />
+                            <input type="submit" id="pay" class="btn btn-primary btn-sm" value="در صورتی که به صورت خودکار به درگاه متصل نشدید این «دکمه» را بزنید" />
+                        </form>
+                        <script>
+                            $(document).ready(function () {
+                                setTimeout(function () {
+                                    $("#pay").trigger('click');
+                                },
+                                    3000);
+                            });
+                        </script>
+                    }
+                    if (Session["CallMelat"] != null)
+                    {
+                        var split = Session["CallMelat"].ToString().Split('&');
+                        var token = split[0];
+                        var mobilenumber = split[1];
+                        <script src="/Helper/Admin/jquery.min.js"></script>
+                        switch (token)
+                        {
+                            case "415":
+                                {
+                                    break;
+                                }
+                            case "416":
+                                {
+                                    break;
+                                }
+                            case "417":
+                                {
+                                    break;
+                                }
+                            case "418":
+                                {
+                                    break;
+                                }
+                            case "419":
+                                {
+                                    break;
+                                }
+                            case "421":
+                                {
+                                    <div>IP Address معتبر نیست</div>
+                                    break;
+                                }
+                            case "51":
+                                {
+                                    break;
+                                }
+                            case "54":
+                                {
+                                    break;
+                                }
+                            case "55":
+                                {
+                                    break;
+                                }
+                            case "61":
+                                {
+                                    break;
+                                }
+                        }
+                        <form action="https://bpm.shaparak.ir/pgwchannel/startpay.mellat" method="post" id="paymentform">
+                            <input type="hidden" name="RefId" value="@token" />
+                            <input type="hidden" name="mobileNo" value="@mobilenumber" />
+                            <input type="submit" id="pay" class="btn btn-primary btn-sm" value="در صورتی که به صورت خودکار به درگاه متصل نشدید این «دکمه» را بزنید" />
+                        </form>
+                        <script>
+                            $(document).ready(function () {
+                                setTimeout(function () {
+                                    $("#pay").trigger('click');
+                                },
+                                    3000);
+                            });
+                        </script>
+
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,216 @@
+﻿@using OrdersDatabase.Models
+@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+
+<!-- product-tab-content -->
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    if (Model != null)
+    {
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="product-tab-content">
+                        <ul class="nav nav-tabs" id="product-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="productDescription-tab" data-toggle="tab"
+                                   href="#productDescription" role="tab" aria-controls="productDescription"
+                                   aria-selected="true">توضیحات</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="productParams-tab" data-toggle="tab" href="#productParams"
+                                   role="tab" aria-controls="productParams" aria-selected="false">مشخصات فنی</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="productComments-tab" data-toggle="tab"
+                                   href="#productComments" role="tab" aria-controls="productComments"
+                                   aria-selected="false">نظرات</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="product-tab">
+                            <div class="tab-pane fade show active" id="productDescription" role="tabpanel"
+                                 aria-labelledby="productDescription-tab">
+                                <div class="product-desc">
+                                    <div class="accordion accordion-product" id="accordionDescription">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h5 class="mb-0">
+                                                    @item.PrimaryTitle
+                                                </h5>
+                                                <h6 class="mb-0">
+                                                    @item.SecondaryTitle
+                                                </h6>
+                                            </div>
+
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                 data-parent="#accordionDescription">
+                                                <div class="card-body">
+                                                    <p>
+                                                        @Html.Raw(item.Note)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="productParams" role="tabpanel"
+                                 aria-labelledby="productParams-tab">
+                                <div class="product-params">
+                                    <section>
+                                        <h3 class="params-title">مشخصات کلی</h3>
+                                        @{
+                                            foreach (var property in item.PropertyList)
+                                            {
+                                                <ul class="params-list">
+                                                    <li>
+                                                        <div class="params-list-key">
+                                                            <span>@property.Key</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span>
+                                                                @property.Value
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            }
+                                        }
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="productComments" role="tabpanel"
+                                 aria-labelledby="productComments-tab">
+                                <!-- product-review -->
+
+
+                                <div class="product-review-form mb-3">
+                                    @{
+                                        using (Html.BeginForm("GenerateComments", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <label>امتیاز شما:</label>
+                                                        <div class="add-rating">
+                                                            <select id="Likes" name="Likes" class="select2 select2-hidden-accessible">
+                                                                <option value="5">امتیاز 5 ستاره</option>
+                                                                <option value="4">امتیاز 4 ستاره</option>
+                                                                <option value="3">امتیاز 3 ستاره</option>
+                                                                <option value="2">امتیاز 2 ستاره</option>
+                                                                <option value="1">امتیاز 1 ستاره</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-element-row">
+                                                        <label for="phone-number" class="label-element">
+                                                            نام شما
+                                                        </label>
+                                                        <input type="text" class="input-element" id="Name" name="Name">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4">
+                                                    <div class="form-element-row">
+                                                        <label for="phone-number" class="label-element">
+                                                            شماره
+                                                            شما
+                                                        </label>
+                                                        <input type="text" class="input-element" id="Phone" name="Phone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-element-row">
+                                                        <label for="phone-number" class="label-element">نظر شما</label>
+                                                        <textarea id="Note" name="Note" cols="30" rows="10"
+                                                                  class="input-element"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary px-3" type="submit">
+                                                            ارسال نظر <i class="fad fa-comment-alt-edit"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @{
+                                        var db = new Orders_Entities();
+                                        var commentsCount = db.Table_Comments.Where(C => C.IsOk).Count();
+                                        if (commentsCount != 0)
+                                        {
+                                            <div class="section-title mb-1 mt-4">
+                                                نظرات کاربران (@commentsCount)
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="section-title mb-1 mt-4">
+
+                                            </div>
+                                        }
+
+                                    }
+
+                                    <hr>
+                                </div>
+                                <div class="comments-list">
+                                    @{
+
+                                        var resultComments = RepComments.RepositoryCommentsClient(item.Id);
+                                        if (resultComments.Count > 0)
+                                        {
+                                            foreach (var comment in resultComments)
+                                            {
+                                                <div class="row">
+                                                    <div class="col-md-3 aside">
+                                                        <ul class="comments-user-shopping">
+                                                            <li>
+                                                                <div class="cell cell-name">
+                                                                    کاربر
+                                                                </div>
+                                                                <div class="comments-buyer-badge">خریدار</div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="cell">
+                                                                    @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", comment.CreatorDate, "Date")
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-9 article">
+                                                        <div class="header">
+                                                            <div>@comment.Name</div>
+                                                        </div>
+                                                        <p>
+                                                            @comment.Note
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }
+
+
+                                </div>
+                                <!-- end product-review -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+<!-- end product-tab-content -->

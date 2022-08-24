@@ -1,0 +1,79 @@
+﻿@using OrdersOrders.ViewModels.Orders
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+@{
+    Session["BackUrl"] = "/Carts";
+}
+
+<style>
+    .font-en {
+        font-family: Cantarell;
+    }
+</style>
+<div class="page-content-wrapper py-3">
+    <div class="container" dir="rtl">
+        <h5 class="mb-3">ثبت سفارش</h5>
+        <!-- Checkout Wrapper -->
+        <div class="checkout-wrapper-area">
+            <div class="card">
+                <div class="card-body checkout-form">
+
+                    @using (Html.BeginForm("SubmitOrder", "Orders", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <small style="color: red"> * اجباری </small>
+                            <input class="form-control mb-3 farsi" type="text" id="Name" name="Name" placeholder="نام ">
+                        </div>
+                        <div class="form-group">
+                            <small style="color: red"> * اجباری </small>
+                            <input class="form-control mb-3 farsi" type="text" id="Family" name="Family" placeholder="نام خانوادگی">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control mb-3" type="text" id="PageId" name="PageId" placeholder="آیدی پیج ">
+                        </div>
+                        <div class="form-group">
+                            <small style="color: red"> * اجباری </small>
+                            <input class="form-control mb-3 numeric font-en" type="tel" maxlength="11" max="11" id="Phone" name="Phone" placeholder="شماره تماس" onchange="allnumeric(this);">
+                        </div>
+                        <div class="form-group">
+                            <small style="color: red"> * اجباری </small>
+                            <textarea class="form-control mb-3" id="Address" name="Address" class="form-control " rows="4" cols="30" placeholder="آدرس دریافت کالا خود را وارد کنید"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control mb-3" id="Note" name="Note" rows="4" cols="30" placeholder="پیام خود را وارد کنید"></textarea>
+                        </div>
+                        <button class="btn btn-danger mt-3 w-100" type="submit">ثبت سفارش و پرداخت اینترنتی</button>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<script>
+        function allnumeric(inputtxt) {
+            var numbers = new RegExp("09(1[0-9]|3[0-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}");
+            if (inputtxt.value.match(numbers)) {
+                document.getElementById("Phone").style.border = "1px solid green";
+                document.form1.text1.focus();
+                return true;
+            }
+            else {
+                document.getElementById("Phone").style.border = "1px solid red";
+                alert('شماره موبایل وارد شده صحیح نیست');
+                document.form1.text1.focus();
+                return false;
+            }
+        }
+    </script>*@
+
+<!-- Order End -->

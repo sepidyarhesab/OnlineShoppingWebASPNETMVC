@@ -1,0 +1,131 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelConfiguration>
+@{
+    ViewBag.Title = "ویرایش بخش بندی|EditingSegmentation";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+
+                    @{
+                        if (Model != null)
+                        {
+                            var rep = new RepProducts();
+
+                            foreach (var item in Model)
+                            {
+                                using (Html.BeginForm("EditRow", "ConfigurationManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="box-header">
+                                        <i class="fa fa-envelope"></i>
+                                        <h3 class="box-title">ویرایش بخش بندی</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-horizontal">
+                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="PrimaryTitle">کد</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@item.Code" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                                <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@item.PrimaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@item.SecondaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="SecondaryTitle">شماره مرتب سازی </label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@item.Sort" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                
+                                                <label class="control-label col-md-2">دسته بندی</label>
+                                                <div class="col-md-4">
+                                                    <select class="form-control " id="CategoriesRef" name="CategoriesRef" onfocusout="checkinputconfig()">
+                                                        @{
+
+                                                            var category = rep.RepositorySubCategoryManagmentDropDown();
+                                                            if (category.Count > 0)
+                                                            {
+                                                                foreach (var items in category)
+                                                                {
+                                                                    if (items.Id == item.CategoriesRef)
+                                                                    {
+                                                                        <option selected="@(items.Code == "1" ? "selected" : string.Empty)" value="@items.Id">@items.PrimaryTitle</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                         <option selected="@(items.Code == "1" ? "selected" : string.Empty)" value="@items.Id">@items.PrimaryTitle</option>
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            
+                                                        }
+                                                    </select>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                                <label class="control-label col-md-2" for="SecondaryTitle">تعداد نمایش </label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Count" name="Count" placeholder="تعداد نمایش" type="number" value="@item.Count"/>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Url">لینک</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="number" value="@item.Url" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="box-footer clearfix">
+                                        <div class="col-md-12 col-md-offset-9">
+                                            <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                            <a href="/ConfigurationManagement/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        }
+
+
+
+
+                    }
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+

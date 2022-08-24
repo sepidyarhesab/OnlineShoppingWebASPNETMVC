@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrdersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Orders_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Table_Blog" EntityType="OrdersModel.Table_Blog" />
+    <EntitySet Name="Table_Blog_Category" EntityType="OrdersModel.Table_Blog_Category" />
+    <EntitySet Name="Table_Links" EntityType="OrdersModel.Table_Links" />
+    <EntitySet Name="Table_Menu" EntityType="OrdersModel.Table_Menu" />
+    <EntitySet Name="Table_MenuAccess" EntityType="OrdersModel.Table_MenuAccess" />
+    <EntitySet Name="Table_MenuAdmin" EntityType="OrdersModel.Table_MenuAdmin" />
+    <EntitySet Name="Table_MenuAdmin_Category" EntityType="OrdersModel.Table_MenuAdmin_Category" />
+    <EntitySet Name="Table_Role" EntityType="OrdersModel.Table_Role" />
+    <EntitySet Name="Table_Selection_Configuration" EntityType="OrdersModel.Table_Selection_Configuration" />
+    <EntitySet Name="Table_Service" EntityType="OrdersModel.Table_Service" />
+    <EntitySet Name="Table_Site_Type" EntityType="OrdersModel.Table_Site_Type" />
+    <EntitySet Name="Table_Slider" EntityType="OrdersModel.Table_Slider" />
+    <EntitySet Name="Table_SocialMedia" EntityType="OrdersModel.Table_SocialMedia" />
+    <EntitySet Name="Table_Static_SocialMedia" EntityType="OrdersModel.Table_Static_SocialMedia" />
+    <EntitySet Name="Table_User" EntityType="OrdersModel.Table_User" />
+    <EntitySet Name="Table_Favorites" EntityType="OrdersModel.Table_Favorites" />
+    <EntitySet Name="Table_File_Upload" EntityType="OrdersModel.Table_File_Upload" />
+    <EntitySet Name="Table_Price_DisCount" EntityType="OrdersModel.Table_Price_DisCount" />
+    <EntitySet Name="Table_Product_Category" EntityType="OrdersModel.Table_Product_Category" />
+    <EntitySet Name="Table_Product_Color" EntityType="OrdersModel.Table_Product_Color" />
+    <EntitySet Name="Table_Product_Property" EntityType="OrdersModel.Table_Product_Property" />
+    <EntitySet Name="Table_Product_PropertyList" EntityType="OrdersModel.Table_Product_PropertyList" />
+    <EntitySet Name="Table_Product_Selection" EntityType="OrdersModel.Table_Product_Selection" />
+    <EntitySet Name="Table_Product_Size" EntityType="OrdersModel.Table_Product_Size" />
+    <EntitySet Name="Table_Product_Summary" EntityType="OrdersModel.Table_Product_Summary" />
+    <EntitySet Name="Table_Stock" EntityType="OrdersModel.Table_Stock" />
+    <EntitySet Name="Table_Order" EntityType="OrdersModel.Table_Order" />
+    <EntitySet Name="Table_Order_Item" EntityType="OrdersModel.Table_Order_Item" />
+    <FunctionImport Name="SP_InsertOrder">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="ProductCode" Mode="In" Type="String" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Byte" />
+      <Parameter Name="TransactionCode" Mode="In" Type="String" />
+      <Parameter Name="DeliveryCode" Mode="In" Type="String" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+      <Parameter Name="Quantity" Mode="In" Type="String" />
+      <Parameter Name="IsPay" Mode="In" Type="Boolean" />
+      <Parameter Name="Discount" Mode="In" Type="Decimal" />
+      <Parameter Name="Tax" Mode="In" Type="Decimal" />
+      <Parameter Name="Duty" Mode="In" Type="Decimal" />
+      <Parameter Name="Addition" Mode="In" Type="Decimal" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+      <Parameter Name="IsOk" Mode="In" Type="Boolean" />
+      <Parameter Name="ModifierRef" Mode="In" Type="Guid" />
+      <Parameter Name="ModifierDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CreatorRef" Mode="In" Type="Guid" />
+      <Parameter Name="CreatorDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Version" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_InsertOrderItem">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="OrderRef" Mode="In" Type="Guid" />
+      <Parameter Name="ItemCode" Mode="In" Type="String" />
+      <Parameter Name="Quantity" Mode="In" Type="Decimal" />
+      <Parameter Name="Fee" Mode="In" Type="Decimal" />
+      <Parameter Name="SizeRef" Mode="In" Type="Guid" />
+      <Parameter Name="ColorRef" Mode="In" Type="Guid" />
+      <Parameter Name="ItemRef" Mode="In" Type="Guid" />
+      <Parameter Name="Discount" Mode="In" Type="Decimal" />
+      <Parameter Name="Addition" Mode="In" Type="Decimal" />
+      <Parameter Name="Tax" Mode="In" Type="Decimal" />
+      <Parameter Name="Duty" Mode="In" Type="Decimal" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateOrder">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="IsPay" Mode="In" Type="Boolean" />
+      <Parameter Name="IsOk" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="Table_Comments" EntityType="OrdersModel.Table_Comments" />
+    <EntitySet Name="Table_SMS_Log" EntityType="OrdersModel.Table_SMS_Log" />
+    <FunctionImport Name="SP_InsertSMS">
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Messages" Mode="In" Type="String" />
+      <Parameter Name="UserRef" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <EntitySet Name="Table_Discount" EntityType="OrdersModel.Table_Discount" />
+    <EntitySet Name="Table_Settings" EntityType="OrdersModel.Table_Settings" />
+    <EntitySet Name="Table_Product" EntityType="OrdersModel.Table_Product" />
+  </EntityContainer>
+  <EntityType Name="Table_Blog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Click" Type="Int64" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="summary" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="CategoryRef" Type="Guid" />
+    <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Blog_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="ParentRef" Type="Guid" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Links">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecendryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Click" Type="Int64" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_MenuAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MenuRef" Type="Guid" Nullable="false" />
+    <Property Name="UserRef" Type="Guid" />
+    <Property Name="RoleRef" Type="Guid" />
+    <Property Name="PictureRef" Type="Guid" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_MenuAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryRef" Type="Guid" Nullable="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_MenuAdmin_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Selection_Configuration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" />
+    <Property Name="ModifierDate" Type="DateTime" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CategoriesRef" Type="Guid" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecendryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Site_Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TypeTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Slider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecendaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Table_SocialMedia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Static_SocialMedia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Keys" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Entities" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RoleRef" Type="Guid" Nullable="false" />
+    <Property Name="LanguageRef" Type="Guid" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Identification" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EconomicCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="DateTime" Precision="0" />
+    <Property Name="IsMarried" Type="Boolean" Nullable="false" />
+    <Property Name="MarriedDay" Type="DateTime" Precision="0" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="Weight" Type="Int32" />
+    <Property Name="ArchiveCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Jobs" Type="Guid" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsInBlacklist" Type="Boolean" Nullable="false" />
+    <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
+    <Property Name="Favorite" Type="Int32" />
+    <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CommissionPercent" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Color" Type="Guid" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="SizeRef" Type="Guid" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Favorites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Ref" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecendaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RefItem" Type="Guid" Nullable="false" />
+    <Property Name="RefUser" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_File_Upload">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ref" Type="Guid" Nullable="false" />
+    <Property Name="LanguageRef" Type="Guid" Nullable="false" />
+    <Property Name="Schemas" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tables" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileLenght" Type="Int64" Nullable="false" />
+    <Property Name="FileExtensions" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="FileUniqeName" Type="String" Nullable="false" MaxLength="205" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Price_DisCount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="DiscountCode" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountPrecent" Type="Int32" Nullable="false" />
+    <Property Name="UsableCount" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Product_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="ParentRef" Type="Guid" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Product_Color">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Product_Property">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Ref" Type="Guid" Nullable="false" />
+    <Property Name="Keys" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Entity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Table_Product_PropertyList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductRef" Type="Guid" Nullable="false" />
+    <Property Name="ColorRef" Type="Guid" />
+    <Property Name="SizeRef" Type="Guid" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" />
+    <Property Name="Sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Table_Product_Selection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertitatyTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" />
+    <Property Name="ModifierDate" Type="DateTime" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="ConfigurationRef" Type="Guid" Nullable="false" />
+    <Property Name="ProductRef" Type="Guid" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Product_Size">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SizeTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Product_Summary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductRef" Type="Guid" Nullable="false" />
+    <Property Name="ColorRef" Type="Guid" Nullable="false" />
+    <Property Name="SizeRef" Type="Guid" Nullable="false" />
+    <Property Name="StockRef" Type="Guid" Nullable="false" />
+    <Property Name="SaleRef" Type="Guid" Nullable="false" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Fee" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Table_Stock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsPay" Type="Boolean" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Duty" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Addition" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Order_Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderRef" Type="Guid" Nullable="false" />
+    <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Fee" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="SizeRef" Type="Guid" />
+    <Property Name="ColorRef" Type="Guid" />
+    <Property Name="ItemRef" Type="Guid" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Addition" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Duty" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Table_Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Likes" Type="Int64" Nullable="false" />
+    <Property Name="Dislikes" Type="Int64" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="ProductRef" Type="Guid" Nullable="false" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <Property Name="ParentRef" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Table_SMS_Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Messages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserRef" Type="Guid" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Discount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ProductRef" Type="Guid" />
+    <Property Name="CategoriesRef" Type="Guid" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Table_Settings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NationalCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EndDate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SeconderyTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Instagram" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Telegram" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Whatsapp" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Aparat" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SiteTypeRef" Type="Guid" Nullable="false" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Table_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Fee" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Click" Type="Int64" />
+    <Property Name="CategoriesRef" Type="Guid" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

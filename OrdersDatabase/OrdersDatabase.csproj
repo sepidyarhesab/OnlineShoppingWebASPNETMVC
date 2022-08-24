@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56182C87-80D8-4413-BA56-8DF9901D0F45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrdersDatabase</RootNamespace>
+    <AssemblyName>OrdersDatabase</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\OrdersData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrdersData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrdersData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Address.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Banner.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Blog.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Blog_Category.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Comments.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_ContactUs.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Discount.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Favorites.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_File_Upload.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Knowing.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Links.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Location.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Menu.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_MenuAccess.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_MenuAdmin.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_MenuAdmin_Category.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Meta_Configuration.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Order.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Order_Item.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Price_DisCount.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Category.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Color.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Property.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_PropertyList.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Selection.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Size.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_Summary.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Role.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Selection_Configuration.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Service.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Settings.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Site_Type.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Slider.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_SMS_Log.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_SocialMedia.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Static_SocialMedia.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Stock.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Transfer.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_User.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_View_Configuration.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Whatsapp.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\OrdersData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OrdersData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\OrdersData.edmx.diagram">
+      <DependentUpon>OrdersData.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\OrdersData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrdersData.edmx</DependentUpon>
+      <LastGenOutput>OrdersData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\OrdersData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrdersData.edmx</DependentUpon>
+      <LastGenOutput>OrdersData.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

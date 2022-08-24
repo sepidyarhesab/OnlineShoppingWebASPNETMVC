@@ -1,0 +1,306 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersInventory.ViewModels.Inventory
+@using WebApplicationOrders.Models.Database.OrderDatabase
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = Model.First().PrimaryTitle;
+        Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            <div class="page-header">
+                <div class="page-header__container container">
+                    <div class="page-header__breadcrumb">
+                        <nav class="card mb-0 contact-us box-shadows" style="padding: 10px" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/Default">خانه</a>
+                                    <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                        <use xlink:href="/helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                    </svg>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="/Product/Id/@item.Id">@item.CategoreisTitle</a>
+                                    <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                        <use xlink:href="/helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                    </svg>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="/Product/Id/@item.Id">@item.PrimaryTitle</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="container">
+                    <div class="product product--layout--standard card mb-0 contact-us box-shadows" data-layout="standard" style="padding: 20px">
+                        <div class="product__content">
+                            <!-- .product__gallery -->
+                            <div class="product__gallery">
+                                <div class="product-gallery">
+                                    <div class="product-gallery__featured">
+                                        <div class="owl-carousel" id="product-image">
+                                            <a href="@item.FileName" target="_blank"><img src="@item.FileName" alt="@item.PrimaryTitle"> </a>
+                                            @{
+
+                                                if (item.FileList.Count > 0)
+                                                {
+                                                    foreach (var fileUploadName in item.FileList)
+                                                    {
+                                                        <a href="@fileUploadName.FileName" target="_blank"><img src="@fileUploadName.FileName" alt="@item.PrimaryTitle"> </a>
+                                                    }
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="product-gallery__carousel">
+                                        <div class="owl-carousel" id="product-carousel">
+                                            <a href="" class="product-gallery__carousel-item"><img class="product-gallery__carousel-image" src="@item.FileName" alt="@item.PrimaryTitle"> </a>
+                                            @{
+
+                                                if (item.FileList.Count > 0)
+                                                {
+                                                    foreach (var fileUploadName in item.FileList)
+                                                    {
+                                                        <a href="" class="product-gallery__carousel-item"><img class="product-gallery__carousel-image" src="@fileUploadName.FileName" alt="@item.PrimaryTitle"> </a>
+                                                    }
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .product__gallery / end -->
+
+                            <div class="product__info ">
+                                <div>
+                                    <h1 class="product__name ">@item.PrimaryTitle</h1>
+                                    @*<div class="product__rating">
+                                        <div class="product__rating-legend"><a href="">@item.Code</a></div>
+                                    </div>*@
+                                    <div class="product__description">@item.SecondaryTitle</div>
+                                </div>
+
+                                <ul class="product__meta">
+                                    <li class="product__meta-availability">موجودی: <span id="spanquantity" class="@item.QuantityClass">@item.QuantityTitle</span></li>
+                                    <li>کد: @item.Code</li>
+                                </ul>
+                            </div>
+                            <!-- .product__info / end -->
+                            <!-- .product__sidebar -->
+                            <div class="product__sidebar">
+                                <div class="product__availability">موجودی: <span class="@item.QuantityClass">@item.QuantityTitle</span></div>
+
+                                @{
+                                    var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+                                    if (item.Discount > 0)
+                                    {
+                                        <div class="widget-products__prices ">
+                                            <del class="product__prices">@string.Format("{0:##,###}", item.Fee, "Fee") تومان</del>
+                                            <br />
+                                            <span class="product__prices" style="color:red;">@string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="product__prices">@string.Format("{0:##,###}", item.Fee, "Fee") تومان </span>
+                                    }
+                                }
+                                @{
+                                    if (item.Discount > 0)
+                                    {
+                                        <div class="product-card__prices mb-3"> @item.Discount % تخفیف</div>
+
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+
+                                @{
+
+                                    var type = RepSettings.RepositoryTypeSelect();
+                                    if (type != Guid.Empty)
+                                    {
+                                        if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                        {
+                                            <div class="form-group" style="width: 45%">
+                                                <label for="color">رنگ</label>
+                                                <select class="form-control" id="color" onchange="dropdownColor(this);">
+
+                                                    @{
+
+                                                        List<VMProduct.ViewModelProductColor> color = rep.RepositoryColorShowInProducts(ViewBag.Id);
+
+                                                        foreach (var clr in color)
+                                                        {
+                                                            <option value="@clr.ColorRef">@clr.PrimaryTitle</option>
+                                                        }
+                                                    }
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group" style="width: 45%">
+                                                <label for="SizeDropDown">سایز</label>
+                                                <select class="form-control" id="SizeDropDown" Id="SizeDropDown" name="SizeDropDown" disabled="disabled" onchange="dropdownSize(this)"></select>
+                                            </div>
+                                        }
+                                        else if (type == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                        {
+
+                                        }
+                                    }
+
+
+                                }
+
+
+
+                                <!-- .product__options -->
+                                <div class="product__options">
+
+                                    <div class="form-group product__option">
+                                        <label class="product__option-label" for="product-quantity">تعداد</label>
+                                        <div class="product__actions btn-block">
+                                            <div class="product__actions-item center-block" style="width: 45% !important">
+                                                <div class="input-number product__quantity" style="width: 100% !important">
+                                                    <input id="product-quantity" class="input-number__input form-control form-control-lg" style="width: 100% !important" type="number" min="1" value="1">
+                                                    <div class="input-number__add"></div>
+                                                    <div class="input-number__sub"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="product__actions-item product__actions-item--addtocart btn-block">
+                                                <label id="Quantities" class="product__option-label text-danger" for="product-quantity"></label>
+                                            </div>
+
+                                            @{
+
+                                                if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                                {
+
+                                                    <div class="product__actions-item product__actions-item--addtocart btn-block">
+                                                        <button id="btnAddToCartsWithSize" class="btn btn-primary btn-lg btn-block" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="product__actions-item product__actions-item--addtocart btn-block">
+                                                        <button class="btn btn-primary btn-lg btn-block" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                                                    </div>
+                                                }
+                                            }
+
+
+
+
+                                            @*<div class="product__actions-item product__actions-item--addtocart btn-block">
+                                                <button class="btn btn-primary btn  btn-block" onclick="AddToFavorites('@item.Code','@item.PrimaryTitle');">افزودن به علاقه مندی</button>
+                                            </div>*@
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- .product__options / end -->
+                            </div>
+                            <!-- .product__end -->
+                            @Html.Partial("SingleProduct/P_ProductFooter")
+                            
+                        </div>
+                    </div>
+                @Html.Partial("SingleProduct/P_ProductTabs")
+                </div>
+            </div>
+
+
+            <div id="btnAddToCarts" class="hidden-lg hidden-md" style="">
+                <div>
+                    <nav class="card mb-0 contact-us box-shadows" style="padding: 10px" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" style="font-size: 16px;">
+                                <small style="font-size: 10px"> نام کالا : </small>
+                                @item.PrimaryTitle
+                            </li>
+                            <li class="breadcrumb-item text-danger" style="font-size: 16px;">
+                                <small style="font-size: 10px"> قیمت : </small>
+                                @item.Fee<small style="font-size: 8px"> تومان </small>
+                            </li>
+                        </ol>
+                        <button class="btn btn-primary btn-block" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+
+                    </nav>
+
+                </div>
+            </div>
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+}
+
+<!-- .block-products-carousel -->
+@Html.Partial("SingleProduct/P_ProductsCarousel")
+
+
+
+
+
+<script>
+    function dropdownColor(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        if (x == "00000000-0000-0000-0000-000000000000") {
+            document.getElementById("SizeDropDown").disabled = true;
+        } else {
+            $.ajax({
+                url: "/Product/DropDownSize",
+                type: "Post",
+                data: { id: x }
+            }).done(function (result) {
+                $("#SizeDropDown").html(result);
+                document.getElementById("SizeDropDown").disabled = false;
+            });
+        }
+    }
+</script>
+<script>
+    function dropdownSize(a) {
+        var sizeref = (a.value || a.options[a.selectedIndex].value);
+        if (sizeref == "00000000-0000-0000-0000-000000000000") {
+        } else {
+            var e = document.getElementById("color");
+            var colorref = e.value;
+            $.ajax({
+                url: "/Product/CheckQuantity",
+                type: "Post",
+                data: { sizeid: sizeref, colorid: colorref }
+            }).done(function (result) {
+                if (result < 2) {
+                    document.getElementById("Quantities").innerHTML = "تنها یک عدد در انبار باقی مانده است";
+                    //spanquantity
+                } else {
+                    document.getElementById("Quantities").innerHTML = "";
+                }
+            });
+        }
+    }
+</script>
+
+

@@ -1,0 +1,76 @@
+﻿@using OrdersOrders.Repository.Orders
+
+@{
+    ViewBag.Title = "افزودن فاکتور";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<!-- site__body -->
+<div class="page-content-wrapper py-3">
+    <div class="container" dir="rtl">
+        
+        @{
+
+
+
+            var phone = "0";
+
+            var idd = User.Identity.Name;
+
+            var results = RepAccountDashboard.RepAccountDashboardInformation(Guid.Parse(idd));
+
+
+
+            if (results.Count > 0)
+            {
+                foreach (var item in results)
+                {
+
+                    phone = item.Phone;
+
+                    <div class="card user-info-card mb-3">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="user-profile me-3">
+                                <img src="~/Static/Content/Icons/account_100px.png" alt="pencil"/><i class="bi bi-pencil"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-1">@item.Name @item.Family</h5>
+                                </div>
+                                <p class="mb-0">@item.Phone</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        
+
+        <div class="card user-data-card">
+            <div class="card-body">
+
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+
+                        using (Html.BeginForm("SubmitPicture", "Dashboard", FormMethod.Post, new {enctype = "multipart/form-data"}))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="file">ارسال فیش واریزی</label>
+                                <input class="form-control" type="file" id="file" name="file" placeholder="نام">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">ثبت سفارش</button>
+                            <button type="submit" class="btn btn-danger btn-sm">بازگشت</button>
+
+
+                        }
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- site__body / end -->

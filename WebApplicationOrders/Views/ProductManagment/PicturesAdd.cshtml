@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "افزودن عکس جدید";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+                    @using (Html.BeginForm("GeneratePictues", "ProductManagment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="box-header">
+                            <i class="fa fa-envelope"></i>
+                            <h3 class="box-title">افزودن عکس جدید</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-horizontal">
+
+                               
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Title">عکس</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="FileName" name="FileName" placeholder="عنوان اصلی" type="file" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer clearfix">
+                            <div class="col-md-12 col-md-offset-9">
+                                <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                <button type="submit" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</button>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+               
+            </div>
+        </div>
+    </div>
+   
+</section>
+

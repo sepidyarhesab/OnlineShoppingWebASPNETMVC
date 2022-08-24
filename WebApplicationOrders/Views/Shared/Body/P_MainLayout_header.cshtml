@@ -1,0 +1,224 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+@using OrdersSettings.Repository.Settings
+
+
+
+<div class="site-header">
+<!-- .topbar -->
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        var id = User.Identity.Name;
+        var name = RepAccountDashboard.IsAdmin(Guid.Parse(id));
+        var splitrole = name[0];
+        var splitname = name[1];
+        var url = "/Dashboard";
+
+        if (splitrole == "admin")
+        {
+            url = "/AdminDashboard";
+        }
+        <div class="site-header__topbar topbar">
+            <div class="topbar__container container" >
+                <div class="topbar__row">
+                    <div class="topbar__item">
+                        <div class="topbar-dropdown">
+                            <button class="topbar-dropdown__btn" type="button">
+                                @splitname خوش آمدید!
+                                <svg width="7px" height="5px">
+                                    <use xlink:href="/Helper/Layouts/Images/sprite.svg#arrow-rounded-down-7x5"></use>
+                                </svg>
+                            </button>
+                            <div class="topbar-dropdown__body">
+                                <!-- .menu -->
+                                <ul class="menu menu--layout--topbar">
+                                    <li>
+                                        <a href="@url">
+                                            <img src="/Static/Content/Icons/account_100px.png" width="20" alt="account"/>
+                                            داشبورد
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Login/SingOut">
+                                            <img src="/Static/Content/Icons/shutdown_100px.png" width="20" alt="shutdown"/>
+                                            خروج
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- .menu / end -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+}
+<!-- .topbar / end -->
+<div class="site-header__middle container" >
+    <div class="site-header__logo">
+        <div class="nav-panel__logo">
+            @{
+                var logo = Repfooter.RepInformationFooter();
+                if (logo.Count > 0)
+                {
+                    foreach (var item in logo)
+                    {
+                        <a href="/Default">
+                            <img src="@item.FileName" alt="@item.PrimaryTitle" />
+                        </a>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+    <div class="site-header__search">
+        <div class="search mg-auto">
+
+            @Html.Partial("Head/P_Search_Desktop")
+
+        </div>
+    </div>
+    <div class="site-header__phone">
+        <div class="site-header__phone-title">پشتیبانی در ساعات اداری</div>
+
+        @{
+            var phone = Repfooter.RepInformationFooter();
+            if (phone.Count > 0)
+            {
+                foreach (var item in phone)
+                {
+                    <div class="site-header__phone-number">
+                        <a href="tel:@item.Phone">
+                            <span class="ltr_text">@item.Phone</span>
+                        </a>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+<div class="site-header__nav-panel">
+    <div id="navbar_top" class="nav-panel">
+        <div class="nav-panel__container container">
+            <div class="nav-panel__row">
+                <div class="nav-panel__departments">
+                    <!-- .departments -->
+                    <div class="departments" data-departments-fixed-by="">
+                        @{
+                            var rep = new RepProducts();
+                            var category = rep.RepositoryMainCategoreis();
+                            if (category.Count > 0)
+                            { <div class="departments__body">
+                                  <div class="departments__links-wrapper">
+                                      <ul class="departments__links">
+                                          @{
+                                              foreach (var item in category)
+                                              {
+
+                                                  if (item.ViewModelSubCategoreis != null)
+                                                  {
+                                                      <li class="departments__item departments__item--menu">
+                                                          <a href="@Url.RouteUrl("MainCategories", new {id = item.Id.ToString()})">@item.PrimaryTitle <svg class="departments__link-arrow" width="6px" height="9px"><use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use></svg></a>
+
+                                                          @{
+
+                                                              if (item.ViewModelSubCategoreis != null)
+                                                              {
+                                                                  <div class="departments__menu">
+                                                                      <!-- .menu -->
+                                                                      <ul class="menu menu--layout--classic">
+                                                                          @{
+
+                                                                              foreach (var subCategoreis in item.ViewModelSubCategoreis)
+                                                                              {
+
+                                                                                  <li><a href="@Url.RouteUrl("Categories", new {id = subCategoreis.Id.ToString()})">@subCategoreis.PrimaryTitle</a></li>
+                                                                              }
+
+                                                                          }
+
+
+                                                                      </ul>
+                                                                      <!-- .menu / end -->
+                                                                  </div>
+
+                                                              }
+                                                          }
+                                                      </li>
+                                                  }
+                                                  else
+                                                  {
+                                                      <li class="departments__item departments__item--menu">
+                                                          <a href="@Url.RouteUrl("MainCategories", new {id = item.Id.ToString()})">@item.PrimaryTitle </a>
+                                                      </li>
+                                                  }
+                                              }
+                                          }
+                                      </ul>
+                                  </div>
+                              </div>
+                            }
+
+                        }
+                        <button class="departments__button">
+                            <svg class="departments__button-icon" width="18px" height="14px">
+                                <use xlink:href="/Helper/Layouts/images/sprite.svg#menu-18x14"></use>
+                            </svg> دسته‌بندی‌ها
+                            <svg class="departments__button-arrow" width="9px" height="6px">
+                                <use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-down-9x6"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- .nav-links -->
+                <div class="nav-panel__nav-links nav-links">
+                    <ul class="nav-links__list">
+
+                        @{
+                            var menu = RepMenu.RepositoryMainMenu();
+                            if (menu.Count > 0)
+                            {
+                                foreach (var item in menu)
+                                {
+                                    <li class="nav-links__item">
+                                        <a href="@item.Url">
+                                            <span>
+                                                <img src="@item.Icon" width="20" height="20" class="icon-space">
+                                                @item.PrimaryTitle
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                        }
+
+                    </ul>
+                </div>
+                <!-- .nav-links / end -->
+                <div class="nav-panel__indicators">
+
+                    <div class="indicator ">
+                        <a href="/Carts" class="indicator__button"><span class="indicator__area"><svg width="20px" height="20px"><use xlink:href="/Helper/Layouts/images/sprite.svg#cart-20"></use></svg> <span class="indicator__value" id="shopcarts">0</span></span></a>
+
+                    </div>
+                    <div class="indicator ">
+                        <a href="/Login" class="indicator__button"><span class="indicator__area"><svg width="20px" height="20px">
+    <img src="~/Helper/Layouts/images/icon/User_a0bce529-d2ea-44f9-8a8b-6b0eab128ee0_White.svg" />
+</svg></span></a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+                        

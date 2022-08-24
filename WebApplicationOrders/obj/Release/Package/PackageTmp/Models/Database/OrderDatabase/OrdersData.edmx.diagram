@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b337c2713b524ec8aeb98c102afe8625" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="OrdersModel.Table_Blog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Blog_Category" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Links" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Menu" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_MenuAccess" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_MenuAdmin" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_MenuAdmin_Category" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Role" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Selection_Configuration" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Service" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Site_Type" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Slider" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_SocialMedia" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Static_SocialMedia" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_User" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Favorites" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_File_Upload" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Price_DisCount" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Category" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Color" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Property" Width="1.5" PointX="14.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_PropertyList" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Selection" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Size" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product_Summary" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Stock" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Order" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Order_Item" Width="1.5" PointX="16.75" PointY="11.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Comments" Width="1.5" PointX="11.375" PointY="17.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_SMS_Log" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Discount" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Settings" Width="1.5" PointX="13.375" PointY="17.75" />
+        <EntityTypeShape EntityType="OrdersModel.Table_Product" Width="1.5" PointX="19.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

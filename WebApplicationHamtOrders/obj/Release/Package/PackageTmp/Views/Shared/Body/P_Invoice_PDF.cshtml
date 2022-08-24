@@ -1,0 +1,219 @@
+﻿@using System.Web.Configuration
+@model IEnumerable<OrdersOrders.ViewModels.Orders.VMOrders.VmOrderItem>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>فاکتور فروش</title>
+    <link href="/Helper/Layouts/assets/css/Invoice-Template.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page" dir="rtl"> 
+        <h1 style="text-align: center;">
+            پیش فاکتور كـالا و ارائه خدمت
+        </h1>
+
+        @{
+            if (Model != null)
+            {
+                <table class="header-table" style="width: 100%">
+                    <tr>
+                        <td style="width: 1.8cm; height: 2.5cm;vertical-align: middle;padding-bottom: 4px;">
+                            <div class="header-item-wrapper">
+                                <div class="portait" style="margin:20px">فروشنده</div>
+                            </div>
+                        </td>
+                        <td style="padding: 0 4px 4px;height: 2cm;">
+                            <div class="bordered grow header-item-data">
+                                <table class="grow centered">
+                                    <tr>
+                                        <td style="width: 7cm">
+                                            @{
+                                                string CompanyName = WebConfigurationManager.AppSettings["CompanyName"];
+                                                <span class="label">فروشنده:</span> @CompanyName
+                                            }
+                                        </td>
+                                        <td style="width: 5cm">
+                                            @{
+                                                string PhoneAdmin = WebConfigurationManager.AppSettings["PhoneAdmin"];
+                                            }
+                                            <span class="label">شماره فروشنده:</span>
+                                            @PhoneAdmin
+                                        </td>
+                                    </tr>
+                                    <tr>
+                              
+                                    </tr>     
+                                    <tr>
+                              
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+
+                        @{
+                            if (ViewBag.ErrorSub != null)
+                            {
+                                string a = ViewBag.ErrorSub.ToString();
+                                <td style="width: 4.5cm;height: 2cm;padding: 0 0 4px;">
+                                    <div class="bordered grow" style="padding: 2mm 5mm;">
+                                        <div class="flex">
+                                            <div class="font-small">شماره فاکتور:</div>
+                                        </div>
+                                    </div> 
+                                    <div class="bordered grow" style="padding: 2mm 5mm;">
+                                        <div  class="flex">
+                                            <span class="barcode">@a</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                var randomcode = new Random();
+                                var code = randomcode.Next(10000, 99999).ToString();
+                                <td style="width: 4.5cm;height: 2cm;padding: 0 0 4px;" dir="rtl">
+                                    <div class="bordered grow" style="padding: 3mm 6mm;">
+                                        <div class="flex">
+                                            <div class="font-small">شماره فاکتور:</div>
+                                        </div>
+                                        <div  class="barcode">
+                                            <span class="barcode">@code</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            }
+
+
+                        }
+
+                    </tr>
+
+
+                </table>
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 1.3cm">ردیف</th>
+                            <th style="width: 2.3cm">شناسه کالا یا خدمت</th>
+                            <th style="width: 30%" colspan="2.3">شرح کالا یا خدمت</th>
+                            <th style="width: 1.3cm">تعداد</th>
+                            <th style="width: 2.3cm"> رنگ </th>
+                            <th style="width: 2.3cm"> سایز </th>
+                            <th style="width: 2.3cm">مبلغ کل (ریال)</th>
+                            <th style="width: 2.3cm">تخفیف (ریال)</th>
+                            <th style="width: 2.3cm">مبلغ کل پس از تخفیف (ریال)</th>
+                            <th style="width: 2.3cm">جمع مالیات و عوارض ارزش افزوده (ریال)</th>
+                            <th style="width: 2.5cm"> جمع کل پس از تخفیف و مالیات و عوارض (ریال)</th>
+                        </tr>
+                    </thead>
+
+                    @{
+                        var row = 0;
+                        decimal sum = 0;
+                        decimal sumtotla = 0;
+                        decimal sumtax = 0;
+                        decimal discount = 0;
+                        decimal discounttotal = 0;
+                        foreach (var inventoryItem in Model)
+                        {
+
+                            row++;
+
+                            <tr>
+                                <td>@row</td>
+                                <td>
+                                    @inventoryItem.Code
+                                </td>
+                                <td colspan="2">
+                                    <div class="title">         @inventoryItem.Title</div>
+                                </td>
+                                <td>@inventoryItem.Quantity</td>
+                                <td>@inventoryItem.ColorTitle</td>
+                                <td>@inventoryItem.SizeTitle</td>
+                                <td><span class="ltr">@string.Format("{0:##,###}", inventoryItem.Fee, "Price") </span></td>
+                                @{
+                                    sum = inventoryItem.Quantity * inventoryItem.Fee;
+                                }
+                                <td><span class="ltr">@string.Format("{0:##,###}", sum, "Price")</span></td>
+                                @{
+                                    if (discount > 0)
+                                    {
+                                        <td><span class="ltr">@string.Format("{0:##,###}", discount, "Price")</span></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="ltr">0</span></td>
+                                    }
+
+
+                                }
+
+                                @{
+                                    discounttotal = sum - discount;
+                                    sumtotla += discounttotal;
+                                }
+                                <td>
+                                    <span class="ltr">@string.Format("{0:##,###}", discounttotal, "Price")</span>
+                                </td>
+                                @*@{
+                                        var tax = ((inventoryItem.Fee * inventoryItem.Quantity) * 109) / 100;
+                                        sumtotla += tax ?? 0;
+                                        sumtax = (tax ?? 0) - sum;
+                                    }*@
+                                <td><span class="ltr">@string.Format("{0:##,###}", discounttotal, "Price")</span></td>
+                            </tr>
+
+
+
+
+                        }
+                    }
+
+
+
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                این پیش فاکتور توسط سایت ایجاد شده است
+                            </td>  
+                            
+                            <td colspan="1">
+                
+                            </td>
+                            <td colspan="3" class="font-small">
+                                جمع کل (ریال):
+                            </td>
+
+                            <td>
+                                <span colspan="3"  class="ltr">
+                                    @string.Format("{0:##,###}", sumtotla, "Price")
+                                </span>
+                            </td>
+                        </tr>
+                        <tr style="background: #fff;text-align: right">
+                            <td colspan="12" style="height: 2.5cm;vertical-align: top">
+                                <div class="flex">
+                                    <div class="flex-grow">مهر و امضای فروشنده:</div>
+
+
+                                    <div class="flex-grow">مهر و امضای خریدار:</div>
+
+                                </div>
+
+                                <h3></h3>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            }
+        }
+
+    </div>
+</body>
+
+
+</html>

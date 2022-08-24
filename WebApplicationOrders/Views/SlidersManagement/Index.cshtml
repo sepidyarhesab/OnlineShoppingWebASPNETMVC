@@ -1,0 +1,222 @@
+﻿@using OrdersGeneral.Repository.General
+@model IEnumerable<OrdersGeneral.ViewModels.General.VMSliders.VmMainSliders>
+@{
+    ViewBag.Title = "مدیریت اسلایدر ها";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">مدیریت اسلایدر ها</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+
+                    <div class="site-header__search">
+                        <div class="search">
+
+                            <form class="search__form" action="/SlidersManagement/Index" method="post">
+                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی اسلایدر کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                <button class="search__button" type="submit">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
+                                    </svg>
+                                </button>
+                                <div class="search__border"></div>
+                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
+                                    بازیابی مجدد
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <script>
+
+                        function reload() {
+                            window.location.href = "/SlidersManagement";
+                        }
+                    </script>
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                        <a href="/SlidersManagement/Add" class="btn btn-success" style="width: 80%"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                        <a class="btn btn-danger " href="/AdminDashboard" style="width: 19%">برگشت</a>
+                    </div>
+                    <div class="table-responsive">
+
+
+
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>
+
+                                    <input class="ckbox" type="checkbox" value="">
+
+                                </th>
+                                <th>
+                                    ردیف
+                                </th>
+                                <th>
+                                    کد فهرست
+                                </th>
+                                <th>
+                                    نام اسلایدر
+                                </th>
+                                <th>
+                                    نام اسلایدر2
+                                </th>
+
+
+
+                                <th>تصویر کامپیوتر</th>
+                                <th>تصویر موبایل</th>
+                                <th>
+                                    لینک
+                                </th>
+                                <th>تاریخ</th>
+                                <th>
+                                    وضعیت
+                                </th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @{
+                                //var query = RepSliders.RepositoryMainSlidersManagemenet();
+                                //if (query.Count > 0)
+                                //{
+                                //    var row = 1;
+                                //    foreach (var management in query)
+                                //    {var id = User.Identity.Name;
+
+                                if (Model != null)
+                                {
+               
+                                    var row = 1;
+                                    foreach (var management in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" value="">
+                                            </td>
+                                            <td class="col-md-1">
+                                                @row
+                                            </td>
+                                            <td class="col-md-2 copy">
+                                                <p>@management.Code</p>
+                                            </td>
+                                            <td class="col-md-2 copy">
+                                                <p>@management.PrimaryTitle </p>
+                                            </td>
+                                            <td class="col-md-1 copy">
+                                                <p>@management.SecendaryTitle </p>
+                                            </td>
+
+
+                                            <td class="col-md-1">
+
+                                                <img src="@management.FileNameDesktop" width="50" />
+
+
+                                            </td>
+                                            <td class="col-md-1">
+
+                                                <img src="@management.FileNameMobile" width="50" />
+
+
+                                            </td>
+
+                                            <td class="col-md-1">
+                                                <a href="@management.Url" target="_blank"> @management.Url</a>
+                                            </td>
+                                            <td class="col-md-1">
+                                                @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", management.CreatorDateTime)
+                                            </td>
+                                            <td class="col-md-1">
+
+
+                                                <a href="/SlidersManagement/ChangeStatus/@management.Id" class="@management.IsOkClass">@management.IsOkTitle</a>
+
+
+                                            </td>
+                                            <td class="col-md-1">
+                                                <a class="btn btn-info glyphicon glyphicon-edit" href="/SlidersManagement/Edit/@management.Id"></a>
+                                            </td>
+                                            <td class="col-md-1">
+                                                <a class="btn btn-danger " href="/SlidersManagement/Delete/@management.Id">×</a>
+                                            </td>
+                                        </tr>
+                                        row++;
+
+                                    }
+                                }
+
+
+
+
+                            }
+
+
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var color = document.querySelectorAll('.copy') //DOM selector
+
+    //Loop through all elements and attaching event listener
+    color.forEach(el => {
+        el.addEventListener('click', copyText);
+    });
+
+    // function for selecting the text of an element based on the event.target (supporting IE)
+    function selectText() {
+        var element = event.target
+        var range;
+        if (document.selection) {
+            // IE
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) {
+            range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+    }
+
+    // function for copying selected text in clipboard
+    function copyText() {
+        selectText();
+        alert('متن مورد نظر کپی شد');
+        document.execCommand("copy");
+    }
+</script>

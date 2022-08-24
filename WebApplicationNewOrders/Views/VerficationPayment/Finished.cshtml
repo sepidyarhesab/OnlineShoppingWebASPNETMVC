@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "نتیجه سفارش شما";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+<!-- Sub Header -->
+<div class="sub-header">
+    <div class="container" dir="rtl">
+        <h1>نتیجه سفارش شما</h1>
+    </div>
+</div>
+<!-- Sub Header End -->
+<!-- Services -->
+<div class="services">
+    <div class="container">
+        <div class="text-center">
+            <h2>نتیجه عملیات پرداخت</h2>
+            <div class="border-multiple">
+                <span class="first"></span>
+                <span class="second"></span>
+                <span class="third"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto" dir="rtl">
+
+                    @{
+                        if (Session["JavaScriptFunctionPayment"] != null)
+                        {
+                            var message = Session["JavaScriptFunctionPayment"].ToString();
+                            if (message.Contains("خطا"))
+                            {
+                                <div class="alert alert-danger" style="background-color: crimson">عملیات ثبت سفارش با خطا مواجه شد</div>
+
+                            }
+                            else
+                            {
+                                <img src="/Static/Content/Gif/success.gif" width="100" />
+                                <div class="alert alert-success">سفارش شما با موفقیت ثبت شد شماره سفارش شما : @Session["PaymentCode"].ToString()</div>
+                            }
+
+
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Services End -->

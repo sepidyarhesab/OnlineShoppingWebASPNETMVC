@@ -1,0 +1,7 @@
+Application Write  : مانتو مدل‌ عیار Datetime : 10/12/1400 06:17:37 ب.ظ Line  : 746
+
+
+Application Write  : Model Valid Datetime : 11/12/1400 11:18:55 ق.ظ Line  : 746
+Application Write  : Model Valid Datetime : 11/12/1400 11:21:01 ق.ظ Line  : 746
+Application Write  : Modified Row = : شال سوپر نخ طرح H_SP-2504 Datetime : 11/12/1400 11:21:25 ق.ظ Line  : 746
+Application Write  : Modified Row = : شال سوپر نخ طرح H_SP-2504 Datetime : 11/12/1400 11:21:32 ق.ظ Line  : 746

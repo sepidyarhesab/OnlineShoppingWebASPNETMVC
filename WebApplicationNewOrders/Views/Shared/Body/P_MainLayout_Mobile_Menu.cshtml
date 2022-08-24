@@ -1,0 +1,120 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+
+
+<nav class="nav panel-menu" role="navigation" id="panel-menu">
+    <span class="closePanel close-menu"><i class="fal fa-times"></i></span>
+    <div class="row header-menu">
+        <div class="col-12 p-0">
+            <div class="btn-menu"> منوی </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-0">
+            <ul>
+                @{
+                    var rep = new RepProducts();
+
+                    var categoriesmobile = rep.RepositoryMainCategoreis();
+                    if (categoriesmobile.Count > 0)
+                    {
+                        <li class="main-menu" data-collapse-item>
+                            <span class="openSubPanel">
+                                <img src="/Static/Content/Icons/basket_100px.png" width="20" height="20" class="icon-space" title="دسته بندی محصولات" alt="دسته بندی محصولات" />
+                                دسته بندی محصولات
+                                <span class="arow-menu"><i class=""></i></span>
+                            </span>
+                            <ul class="subPanel">
+                                <li class="close-li">
+                                    <span class="closeSubPanel">
+                                        <i class=""></i> بازگشت
+                                    </span>
+                                </li>
+                                @{
+                                    foreach (var grouping in categoriesmobile)
+                                    {
+                                        <li class="main-menu" data-collapse-item>
+                                            <span class="openSubPanel">
+                                                @grouping.PrimaryTitle
+                                                @if (grouping.ViewModelSubCategoreis != null)
+                                                {
+                                                    <span class="arow-menu"><i class=""></i></span>
+                                                }
+                                            </span>
+                                            @{
+                                                if (grouping.ViewModelSubCategoreis != null)
+                                                {
+                                                    if (grouping.ViewModelSubCategoreis.Count > 0)
+                                                    {
+                                                        <ul class="subPanel">
+                                                            <li class="close-li">
+                                                                <span class="closeSubPanel">
+                                                                    <i class=""></i> بازگشت
+                                                                </span>
+                                                            </li>
+                                                            @foreach (var subgrouping in grouping.ViewModelSubCategoreis)
+                                                            {
+                                                                <li class="main-menu" data-collapse-item>
+                                                                    
+                                                                        <a href="@Url.RouteUrl("Categories", new {id = subgrouping.Id.ToString()})">@subgrouping.PrimaryTitle</a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                }
+
+                                            }
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+
+                    }
+
+
+                }
+
+
+
+                @{
+                    var menumobile = RepMenu.RepositoryMainMenu();
+                    if (menumobile.Count > 0)
+                    {
+                        foreach (var item in menumobile)
+                        {
+                            <li class="main-menu" data-collapse-item>
+                                <a href="@item.Url">
+                                    <img src="@item.IconMobile" width="20" height="20" class="icon-space" alt="@item.PrimaryTitle">
+                                    @item.PrimaryTitle
+                                </a>
+                            </li>
+                        }
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            var id = User.Identity.Name;
+                            var name = RepAccountDashboard.IsAdmin(Guid.Parse(id));
+                            var splitrole = name[0];
+                            var splitname = name[1];
+                            var url = "/Dashboard";
+
+                            if (splitrole == "admin")
+                            {
+                                url = "/AdminDashboard";
+                            }
+
+                            <li class="main-menu" data-collapse-item>
+                                <a href="@url">
+                                    <img src="/Static/Content/Icons/account_100px.png" width="20" height="20" class="icon-space" alt="account">
+                                    پنل مدیریت @splitname
+                                </a>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

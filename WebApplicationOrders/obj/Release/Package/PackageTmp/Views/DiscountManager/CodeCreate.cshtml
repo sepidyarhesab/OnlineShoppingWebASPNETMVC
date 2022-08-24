@@ -1,0 +1,208 @@
+﻿@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+@using OrdersGeneral.Repository.General;
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+
+
+
+<link href="~/Helper/Admin/Content/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
+
+<script src="~/Helper/Admin/Scripts/jquery-3.1.0.min.js"></script>
+<script src="~/Helper/Admin/Scripts/bootstrap.min.js"></script>
+<link href="~/Helper/Admin/Content/sepidyarhesab-custom.css" rel="stylesheet" />
+<link href="~/Helper/Admin/Content/bootstrap-select.css" rel="stylesheet" />
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+                    @using (Html.BeginForm("CodeGenerate", "DiscountManager", FormMethod.Post))
+                    {
+                        var rep = new RepProducts();
+
+                        @Html.AntiForgeryToken()
+                        <div class="box-header">
+                            <i class="fa fa-envelope"></i>
+                            <h3 class="box-title">افزودن کد تخفیف جدید</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountCode">کد تخفیف</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Discount">درصد تخفیف</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصد تخفیف" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountFee">مبلغ تخفیف</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="مبلغ تخفیف" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountQuantity">تعداد کل تخفیف</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <label class="control-label col-md-2" for="Entities">تخفیف بر اساس</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control " id="Entities" name="Entities">
+                                            <option value="DiscountUser">تخفیف کاربر</option>
+                                            <option value="DiscountFee">تخفیف قیمتی</option>
+                                            <option value="DiscountPercent">تخفیف درصدی</option>
+                                            <option value="DiscountStep">تخفیف مرحله ایی</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountUser">کاربر</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control selectpicker" id="DiscountUser" name="DiscountUser" data-show-subtext="true" data-live-search="true">
+                                            @{
+                                                var User = RepDiscount.RepositoryUserManagment();
+                                                if (User.Count > 0)
+                                                {
+                                                    foreach (var Users in User)
+                                                    {
+                                                        <option selected="@(Users.Code == "1" ? "selected" : string.Empty)" value="@Users.Id">@Users.FullName</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountPercent">واحد درصد تخفیف</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="DiscountPercent" name="DiscountPercent" placeholder="واحد درصد تخفیف" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    <label class="control-label col-md-2" for="DiscountCount">تعداد تخفیف کاربر</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="DiscountCount" name="DiscountCount" placeholder="تعداد تخفیف کاربر" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="ProductRef">محصول</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" id="ProductRef" name="ProductRef">
+                                            @{
+                                                var Product = RepDiscount.RepositoryProductsDropDown();
+
+                                                foreach (var item in Product)
+                                                {
+                                                    <option selected="@(item.Code == "1" ? "selected" : string.Empty)" value="@item.Id">@item.PrimaryTitle</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <label class="control-label col-md-2" for="CategoriesRef">دسته بندی</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control " id="CategoriesRef" name="CategoriesRef">
+                                            @{
+                                                var category = rep.RepositoryCategoryManagmentDropDown();
+
+                                                foreach (var item in category)
+                                                {
+                                                    <option selected="@(item.Code == "1" ? "selected" : string.Empty)" value="@item.Id">@item.PrimaryTitle</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="StartDate1">از تاریخ</label>
+                                    <div class="col-md-4">
+
+                                        <div class="input-group">
+                                            <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#StartDate1" data-groupid="group1"
+                                                 data-fromdate="true" data-enabletimepicker="true" data-placement="left">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="StartDate1" name="StartDate1" placeholder="از تاریخ" data-mddatetimepicker="true" data-trigger="click"
+                                                   data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2" for="EndDate1">تا تاریخ</label>
+                                    <div class="col-md-4">
+
+                                        <div class="input-group">
+                                            <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#EndDate1" data-groupid="group1"
+                                                 data-fromdate="true" data-enabletimepicker="true" data-placement="left">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="EndDate1" name="EndDate1" placeholder="تا تاریخ" data-mddatetimepicker="true" data-trigger="click"
+                                                   data-targetselector="#EndDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer clearfix">
+                            <div class="col-md-12 col-md-offset-9">
+                                <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                <a href="/DiscountManager/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function () {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+<script src="~/Helper/Admin/Scripts/jalaali.js"></script>
+<script src="~/Helper/Admin/Scripts/jquery.Bootstrap-PersianDateTimePicker.js"></script>
+
+<script src="~/Helper/Admin/Scripts/bootstrap.min.js"></script>
+
+

@@ -1,0 +1,546 @@
+﻿@using System.Web.Configuration
+@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+@using OrdersSettings.Repository.Settings
+
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+
+<!-- Mirrored from javid-pg.com/shopify/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Jul 2022 15:23:41 GMT -->
+<head>
+    @Html.Partial("Body/P_MainLayout_head")
+</head>
+
+<body>
+    <div class="page container-fluid p-0">
+        <!--منو گوشی-->
+        @Html.Partial("Body/P_MainLayout_Mobile_Menu")
+        <!--منو گوشی-پایان-->
+        <div class="container-fluid banner-header p-0">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <a href="#">
+                        <!--بنر حالت دسکتاپ-->
+                        <img class="img-fluid d-none d-lg-block w-100" src="~/Helper/Layouts/images/banner-top.jpg" alt=" ">
+                        <!--بنر حالت گوشی-->
+                        <img class="img-fluid d-xl-none d-lg-none w-100" src="~/Helper/Layouts/images/banner-top-mob.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section class="container-fluid header">
+            <!--نمایش گوشی-->
+            @Html.Partial("Body/P_MainLayout_Header_Mobile")
+            <!--پایان نمایش گوشی-->
+            @Html.Partial("Body/P_MainLayout_Header_MainMenu")
+        </section>
+        <div class="c-navi-categories__overlay js-navi-overlay"></div>
+        @RenderBody()
+
+        
+        @*<section class="container-fluid categori-section pt-3">
+            <div class="row">
+                <div class="col-12 p-0 text-center">
+                    <h2 class="caption-section">
+                        <span>
+                            محصولات
+                            <i class="color">جدید</i>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mx-auto col-12 p-0">
+                    <div class="owl-carousel owl-theme owl-pro">
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">20 % </span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro8.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <span class="offer"><span class="off">% 20</span></span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro7.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">% 20</span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro6.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">%10</span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro5.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer"><span class="off">% 20</span></span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro4.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">20 % </span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro9.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+        <section class="container-fluid categori-section pt-3">
+            <div class="row">
+                <div class="col-12 p-0 text-center">
+                    <h2 class="caption-section">
+                        <span>
+                            محصولات
+                            <i class="color">جدید</i>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mx-auto col-12 p-0">
+                    <div class="owl-carousel owl-theme owl-pro">
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">20 % </span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro9.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <span class="offer"><span class="off">% 20</span></span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro10.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">% 20</span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro11.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">%10</span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro12.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer"><span class="off">% 20</span></span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro13.jpg" alt="" />
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <span class="offer">
+                                <span class="off">20 % </span>
+                            </span>
+                            <div class="item-img">
+                                <div class="row">
+                                    <div class="col-12 p-0">
+                                        <a href="product.html" class="img-pro" target="_blank">
+                                            <div class="dark-overlay removeFocusIndicator"></div>
+                                            <img src="images/pro9.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 text-center pro-name p-0">
+                                    <a href="product.html">لپ تاپ 15.6 اینچی لنوو مدل  ‎IdeaPad L340-R16</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4 d-none d-md-block cost text-left">
+                                </div>
+                                <div class="col-md-8 col-12 cost text-end pl-0">
+                                    <span class="old-cost">320،346</span>
+                                    <br>
+                                    <span class="cost-total">320،200</span>
+                                    <span class="unit">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid news-section ps-0 pe-0">
+            <div class="row">
+                <div class="col-12 p-0 text-center">
+                    <h2 class="caption-section">
+                        <span>
+                            مقالات
+                            <i class="color">جدید</i>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ol-12 pr-md-30 pl-md-60">
+                    <div class="owl-carousel owl-theme owl-news">
+                        <a href="blog-detail.html" class="item">
+                            <div class="d-block position-relative img-news">
+                                <img src="images/news1.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-block news-title">نقد و بررسی کلاسیک آیپد مینی ۲۰۲۱ (نسل ششم)</div>
+                            <div class="d-block news-short-desc">
+                                با اصالتی بیش از نیم قرن و با کوله‌باری پر از همراهی شما، پس از گذشت.
+                            </div>
+                        </a>
+                        <a href="blog-detail.html" class="item">
+                            <div class="d-block position-relative img-news">
+                                <img src="images/news2.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-block news-title">خداحافظی با آیفون ۶S؛ شاهکار دوران استیو جابز و تیم کوک دیگر آپدیت نمی‌شود </div>
+                            <div class="d-block news-short-desc">
+                                با اصالتی بیش از نیم قرن و با کوله‌باری پر از همراهی شما، پس از گذشت.
+                            </div>
+                        </a>
+                        <a href="blog-detail.html" class="item">
+                            <div class="d-block position-relative img-news">
+                                <img src="images/news3.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-block news-title">نقد و بررسی کلاسیک آیپد مینی ۲۰۲۱ (نسل ششم)</div>
+                            <div class="d-block news-short-desc">
+                                با اصالتی بیش از نیم قرن و با کوله‌باری پر از همراهی شما، پس از گذشت.
+                            </div>
+                        </a>
+                        <a href="blog-detail.html" class="item">
+                            <div class="d-block position-relative img-news">
+                                <img src="images/news1.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-block news-title">خداحافظی با آیفون ۶S؛ شاهکار دوران استیو جابز و تیم کوک دیگر آپدیت نمی‌شود</div>
+                            <div class="d-block news-short-desc">
+                                با اصالتی بیش از نیم قرن و با کوله‌باری پر از همراهی شما، پس از گذشت.
+                            </div>
+                        </a>
+                        <a href="blog-detail.html" class="item">
+                            <div class="d-block position-relative img-news">
+                                <img src="images/news4.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-block news-title">نقد و بررسی کلاسیک آیپد مینی ۲۰۲۱ (نسل ششم)</div>
+                            <div class="d-block news-short-desc">
+                                با اصالتی بیش از نیم قرن و با کوله‌باری پر از همراهی شما، پس از گذشت.
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+        @Html.Partial("Body/P_MainLayout_Footer1")
+        @Html.Partial("Body/P_MainLayout_Footer")
+        @Html.Partial("Body/P_CopyRight_Footer")
+    </div>
+
+</body>
+
+
+<!-- Mirrored from javid-pg.com/shopify/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Jul 2022 15:23:55 GMT -->
+</html>

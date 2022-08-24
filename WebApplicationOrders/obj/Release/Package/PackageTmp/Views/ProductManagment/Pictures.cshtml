@@ -1,0 +1,111 @@
+﻿@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement>
+
+
+@using OrdersInventory.Repository.Inventory
+
+@{
+    ViewBag.Title = "نمایش عکس ها";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">نمایش عکس ها</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                        <a href="/ProductManagment/PicturesAdd" class="margin btn btn-success col-md-8"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                        <a href="/ProductManagment" class="margin btn btn-danger col-md-3"> بازگشت &nbsp;<i class="fa fa-close"></i></a>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+
+
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+
+                                            <input class="ckbox" type="checkbox" value="">
+                                        </th>
+                        
+                                        <th>تاریخ</th>
+                                        <th>عکس</th>
+                                        <th>اصلی</th>
+                                        <th>وضعیت</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+
+                                        if (Model != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td class="col-md-1">
+                                                        <input type="checkbox" value="">
+                                                    </td>
+
+                                                    <td class="col-md-1">
+                                                        @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", item.CreatorDateTime)
+                                                    </td>
+                                                    <td class="col-md-5">
+                                                        <a>
+                                                            <img src="@item.FileName" width="250" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <a href="/ProductManagment/ChangeStatusIsMain/@item.Id" class="@item.IsMainClass">@item.IsMainTitle</a>
+                                                        
+
+                                                    </td>  
+      
+                                                    <td class="col-md-1">
+
+                                                        <a href="/ProductManagment/ChangeStatusPictures/@item.Id" class="@item.IsOkClass">@item.IsOkTitle</a>
+
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <a class="btn btn-danger btn-sm" href="/ProductManagment/DeletePictures/@item.Id">×</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

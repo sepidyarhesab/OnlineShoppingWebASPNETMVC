@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "ورود به حساب کاربری";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="l-auth__container">
+    <div class="l-auth-m__header flex-center">
+        <div class="l-auth-m__logo">
+            <i class="icon-mini-mtr">
+                <img alt="" src="/Helper/Layouts/images/logo.png">
+            </i>
+        </div>
+        <div class="l-auth-m__top">
+            <a class="l-auth-m__back" href="#">
+                <i class="icon-right"></i>
+            </a>
+            <h1 class="l-auth-m__title">ورود</h1>
+        </div>
+    </div>
+    <div class="l-auth__ContentWrapper flex-center">
+        <div class="l-auth__top d-none d-md-block">
+            <img alt="" src="/Helper/Layouts/images/logo.png">
+        </div>
+        <p class="l-auth__title d-none d-md-block"></p>
+        @using (Html.BeginForm("Verify", "Verify", FormMethod.Post))
+        {
+            if (Session["LoginData"] != null)
+            {
+                var dt = Session["LoginData"].ToString();
+                var sp = dt.Split('&');
+
+                <input type="hidden" name="userRef" id="userRef" value="@sp[0]">
+                <input type="hidden" name="oldCode" id="oldCode" value="@sp[1]">
+            }
+
+            <script>
+                var timeleft = 20;
+                var downloadTimer = setInterval(function () {
+                    if (timeleft <= 0) {
+                        clearInterval(downloadTimer);
+                        document.getElementById("btnTry").disabled = false;
+                    }
+                    document.getElementById("progressBar").value = 10 - timeleft;
+                    timeleft -= 1;
+                },
+                    1000);
+            </script>
+            <script>
+                function trysend() {
+                    document.getElementById("btnTry").disabled = true;
+                    window.location.href = "/Verify/Try";
+                }
+            </script>
+
+            <div class="p-login flex-center">
+                <label class="p-login__phoneLabel">
+                    <i class="fas fa-mobile-alt me-2"></i> کد دریافتی پیامک شده
+                </label>
+                <input class="username p-login__phone" autofocus="" placeholder="۰۹..." type="number" id="code" name="code" onchange="allnumeric(this);" data-step="1" data-intro="در این قسمت شماره موبایل خود را با کیبورد لاتین وارد کنید">
+                <!--نمایش خطا-->
+                <div class="p-login__error validation-summary-valid">
+                    <ul>
+                        <li style="display:none"></li>
+                    </ul>
+                </div>
+                <div class="p-verify__actionBar">
+                    <div id="count-down" class="p-verify__timer">00:00</div>
+                    <button disabled="disabled" id="btnTry" onclick="trysend();" style="display: block;" class="p-verify__resend">ارسال مجدد</button>
+                </div>
+            </div>
+            <div class="l-auth-m__actionBar">
+                <button class="l-auth__submitButton flex-center" type="submit">
+                    ارسال کد تایید
+                </button>
+            </div>
+
+        }
+
+
+
+
+
+    </div>
+    <div class="l-auth__slogan d-flex">
+        <div>
+            <div class="l-auth__logoIcon">
+                <i class="icon-mtr">
+                    <img alt="" src="images/logo.png">
+                </i>
+            </div>
+            <p class="l-auth__sloganText">اینجا همه می تونن خرید کنن</p>
+            <p class="l-auth__authText">همین حالا عضوی از شاپی فای شو و  کلی خرید هیجان انگیز داشته باش!</p>
+        </div>
+        <a class="l-auth__backToHome flex-center" href="/Default">
+            <i class="fal fa-chevron-right me-2"></i> بازگشت به صفحه اصلی
+        </a>
+    </div>
+</div>
+
+
+
+<script src="/Helper/Layouts/js/main-min.js"></script>
+<script src="/Helper/Layouts/js/script.js"></script>
+

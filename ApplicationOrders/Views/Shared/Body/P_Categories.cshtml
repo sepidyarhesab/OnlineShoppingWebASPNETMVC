@@ -1,0 +1,33 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+
+<div class="container direction-rtl">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row g-3">
+            @{
+                var rep = new RepProducts();
+
+                var result = rep.RepositoryMainCategoreisDefault();
+                if (result.Count > 0)
+                {
+                    foreach (var catecoreis in result)
+                    {
+                        <div class="col-4">
+                            <div class="feature-card mx-auto text-center">
+                                <a href="@catecoreis.Url">
+                                        <img src="@catecoreis.FileName" alt="@catecoreis.PrimaryTitle">
+                                    </a>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

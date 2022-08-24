@@ -1,0 +1,220 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelConfiguration>
+@{
+    ViewBag.Title = "تنظیمات محصولات";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">تنظیمات محصولات</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="site-header__search">
+                        <div class="search">
+
+                            <form class="search__form" action="/ConfigurationManagement/Index" method="post">
+                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                <button class="search__button" type="submit">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
+                                    </svg>
+                                </button>
+                                <div class="search__border"></div>
+                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
+                                    بازیابی مجدد
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <script>
+
+                        function reload() {
+                            window.location.href = "/ConfigurationManagement";
+                        }
+                    </script>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                        <a href="/ConfigurationManagement/Add" class="btn btn-success" style="width: 80%"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                        <a class="btn btn-danger " href="/AdminDashboard" style="width: 19%">برگشت</a>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+
+
+
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            ردیف
+                                        </th>
+                                        <th class="text-center">
+                                            کد
+                                        </th>
+                                        <th class="text-center">
+                                            عنوان اول
+                                        </th>
+                                        <th class="text-center">
+                                            شماره مرتب سازی
+                                        </th>
+                                        <th class="text-center">
+                                            دسته بندی انتخابی
+                                        </th>
+                                        <th class="text-center">
+                                            وضعیت
+                                        </th>
+                                        <th class="text-center">ویرایش</th>
+                                        <th class="text-center">لیست محصولات</th>
+                                        <th class="text-center">حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        //var configuration = rep.RepositoryMainConfiguration();
+                                        //if (configuration.Count > 0)
+
+                                        //{
+                                        //    var row = 1;
+                                        //    foreach (var mangment in configuration)
+                                        //    {
+                                        if (Model != null)
+                                        {
+                                            var rep = new RepProducts();
+
+                                            var row = 1;
+                                            foreach (var mangment in Model)
+                                            {
+                                                <tr>
+
+                                                    <td class="col-md-1">
+                                                        @row
+                                                    </td>
+
+                                                    <td class="col-md-1 copy">
+                                                        @mangment.Code
+                                                    </td>
+
+                                                    <td class="col-md-3 copy" style="font-size: 12px;">
+                                                        @mangment.PrimaryTitle
+                                                    </td>
+                                                    <td class="col-md-2">
+                                                        <a>@mangment.Sort </a>
+                                                    </td>
+                                                    <td class="col-md-3" style="font-size: 12px;">
+                                                        @if (@mangment.CategoriesRef == null)
+                                                        {
+                                                            <span class="text-danger">
+                                                                <i class="glyphicon glyphicon-remove"></i>
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @mangment.CategoryTitle
+                                                        }
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @if (@mangment.IsOk)
+                                                        {
+                                                            <a href="/ConfigurationManagement/ChangeStatus/@mangment.Id" class="btn btn-success">فعال</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/ConfigurationManagement/ChangeStatus/@mangment.Id" class="btn btn-danger">غیرفعال</a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-info glyphicon glyphicon-edit" href="/ConfigurationManagement/Edit/@mangment.Id"></a>
+                                                    </td>
+                                                    <td>
+                                                        @if (@mangment.CategoriesRef == null)
+                                                        {
+                                                            <a class="btn btn-success " href="/ConfigurationManagement/AddSelection/@mangment.Id">انتخاب محصول</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            @mangment.CategoryTitle
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-danger " href="/ConfigurationManagement/Delete/@mangment.Id">×</a>
+                                                    </td>
+                                                </tr>
+                                                row++;
+
+                                            }
+
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var color = document.querySelectorAll('.copy') //DOM selector
+
+    //Loop through all elements and attaching event listener
+    color.forEach(el => {
+        el.addEventListener('click', copyText);
+    });
+
+    // function for selecting the text of an element based on the event.target (supporting IE)
+    function selectText() {
+        var element = event.target
+        var range;
+        if (document.selection) {
+            // IE
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) {
+            range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+    }
+
+    // function for copying selected text in clipboard
+    function copyText() {
+        selectText();
+        alert('متن مورد نظر کپی شد');
+        document.execCommand("copy");
+    }
+</script>
+

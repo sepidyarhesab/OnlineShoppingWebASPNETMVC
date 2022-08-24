@@ -1,0 +1,211 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+<!-- .block-products-carousel -->
+
+@{
+    var rep = new RepProducts();
+    var config = rep.RepositoryMainConfigurationForShow();
+    if (config.Count > 0)
+    {
+        foreach (var head in config)
+        {
+
+            <section class="container-fluid wnd">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-2 p-0 list-t-wnd">
+                        <div class="row row-align">
+                            <div class="col-12 p-0  text-center">
+                                <h3 class="block-header__title"> @head.PrimaryTitle </h3>
+                                <img src="~/Helper/Layouts/images/amazing-typo.svg" class="img-fluid">
+                            </div>
+                            <div class="col-lg-12  col-12 text-center pr-0">
+                                <h5 class="title-wnd">
+                                    <img src="~/Helper/Layouts/images/wnd.png" class="img-fluid" />
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center more ">
+                                @{
+
+                                    if (head.Url != null)
+                                    {
+                                        <li>
+                                            <a href="@head.Url">مشاهده محصولات</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@Url.RouteUrl("ProductSelection", new {id = head.Id.ToString()})">مشاهده محصولات</a>
+                                        </li>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-10 p-0 list-wnd">
+                        <div class="owl-carousel owl-theme owl-wnd">
+                            @{
+
+                                if (head.CategoriesRef != null)
+                                {
+                                    var resultCategoreis = rep.RepositoryMainSelectionCategoreisProducts(head.CategoriesRef);
+
+                                    if (resultCategoreis.Count > 0)
+                                    {
+
+                                        foreach (var item in resultCategoreis)
+                                        {
+                                            <div class="item">
+                                                <span class="offer">
+                                                    <span class="off">20 % </span>
+                                                </span>
+                                                <div class="item-img">
+                                                    <div class="row">
+                                                        <div class="col-12 p-0">
+                                                            <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="img-pro-wnd" target="_blank">
+                                                                <div class="dark-overlay removeFocusIndicator"></div>
+                                                                <img src="@item.FileName" alt="@item.PrimaryTitle">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-12 text-center pro-name p-2">
+                                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">@item.PrimaryTitle</a>
+                                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="@item.QuantityClass">@item.QuantityTitle</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4 d-none d-md-block cost text-right">
+
+                                                    </div>
+
+                                                    <div class="col-md-8 col-12 cost text-end pr-3">
+                                                        @{
+
+                                                            var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+
+                                                            if (item.Discount > 0)
+                                                            {
+                                                                <span class="old-cost">@string.Format("{0:##,###}", ProductFee, "Fee")</span>
+
+                                                                <br>
+                                                                <span class="cost-total">@string.Format("{0:##,###}", item.Fee, "Fee") </span>
+                                                                <span class="unit">تومان</span>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="cost-total">@string.Format("{0:##,###}", item.Fee, "Fee") </span>
+                                                                <span class="unit">تومان</span>
+                                                            }
+                                                        }
+                                                        <br>
+                                                        <div class="timer">
+                                                            <span class="soon" id="time1" data-format="h,m,s" data-due="2020-07-15T11:00:00"
+                                                                  data-face="slot doctor glow"
+                                                                  data-visual="ring color-light width-thin glow-progress"></span>
+                                                            <span><i class="far fa-clock"></i></span>
+                                                        </div>
+                                                        <script>
+                                                            $("#time1").soon().create({
+                                                                separator: ":",
+                                                                layout: "group"
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    var resultSelection = rep.RepositorySelectionProduct(head.Id);
+                                    if (resultSelection.Count > 0)
+                                    {
+                                        foreach (var item in resultSelection)
+                                        {
+                                            <div class="item">
+                                                <span class="offer">
+                                                    <span class="off">20 % </span>
+                                                </span>
+                                                <div class="item-img">
+                                                    <div class="row">
+                                                        <div class="col-12 p-0">
+                                                            <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="img-pro-wnd" target="_blank">
+                                                                <div class="dark-overlay removeFocusIndicator"></div>
+                                                                <img src="@item.FileName" alt="@item.PrimaryTitle">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-12 text-center pro-name p-2">
+                                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">@item.PrimaryTitle</a>
+                                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="@item.QuantityClass">@item.QuantityTitle</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4 d-none d-md-block cost text-right">
+
+                                                    </div>
+
+                                                    <div class="col-md-8 col-12 cost text-end pr-3">
+                                                        @{
+
+                                                            var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+
+                                                            if (item.Discount > 0)
+                                                            {
+                                                                <span class="old-cost">@string.Format("{0:##,###}", ProductFee, "Fee")</span>
+
+                                                                <br>
+                                                                <span class="cost-total">@string.Format("{0:##,###}", item.Fee, "Fee") </span>
+                                                                <span class="unit">تومان</span>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="cost-total">@string.Format("{0:##,###}", item.Fee, "Fee") </span>
+                                                                <span class="unit">تومان</span>
+                                                            }
+                                                        }
+                                                        <br>
+                                                        <div class="timer">
+                                                            <span class="soon" id="time1" data-format="h,m,s" data-due="2020-07-15T11:00:00"
+                                                                  data-face="slot doctor glow"
+                                                                  data-visual="ring color-light width-thin glow-progress"></span>
+                                                            <span><i class="far fa-clock"></i></span>
+                                                        </div>
+                                                        <script>
+                                                            $("#time1").soon().create({
+                                                                separator: ":",
+                                                                layout: "group"
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        }
+                                    }
+
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+}

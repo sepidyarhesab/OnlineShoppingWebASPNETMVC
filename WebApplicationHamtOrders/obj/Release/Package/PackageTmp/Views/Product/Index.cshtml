@@ -1,0 +1,127 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    ViewBag.Title = "محصولات|Products";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="row mb-5">
+    <div class="col-lg-12 col-md-11">
+        <div class="row">
+            <div class="col-12">
+                <!-- breadcrumb -->
+                <div class="breadcrumb mb-2 pt-2">
+                    <nav>
+                        <a href="/Default">خانه</a>
+                        <a href="/Product/Index">محصولات</a>
+                    </nav>
+                </div>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+        <div class="listing-items row">
+
+            @{
+                if (Model != null)
+                {
+                    foreach (var productitem in Model)
+                    {
+                        <div class="col-lg-3 col-md-4 col-sm-6 px-0">
+                            <div class="product-card">
+                                <div class="product-card-top">
+                                    <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="product-image">
+                                        <img src="@productitem.FileName" alt="@productitem.PrimaryTitle">
+                                    </a>
+                                </div>
+                                <div class="product-card-middle">
+
+                                    <h6 class="product-name">
+                                        <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">
+                                            @productitem.PrimaryTitle
+                                        </a>
+                                    </h6>
+                                    <h6 class="product-name">
+                                        موجودی: <span class="@productitem.QuantityClass">@productitem.QuantityTitle</span>
+                                    </h6>
+                                    @{
+                                        var ProductFee1 = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                        if (productitem.Discount > 0)
+                                        {
+                                            <div class="product-price product-price-clone">
+                                                <del>@string.Format("{0:##,###}", ProductFee1, "Fee") تومان</del>
+                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-price product-price-clone">
+                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+                                @{
+                                    var ProductFee = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                    if (productitem.Discount > 0)
+                                    {
+                                        <div class="product-card-bottom">
+                                            <div class="product-price">
+
+
+                                                <del>
+                                                    @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                                </del>
+                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                            </div>
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
+                                                مشاهده کالا
+                                            </a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="product-card-bottom">
+                                            <div class="product-price">
+                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                            </div>
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
+                                                مشاهده کالا
+                                            </a>
+                                        </div>
+                                    }
+
+                                }
+
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+
+
+
+
+            <div class="col-12 px-0">
+                <div class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page }), new PagedListRenderOptions()
+                        {
+                            LiElementClasses = new List<string> { "page-item" },
+                            ContainerDivClasses = new List<string> { "products-view__pagination" },
+                            UlElementClasses = new List<string> { "pagination justify-content-center" },
+                            PageCountAndCurrentLocationFormat = "page-item active",
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                        })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

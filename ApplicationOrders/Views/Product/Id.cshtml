@@ -1,0 +1,205 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersInventory.ViewModels.Inventory
+
+@{
+    Session["BackUrl"]= "/Default";
+    
+}
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    ViewBag.Title = "Id";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+    if (Model != null)
+    {
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            Session["ProductId"] = "/Product/Id/" + item.Id;
+
+            <div class="page-content-wrapper py-3" dir="rtl">
+                <div class="container">
+                    <div class="card product-details-card mb-3">
+                        <span class="badge position-absolute product-badge @item.QuantityClass">@item.QuantityTitle</span>
+                        <div class="card-body">
+                            <div class="product-gallery-wrapper">
+                                <div class="product-gallery">
+                                    <a href="@item.FileName"><img class="rounded" src="@item.FileName" alt=""></a>
+                                    @{
+
+                                        if (item.FileList.Count > 0)
+                                        {
+                                            foreach (var fileUploadName in item.FileList)
+                                            {
+                                                <a href="@fileUploadName.FileName"><img class="rounded" src="@fileUploadName.FileName" alt="@item.PrimaryTitle"></a>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-details-card mb-3 direction-rtl">
+                        <div class="card-body">
+                            <h5>@item.PrimaryTitle</h5>
+                            <h6>@item.SecondaryTitle</h6>
+                            <p><span class="badge @item.QuantityClass">@item.QuantityTitle</span><small> کد کالا : </small> @item.Code</p>
+
+                            @{
+                                var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+                                var CatFee = (item.Fee - ((item.Fee * item.ProductDiscount) / 100));
+                                if (item.Discount > 0)
+                                {
+                                    <h4>@string.Format("{0:##,###}", item.Fee, "Fee") تومان</h4><br />
+                                    <h4>@string.Format("{0:##,###}", ProductFee, "Fee") تومان</h4>
+                                }
+                                else if (item.ProductDiscount > 0)
+                                {
+                                    <h4>@string.Format("{0:##,###}", item.Fee, "Fee") تومان</h4><br />
+                                    <h4>@string.Format("{0:##,###}", CatFee, "Fee") تومان</h4>
+                                }
+                                else
+                                {
+                                    <h4>@string.Format("{0:##,###}", item.Fee, "Fee") تومان</h4>
+                                }
+                            }
+                            @{
+                                if (item.Discount > 0)
+                                {
+                                    <h4>@item.Discount % تخفیف</h4>
+                                }
+                                else
+                                {
+
+                                }
+                            }
+
+
+                            @{
+
+                                var type = RepSettings.RepositoryTypeSelect();
+                                if (type != Guid.Empty)
+                                {
+                                    if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                    {
+                                        <select class="form-select mb-3 rtl-form-selection" id="color" onchange="dropdownColor(this)">
+                                            @{
+
+                                                List<VMProduct.ViewModelProductColor> color = rep.RepositoryColorShowInProducts(ViewBag.Id);
+
+                                                foreach (var clr in color)
+                                                {
+                                                    <option value="@clr.ColorRef">@clr.PrimaryTitle</option>
+                                                }
+                                            }
+                                        </select>
+                                        <select class="form-select mb-3 rtl-form-selection" id="SizeDropDown" Id="SizeDropDown" name="SizeDropDown" disabled="disabled" onchange="dropdownSize(this)"></select>
+
+                                    }
+                                    else if (type == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                    {
+
+                                    }
+                                }
+                            }
+                            <label id="Quantities" class="product__option-label text-danger" for="product-quantity"></label>
+                            <div class="input-group">
+                                <input class="input-group-text form-control input-marg" id="product-quantity" min="1" type="number" value="1">
+                                @{
+
+                                    if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                    {
+
+                                        <button id="btnAddToCartsWithSize" class="btn btn-primary w-50 btn-marg" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-primary w-50 btn-marg" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                                    }
+                                }
+
+
+                            </div>
+
+                            <label id="Quantities" class="product__option-label text-danger" for="product-quantity"></label>
+                        </div>
+                    </div>
+
+
+                    @Html.Partial("SingleProduct/P_ProductTabs")
+                    
+
+
+                    <!-- .block-products-carousel -->
+                    @*@Html.Partial("SingleProduct/P_ProductsCarousel")*@
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+        }
+    }
+}
+
+
+
+
+<script>
+    function dropdownColor(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        if (x == "00000000-0000-0000-0000-000000000000") {
+            document.getElementById("SizeDropDown").disabled = true;
+        } else {
+            $.ajax({
+                url: "/Product/DropDownSize",
+                type: "POST",
+                data: { code : x }
+            }).done(function (result) {
+                $("#SizeDropDown").html(result);
+                document.getElementById("SizeDropDown").disabled = false;
+            });
+        }
+    }
+</script>
+
+
+
+<script>
+
+    function dropdownSize(a) {
+        var sizeref = (a.value || a.options[a.selectedIndex].value);
+        if (sizeref == "00000000-0000-0000-0000-000000000000") {
+        } else {
+            var e = document.getElementById("color");
+            var colorref = e.value;
+            $.ajax({
+                url: "/Product/CheckQuantity",
+                type: "Post",
+                data: { sizeid: sizeref, colorid: colorref }
+            }).done(function (result) {
+                if (result < 2) {
+                    document.getElementById("Quantities").innerHTML = "تنها یک عدد در انبار باقی مانده است";
+                    //spanquantity
+                } else {
+                    document.getElementById("Quantities").innerHTML = "";
+                }
+            });
+        }
+    }
+</script>
+
+
+
+
+
+
+

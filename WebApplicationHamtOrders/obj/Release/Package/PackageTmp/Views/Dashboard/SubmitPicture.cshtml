@@ -1,0 +1,48 @@
+﻿@using OrdersOrders.Repository.Orders
+
+@{
+    ViewBag.Title = "افزودن فاکتور|AddInvoice";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="row mb-5">
+    <div class="col-lg-3 col-md-4 mb-md-0 mb-3 sticky-sidebar">
+        <div class="sidebar-widget">
+
+            @Html.Partial("Body/P_Panel_Right")
+        </div>
+    </div>
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <div class="col-lg-9 col-md-8">
+                <div class="row mb-4">
+                    <div class="col-12">
+                            <div class="section-title mb-2">
+                                ارسال فیش واریزی
+                            </div>
+                        <section class="shadow-around p-3">
+                            @using (Html.BeginForm("SubmitPicture", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div>
+                                    ارسال فیش واریزی
+                                </div>
+                                <div class="form-group">
+
+                                    <input id="file" name="file" class="input-element" type="file"/>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">ثبت سفارش</button>
+                                <button type="submit" class="btn btn-primary">بازگشت</button>
+                                                                                                 
+                            }
+                        </section>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
+</div>

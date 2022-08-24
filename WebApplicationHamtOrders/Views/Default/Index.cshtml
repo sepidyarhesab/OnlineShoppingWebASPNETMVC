@@ -1,0 +1,31 @@
+﻿@using System.Web.Configuration
+@using OrdersSettings.Repository.Settings
+
+@{
+    string Title = WebConfigurationManager.AppSettings["CompanyName"];
+    ViewBag.Title = Title;
+    //Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+@{
+
+    var view = RepViewConfiguration.RepositoryConfigurationView("Default", "WEB");
+    if (view.Count > 0)
+    {
+        foreach (var item in view)
+        {
+            @Html.Partial(item.SecondaryTitle)
+        }
+    }
+}
+
+
+@*@Html.Partial("Body/P_Sliders")
+    @Html.Partial("Body/P_Categories")
+    @Html.Partial("Body/P_Services")
+    @Html.Partial("Body/P_Products")*@
+@*@Html.Partial("Body/P_Banner")*@
+
+

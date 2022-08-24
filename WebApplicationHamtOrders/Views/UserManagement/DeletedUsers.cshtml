@@ -1,0 +1,112 @@
+﻿@using OrdersGeneral.Repository.General
+
+
+@{
+    ViewBag.Title = "کاربران حذف شده|DeletedUsers";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">کاربران حذف شده</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                   
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+
+
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            ردیف
+                                        </th>
+                                        <th>
+                                            کد
+                                        </th>
+                                        <th>
+                                            نام و نام خانوادگی
+                                        </th>
+                                        <th>بازگشت از حذف</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var user = RepUsers.RepositoryDeletedUserManagment();
+                                        if (user.Count > 0)
+
+                                        {
+                                            var row = 1;
+                                            foreach (var mangment in user)
+                                            {
+                                                <tr>
+
+                                                    <td class="col-md-1">
+                                                        @row
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @mangment.Code
+                                                    </td>
+                                                    @{
+                                                        var fullName = @mangment.Name + " " + @mangment.Family;
+                                                    }
+                                                    <td class="col-md-3" style="font-size: 12px;">
+                                                        @fullName
+                                                    </td>
+
+                                                    <td>
+                                                        <a class="btn btn-success btn-sm " href="/UserManagement/UnDelete/@mangment.Id">✓</a>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <a class="btn btn-danger " href="/UserManagement/Delete/@mangment.Id">×</a>
+                                                    </td>
+
+                                                </tr>
+                                                row++;
+
+                                            }
+
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

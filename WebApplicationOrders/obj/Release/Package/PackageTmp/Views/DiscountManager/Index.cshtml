@@ -1,0 +1,173 @@
+﻿@model IEnumerable<OrdersOrders.ViewModels.Orders.VMDiscount.VmDiscountManagement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">کدهای تخفیف</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <a href="/DiscountManager/CodeCreate" class="margin-btn btn btn-success col-md-6"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                        <a  href="/DiscountManager/CodeIndex" class="margin-btn btn btn-info col-md-5"> همه محصولات</a>
+                    </div>
+                    
+                </div>
+
+                <div class="box-body">
+                    <div class="table-responsive">
+
+
+
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        ردیف
+                                    </th>
+                                    <th>
+                                        کد تخفیف
+                                    </th>
+                                    <th>
+                                        درصد تخفیف
+                                    </th>
+                                    <th>
+                                        نوع تخفیف
+                                    </th>
+                                    <th>
+                                        مبلغ تخفیف
+                                    </th>
+                                    <th>
+                                        واحد درصد تخفیف
+                                    </th>
+                                    <th>
+                                        تعداد تخفیف کاربر
+                                    </th>
+                                    <th>
+                                        تعداد تخفیف استفاده شده کاربر
+                                    </th>
+                                    <th>
+                                        نام کاربر
+                                    </th>
+                                    <th>
+                                        تعداد کل تخفیف
+                                    </th>
+                                    <th>
+                                        محصول
+                                    </th>
+                                    <th>
+                                        دسته بندی
+                                    </th>
+                                    <th>
+                                        تاریخ شروع
+                                    </th>
+                                    <th>
+                                        تاریخ پایان
+                                    </th>
+                                    <th>
+                                        وضعیت
+                                    </th>
+                                    <th>ویرایش</th>
+                                    <th>حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (Model != null)
+                                    {
+
+                                        var row = 1;
+                                        foreach (var mangment in Model)
+                                        {
+                                            <tr>
+
+                                                <td class="col-md-1">
+                                                    @row
+                                                </td>
+                                                <td class="col-md-2">
+                                                    @mangment.DiscountCode
+                                                </td>
+
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.Discount
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.Entities
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.DiscountFee
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.DiscountPercent
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.DiscountCount
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.DiscountUsed
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.FullName
+                                                </td>
+                                                <td class="col-md-2" style="font-size: 12px;">
+                                                    @mangment.DiscountQuantity
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @mangment.ProductTitle
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @mangment.CategoriesTitle
+                                                </td>
+                                                <td class="col-md-3">
+                                                    @mangment.StartDate1
+                                                </td>
+                                                <td class="col-md-3">
+                                                    @mangment.EndDate1
+                                                </td>
+                                                <td class="col-md-1">
+                                                    <a href="/DiscountManager/CodeChangeStatus/@mangment.Id" class="@mangment.IsOkClass">@mangment.IsOkTitle</a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm glyphicon glyphicon-edit" href="/DiscountManager/CodeEdit/@mangment.Id"></a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm " href="/DiscountManager/CodeDelete/@mangment.Id">×</a>
+                                                </td>
+                                            </tr>
+                                            row++;
+
+                                        }
+
+                                    }
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

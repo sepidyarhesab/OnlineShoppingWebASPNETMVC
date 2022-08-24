@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+@Html.Partial("Body/P_MainLayout_head")
+</head>
+<body>
+    <!-- Preloader -->
+    @*<div id="preloader">
+        <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>*@
+    <!-- Internet Connection Status -->
+    <!-- # This code for showing internet connection status -->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Header Area -->
+    <div class="header-area" id="headerArea">
+        @Html.Partial("Body/P_MainLayout_Header_Back")
+    </div>
+    <!-- # Sidenav Left -->
+    <!-- Offcanvas -->
+    @Html.Partial("Body/P_MainLayout_Mobile_Menu")
+    <div class="page-content-wrapper">
+        <!-- Welcome Toast -->
+        @RenderBody()
+    </div>
+    <!-- Footer Nav -->
+    <div class="footer-nav-area" id="footerNav">
+        <div class="container px-0">
+            <!-- =================================== -->
+            <!-- Paste your Footer Content from here -->
+            <!-- =================================== -->
+            <!-- Footer Content -->
+            <div class="footer-nav position-relative">
+                @Html.Partial("Body/P_MainLayout_Footer")
+            </div>
+        </div>
+    </div>
+    @Html.Partial("Body/P_MainLayout_Script")
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMBlogs.VMBlog>
+@using OrdersGeneral.Repository.General
+@using WebApplicationHamtOrders.Convertor
+
+
+
+@{
+    ViewBag.Title = "دسته بندی اصلی وبلاگ|BlogMainCategory";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+
+<div class="row mb-5">
+    <div class="col-lg-3 col-md-4 sticky-sidebar filter-options-sidebar">
+        <div class="sidebar-widget">
+            <div class="widget widget-category shadow-around">
+                <div class="widget-title">دسته بندی</div>
+                <div class="widget-content">
+
+                    @{
+                        var categoriesList = RepBlog.RepositoryBlogMainCategoreis();
+                        if (categoriesList.Count > 0)
+                        {
+                            <ul data-collapse="" data-collapse-opened-class="widget-categories__item--open">
+                                @{
+                                    foreach (var item in categoriesList)
+                                    {
+
+                                        <li data-collapse-item="">
+
+                                            <a href="@Url.RouteUrl("BlogMainCategories", new {id = item.Id.ToString()})" class="parent">
+                                                <svg width="6px" height="9px">
+                                                    <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                                </svg> @item.PrimaryTitle
+                                            </a>
+                                            @if (item.ViewModelSubCategoreis != null)
+                                            {
+                                                <button class="widget-categories__expander" type="button" data-collapse-trigger=""></button>
+                                            }
+
+                                            @if (item.ViewModelSubCategoreis != null)
+                                            {
+
+                                                if (item.ViewModelSubCategoreis.Count > 0)
+                                                {
+                                                    <ul>
+
+                                                        @foreach (var sub in item.ViewModelSubCategoreis)
+                                                        {
+
+                                                            <li>
+                                                                <a href="@Url.RouteUrl("BlogSubCategories", new {id = sub.Id.ToString()})">@sub.PrimaryTitle</a>
+                                                            </li>
+                                                        }
+
+                                                    </ul>
+                                                }
+                                            }
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        }
+                    }
+
+                </div>
+            </div>
+
+            <div class="widget widget-tags shadow-around">
+                <div class="widget-title">داغ ترینها</div>
+                <div class="widget-content">
+
+                    @{
+                        if (Model != null)
+                        {
+                            foreach (var blg in Model)
+                            {
+                                <a href="#">#@blg.Tag</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div class="widget shadow-around">
+                <div class="widget-content">
+                    <div class="custom-control custom-switch">
+                        <form method="post">
+                            <input placeholder="جستجوی بلاگ ..." type="text" value="@ViewBag.SearchKey" name="SearchKey" id="SearchKey" autocomplete="off" spellcheck="false">
+                            <button type="submit">
+                                <i class="far fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-8">
+
+        <div class="row">
+            <div class="col-12">
+                <!-- breadcrumb -->
+                <div class="breadcrumb mb-2 pt-2">
+                    <nav>
+                        <a href="/Default">خانه</a>
+                        <a href="@Model.First().CategoryRef">@Model.First().CategoryTitle</a>
+                        <a href="#">@Model.First().PrimaryTitle</a>
+                    </nav>
+                </div>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+        <div class="listing-items blog-listing-items">
+            <div class="row">
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var blg in Model)
+                        {
+                            <div class="col-lg-4 col-sm-6 mb-3">
+                                <div class="blog-card">
+                                    <div class="blog-card-thumbnail">
+
+                                        <a href="/blog/moreblog/@blg.Id">
+                                            <img src="@blg.FileName" alt="@blg.PrimaryTitle">
+                                        </a>
+                                    </div>
+                                    <div class="blog-card-title">
+                                        <h2><a href="/blog/moreblog/@blg.Id">@blg.PrimaryTitle</a></h2>
+                                    </div>
+                                    <div class="blog-card-excerpt">
+                                        <p>
+                                            @blg.Summary
+                                        </p>
+                                    </div>
+                                    <div class="blog-card-footer">
+                                        <div class="author">
+                                            <img src="/Helper/Layouts/images/avatar/avatar.png" alt="@blg.CreatorName">
+                                            <p>@blg.CreatorName</p>
+                                        </div>
+                                        <div class="date">
+                                            <i class="fad fa-clock"></i>
+                                            @blg.CreatorDate.ToShamsi()
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12 px-0">
+                <div class="pagination">
+                    @for (int i = 1; i <= (ViewBag.PageCount + 1); i++)
+                    {
+                        <li class="page-item @(((int) ViewBag.PageId == i) ? "active" : "") "><a class="page-link" href="/Blog?pageId=@i">@i <span class="sr-only">(کنونی)</span></a></li>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

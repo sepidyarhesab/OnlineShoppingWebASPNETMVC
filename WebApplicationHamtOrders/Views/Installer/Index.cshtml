@@ -1,0 +1,151 @@
+﻿@using OrdersGeneral.Repository.General
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/Helper/Layouts/vendor/bootstrap-4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Helper/Layouts/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Helper/Layouts/vendor/lightgallery-1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" href="/Helper/Layouts/css/style.css">
+    <link rel="stylesheet" href="/Helper/Layouts/css/custom.css">
+    <link href="~/Helper/Layouts/css/colors.css" rel="stylesheet" />
+    <link href="~/Helper/Admin/Content/panel.css" rel="stylesheet" />
+    <!-- js -->
+    <script src="/Helper/Layouts/vendor/jquery-3.3.1/jquery.min.js"></script>
+    <script src="/Helper/Layouts/vendor/bootstrap-4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/Helper/Layouts/vendor/owl-carousel-2.3.4/owl.carousel.min.js"></script>
+    <script src="/Helper/Layouts/vendor/nouislider-12.1.0/nouislider.min.js"></script>
+    <script src="/Helper/Layouts/vendor/lightgallery-1.6.12/js/lightgallery.min.js"></script>
+    <script src="/Helper/Layouts/vendor/lightgallery-1.6.12/js/lg-thumbnail.min.js"></script>
+    <script src="/Helper/Layouts/vendor/lightgallery-1.6.12/js/lg-zoom.min.js"></script>
+    <script src="/Helper/Layouts/js/number.js"></script>
+    <script src="/Helper/Layouts/js/main.js"></script>
+    <script src="/Helper/Layouts/vendor/svg4everybody-2.1.9/svg4everybody.min.js"></script>
+    <script>
+        svg4everybody();
+    </script>
+    <!-- font - fontawesome -->
+    <link rel="stylesheet" href="/Helper/Layouts/vendor/fontawesome-5.6.3/css/all.min.css">
+    <!-- font - stroyka -->
+    <link rel="stylesheet" href="/Helper/Layouts/fonts/stroyka/stroyka.css">
+    <style>
+        .form-group {
+            display: flex
+        }
+    </style>
+
+
+</head>
+<body>
+    <!-- site__body -->
+    <div class="site__body">
+        <div class="page-header">
+            <div class="page-header__container container">
+                <div class="page-header__title">
+                    <h1>ثبت اطلاعات سایت</h1>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex connectedSortable">
+                        <div class="card flex-grow-1 mb-md-0">
+                            <div class="card-body">
+                                <h3 class="card-title">اطلاعات سایت</h3>
+                            @using (Html.BeginForm("Generate", "Installer", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Name">نام</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Name" name="Name" placeholder="نام را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="Family">نام خانوادگی</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Family" name="Family" placeholder="نام خانوادگی را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="NationalCode">کدملی</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="NationalCode" name="NationalCode" placeholder="کدملی را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="PrimaryTitle">نام سایت</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="نام سایت را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="SecondaryTitle">هزینه پست</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="هزینه پست را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="Phone">شماره تماس</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Phone" name="Phone" placeholder="شماره تماس را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Email">ایمیل</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Email" name="Email" placeholder="ایمیل را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="Whatsapp">واتساپ</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Whatsapp" name="Whatsapp" placeholder=" واتساپ را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Telegram">تلگرام</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Telegram" name="Telegram" placeholder="تلگرام را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="Aparat">آپارات</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Aparat" name="Aparat" placeholder="آپارات را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Facebook">فیسبوک</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Facebook" name="Facebook" placeholder="فیسبوک را وارد کنید">
+                                    </div>
+                                    <label class="control-label col-md-2" for="Twitter">توییتر</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control text-box single-line" id="Twitter" name="Twitter" placeholder="توییتر را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Instagram">اینستاگرام</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control text-box single-line" id="Instagram" name="Instagram" placeholder="اینستاگرام را وارد کنید">
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Note">توضیحات</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control text-box single-line" id="Note" name="Note" rows="6" placeholder="توضیحات را وارد کنید"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary mt-4">ارسال</button>
+                            }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- site__body / end -->
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = Model.First().CategoreisTitle;
+    }
+
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+<div class="row mb-5">
+    <div class="col-lg-12 col-md-11">
+        <div class="row">
+            <div class="col-12">
+                <!-- breadcrumb -->
+                <div class="breadcrumb mb-2 pt-2">
+                    <nav>
+                        <a href="/Default">خانه</a>
+                        <a href="/Product/Index">محصولات</a>
+                        <a>در حال نمایش  @Model.Count() محصول</a>
+
+                        <div class="col-md-2" style="float: left; margin-left: 106px;">
+                            <div class="form-element-row" data-select2-id="select2-data-5-qgui">
+                                <label class="label-element" style="display: inline !important">مرتب‌سازی بر اساس</label>
+                                <select name="status" id="status" class="select2 select2-hidden-accessible" data-select2-id="select2-data-1-pary" tabindex="-1" aria-hidden="true" onchange="pricefiltering(this);">
+                                    <option value="Default" selected="selected">پیش فرض</option>
+                                    <option value="Max">گران ترین</option>
+                                    <option value="Min">ارزان ترین</option>
+                                </select>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+        <div class="listing-items row">
+
+            @{
+                if (Model != null)
+                {
+                    foreach (var productitem in Model)
+                    {
+                        <div class="col-lg-3 col-md-4 col-sm-6 px-0">
+                            <div class="product-card">
+                                <div class="product-card-top">
+                                    <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="product-image">
+                                        <img src="@productitem.FileName" alt="@productitem.PrimaryTitle">
+                                    </a>
+                                </div>
+                                <div class="product-card-middle">
+
+                                    <h6 class="product-name">
+                                        <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">
+                                            @productitem.PrimaryTitle
+                                        </a>
+                                    </h6>
+                                   
+                                    <h6 class="product-name">
+                                        موجودی: <span class="@productitem.QuantityClass">@productitem.QuantityTitle</span>
+                                    </h6>
+                                    @{
+                                        var ProductFee1 = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                        if (productitem.Discount > 0)
+                                        {
+                                            <div class="product-price product-price-clone">
+                                                <del>@string.Format("{0:##,###}", ProductFee1, "Fee") تومان</del>
+                                                <span class="text-danger">@string.Format("{0:##,###}", productitem.Fee, "Fee") تومان</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-price product-price-clone">
+                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+                                @{
+                                    var ProductFee = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                    if (productitem.Discount > 0)
+                                    {
+                                        <div class="product-card-bottom">
+                                            <div class="product-price">
+                                                <del>@string.Format("{0:##,###}", ProductFee, "Fee") تومان</del>
+                                                <span class="text-danger"> @string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
+                                            </div>
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
+                                                مشاهده کالا
+                                            </a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="product-card-bottom">
+                                            <div class="product-price">
+                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                            </div>
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
+                                                مشاهده کالا
+                                            </a>
+                                        </div>
+                                    }
+
+                                }
+
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+            <div class="col-12 px-0">
+                <div class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("SubCategory",
+                        new { page }), new PagedListRenderOptions()
+                        {
+                            LiElementClasses = new List<string> { "page-item" },
+                            ContainerDivClasses = new List<string> { "products-view__pagination" },
+                            UlElementClasses = new List<string> { "pagination justify-content-center" },
+                            PageCountAndCurrentLocationFormat = "page-item active",
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                        })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function pricefiltering(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        var url = window.location.href;
+        var myArray = url.split("/");
+        var word = myArray[5];
+        $.ajax({
+            url: "/Categories/SubCategory",
+            type: "Post",
+            data: { id: word, price: x }
+        }).done(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+            location.reload(true);
+        }).fail(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+        });
+    }
+</script>

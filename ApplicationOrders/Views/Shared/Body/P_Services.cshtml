@@ -1,0 +1,28 @@
+﻿@using OrdersGeneral.Repository.General
+
+<!-- .block-features -->
+<div class="container direction-rtl">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row g-4">
+                
+            @{
+                var result = RepServices.RepositoryMainServices();
+                if (result.Count > 0)
+                {
+                    foreach (var item in result)
+                    {
+                        <div class="col-3">
+                            <div class="feature-card mx-auto text-center">
+                                <div class="card mx-auto bg-gray"><img src="@item.FileName" alt="@item.PrimaryTitle"></div>
+                                <p class="mb-0">@item.PrimaryTitle</p>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+            </div>
+        </div>
+    </div>
+</div>

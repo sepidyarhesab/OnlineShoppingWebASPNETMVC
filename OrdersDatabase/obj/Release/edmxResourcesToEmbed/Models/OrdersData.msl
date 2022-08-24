@@ -1,0 +1,923 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Orders_ModelStoreContainer" CdmEntityContainer="Orders_Entities">
+    <EntitySetMapping Name="Table_Address">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Address">
+        <MappingFragment StoreEntitySet="Table_Address">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CityRef" ColumnName="CityRef" />
+          <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Banner">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Banner">
+        <MappingFragment StoreEntitySet="Table_Banner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Entites" ColumnName="Entites" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Blog">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Blog">
+        <MappingFragment StoreEntitySet="Table_Blog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Blog_Category">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Blog_Category">
+        <MappingFragment StoreEntitySet="Table_Blog_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Comments">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Comments">
+        <MappingFragment StoreEntitySet="Table_Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_ContactUs">
+      <EntityTypeMapping TypeName="Orders_Model.Table_ContactUs">
+        <MappingFragment StoreEntitySet="Table_ContactUs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Objects" ColumnName="Objects" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Knowing">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Knowing">
+        <MappingFragment StoreEntitySet="Table_Knowing">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Links">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Links">
+        <MappingFragment StoreEntitySet="Table_Links">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecendryTitle" ColumnName="SecendryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Location">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Location">
+        <MappingFragment StoreEntitySet="Table_Location">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_En" ColumnName="Title_En" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifier" ColumnName="LastModifier" />
+          <ScalarProperty Name="LastModificationDate" ColumnName="LastModificationDate" />
+          <ScalarProperty Name="MinistryofFinanceCode" ColumnName="MinistryofFinanceCode" />
+          <ScalarProperty Name="TaxFileCode" ColumnName="TaxFileCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Menu">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Menu">
+        <MappingFragment StoreEntitySet="Table_Menu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_MenuAccess">
+      <EntityTypeMapping TypeName="Orders_Model.Table_MenuAccess">
+        <MappingFragment StoreEntitySet="Table_MenuAccess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MenuRef" ColumnName="MenuRef" />
+          <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+          <ScalarProperty Name="RoleRef" ColumnName="RoleRef" />
+          <ScalarProperty Name="PictureRef" ColumnName="PictureRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_MenuAdmin">
+      <EntityTypeMapping TypeName="Orders_Model.Table_MenuAdmin">
+        <MappingFragment StoreEntitySet="Table_MenuAdmin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_MenuAdmin_Category">
+      <EntityTypeMapping TypeName="Orders_Model.Table_MenuAdmin_Category">
+        <MappingFragment StoreEntitySet="Table_MenuAdmin_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Role">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Role">
+        <MappingFragment StoreEntitySet="Table_Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Selection_Configuration">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Selection_Configuration">
+        <MappingFragment StoreEntitySet="Table_Selection_Configuration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="tertiaryTitle" ColumnName="tertiaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Service">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Service">
+        <MappingFragment StoreEntitySet="Table_Service">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecendryTitle" ColumnName="SecendryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Site_Type">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Site_Type">
+        <MappingFragment StoreEntitySet="Table_Site_Type">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Slider">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Slider">
+        <MappingFragment StoreEntitySet="Table_Slider">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecendaryTitle" ColumnName="SecendaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_SocialMedia">
+      <EntityTypeMapping TypeName="Orders_Model.Table_SocialMedia">
+        <MappingFragment StoreEntitySet="Table_SocialMedia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Static_SocialMedia">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Static_SocialMedia">
+        <MappingFragment StoreEntitySet="Table_Static_SocialMedia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Keys" ColumnName="Keys" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Entities" ColumnName="Entities" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_User">
+      <EntityTypeMapping TypeName="Orders_Model.Table_User">
+        <MappingFragment StoreEntitySet="Table_User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RoleRef" ColumnName="RoleRef" />
+          <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Identification" ColumnName="Identification" />
+          <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EconomicCode" ColumnName="EconomicCode" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+          <ScalarProperty Name="MarriedDay" ColumnName="MarriedDay" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ArchiveCode" ColumnName="ArchiveCode" />
+          <ScalarProperty Name="PersonalCode" ColumnName="PersonalCode" />
+          <ScalarProperty Name="Jobs" ColumnName="Jobs" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsInBlacklist" ColumnName="IsInBlacklist" />
+          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+          <ScalarProperty Name="Favorite" ColumnName="Favorite" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="CommissionPercent" ColumnName="CommissionPercent" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Whatsapp">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Whatsapp">
+        <MappingFragment StoreEntitySet="Table_Whatsapp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Favorites">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Favorites">
+        <MappingFragment StoreEntitySet="Table_Favorites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecendaryTitle" ColumnName="SecendaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="RefItem" ColumnName="RefItem" />
+          <ScalarProperty Name="RefUser" ColumnName="RefUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_File_Upload">
+      <EntityTypeMapping TypeName="Orders_Model.Table_File_Upload">
+        <MappingFragment StoreEntitySet="Table_File_Upload">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+          <ScalarProperty Name="Schemas" ColumnName="Schemas" />
+          <ScalarProperty Name="Tables" ColumnName="Tables" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileLenght" ColumnName="FileLenght" />
+          <ScalarProperty Name="FileExtensions" ColumnName="FileExtensions" />
+          <ScalarProperty Name="FileUniqeName" ColumnName="FileUniqeName" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Price_DisCount">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Price_DisCount">
+        <MappingFragment StoreEntitySet="Table_Price_DisCount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+          <ScalarProperty Name="DiscountPrecent" ColumnName="DiscountPrecent" />
+          <ScalarProperty Name="UsableCount" ColumnName="UsableCount" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product">
+        <MappingFragment StoreEntitySet="Table_Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+          <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Category">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Category">
+        <MappingFragment StoreEntitySet="Table_Product_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Color">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Color">
+        <MappingFragment StoreEntitySet="Table_Product_Color">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Property">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Property">
+        <MappingFragment StoreEntitySet="Table_Product_Property">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Keys" ColumnName="Keys" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Entity" ColumnName="Entity" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_PropertyList">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_PropertyList">
+        <MappingFragment StoreEntitySet="Table_Product_PropertyList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+          <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Selection">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Selection">
+        <MappingFragment StoreEntitySet="Table_Product_Selection">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertitatyTitle" ColumnName="TertitatyTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ConfigurationRef" ColumnName="ConfigurationRef" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Size">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Size">
+        <MappingFragment StoreEntitySet="Table_Product_Size">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="SizeTitle" ColumnName="SizeTitle" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_Summary">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_Summary">
+        <MappingFragment StoreEntitySet="Table_Product_Summary">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+          <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+          <ScalarProperty Name="StockRef" ColumnName="StockRef" />
+          <ScalarProperty Name="SaleRef" ColumnName="SaleRef" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Stock">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Stock">
+        <MappingFragment StoreEntitySet="Table_Stock">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Discount">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Discount">
+        <MappingFragment StoreEntitySet="Table_Discount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountFee" ColumnName="DiscountFee" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="DiscountUsed" ColumnName="DiscountUsed" />
+          <ScalarProperty Name="DiscountCount" ColumnName="DiscountCount" />
+          <ScalarProperty Name="DiscountUser" ColumnName="DiscountUser" />
+          <ScalarProperty Name="DiscountQuantity" ColumnName="DiscountQuantity" />
+          <ScalarProperty Name="Entities" ColumnName="Entities" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Order">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Order">
+        <MappingFragment StoreEntitySet="Table_Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="DeliveryCode" ColumnName="DeliveryCode" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Duty" ColumnName="Duty" />
+          <ScalarProperty Name="Addition" ColumnName="Addition" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Order_Item">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Order_Item">
+        <MappingFragment StoreEntitySet="Table_Order_Item">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="OrderRef" ColumnName="OrderRef" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+          <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+          <ScalarProperty Name="ItemRef" ColumnName="ItemRef" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Addition" ColumnName="Addition" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Duty" ColumnName="Duty" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Transfer">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Transfer">
+        <MappingFragment StoreEntitySet="Table_Transfer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TransferPay" ColumnName="TransferPay" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="CityRef" ColumnName="CityRef" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Meta_Configuration">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Meta_Configuration">
+        <MappingFragment StoreEntitySet="Table_Meta_Configuration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Settings">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Settings">
+        <MappingFragment StoreEntitySet="Table_Settings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SeconderyTitle" ColumnName="SeconderyTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+          <ScalarProperty Name="Telegram" ColumnName="Telegram" />
+          <ScalarProperty Name="Whatsapp" ColumnName="Whatsapp" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Aparat" ColumnName="Aparat" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+          <ScalarProperty Name="SiteTypeRef" ColumnName="SiteTypeRef" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_SMS_Log">
+      <EntityTypeMapping TypeName="Orders_Model.Table_SMS_Log">
+        <MappingFragment StoreEntitySet="Table_SMS_Log">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Messages" ColumnName="Messages" />
+          <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_View_Configuration">
+      <EntityTypeMapping TypeName="Orders_Model.Table_View_Configuration">
+        <MappingFragment StoreEntitySet="Table_View_Configuration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+          <ScalarProperty Name="View" ColumnName="View" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertOrder" FunctionName="Orders_Model.Store.SP_InsertOrder" />
+    <FunctionImportMapping FunctionImportName="SP_InsertOrderItem" FunctionName="Orders_Model.Store.SP_InsertOrderItem" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateOrder" FunctionName="Orders_Model.Store.SP_UpdateOrder" />
+    <FunctionImportMapping FunctionImportName="SP_InsertSMS" FunctionName="Orders_Model.Store.SP_InsertSMS" />
+  </EntityContainerMapping>
+</Mapping>

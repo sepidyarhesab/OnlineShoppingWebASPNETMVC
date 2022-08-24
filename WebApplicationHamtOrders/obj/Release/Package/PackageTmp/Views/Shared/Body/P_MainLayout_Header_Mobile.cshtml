@@ -1,0 +1,265 @@
+﻿
+@using OrdersOrders.Repository.Orders
+@using OrdersSettings.Repository.Settings
+
+
+<div class="header-responsive fixed--header-top">
+    <div class="header-top">
+        <div class="side-navigation-wrapper">
+            @*<button class="btn-toggle-side-navigation" ><i class="far fa-bars"></i></button>*@
+            <a  class="btn-toggle-side-navigation " style="color: black" href="#menu">
+                <i class="far fa-bars"></i>
+            </a>
+            @*<div class="overlay-side-navigation"></div>*@
+        </div>
+        <div class="site-logo">
+            @{
+                var logo = Repfooter.RepInformationFooter();
+                if (logo.Count > 0)
+                {
+                    foreach (var item in logo)
+                    {
+                        <a href="/Default">
+                            <img src="@item.FileName" alt="@item.PrimaryTitle" />
+                        </a>
+                    }
+                }
+            }
+        </div>
+        <div class="header-tools">
+            <div class="cart-side">
+                <a href="/Carts">
+                    <i><img src="~/Static/Content/Gif/icons8-shopping-cart (1).gif" width="25" height="25" style="width: 25px;" /></i>
+                    <span class="bag-items-number" id="shopcarts2">0</span>
+                </a>
+                @*<div class="cart-side-content">
+                        <ul>
+                            <li class="cart-items">
+                                <ul>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-1.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        گوشی موبایل شیائومی مدل Redmi 9 ظرفیت 32 گیگابایت
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #8a2be2;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">4,050,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-2.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        ساعت مچی هوشمند Haylou LS02
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #000;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">750,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-3.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        هدفون بلوتوثی کیو سی وای مدل T7
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #fff;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">635,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-1.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        گوشی موبایل شیائومی مدل Redmi 9 ظرفیت 32 گیگابایت
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #8a2be2;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">4,050,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-2.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        ساعت مچی هوشمند Haylou LS02
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #000;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">750,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-3.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        هدفون بلوتوثی کیو سی وای مدل T7
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #fff;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">635,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-1.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        گوشی موبایل شیائومی مدل Redmi 9 ظرفیت 32 گیگابایت
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #8a2be2;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">4,050,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-2.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        ساعت مچی هوشمند Haylou LS02
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #000;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">750,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                    <li class="cart-item">
+                                        <span class="d-flex align-items-center mb-2">
+                                            <a href="#">
+                                                <img src="./assets/images/cart/item-3.jpg" alt="">
+                                            </a>
+                                            <span>
+                                                <a href="#">
+                                                    <span class="title-item">
+                                                        هدفون بلوتوثی کیو سی وای مدل T7
+                                                    </span>
+                                                </a>
+                                                <span class="color d-flex align-items-center">
+                                                    رنگ:
+                                                    <span style="background-color: #fff;"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="price">635,000 تومان</span>
+                                        <button class="remove-item">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="cart-footer">
+                                <span class="d-block text-center mb-3">
+                                    مبلغ کل:
+                                    <span class="total">4,050,000 تومان</span>
+                                </span>
+                                <span class="d-block text-center px-2">
+                                    <a href="#" class="btn-cart">
+                                        مشاهده سبد خرید
+                                        <i class="mi mi-ShoppingCart"></i>
+                                    </a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="overlay-cart-side"></div>*@
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="search-box">
+            @Html.Partial("Head/P_Search_Desktop")
+        </div>
+        <div class="header-tools">
+            <a href="/Login"><i class="far fa-user-circle"></i></a>
+        </div>
+    </div>
+</div>

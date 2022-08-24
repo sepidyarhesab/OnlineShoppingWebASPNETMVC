@@ -1,0 +1,172 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = Model.First().CategoreisTitle;
+    }
+
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="page-header">
+    <div class="page-header__container container">
+        <div class="page-header__breadcrumb">
+            <nav aria-label="breadcrumb" class="card mb-0 contact-us box-shadows" style="padding: 10px">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Default">خانه</a>
+                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                            <use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="">محصولات</a>
+                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                            <use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">محصولات</li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="block">
+                <div class="products-view">
+                    <div class="products-view__options">
+                        <div class="view-options">
+                            <div class="view-options__layout">
+                                <div class="layout-switcher">
+                                </div>
+                            </div>
+                            <div class="view-options__legend">در حال نمایش  @Model.Count() محصول</div>
+                            <div class="view-options__divider"></div>
+                            <div class="view-options__control">
+                                <label for="">مرتب‌سازی بر اساس</label>
+                                <div>
+                                    <select class="form-control form-control-sm" name="status" id="status" onchange="pricefiltering(this);">
+                                        <option value="Default" selected="selected">پیش فرض</option>
+                                        <option value="Max">گران ترین</option>
+                                        <option value="Min">ارزان ترین</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="products-view__list products-list" data-layout="grid-4-full" data-with-features="false">
+                        <div class="products-list__body">
+
+                            @{
+
+                                if (Model != null)
+                                {
+                                    foreach (var productitem in Model)
+                                    {
+
+                                        <div class="products-list__item">
+                                            <div class="product-card">
+                                                <button class="product-card__quickview" type="button">
+                                                    <svg width="16px" height="16px">
+                                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#quickview-16"></use>
+                                                    </svg> <span class="fake-svg-icon"></span>
+                                                </button>
+                                                <div class="product-card__badges-list">
+                                                    <div class="product-card__badge product-card__badge--new @productitem.QuantityClass">@productitem.QuantityTitle</div>
+                                                </div>
+                                                <div class="product-card__image">
+                                                    <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})"><img src="@productitem.FileName" alt="@productitem.PrimaryTitle"></a>
+                                                </div>
+                                                <div class="product-card__info">
+                                                    <div class="product-card__name"><small> نام کالا : </small><a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">@productitem.PrimaryTitle</a></div>
+                                                    <div class="product-card__name"><small> کد کالا : </small><a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">@productitem.Code</a></div>
+                                                    <div class="product-card__rating">
+                                                        @Html.Partial("Body/P_Category_Rating")
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="product-card__actions">
+                                                    <div class="product-card__availability">موجودی: <span class="@productitem.QuantityClass">@productitem.QuantityTitle</span></div>
+                                                    @{
+
+                                                        var ProductFee = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                                        
+                                                        if (productitem.Discount > 0)
+                                                        {
+
+                                                            <div class="widget-products__prices ">
+                                                                <del class="product-card__prices">@string.Format("{0:##,###}", productitem.Fee, "Fee") تومان</del>
+                                                                <br />
+                                                                <span class="product-card__prices" style="color:red;">@string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="product-card__prices text-danger">@string.Format("{0:##,###}", @productitem.Fee, "") تومان</div>
+                                                        }
+                                                    }
+
+                                                    @*<div class="product-card__buttons">
+                                                            <button class="btn btn-primary product-card__addtocart" type="button" onclick="AddToCart('@productitem.Code','@productitem.PrimaryTitle','@productitem.Fee');SuccessAdd('@productitem.PrimaryTitle')">افزودن به سبد</button>
+                                                            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" onclick="AddToCart('@productitem.Code','@productitem.PrimaryTitle','@productitem.Fee');SuccessAdd('@productitem.PrimaryTitle')">افزودن به سبد</button>
+                                                        </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+
+                            }
+                        </div>
+                    </div>
+                    <div class="products-view__pagination center-block" >
+                        @Html.PagedListPager(Model, page => Url.Action("SubCategory",
+                            new { page }), new PagedListRenderOptions()
+                            {
+                                LiElementClasses = new List<string> { "page-link" },
+                                ContainerDivClasses = new List<string> { "pagination center-block" },
+                                UlElementClasses = new List<string> { "pagination" },
+                                PageCountAndCurrentLocationFormat = "page-item",
+                                LinkToFirstPageFormat = "صفحه اول",
+                                LinkToLastPageFormat = "صفحه آخر",
+                                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                            })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function pricefiltering(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        var url = window.location.href;
+        var myArray = url.split("/");
+        var word = myArray[5];
+        $.ajax({
+            url: "/Categories/SubCategory",
+            type: "Post",
+            data: { id: word, price: x }
+        }).done(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+            location.reload(true);
+        }).fail(function () {
+            setTimeout(function () {
+                $("#overlay").fadeOut(300);
+            }, 500);
+        });
+    }
+</script>

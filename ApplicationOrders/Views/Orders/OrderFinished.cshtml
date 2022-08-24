@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "OrderFinished";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+@{
+    Session["BackUrl"] = "/Default";
+}
+
+<div class="order-success-wrapper">
+    <div class="custom-container" dir="rtl">
+        <div class="order-done-content">
+            @{
+                if (Session["JavaScriptFunction"] != null)
+                {
+                    var message = Session["JavaScriptFunction"].ToString();
+                    if (message.Contains("Error"))
+                    {
+                        <img src="D:\work\Pachin\Documents\Source\WebApplicationOrders\ApplicationOrders\Static\Content\Icons\cancel_100px.png" alt="Error"/>
+
+                    }
+                    else
+                    {
+                        <svg class="bi bi-check-circle-fill text-success mb-4" width="60" height="60" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                        </svg>
+                    }
+
+                }
+            }
+
+
+            <h5>نتیجه عملیات</h5>
+
+            @{
+                if (Session["JavaScriptFunction"] != null)
+                {
+                    var message = Session["JavaScriptFunction"].ToString();
+                    if (message.Contains("Error"))
+                    {
+                        <p>
+                            عملیات ثبت سفارش با خطا مواجه شد
+                        </p>
+
+                    }
+                    else
+                    {
+                        <p>
+                            سفارش شما با موفقیت ثبت شد شماره سفارش شما : @Session["OrderCode"].ToString()
+                        </p>
+                    }
+
+                }
+            }
+
+
+        </div>
+    </div>
+</div>

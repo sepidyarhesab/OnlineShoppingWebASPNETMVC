@@ -1,0 +1,36 @@
+﻿@using OrdersSettings.Repository.Settings
+
+<div class="container direction-rtl">
+    <!-- # Paste your Header Content from here -->
+    <!-- # Header Five Layout -->
+    <!-- # Copy the code from here ... -->
+    <!-- Header Content -->
+    <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        <!-- Back Button -->
+        <div class="back-button">
+            
+            @{
+                if (Session["BackUrl"] != null)
+                {
+                    <a href=@Session["BackUrl"]>
+                        <img src="~/Static/Content/Icons/right_arrow_100px.png" width="25px" alt="right_arrow"/>
+                    </a>
+                }
+                else
+                {
+                   <a href="/Default">
+                        <img src="~/Static/Content/Icons/right_arrow_100px.png" width="25px" alt="right_arrow"/>
+                    </a> 
+                }
+
+
+            }
+
+            
+        </div>
+    </div>
+    <!-- # Header Five Layout End -->
+</div>

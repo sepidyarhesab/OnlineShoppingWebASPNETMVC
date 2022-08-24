@@ -1,0 +1,326 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement>
+@{
+    ViewBag.Title = "محصولات";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">محصولات</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="site-header__search">
+                        <div class="search">
+
+                            <form class="search__form" action="/ProductManagment/Index" method="post">
+                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی محصول کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                <button class="search__button" type="submit">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
+                                    </svg>
+                                </button>
+                                <div class="search__border"></div>
+                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
+                                    بازیابی مجدد
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <script>
+
+                        function reload() {
+                            window.location.href = "/ProductManagment/Reload";
+                        }
+                    </script>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                        <a href="/ProductManagment/Add" class="margin-btn btn btn-success col-md-5"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                        <a class="margin-btn btn btn-info col-md-2" href="/ProductManagment/ExportToExcel">خروجی اکسل</a>
+                        <a class="margin-btn btn btn-info col-md-2" data-toggle="modal" data-target="#exampleModal">ورودی اکسل</a>
+                        <a class="margin-btn btn btn-danger col-md-2" href="/AdminDashboard">برگشت</a>
+                    </div>
+                    <div class="box-body">
+
+
+                        <div class="table-responsive">
+
+
+
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+
+                                            <input class="ckbox" type="checkbox" value="">
+
+                                        </th>
+                                        <th>
+                                            کد
+                                        </th>
+                                        <th>
+                                            عنوان اول
+                                        </th>
+                                        <th>
+                                            عنوان دوم
+                                        </th>
+                                        <th>
+                                            دسته بندی
+                                        </th>
+                                        <th>
+                                            لینک
+                                        </th>
+                                        @{
+
+                                            var typee = RepSettings.RepositoryTypeSelect();
+                                            if (typee != Guid.Empty)
+                                            {
+                                                if (typee == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                                {
+                                                    <th>
+                                                        رنگ و سایز
+                                                    </th>
+
+                                                }
+                                                else if (typee == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                                {
+                                                   
+
+                                                }
+                                            }
+
+
+                                        }
+
+                                        <th>موجودی</th>
+
+                                        <th>
+                                            قیمت
+                                        </th>
+                                        <th>
+                                            تخفیف
+                                        </th>
+
+                                        <th>تاریخ</th>
+                                        <th>عکس</th>
+                                        <th>وضعیت</th>
+                                        <th>ویژگی</th>
+
+                                        <th>عکس ها</th>
+                                        <th>ویرایش</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        //var query = rep.RepositoryMainProductsMangment();
+                                        //if (query.Count > 0)
+
+                                        //{
+                                        //    var row = 1;
+                                        //    foreach (var mangment in query)
+                                        //    {var id = User.Identity.Name;
+
+                                        if (Model != null)
+                                        {
+                                            var rep = new RepProducts();
+
+                                            var row = 1;
+                                            foreach (var mangment in Model)
+                                            {
+                                                                        <tr>
+                                                                            <td>
+                                                                                <input type="checkbox" value="">
+                                                                            </td>
+
+                                                                            <td class="col-md-3 copy">
+                                                                                @mangment.Code
+                                                                            </td>
+
+                                                                            <td class="col-md-3 copy" style="font-size: 12px;">
+                                                                                @mangment.PrimaryTitle
+                                                                            </td>
+                                                                            <td class="col-md-4 copy" style="font-size: 12px;">
+                                                                                @mangment.SecondaryTitle
+                                                                            </td>
+                                                                            <td class="col-md-3 copy" style="font-size: 12px;">
+                                                                                @mangment.CategoreisTitle
+                                                                            </td>
+                                                                            <td class="col-md-4">
+                                                                                @mangment.Url
+                                                                            </td>
+
+                                                                            @{
+
+                                                                                var type = RepSettings.RepositoryTypeSelect();
+                                                                                if (type != Guid.Empty)
+                                                                                {
+                                                                                    if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                                                                    {
+                                                                                        <td class="col-md-1">
+
+                                                                                            <a href="/ProductManagment/ColorSize/@mangment.Id" class="btn btn-warning">سایز و رنگ</a>
+
+                                                                                        </td>
+
+                                                                                        <td class="col-md-1 text-center">
+                                                                                            @mangment.Quantity
+                                                                                        </td>
+                                                                                        <td class="col-md-1">
+                                                                                            @mangment.Fee
+                                                                                        </td>
+
+                                                                                    }
+                                                                                    else if (type == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                                                                    {
+                                                                                        <td class="col-md-1 text-center">
+                                                                                            @mangment.Quantity
+                                                                                        </td>
+                                                                                        <td class="col-md-1">
+                                                                                            @mangment.Fee
+                                                                                        </td>
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            <td class="col-md-1">
+                                                                                @mangment.Discount
+                                                                            </td>
+                                                                            <td class="col-md-1">
+                                                                                @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", mangment.CreatorDateTime)
+                                                                            </td>
+                                                                            <td class="col-md-1">
+                                                                                <a>
+                                                                                    <img src="@mangment.FileName" width="50" />
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="col-md-1">
+                                                                                <a href="/ProductManagment/ChangeStatus/@mangment.Id" class="@mangment.IsOkClass">@mangment.IsOkTitle</a>
+                                                                            </td>
+                                                                            <td class="col-md-1">
+
+                                                                                <a href="/ProductManagment/Property/@mangment.Id" class="btn btn-warning">ویژگی</a>
+
+                                                                            </td>
+
+
+                                                                            <td class="col-md-1">
+
+                                                                                <a href="/ProductManagment/Pictures/@mangment.Id" class="btn btn-success">نمایش عکس</a>
+
+                                                                            </td>
+                                                                            <td>
+                                                                                <a class="btn btn-info glyphicon glyphicon-edit" href="/ProductManagment/Edit/@mangment.Id"></a>
+                                                                            </td>
+                                                                            <td>
+                                                                                <a class="btn btn-danger" href="/ProductManagment/Delete/@mangment.Id">×</a>
+                                                                            </td>
+                                                                        </tr>
+                                                row++;
+
+                                            }
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ورود اطلاعات از طریق اکسل</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("ImportFromExcel", "ProductManagment", FormMethod.Post , new { enctype = "multipart/form-data" }))
+            {
+                <div class="modal-body">
+                    <input class="form-control" type="file"  id="postedFile" name="postedFile" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                    <button type="submit" class="btn btn-primary">ارسال</button>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var color = document.querySelectorAll('.copy') //DOM selector
+
+    //Loop through all elements and attaching event listener
+    color.forEach(el => {
+        el.addEventListener('click', copyText);
+    });
+
+    // function for selecting the text of an element based on the event.target (supporting IE)
+    function selectText() {
+        var element = event.target
+        var range;
+        if (document.selection) {
+            // IE
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) {
+            range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+    }
+
+    // function for copying selected text in clipboard
+    function copyText() {
+        selectText();
+        alert('متن مورد نظر کپی شد');
+        document.execCommand("copy");
+    }
+</script>

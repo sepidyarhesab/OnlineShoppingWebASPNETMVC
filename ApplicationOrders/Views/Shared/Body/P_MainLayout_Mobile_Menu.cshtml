@@ -1,0 +1,182 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+@using OrdersSettings.Repository.Settings
+
+<div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1" aria-labelledby="affanOffcanvsLabel">
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="offcanvas-body p-0" dir="rtl">
+        <!-- Side Nav Wrapper -->
+        <div class="sidenav-wrapper">
+            <!-- Sidenav Profile -->
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                var id = User.Identity.Name;
+                var name = RepAccountDashboard.IsAdmin(Guid.Parse(id));
+                var splitrole = name[0];
+                var splitname = name[1];
+
+                <div class="sidenav-profile bg-gradient">
+                    <div class="sidenav-style1"></div>
+                    <!-- User Thumbnail -->
+                    <div class="user-profile">
+                        <img src="~/Static/Content/Icons/account_100px.png" width="50px" alt="account"/>
+                    </div>
+                    <!-- User Info -->
+                    <div class="user-info">
+                        <h6 class="user-name mb-0">@splitname </h6><span>!خوش آمدید</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="sidenav-profile bg-gradient">
+                    <div class="sidenav-style1"></div>
+                    <!-- User Thumbnail -->
+                    <div class="user-profile"><img src="~/Static/Content/Icons/account_100px.png" width="70px" alt="account"/></div>
+                    <!-- User Info -->
+                    <div class="user-info">
+                        <h6 class="user-name mb-0">کاربر مهمان </h6><span>!خوش آمدید</span>
+                    </div>
+                </div>  
+            }
+        }
+
+            
+            <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+            <!-- Search Form -->
+            <li>
+                <div class="search-form-wrapper margin-search">
+
+                    <form class="mb-3 pb-4 border-bottom" action="/Product/Search" method="post">
+                        <div class="input-group">
+                            <input class="form-control form-control-clicked search-border-radius" type="search" name="Search" id="Search" placeholder="جستجو" aria-label="Site search" value="">
+                            <button class="btn btn-dark search-buttom-border-radius" type="submit"><i class="bi bi-search fz-14"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            @{
+                var rep = new RepProducts();
+
+                var categoriesmobile = rep.RepositoryMainCategoreis();
+                if (categoriesmobile.Count > 0)
+                {
+
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="/Static/Content/Icons/basket_100px.png" width="20" height="20" title="دسته بندی محصولات" alt="دسته بندی محصولات" />
+                                دسته بندی محصولات
+                            </span>
+                        </a>
+                        <ul>
+                            @{
+                                foreach (var grouping in categoriesmobile)
+                                {
+                                    <li>
+
+
+                                        @{
+                                            if (grouping.ViewModelSubCategoreis != null)
+                                            {
+                                                if (grouping.ViewModelSubCategoreis.Count > 0)
+                                                {
+                                                    <a>@grouping.PrimaryTitle</a>
+
+                                                    <ul>
+                                                        @foreach (var subgrouping in grouping.ViewModelSubCategoreis)
+                                                        {
+                                                            <li>
+                                                                <a href="@Url.RouteUrl("Categories", new {id = subgrouping.Id.ToString()})">@subgrouping.PrimaryTitle</a>
+                                                            </li>
+                                                        }
+                                                        <li>
+                                                            <a href="@Url.RouteUrl("MainCategories", new {id = grouping.Id.ToString()})">نمایش همه دسته</a>
+                                                        </li>
+                                                    </ul>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.RouteUrl("MainCategories", new {id = grouping.Id.ToString()})">@grouping.PrimaryTitle</a>
+
+                                            }
+                                        }
+
+                                    </li>
+
+                                }
+                            }
+
+                        </ul>
+                    </li>
+                }
+            }
+            @{
+                var menumobile = RepMenu.RepositoryMainMenu();
+                if (menumobile.Count > 0)
+                {
+                    foreach (var item in menumobile)
+                    {
+                        <li><a href="@item.Url"><img src="@item.IconMobile" width="20" style="margin-left: 7px;" alt="@item.PrimaryTitle"/>@item.PrimaryTitle</a></li>
+                    }
+                }
+            }
+
+
+            <li>
+                <a href="/Setting">
+                    <img src="~/Static/Content/Icons/settings_100px.png" width="20" style="margin-left: 7px;" alt="settings"/>تنظیمات
+                </a>
+            </li>
+
+        </ul>
+            <hr />
+            <!-- Social Info -->
+            @{
+                var query = Repfooter.RepInformationFooter();
+                if (query.Count > 0)
+                {
+                    foreach (var item in query)
+                    {
+                        <ul class="sidenav-nav ps-0" dir="rtl">
+                            <li style="margin-right: 7px ;">@item.Note</li>
+                            <li><img src="~/Static/Content/Icons/place_marker_100px.png" width="20" style="margin-right: 7px ;" alt="place_marker"/> @item.Address</li>
+                            <li><img src="~/Static/Content/Icons/envelope_100px.png" width="20" style="margin-right: 7px;" alt="envelope"/> @item.Email</li>
+                            <li><img src="~/Static/Content/Icons/call_100px.png" width="20" style="margin-right: 7px ;" alt="call"/> @item.Phone</li>
+                        </ul>
+
+
+                        <div class="social-info-wrap">
+                            <ul>
+                                @{
+
+                                    var querySocialMedia = RepSocialMedia.RepositorySocialMedia();
+                                    if (querySocialMedia.Count > 0)
+                                    {
+                                        foreach (var management in querySocialMedia)
+                                        {
+                                            <li class="footer-newsletter__social-link @management.Class"><a href="@management.Url" target="_blank"><i class="@management.Icon"></i></a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                }
+            }
+
+            <!-- Copyright Info -->
+            <div class="copyright-info">
+                <div class="site-footer__copyright">ارائه شده توسط <a href="https://sepidyarhesab.com"> شرکت سپیدیارحساب آراد </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

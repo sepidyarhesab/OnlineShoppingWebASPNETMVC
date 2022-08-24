@@ -1,0 +1,78 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersOrders.Repository.Orders
+
+
+<div class="banner mb-3">
+    @{
+        var resultts = RepBanner.RepositoryBannerDashbordTop();
+        if (resultts.Count > 0)
+        {
+            foreach (var item in resultts)
+            {
+                <a href="@item.Url">
+                    <img src="@item.FileNameDesktop" alt="@item.PrimaryTitle">
+                </a>
+            }
+        }
+    }
+</div>
+<div class="profile-sidebar shadow-around">
+    <div class="d-flex align-items-center">
+        <div class="profile-avatar">
+            <img src="/Helper/Layouts/images/avatar/avatar.png" alt="avatar">
+        </div>
+        @{
+            var phone = "0";
+            var id = User.Identity.Name;
+            var result = RepAccountDashboard.RepAccountDashboardInformation(Guid.Parse(id));
+            if (result.Count > 0)
+            {
+                foreach (var item in result)
+                {
+
+                    phone = item.Phone;
+
+                    <div class="profile-info">
+                        <div class="d-block">
+                            <h6><strong>@item.Name @item.Family</strong></h6>
+                        </div>
+                        <div class="d-block">
+                            <strong class="text-muted">@item.Phone</strong>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+    <br />
+    <hr />
+    <div class="user-menu">
+        <ul>
+            <li>
+                <a href="/Dashboard/EditProfile">
+                    <i class="far fa-user-cog"></i>
+                    ویرایش پروفایل
+                </a>
+            </li>
+            <li>
+                <a href="/Dashboard/Factor">
+                    <i class="far fa-clipboard-list-check"></i>
+                    سفارش های من
+                </a>
+            </li>
+            <li>
+                <a href="/Dashboard/Address">
+                    <i class="far fa-map-marked"></i>
+                    نشانی‌ها
+                </a>
+            </li>
+            <li>
+                <a href="/Login/SingOut">
+                    <i class="far fa-sign-in-alt"></i>
+                    خروج
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

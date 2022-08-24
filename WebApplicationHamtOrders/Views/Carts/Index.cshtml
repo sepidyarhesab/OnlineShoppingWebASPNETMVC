@@ -1,0 +1,313 @@
+﻿
+@using OrdersExtentions.Extensions
+@using OrdersGeneral.Repository.General
+@using OrdersOrders.ViewModels.Orders
+@model  OrdersOrders.ViewModels.Orders.VMOrders.VmOrderCarts
+@{
+    ViewBag.Title = "سبد خرید|Cart";
+
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+@{
+
+    if (Model != null)
+    {
+        <div class="row mb-4">
+            <div class="col-xl-9 col-lg-8 col-md-8 mb-md-0 mb-3">
+                <div class="checkout-section shadow-around">
+                    <div class="checkout-step">
+                        <ul>
+                            <li class="active"><span>سبد خرید</span></li>
+                            <li>
+                                <span>نحوه ارسال و پرداخت</span>
+                            </li>
+                            <li>
+                                <span>اتمام خرید و ارسال</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="checkout-section-content">
+                        @{
+                            if (Model.CartsItems != null)
+                            {
+                                foreach (var item in Model.CartsItems)
+                                {
+                                    LogWriter.Logger("MAMAD:be jaaane bacham pooore", DateTime.Now.ToString(), "50");
+                                    <div class="cart-items">
+                                        <div class="cart-item py-4 px-3">
+                                            <div class="item-thumbnail">
+                                                <a href="@Url.RouteUrl("Product", new { id = item.ProductId })">
+                                                    <img src="@item.FileName" alt="@item.ProductTitle">
+                                                </a>
+                                            </div>
+                                            <div class="item-info flex-grow-1">
+                                                <div class="item-title">
+                                                    <h2>
+                                                        <a href="@Url.RouteUrl("Product", new { id = item.ProductId })">
+                                                            @item.ProductTitle
+                                                        </a>
+                                                    </h2>
+                                                </div>
+                                                <div class="item-detail">
+                                                    <ul>
+                                                        @{
+
+                                                            var type = RepSettings.RepositoryTypeSelect();
+                                                            if (type != Guid.Empty)
+                                                            {
+                                                                if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                                                {
+                                                                    <li>
+                                                                        <span>رنگ: </span>
+                                                                        <span>&nbsp;@item.ColorTitle</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span>سایز: </span>
+                                                                        <span>&nbsp;@item.SizeTitle</span>
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        }
+
+                                                        <li>
+                                                            <span>کد: &nbsp;</span>
+                                                            <span>@item.Code &nbsp;</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>تخفیف: </span>
+                                                            @{
+                                                                if (@item.RowDiscount > 0)
+                                                                {
+                                                                    <span class="text-danger">&nbsp; @string.Format("{0:##,###}", item.RowDiscount, "") تومان</span>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>&nbsp;0  تومان</span>
+
+                                                                }
+                                                            }
+
+                                                        </li>
+                                                        <li>
+                                                            <span>قیمت: </span>
+                                                            &nbsp;  @string.Format("{0:##,###}", item.Fee, "")<span class="text-sm mr-1">تومان</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>تعداد: </span>
+                                                            <span>&nbsp;@item.Quantity</span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="item-quantity--item-price">
+
+                                                        <a href="/Orders/DeleteCarts/@item.Code" class="item-remove-btn mr-3 col-md-12">
+                                                            <i class="far fa-trash-alt"></i>
+                                                            حذف
+                                                        </a>
+
+                                                        <div class="item-price col-md-1">
+                                                            @String.Format(((Math.Round(@item.Price) == item.Price) ? "{0:##,###}" : "{0:##,###}"), item.Price)<span class="text-sm mr-1">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                LogWriter.Logger("MAMAD:be jaaane bacham khalie", DateTime.Now.ToString(), "50");
+
+                            }
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-4">
+                <div class="shadow-around pt-3">
+
+                    @using (Html.BeginForm("Index", "Carts", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-12">
+                            <div class="checkout-section-title">کد تخفیف</div>
+
+                            <div class="d-flex align-items-center">
+                                <div class="form-element-row flex-grow-1">
+                                    <input type="hidden" id="sum" name="sum" value="@Model.Discount" />
+                                    <input type="hidden" name="Discount" id="Discount" value="false" />
+                                    <input type="text" class="input-element" name="code" id="code" placeholder="کد تخفیف را وارد کنید">
+                                </div>
+                                <div class="form-element-row mr-3">
+                                    <button class="btn-element btn-info-element" id="Discount" type="submit">
+                                        ثبت
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    <div class="form-element-row">
+                        <div class="payment-selection">
+                            
+                            @*@{
+                                var transferpay = RepTransfer.RepositoryMainTransfer();
+                                if (transferpay != null)
+                                {
+                                    foreach (var trasfer in transferpay)
+                                    {
+                                        <div class="custom-control custom-radio custom-control-inline mb-3">
+                                            <input type="radio" onclick="selectiran()" id="@trasfer.SecondaryTitle" name="paymentSelection"
+                                                   class="custom-control-input" checked>
+                                            <label class="custom-control-label payment-select" for="paymentSelection1">
+                                                <span class="d-flex align-items-center">
+                                                    <span>
+                                                        <span class="title">@trasfer.PrimaryTitle</span>
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                    }
+                                }
+                            }*@
+                            <div class="custom-control custom-radio custom-control-inline mb-3">
+                                <input type="radio" onclick="selectiran()" id="paymentSelection1" name="paymentSelection"
+                                       class="custom-control-input" checked>
+                                <label class="custom-control-label payment-select" for="paymentSelection1">
+                                    <span class="d-flex align-items-center">
+                                        <span>
+                                            <span class="title">ارسال با پست پیشتاز</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline mb-3">
+                                <input type="radio" onclick="selectqazvin()" id="paymentSelection2" name="paymentSelection"
+                                       class="custom-control-input">
+                                <label class="custom-control-label payment-select" for="paymentSelection2">
+                                    <span class="d-flex align-items-center">
+                                        <span>
+                                            <span class="title">ارسال با پیک در قزوین(تسویه درب منزل)</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shadow-around pt-3">
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="text-muted">قیمت کالاها</span>
+                            <span class="text-muted">
+                                @String.Format(((Math.Round(Model.Sum) == Model.Sum) ? "{0:##,###}" : "{0:##,###}"), Model.Sum)
+                                <span class="text-sm">تومان</span>
+                            </span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="text-muted">حمل و نقل</span>
+                            <span class="text-muted">
+                                @if (Model.Transfer > 0)
+                                {
+                                    <span class="text-muted" id="Transfer">
+                                        @string.Format("{0:##,###}", Model.Transfer, "Price")
+
+                                    </span>
+                                    <span class="text-sm">تومان</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted" id="Transfer">
+                                        0
+                                    </span>
+                                    <span class="text-sm">تومان</span>
+                                }
+                            </span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="text-muted">مبلغ کل</span>
+                            @{
+                                Session["PayAmount"] = Model.SumPay;
+                            }
+                            <span class="text-muted" id="allSum">
+                                <span id="SumPay">@string.Format("{0:##,###}", Model.SumPay, "Discount")</span>
+                                <span class="text-sm">تومان</span>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="text-danger">سود شما از خرید</span>
+                            @{
+                                if (Model.Discount > 0)
+                                {
+                                    <span class="text-danger" id="Discount">
+                                        @string.Format("{0:##,###}", Model.Discount, "sumdis")
+                                        <span class="text-sm">تومان</span>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger" id="Discount">
+                                        0
+                                        <span class="text-sm">تومان</span>
+                                    </span>
+                                }
+                            }
+
+                        </div>
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="font-weight-bold" style="font-size: 18px">مبلغ قابل پرداخت</span>
+                            @{
+                                Session["PayAmount"] = Model.SumPay;
+                            }
+                            <span class="font-weight-bold" id="allSum" style="font-size: 18px">
+                                <span id="SumPay">@string.Format("{0:##,###}", Model.SumPay, "Discount")</span>
+                                <span class="text-sm">تومان</span>
+                            </span>
+                        </div>
+                        @using (Html.BeginForm("Index", "Orders", FormMethod.Post))
+                        {
+                            <input type="hidden" name="transferpay" id="transferpay" value="@Model.Transfer" />
+                            <div class="d-flex px-3 py-4">
+                                <button type="submit" class="btn btn-danger btn-block py-2">ادامه فرایند خرید</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function selectqazvin() {
+                var x = document.getElementById('Transfer');
+                var z = document.getElementById('transferpay');
+                var y = document.getElementById('SumPay');
+                x.innerHTML = 0;
+                z.value = 0;
+                y.innerHTML = @Model.SumPay - @Model.Transfer;
+            }
+        </script>
+        <script>
+            function selectiran() {
+                var x = document.getElementById('Transfer');
+                var z = document.getElementById('transferpay');
+                var y = document.getElementById('SumPay');
+                x.innerHTML = @Model.Transfer;
+                z.value = @Model.Transfer;
+                y.innerHTML = @Model.SumPay;
+            }
+        </script>
+    }
+
+
+
+}
+
+
+
+
+

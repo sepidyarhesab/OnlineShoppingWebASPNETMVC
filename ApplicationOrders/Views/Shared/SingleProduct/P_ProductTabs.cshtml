@@ -1,0 +1,131 @@
+﻿@using OrdersDatabase.Models
+@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    if (Model != null)
+    {
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+
+            <div class="card product-details-card mb-3 direction-rtl">
+                <div class="card-body">
+                    <h5>مشخصات کالا</h5>
+                    <p>@item.PrimaryTitle</p>
+                    <p>@item.SecondaryTitle</p>
+                    <hr />
+                    <p class="mb-0">@Html.Raw(item.Note)</p>
+                    <hr />
+                    @{
+
+                        foreach (var property in item.PropertyList)
+                        {
+                            <div class="spec__row">
+                                <div class="spec__name">@property.Key</div>
+                                <div class="spec__value">@property.Value</div>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+
+            </div>
+
+            @Html.Partial("Body/P_Comments")
+
+
+            <div class="card product-details-card mb-3 direction-rtl">
+                <div class="card-body">
+                    <section>
+                        @{
+                            using (Html.BeginForm("GenerateComments", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div>
+                                    <h5>یک نقد و بررسی بنویسید</h5>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-xl-12">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="Likes">تعداد ستاره</label>
+                                                    <select class="form-select form-control-clicked rtl-form-selection" id="Likes" name="Likes" aria-label="Default select example">
+                                                        <option value="5" selected="">امتیاز 5 ستاره</option>
+                                                        <option value="4">امتیاز 4 ستاره</option>
+                                                        <option value="3">امتیاز 3 ستاره</option>
+                                                        <option value="2">امتیاز 2 ستاره</option>
+                                                        <option value="1">امتیاز 1 ستاره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="Note">نقد و بررسی شما<small style="color: red"> * اجباری</small></label>
+                                                <textarea class="form-control" id="Note" name="Note" rows="6"></textarea>
+                                            </div>
+                                            @{
+
+
+
+                                            var phone = "0";
+                                            var name = "";
+
+                                            var idd = User.Identity.Name;
+
+                                            var results = RepAccountDashboard.RepAccountDashboardInformation(Guid.Parse(idd));
+
+
+
+                                            if (results.Count > 0)
+                                            {
+                                                foreach (var itemm in results)
+                                                {
+
+                                                    phone = itemm.Phone;
+                                                    name = itemm.Name + ""+itemm.Family;
+
+                                                    <div class="form-group col-md-4">
+                                                        <input type="hidden" class="form-control" id="Name" name="Name" value="@name">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <input type="hidden" class="form-control" id="Phone" name="Phone" value="@phone">
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                phone = "0";
+                                                name = "کاربر مهمان";
+
+                                                <div class="form-group col-md-4">
+                                                    <input type="hidden" class="form-control" id="Name" name="Name" value="@name">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <input type="hidden" class="form-control" id="Phone" name="Phone" value="@phone">
+                                                </div>
+                                            }
+                                        }
+                                           
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-sm">ارسال نقد و بررسی</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    </section>
+
+                </div>
+
+            </div>
+        }
+    }
+}
+

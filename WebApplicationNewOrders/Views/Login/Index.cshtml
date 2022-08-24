@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "ورود به حساب کاربری";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+
+<div class="l-auth__container">
+    <div class="l-auth-m__header flex-center">
+        <div class="l-auth-m__logo">
+            <i class="icon-mini-mtr">
+                <img alt="" src="images/logo.png">
+            </i>
+        </div>
+        <div class="l-auth-m__top">
+            <a class="l-auth-m__back" href="#">
+                <i class="icon-right"></i>
+            </a>
+            <h1 class="l-auth-m__title">ورود/ثبت نام</h1>
+        </div>
+    </div>
+    <div class="l-auth__ContentWrapper flex-center">
+        <div class="l-auth__top d-none d-md-block">
+            <img alt="" src="images/logo.png">
+        </div>
+        <p class="l-auth__title d-none d-md-block">ورود/ثبت نام</p>
+
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="p-login flex-center">
+                <label class="p-verify__codeLabel d-none">
+                    <i class="p-verify__codeIcon icon-lock"></i> کد ارسال شده به 0912000000 را وارد نمایید
+                </label>
+                <label class="p-login__phoneLabel">
+                    <i class="fas fa-mobile-alt me-2"></i> شماره همراه خود را وارد نمایید
+                </label>
+                <input class="username p-login__phone" type="tel" maxlength="11" max="11" id="phone" name="phone" autofocus="" placeholder="۰۹..."  onchange="allnumeric(this);" data-step="1" data-intro="در این قسمت شماره موبایل خود را با کیبورد لاتین وارد کنید">
+                <!--نمایش خطا-->
+                <div class="p-login__error validation-summary-valid">
+                    <ul>
+                        <li style="display: none"></li>
+                    </ul>
+                </div>
+                <div class="p-verify__actionBar">
+                    <div id="count-down" class="p-verify__timer">00:00</div>
+                    <button id="resend-button" style="display: block;" class="p-verify__resend">ارسال مجدد</button>
+                </div>
+            </div>
+            <div class="l-auth-m__actionBar">
+                <button class="l-auth__submitButton flex-center" type="submit">
+                    ارسال کد تایید
+                </button>
+            </div>
+        }
+        <p class="l-auth__acceptPolicy d-none d-md-block">با ورود یا ثبت نام در شاپی فای کلیه <span id="privacy-rules-link" class="l-auth__rulesLink">قوانین حریم خصوصی</span> و <span id="mtr-rules-link" class="l-auth__rulesLink">قوانین شاپی فای</span> را می‌پذیرم. </p>
+    </div>
+    <div class="l-auth__slogan d-flex">
+        <div>
+            <div class="l-auth__logoIcon">
+                <i class="icon-mtr">
+                    <img alt="" src="images/logo.png">
+                </i>
+            </div>
+            <p class="l-auth__sloganText">اینجا همه می تونن خرید کنن</p>
+            <p class="l-auth__authText">همین حالا عضوی از شاپی فای شو و  کلی خرید هیجان انگیز داشته باش!</p>
+        </div>
+        <a class="l-auth__backToHome flex-center" href="/Default">
+            <i class="fal fa-chevron-right me-2"></i> بازگشت به صفحه اصلی
+        </a>
+    </div>
+</div>
+
+
+<script src="js/main-min.js"></script>
+<script src="js/script.js"></script>
+
+
+
+
+
+<script>
+    function allnumeric(inputtxt) {
+        var numbers = new RegExp("09(0[1-2]|1[0-9]|3[0-9]|2[0-1]|9[0-9])-?[0-9]{3}-?[0-9]{4}");
+        if (inputtxt.value.match(numbers)) {
+            document.getElementById("phone").style.border = "1px solid green";
+            document.form1.text1.focus();
+            return true;
+        }
+        else {
+            document.getElementById("phone").style.border = "1px solid red";
+            alert('شماره موبایل وارد شده صحیح نیست');
+            document.form1.text1.focus();
+            return false;
+        }
+    }
+</script>

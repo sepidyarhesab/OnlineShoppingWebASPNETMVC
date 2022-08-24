@@ -1,0 +1,145 @@
+﻿
+@using OrdersDatabase.Models
+@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
+
+
+@{
+    if (Model != null)
+    {
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            <div class="card product-details-card mb-3 direction-rtl">
+                <div class="card-body">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            var id = User.Identity.Name;
+                            var name = RepAccountDashboard.IsAdmin(Guid.Parse(id));
+                            var splitrole = name[0];
+                            var splitname = name[1];
+
+
+                            <section>
+                                @{
+                                    var db = new Orders_Entities();
+                                    var commentsCount = db.Table_Comments.Where(c=>c.IsOk).Count();
+                                    if (commentsCount != 0)
+                                    {
+                                        <h4>دیدگاه ها</h4>
+                                    }
+                                    else
+                                    {
+                                        <h4></h4>
+                                    }
+
+                                }
+
+                                <ul>
+                                    @{
+
+                                        var resultComments = RepComments.RepositoryCommentsClient(item.Id);
+                                        if (resultComments.Count > 0)
+                                        {
+                                            foreach (var comment in resultComments)
+                                            {
+                                                <li >
+                                                    
+                                                    <div class="card user-info-card mb-3" dir="rtl">
+                                                        <div class="card-body d-flex align-items-center">
+                                                            <div class="user-profile" style="margin-left: 1rem !important;">
+                                                                <img src="~/Static/Content/Icons/account_100px.png" alt="pencil"/><i class="bi bi-pencil"></i>
+                                                            </div>
+                                                            <div class="user-info">
+                                                                <div class="d-flex align-items-center">
+                                                                    <h6 class="mb-1">@splitname</h6>
+                                                                </div>
+                                                                <p class="mb-0">@comment.Note</p>
+                                                                <div class="stars">
+                                                                    @*@Html.Partial("Body/P_Ratings", comment)*@
+                                                                </div>
+                                                                <div> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", comment.CreatorDate, "Date")</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                   
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ul>
+                            </section>
+                        }
+                        else
+                        {
+                            <section>
+                                @{
+                                    var db = new Orders_Entities();
+                                    var commentsCount = db.Table_Comments.Where(C => C.IsOk).Count();
+                                    if (commentsCount != 0)
+                                    {
+                                        <h5>دیدگاه ها <span>(@commentsCount)</span></h5>
+                                    }
+                                    else
+                                    {
+                                        <h5></h5>
+                                    }
+
+                                }
+
+                                <ul>
+                                    @{
+
+                                        var resultComments = RepComments.RepositoryCommentsClient(item.Id);
+                                        if (resultComments.Count > 0)
+                                        {
+                                            foreach (var comment in resultComments)
+                                            {
+                                                <li>
+                                                    
+                                                    <div class="card user-info-card mb-3" dir="rtl">
+                                                        <div class="card-body d-flex align-items-center">
+                                                            <div class="user-profile" style="margin-left: 1rem !important;">
+                                                                <img src="~/Static/Content/Icons/account_100px.png" alt="pencil"/><i class="bi bi-pencil"></i>
+                                                            </div>
+                                                            <div class="user-info">
+                                                                <div class="d-flex align-items-center">
+                                                                    <h6 class="mb-1">کاربر مهمان</h6>
+                                                                </div>
+                                                                <p class="mb-0">@comment.Note</p>
+                                                                <div class="stars">
+                                                                    @Html.Partial("Body/P_Ratings")
+                                                                </div>
+                                                                <div> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", comment.CreatorDate, "Date")</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ul>
+                            </section>
+
+                        }
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        }
+    }
+}
+
+
+

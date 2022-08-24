@@ -1,0 +1,111 @@
+﻿@using OrdersSettings.Repository.Settings
+
+
+@{
+    ViewBag.Title = " نمایش ها|Shows";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        نمایش ها
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">آخرین نمایش ها</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <a href="/MetaConfigurationManagement/Add" class="btn btn-info btn-block">افزودن</a>
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        ردیف
+                                    </th>
+                                    <th class="text-center">
+                                        عنوان اصلی
+                                    </th>
+                                    <th class="text-center">
+                                        HTML گواهینامه
+                                    </th>
+                                <th class="text-center">
+                                        عدد مرتب سازی
+                                    </th>
+                                <th class="text-center">
+                                        وضعیت
+                                    </th>
+                                    <th class="text-center">
+                                        وضعیت
+                                    </th>
+                                    <th>ویرایش</th>
+
+                                    <th class="text-center">حذف</th>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var rep = new RepMetaConfiguration();
+                                    var result = RepMetaConfiguration.RepositoryMetaConfigurationAdmin();
+                                    if (result.Count > 0)
+                                    {
+                                        foreach (var item in result)
+                                        {
+                                            <tr>
+                                                <td class="col-md-1 center">
+                                                    @item.Row
+                                                </td>
+                                                <td class="col-md-2 center">
+                                                    @item.PrimaryTitle
+                                                </td>
+                                                <td class="col-md-2 center">
+                                                    @item.Note
+                                                </td>
+                                                <td class="col-md-1 center">
+                                                    @item.Sort
+                                                </td>
+                                                <td class="col-md-1 center">
+                                                    <a class="btn @item.IsMainClass" href="/MetaConfigurationManagement/ChangeMain/@item.Id">@item.IsMainTitle</a>
+                                                </td>
+                                                <td class="col-md-1 center">
+                                                    <a class="btn @item.IsOkClass" href="/MetaConfigurationManagement/ChangeStatus/@item.Id">@item.IsOkTitle</a>
+                                                </td>
+                                                <td class="col-md-1 center">
+                                                    <a class="btn btn-info btn-sm glyphicon glyphicon-edit" href="/MetaConfigurationManagement/Edit/@item.Id"></a>
+                                                </td>
+                                                <td class="col-md-1 center">
+                                                    <a class="btn btn-danger btn-sm" href="/MetaConfigurationManagement/Delete/@item.Id">×</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

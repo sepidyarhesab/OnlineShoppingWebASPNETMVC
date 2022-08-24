@@ -1,0 +1,200 @@
+﻿
+@using OrdersOrders.ViewModels.Orders
+@model  OrdersOrders.ViewModels.Orders.VMOrders.VmOrderCarts
+@{
+    ViewBag.Title = "سبد خرید";
+
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+@{
+    Session["BackUrl"] = Session["ProductId"];
+}
+
+<div class="page-content-wrapper py-2">
+    <div class="container" dir="rtl">
+
+
+        <div class="d-flex align-items-center justify-content-between mb-3 mt-3">
+            <div class="page-heading">
+                @{
+
+                    if (Model != null)
+                    {
+                        <h5 class="mb-2">@ViewBag.Title</h5>
+                    }
+                }
+            </div>
+
+
+        </div>
+
+
+        <!-- Checkout Wrapper -->
+        <div class="checkout-wrapper-area">
+            @{
+
+                if (Model != null)
+                {
+
+                    <div class="card">
+                        <div class="card-body checkout-form">
+
+                            @{
+                                if (Model.CartsItems != null)
+                                {
+                                    foreach (var item in Model.CartsItems)
+                                    {
+
+                                        <form action="page-payment-confirm.html">
+                                            <div class="form-group" align="center">
+                                                <input type="hidden" id="ProductRef" name="ProductRef" value="@Session["ProductId"]">
+                                            </div>
+                                            <div class="form-group" align="center">
+                                                <img src="@item.FileName" alt="@item.ProductTitle" width="100px">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label mb-3" for="exampleInputText">کد</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@item.Code">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">نام کالا</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@item.ProductTitle">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">رنگ</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@item.ColorTitle ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">سایز</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@item.SizeTitle">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">قیمت</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@string.Format("{0:##,###}", item.Fee, "") تومان">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">تعداد</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@item.Quantity">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label sm
+                                                       " for="exampleInputText">تخفیف</label>
+                                                @{
+                                                    if (@item.Discount > 0)
+                                                    {
+                                                        <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@string.Format("{0:##,###}", @item.Discount, "Fee") تومان">
+                                                        <h6 class="mb-1">@string.Format("{0:##,###}", @item.Discount, "Fee") تومان</h6>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input class="form-control form-control-clicked" disabled="disabled" type="text" value="0 تومان">
+                                                    }
+                                                }
+
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="exampleInputText">Price</label>
+                                                <input class="form-control form-control-clicked" disabled="disabled" type="text" value="@String.Format(((Math.Round(@item.Price) == item.Price) ? "{0:##,###}" : "{0:##,###}"), item.Price) تومان">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a class="btn btn-outline-danger btn-block btn-sm remove-product" href="/Orders/DeleteCarts/@item.Code">حذف</a>
+                                            </div>
+
+                                        </form>
+                                    }
+                                }
+                            }
+
+                            <div class="card-body border-top">
+                                <div class="apply-coupon">
+                                    <h6 class="mb-0">آیا کوپن دارید؟</h6>
+                                    <p class="mb-2">کد کوپن خود را وارد کنید تا از تخفیف شگفت انگیز استفاده کنید.</p>
+                                    <div class="coupon-form">
+                                        @using (Html.BeginForm("Index", "Carts", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="hidden" id="sum" name="sum" value="@Model.Discount" />
+                                                    <input type="hidden" name="Discount" id="Discount" value="false" />
+                                                    <input type="text" name="code" class="form-control input-marg" id="code" placeholder="کد تخفیف">
+                                                    <button class="btn btn-primary btn-marg" type="submit" id="Discount">اعمال</button>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content-wrapper py-2 mt-2">
+                        <div class="container">
+                            <!-- Cart Wrapper -->
+                            <div class="cart-wrapper-area">
+                                <div class="cart-table card mb-3">
+                                    <div class="table-responsive card-body">
+                                        <table class="table mb-0 text-center">
+                                            <thead>
+
+                                                <tr>
+                                                    <th>جمع جزء</th>
+
+                                                    @{
+                                                        <td>@String.Format(((Math.Round(Model.Sum) == Model.Sum) ? "{0:##,###}" : "{0:##,###}"), Model.Sum) تومان</td>
+
+                                                    }
+
+                                                </tr>
+                                                <tr>
+                                                    <th>تخفیف کل </th>
+                                                    <td id="Discount">@string.Format("{0:##,###}", Model.Discount, "Discount") تومان</td>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <th>حمل و نقل</th>
+                                                    <td>
+                                                        @string.Format("{0:##,###}", Model.Transfer, "Price") تومان
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+                                                    @{
+
+
+                                                        Session["PayAmount"] = Model.SumPay;
+
+
+                                                    }
+                                                    <th>جمع کل</th>
+                                                    <td id="allSum">@string.Format("{0:##,###}", Model.SumPay, "Discount") تومان</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- Checkout --><a class="btn btn-danger w-100 mt-4" href="/Orders">ادامه و اتصال به درگاه بانکی</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+
+

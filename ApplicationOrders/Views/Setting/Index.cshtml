@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+@{
+    Session["BackUrl"] = "/Default";
+}
+
+<div class="page-content-wrapper py-3 direction-rtl">
+    <div class="container" dir="rtl">
+        <!-- Setting Card-->
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body direction-rtl">
+                <p>تنظیمات</p>
+                <div class="single-setting-panel">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input rtl-setting" type="checkbox" id="darkSwitch" style="margin-left: 8px;">
+                        <label class="form-check-label setting-icon" for="darkSwitch">مدل شب</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Setting Card-->
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body direction-rtl">
+                    <p>حساب کاربری</p>
+                    <div class="single-setting-panel">
+                        <a href="/Dashboard">
+                            <img src="~/Static/Content/Icons/female_profile_100px.png" class="setting-icon" width="30px" alt="female_profile"/>داشبورد
+                        </a>
+                    </div>
+                    <div class="single-setting-panel">
+                        <a href="/Dashboard/ChangePassword">
+                            <img src="~/Static/Content/Icons/lock_100px.png" class="setting-icon" width="30px" alt="lock"/>تغییر رمز
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Setting Card-->
+            <div class="card shadow-sm">
+                <div class="card-body direction-rtl">
+                    <p>ثبت نام و  خروج</p>
+                    <div class="single-setting-panel">
+                        <a href="/Register">
+                            <img src="~/Static/Content/Icons/add_user_male_100px.png" class="setting-icon" width="30px" alt="add_user"/>ثبت نام
+                        </a>
+                    </div>
+                    <div class="single-setting-panel">
+                        <a href="/Login/SingOut">
+                            <img src="~/Static/Content/Icons/shutdown_100px.png" class="setting-icon" width="30px" alt="shutdown"/>خروج
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

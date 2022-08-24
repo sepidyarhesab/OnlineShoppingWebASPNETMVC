@@ -1,0 +1,119 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    ViewBag.Title = "جستجو";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+@{
+    Session["BackUrl"] = "/Default";
+}
+
+@{
+
+    if (Model != null)
+    {
+        <div class="page-content-wrapper py-3">
+            <!-- Pagination-->
+            <div class="shop-pagination pb-3">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body p-2" dir="rtl">
+                            @if (Model != null)
+                            {
+                                <small class="ms-1 border-es">در حال نمایش @Model.Count() محصول</small>
+                            }
+                            <div class="search-form-wrapper">
+                                <!-- Search Form -->
+                                <form class="mb-3 pb-4 border-bottom pt-2" action="/Product/Search" method="post">
+                                    <div class="input-group" dir="rtl">
+                                        <input class="form-control form-control-clicked search-border-radius" type="search" name="Search" id="Search" aria-label="Site search" value="" placeholder="جستجو">
+                                        <button class="btn btn-dark search-buttom-border-radius" type="submit"><i class="bi bi-search fz-14"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Top Products-->
+            <div class="top-products-area product-list-wrap">
+                <div class="container">
+                    <div class="row g-3" dir="rtl">
+                        <!-- Single Top Product Card-->
+                        @{
+                            if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+
+                                    <div class="col-12">
+                                        <div class="card single-product-card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-side-img">
+                                                        <!-- Product Thumbnail-->
+                                                        <a class="product-thumbnail d-block" href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">
+                                                            <img src="@item.FileName" alt="@item.PrimaryTitle" style="max-height: 11rem;">
+                                                        </a>
+                                                        <span class="badge quantity-btn @item.QuantityClass">@item.QuantityTitle</span>
+                                                    </div>
+                                                    <div class="card-content px-4 py-2">
+
+                                                        <!-- Product Title-->
+                                                        <a class="product-title d-block text-truncate mt-0" href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">@item.PrimaryTitle</a>
+                                                        <a class="product-title d-block text-truncate mt-0" href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">@item.SecondaryTitle</a>
+                                                        <p><span><small> کد کالا : </small>@item.Code</span></p>
+                                                        <!-- Product Price-->
+                                                        <p class="">@item.Fee تومان</p>
+                                                        <!-- Add To Cart Button-->
+                                                        <a class="btn btn-primary btn-sm" href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})">مشاهده محصول</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            }
+
+
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination-->
+            <div class="shop-pagination pt-3">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body" style="margin: auto">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination direction-rtl">
+                                    @Html.PagedListPager(Model, page => Url.Action("Search",
+                                        new { page }), new PagedListRenderOptions()
+                                        {
+                                            LiElementClasses = new List<string> { "page-link" },
+                                            ContainerDivClasses = new List<string> { "pagination center-block" },
+                                            UlElementClasses = new List<string> { "pagination" },
+                                            PageCountAndCurrentLocationFormat = "page-item active",
+                                            LinkToFirstPageFormat = "&laquo;",
+                                            LinkToLastPageFormat = "&raquo;",
+                                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                            MaximumPageNumbersToDisplay = 5
+                                        })
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+

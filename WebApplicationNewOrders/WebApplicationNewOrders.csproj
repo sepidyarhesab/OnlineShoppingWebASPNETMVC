@@ -1,0 +1,794 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{578D29FB-19C8-4045-8C72-520B7F1319B0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplicationNewOrders</RootNamespace>
+    <AssemblyName>WebApplicationNewOrders</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ZarinPal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZarinPal-SDK.0.0.7\lib\ZarinPal.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Helper\Layouts\=.html" />
+    <Content Include="Helper\Layouts\about.html" />
+    <Content Include="Helper\Layouts\blog-detail.html" />
+    <Content Include="Helper\Layouts\blog.html" />
+    <Content Include="Helper\Layouts\brands.html" />
+    <Content Include="Helper\Layouts\cart.html" />
+    <Content Include="Helper\Layouts\category.html" />
+    <Content Include="Helper\Layouts\compare.html" />
+    <Content Include="Helper\Layouts\contact.html" />
+    <Content Include="Helper\Layouts\css\category.css" />
+    <Content Include="Helper\Layouts\css\main-category.min.css" />
+    <Content Include="Helper\Layouts\css\main-pro.min.css" />
+    <Content Include="Helper\Layouts\css\main.min.css" />
+    <Content Include="Helper\Layouts\css\mCSB_buttons.html" />
+    <Content Include="Helper\Layouts\css\owl.video.play.html" />
+    <Content Include="Helper\Layouts\css\product.css" />
+    <Content Include="Helper\Layouts\css\template.css" />
+    <Content Include="Helper\Layouts\images\about.jpg" />
+    <Content Include="Helper\Layouts\images\amazing-typo.svg" />
+    <Content Include="Helper\Layouts\images\aparat.png" />
+    <Content Include="Helper\Layouts\images\banner-top-mob.png" />
+    <Content Include="Helper\Layouts\images\banner-top.jpg" />
+    <Content Include="Helper\Layouts\images\banner1.jpg" />
+    <Content Include="Helper\Layouts\images\banner2.jpg" />
+    <Content Include="Helper\Layouts\images\banner3.jpg" />
+    <Content Include="Helper\Layouts\images\banner4.jpg" />
+    <Content Include="Helper\Layouts\images\banner5.jpg" />
+    <Content Include="Helper\Layouts\images\banner6.jpg" />
+    <Content Include="Helper\Layouts\images\bg-wnd.html" />
+    <Content Include="Helper\Layouts\images\blog.jpg" />
+    <Content Include="Helper\Layouts\images\blog1.jpg" />
+    <Content Include="Helper\Layouts\images\blog2.jpg" />
+    <Content Include="Helper\Layouts\images\blog3.jpg" />
+    <Content Include="Helper\Layouts\images\blog4.jpg" />
+    <Content Include="Helper\Layouts\images\blog5.jpg" />
+    <Content Include="Helper\Layouts\images\blog6.jpg" />
+    <Content Include="Helper\Layouts\images\body-inner.jpg" />
+    <Content Include="Helper\Layouts\images\cancel.svg" />
+    <Content Include="Helper\Layouts\images\free-delivery-free.svg" />
+    <Content Include="Helper\Layouts\images\icon1.png" />
+    <Content Include="Helper\Layouts\images\icon2.png" />
+    <Content Include="Helper\Layouts\images\icon3.png" />
+    <Content Include="Helper\Layouts\images\icon4.png" />
+    <Content Include="Helper\Layouts\images\icon5.png" />
+    <Content Include="Helper\Layouts\images\instagram.png" />
+    <Content Include="Helper\Layouts\images\logo.png" />
+    <Content Include="Helper\Layouts\images\logo1.png" />
+    <Content Include="Helper\Layouts\images\logo2.png" />
+    <Content Include="Helper\Layouts\images\logo3.png" />
+    <Content Include="Helper\Layouts\images\logo4.jpg" />
+    <Content Include="Helper\Layouts\images\logo4.png" />
+    <Content Include="Helper\Layouts\images\logo5.jpg" />
+    <Content Include="Helper\Layouts\images\logo5.png" />
+    <Content Include="Helper\Layouts\images\logo6.png" />
+    <Content Include="Helper\Layouts\images\media\iranyekanwebbold.80e0cf71.html" />
+    <Content Include="Helper\Layouts\images\nav-sprite.png" />
+    <Content Include="Helper\Layouts\images\news1.jpg" />
+    <Content Include="Helper\Layouts\images\news2.jpg" />
+    <Content Include="Helper\Layouts\images\news3.jpg" />
+    <Content Include="Helper\Layouts\images\news4.jpg" />
+    <Content Include="Helper\Layouts\images\plus.svg" />
+    <Content Include="Helper\Layouts\images\pro1.jpg" />
+    <Content Include="Helper\Layouts\images\pro10.jpg" />
+    <Content Include="Helper\Layouts\images\pro11.jpg" />
+    <Content Include="Helper\Layouts\images\pro12.jpg" />
+    <Content Include="Helper\Layouts\images\pro13.jpg" />
+    <Content Include="Helper\Layouts\images\pro2.jpg" />
+    <Content Include="Helper\Layouts\images\pro3.jpg" />
+    <Content Include="Helper\Layouts\images\pro4.jpg" />
+    <Content Include="Helper\Layouts\images\pro5.jpg" />
+    <Content Include="Helper\Layouts\images\pro6.jpg" />
+    <Content Include="Helper\Layouts\images\pro7.jpg" />
+    <Content Include="Helper\Layouts\images\pro8.jpg" />
+    <Content Include="Helper\Layouts\images\pro9.jpg" />
+    <Content Include="Helper\Layouts\images\slices.png" />
+    <Content Include="Helper\Layouts\images\slider.gif" />
+    <Content Include="Helper\Layouts\images\whatsapp.png" />
+    <Content Include="Helper\Layouts\images\wnd.png" />
+    <Content Include="Helper\Layouts\images\yotube.png" />
+    <Content Include="Helper\Layouts\index-2.html" />
+    <Content Include="Helper\Layouts\index.html" />
+    <Content Include="Helper\Layouts\js\category-main.min.js" />
+    <Content Include="Helper\Layouts\js\gallery.js" />
+    <Content Include="Helper\Layouts\js\main-min.js" />
+    <Content Include="Helper\Layouts\js\script.js" />
+    <Content Include="Helper\Layouts\login.html" />
+    <Content Include="Helper\Layouts\product-html.html" />
+    <Content Include="Helper\Layouts\product.html" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400.svg" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900.svg" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300.svg" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400.svg" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900.svg" />
+    <Content Include="Static\Content\Gif\Checkmark.gif" />
+    <Content Include="Static\Content\Gif\success.gif" />
+    <Content Include="Static\Content\Icons\account_100px.png" />
+    <Content Include="Static\Content\Icons\add_100px.png" />
+    <Content Include="Static\Content\Icons\add_to_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\add_user_male_100px.png" />
+    <Content Include="Static\Content\Icons\air_pilot_hat_100px.png" />
+    <Content Include="Static\Content\Icons\back_100px.png" />
+    <Content Include="Static\Content\Icons\back_to_100px.png" />
+    <Content Include="Static\Content\Icons\barcode_100px.png" />
+    <Content Include="Static\Content\Icons\barcode_reader_100px.png" />
+    <Content Include="Static\Content\Icons\basket_100px.png" />
+    <Content Include="Static\Content\Icons\booking_100px.png" />
+    <Content Include="Static\Content\Icons\bug_100px.png" />
+    <Content Include="Static\Content\Icons\call_100px.png" />
+    <Content Include="Static\Content\Icons\cancel_100px.png" />
+    <Content Include="Static\Content\Icons\category_100px.png" />
+    <Content Include="Static\Content\Icons\chart_100px.png" />
+    <Content Include="Static\Content\Icons\checked_user_male_100px.png" />
+    <Content Include="Static\Content\Icons\check_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\circled_play_100px.png" />
+    <Content Include="Static\Content\Icons\clipboard_100px.png" />
+    <Content Include="Static\Content\Icons\clock_100px.png" />
+    <Content Include="Static\Content\Icons\close_window_100px.png" />
+    <Content Include="Static\Content\Icons\comments_100px.png" />
+    <Content Include="Static\Content\Icons\curved_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\database_100px.png" />
+    <Content Include="Static\Content\Icons\data_transfer_100px.png" />
+    <Content Include="Static\Content\Icons\delete_100px.png" />
+    <Content Include="Static\Content\Icons\download_100px.png" />
+    <Content Include="Static\Content\Icons\down_3_100px.png" />
+    <Content Include="Static\Content\Icons\edit_100px.png" />
+    <Content Include="Static\Content\Icons\envelope_100px.png" />
+    <Content Include="Static\Content\Icons\error_cloud_100px.png" />
+    <Content Include="Static\Content\Icons\ethernet_off_100px.png" />
+    <Content Include="Static\Content\Icons\ethernet_on_100px.png" />
+    <Content Include="Static\Content\Icons\female_profile_100px.png" />
+    <Content Include="Static\Content\Icons\file_100px.png" />
+    <Content Include="Static\Content\Icons\filter_100px.png" />
+    <Content Include="Static\Content\Icons\fingerprint_100px.png" />
+    <Content Include="Static\Content\Icons\geography_100px.png" />
+    <Content Include="Static\Content\Icons\graduate_100px.png" />
+    <Content Include="Static\Content\Icons\graduation_cap_100px.png" />
+    <Content Include="Static\Content\Icons\hashtag_large_100px.png" />
+    <Content Include="Static\Content\Icons\high_importance_100px.png" />
+    <Content Include="Static\Content\Icons\home_100px.png" />
+    <Content Include="Static\Content\Icons\important_note_100px.png" />
+    <Content Include="Static\Content\Icons\info_100px.png" />
+    <Content Include="Static\Content\Icons\investment_portfolio_100px.png" />
+    <Content Include="Static\Content\Icons\left_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\licence_100px.png" />
+    <Content Include="Static\Content\Icons\link_100px.png" />
+    <Content Include="Static\Content\Icons\lock_100px.png" />
+    <Content Include="Static\Content\Icons\male_user_100px.png" />
+    <Content Include="Static\Content\Icons\menu_vertical_100px.png" />
+    <Content Include="Static\Content\Icons\minimize_window_100px.png" />
+    <Content Include="Static\Content\Icons\minus_100px.png" />
+    <Content Include="Static\Content\Icons\news_100px.png" />
+    <Content Include="Static\Content\Icons\next_page_100px.png" />
+    <Content Include="Static\Content\Icons\notepad_100px.png" />
+    <Content Include="Static\Content\Icons\notification_100px.png" />
+    <Content Include="Static\Content\Icons\open_envelope_100px.png" />
+    <Content Include="Static\Content\Icons\paid_100px.png" />
+    <Content Include="Static\Content\Icons\person_100px.png" />
+    <Content Include="Static\Content\Icons\picture_100px.png" />
+    <Content Include="Static\Content\Icons\pie_chart_100px.png" />
+    <Content Include="Static\Content\Icons\place_marker_100px.png" />
+    <Content Include="Static\Content\Icons\plus_math_100px.png" />
+    <Content Include="Static\Content\Icons\police_100px.png" />
+    <Content Include="Static\Content\Icons\police_officer_100px.png" />
+    <Content Include="Static\Content\Icons\prev_100px.png" />
+    <Content Include="Static\Content\Icons\printer_100px.png" />
+    <Content Include="Static\Content\Icons\print_100px.png" />
+    <Content Include="Static\Content\Icons\product_100px.png" />
+    <Content Include="Static\Content\Icons\query_100px.png" />
+    <Content Include="Static\Content\Icons\question_mark_100px.png" />
+    <Content Include="Static\Content\Icons\realtime_100px.png" />
+    <Content Include="Static\Content\Icons\recurring_appointment_exception_100px.png" />
+    <Content Include="Static\Content\Icons\remove_from_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\reset_100px.png" />
+    <Content Include="Static\Content\Icons\return_100px.png" />
+    <Content Include="Static\Content\Icons\right_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\right_button_100px.png" />
+    <Content Include="Static\Content\Icons\sale_100px.png" />
+    <Content Include="Static\Content\Icons\save_100px.png" />
+    <Content Include="Static\Content\Icons\search_100px.png" />
+    <Content Include="Static\Content\Icons\secured_letter_100px.png" />
+    <Content Include="Static\Content\Icons\settings_100px.png" />
+    <Content Include="Static\Content\Icons\shutdown_100px.png" />
+    <Content Include="Static\Content\Icons\sorting_100px.png" />
+    <Content Include="Static\Content\Icons\sort_down_100px.png" />
+    <Content Include="Static\Content\Icons\sort_up_100px.png" />
+    <Content Include="Static\Content\Icons\speech_100px.png" />
+    <Content Include="Static\Content\Icons\stack_of_coins_100px.png" />
+    <Content Include="Static\Content\Icons\student_male_100px.png" />
+    <Content Include="Static\Content\Icons\subtract_100px.png" />
+    <Content Include="Static\Content\Icons\system_report_100px.png" />
+    <Content Include="Static\Content\Icons\tag_100px.png" />
+    <Content Include="Static\Content\Icons\test_account_100px.png" />
+    <Content Include="Static\Content\Icons\time_100px.png" />
+    <Content Include="Static\Content\Icons\unavailable_100px.png" />
+    <Content Include="Static\Content\Icons\unread_messages_100px.png" />
+    <Content Include="Static\Content\Icons\update_left_rotation_100px.png" />
+    <Content Include="Static\Content\Icons\upload_100px.png" />
+    <Content Include="Static\Content\Icons\verified_account_100px.png" />
+    <Content Include="Static\Content\Icons\video_100px.png" />
+    <Content Include="Static\Content\Icons\view_100px.png" />
+    <Content Include="Static\Content\Icons\website_100px.png" />
+    <Content Include="Static\Content\Icons\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\BlogImages\Blog_sp-999.jpg" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998023241077.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998132998106.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998216688376.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998292131987.png" />
+    <Content Include="Static\Content\Images\Footer\de.jpg" />
+    <Content Include="Static\Content\Images\Footer\Footer.jpg" />
+    <Content Include="Static\Content\Images\Menu\account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_user_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\air_pilot_hat_100px.png" />
+    <Content Include="Static\Content\Images\Menu\back_100px.png" />
+    <Content Include="Static\Content\Images\Menu\back_to_100px.png" />
+    <Content Include="Static\Content\Images\Menu\barcode_100px.png" />
+    <Content Include="Static\Content\Images\Menu\barcode_reader_100px.png" />
+    <Content Include="Static\Content\Images\Menu\basket_100px.png" />
+    <Content Include="Static\Content\Images\Menu\booking_100px.png" />
+    <Content Include="Static\Content\Images\Menu\BPersianCalender.dll" />
+    <Content Include="Static\Content\Images\Menu\bug_100px.png" />
+    <Content Include="Static\Content\Images\Menu\call_100px.png" />
+    <Content Include="Static\Content\Images\Menu\cancel_100px.png" />
+    <Content Include="Static\Content\Images\Menu\category_100px.png" />
+    <Content Include="Static\Content\Images\Menu\chart_100px.png" />
+    <Content Include="Static\Content\Images\Menu\checked_user_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\check_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\circled_play_100px.png" />
+    <Content Include="Static\Content\Images\Menu\clipboard_100px.png" />
+    <Content Include="Static\Content\Images\Menu\clock_100px.png" />
+    <Content Include="Static\Content\Images\Menu\close_window_100px.png" />
+    <Content Include="Static\Content\Images\Menu\comments_100px.png" />
+    <Content Include="Static\Content\Images\Menu\curved_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\database_100px.png" />
+    <Content Include="Static\Content\Images\Menu\data_transfer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\delete_100px.png" />
+    <Content Include="Static\Content\Images\Menu\download_100px.png" />
+    <Content Include="Static\Content\Images\Menu\down_3_100px.png" />
+    <Content Include="Static\Content\Images\Menu\edit_100px.png" />
+    <Content Include="Static\Content\Images\Menu\envelope_100px.png" />
+    <Content Include="Static\Content\Images\Menu\error_cloud_100px.png" />
+    <Content Include="Static\Content\Images\Menu\ethernet_off_100px.png" />
+    <Content Include="Static\Content\Images\Menu\ethernet_on_100px.png" />
+    <Content Include="Static\Content\Images\Menu\female_profile_100px.png" />
+    <Content Include="Static\Content\Images\Menu\file_100px.png" />
+    <Content Include="Static\Content\Images\Menu\filter_100px.png" />
+    <Content Include="Static\Content\Images\Menu\fingerprint_100px.png" />
+    <Content Include="Static\Content\Images\Menu\geography_100px.png" />
+    <Content Include="Static\Content\Images\Menu\graduate_100px.png" />
+    <Content Include="Static\Content\Images\Menu\graduation_cap_100px.png" />
+    <Content Include="Static\Content\Images\Menu\hashtag_large_100px.png" />
+    <Content Include="Static\Content\Images\Menu\high_importance_100px.png" />
+    <Content Include="Static\Content\Images\Menu\home_100px.png" />
+    <Content Include="Static\Content\Images\Menu\important_note_100px.png" />
+    <Content Include="Static\Content\Images\Menu\info_100px.png" />
+    <Content Include="Static\Content\Images\Menu\investment_portfolio_100px.png" />
+    <Content Include="Static\Content\Images\Menu\left_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\licence_100px.png" />
+    <Content Include="Static\Content\Images\Menu\link_100px.png" />
+    <Content Include="Static\Content\Images\Menu\lock_100px.png" />
+    <Content Include="Static\Content\Images\Menu\male_user_100px.png" />
+    <Content Include="Static\Content\Images\Menu\menu_vertical_100px.png" />
+    <Content Include="Static\Content\Images\Menu\minimize_window_100px.png" />
+    <Content Include="Static\Content\Images\Menu\minus_100px.png" />
+    <Content Include="Static\Content\Images\Menu\news_100px.png" />
+    <Content Include="Static\Content\Images\Menu\next_page_100px.png" />
+    <Content Include="Static\Content\Images\Menu\notepad_100px.png" />
+    <Content Include="Static\Content\Images\Menu\notification_100px.png" />
+    <Content Include="Static\Content\Images\Menu\open_envelope_100px.png" />
+    <Content Include="Static\Content\Images\Menu\paid_100px.png" />
+    <Content Include="Static\Content\Images\Menu\person_100px.png" />
+    <Content Include="Static\Content\Images\Menu\picture_100px.png" />
+    <Content Include="Static\Content\Images\Menu\pie_chart_100px.png" />
+    <Content Include="Static\Content\Images\Menu\place_marker_100px.png" />
+    <Content Include="Static\Content\Images\Menu\plus_math_100px.png" />
+    <Content Include="Static\Content\Images\Menu\police_100px.png" />
+    <Content Include="Static\Content\Images\Menu\police_officer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\prev_100px.png" />
+    <Content Include="Static\Content\Images\Menu\printer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\print_100px.png" />
+    <Content Include="Static\Content\Images\Menu\product_100px.png" />
+    <Content Include="Static\Content\Images\Menu\query_100px.png" />
+    <Content Include="Static\Content\Images\Menu\question_mark_100px.png" />
+    <Content Include="Static\Content\Images\Menu\realtime_100px.png" />
+    <Content Include="Static\Content\Images\Menu\recurring_appointment_exception_100px.png" />
+    <Content Include="Static\Content\Images\Menu\remove_from_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\reset_100px.png" />
+    <Content Include="Static\Content\Images\Menu\return_100px.png" />
+    <Content Include="Static\Content\Images\Menu\right_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\right_button_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sale_100px.png" />
+    <Content Include="Static\Content\Images\Menu\save_100px.png" />
+    <Content Include="Static\Content\Images\Menu\search_100px.png" />
+    <Content Include="Static\Content\Images\Menu\secured_letter_100px.png" />
+    <Content Include="Static\Content\Images\Menu\settings_100px.png" />
+    <Content Include="Static\Content\Images\Menu\shutdown_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sorting_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sort_down_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sort_up_100px.png" />
+    <Content Include="Static\Content\Images\Menu\speech_100px.png" />
+    <Content Include="Static\Content\Images\Menu\stack_of_coins_100px.png" />
+    <Content Include="Static\Content\Images\Menu\student_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\subtract_100px.png" />
+    <Content Include="Static\Content\Images\Menu\system_report_100px.png" />
+    <Content Include="Static\Content\Images\Menu\tag_100px.png" />
+    <Content Include="Static\Content\Images\Menu\test_account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\time_100px.png" />
+    <Content Include="Static\Content\Images\Menu\unavailable_100px.png" />
+    <Content Include="Static\Content\Images\Menu\unread_messages_100px.png" />
+    <Content Include="Static\Content\Images\Menu\update_left_rotation_100px.png" />
+    <Content Include="Static\Content\Images\Menu\upload_100px.png" />
+    <Content Include="Static\Content\Images\Menu\verified_account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\video_100px.png" />
+    <Content Include="Static\Content\Images\Menu\view_100px.png" />
+    <Content Include="Static\Content\Images\Menu\website_100px.png" />
+    <Content Include="Static\Content\Images\Menu\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1101.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1166.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1176.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1632.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1660.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1675.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1708.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1731.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1797.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1841.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-1982.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2009.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2052.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2130.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2192.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2229.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2272.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2337.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2340.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2429.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2597.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2630.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2697.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2780.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2795.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2808.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2888.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2898.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-2906.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3133.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3168.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3170.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3177.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3281.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3378.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3698.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3714.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3741.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3750.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3779.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3813.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3827.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-3873.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4014.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4174.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4254.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4327.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4347.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4366.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4444.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4620.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4775.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4857.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-4877.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5073.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5078.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5086.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5090.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5140.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5165.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5189.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5190.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5212.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5269.jpeg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5270.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5319.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5393.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5508.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5538.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5594.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5622.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5682.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5762.jpeg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5774.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5918.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-5941.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6052.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6356.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6359.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6385.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6393.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6460.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6625.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6684.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6766.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6847.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6915.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6918.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-6985.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7009.jpeg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7021.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7048.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7059.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7069.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7094.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7288.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7393.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7516.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7536.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7552.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7610.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7687.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7769.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7853.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-7983.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8185.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8198.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8232.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8396.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8402.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8410.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8433.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8473.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8537.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8547.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8549.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8689.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8693.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8759.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8949.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-8968.jpg" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9104.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9322.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9357.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9493.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9536.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9675.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9702.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9720.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9767.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9810.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9815.png" />
+    <Content Include="Static\Content\Images\Products\Product_SP-9980.png" />
+    <Content Include="Static\Content\Images\Request\Request_SP-97740.jpeg" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016467188797.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016552269167.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016651301450.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016765780146.png" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637939294505258747.png" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogCategoriesController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\FavoritesController.cs" />
+    <Compile Include="Controllers\InstallerController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductPropertyListController.cs" />
+    <Compile Include="Controllers\ProductSelectionController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\VerficationMellatPaymentController.cs" />
+    <Compile Include="Controllers\VerficationPaymentController.cs" />
+    <Compile Include="Controllers\VerifyController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Helper\Layouts\fonts\Khandevane.ttf" />
+    <Content Include="Helper\Layouts\fonts\Khandevane.woff" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebbold.6e8ebb8e.ttf" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebbold.92d6ffc1.eot" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebbold.9be2c236.woff2" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanweblight.52efa674.woff" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanweblight.6906da26.ttf" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanweblight.c61fd368.woff2" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanweblight.dfdc6e89.eot" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebregular.0974083c.woff" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebregular.74500baf.eot" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebregular.e46ea675.woff2" />
+    <Content Include="Helper\Layouts\fonts\media\iranyekanwebregular.e4f82d0d.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400.woff" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400.woff2" />
+    <Content Include="Helper\Layouts\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900.woff" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900.woff2" />
+    <Content Include="Helper\Layouts\webfonts\fa-duotone-900d41d.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300.woff" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300.woff2" />
+    <Content Include="Helper\Layouts\webfonts\fa-light-300d41d.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400.woff" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400.woff2" />
+    <Content Include="Helper\Layouts\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900.eot" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900.ttf" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900.woff" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900.woff2" />
+    <Content Include="Helper\Layouts\webfonts\fa-solid-900d41d.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\Blog\BlogMainCategory.cshtml" />
+    <Content Include="Views\Blog\BlogSubCategory.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\MoreBlog.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Categories\Id.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\MainCategory.cshtml" />
+    <Content Include="Views\Categories\SubCategory.cshtml" />
+    <Content Include="Views\Configuration\ShowAllConfiguration.cshtml" />
+    <Content Include="Views\Dashboard\ChangePassword.cshtml" />
+    <Content Include="Views\Dashboard\EditProfile.cshtml" />
+    <Content Include="Views\Dashboard\Factor.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\SubmitPicture.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Favorites\Index.cshtml" />
+    <Content Include="Views\Installer\Error.cshtml" />
+    <Content Include="Views\Installer\Index.cshtml" />
+    <Content Include="Views\Installer\Token.cshtml" />
+    <Content Include="Views\Layouts\_AdminLayouts.cshtml" />
+    <Content Include="Views\Layouts\_MainLayouts.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\OrderFinished.cshtml" />
+    <Content Include="Views\Product\Id.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\ProductPropertyList\Add.cshtml" />
+    <Content Include="Views\ProductPropertyList\Edit.cshtml" />
+    <Content Include="Views\ProductPropertyList\Index.cshtml" />
+    <Content Include="Views\ProductSelection\Product.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\SubmitRegister.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Head.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Header.cshtml" />
+    <Content Include="Views\Shared\Body\P_Banner.cshtml" />
+    <Content Include="Views\Shared\Body\P_Banner_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_Categories.cshtml" />
+    <Content Include="Views\Shared\Body\P_Categories_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_Category_Rating.cshtml" />
+    <Content Include="Views\Shared\Body\P_CopyRight_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_DropdownSize.cshtml" />
+    <Content Include="Views\Shared\Body\P_Invoice_PDF.cshtml" />
+    <Content Include="Views\Shared\Body\P_Invoice_PDF_2.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Footer_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_head.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_header.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_header_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Header_Mobile.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Mobile_Menu.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Script.cshtml" />
+    <Content Include="Views\Shared\Body\P_Panel_Center.cshtml" />
+    <Content Include="Views\Shared\Body\P_Panel_Right.cshtml" />
+    <Content Include="Views\Shared\Body\P_Products.cshtml" />
+    <Content Include="Views\Shared\Body\P_Products_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_Ratings.cshtml" />
+    <Content Include="Views\Shared\Body\P_Services.cshtml" />
+    <Content Include="Views\Shared\Body\P_Services_Full.cshtml" />
+    <Content Include="Views\Shared\Body\P_Sliders.cshtml" />
+    <Content Include="Views\Shared\Body\P_Sliders_Full.cshtml" />
+    <Content Include="Views\Shared\Footer\P_Footer.cshtml" />
+    <Content Include="Views\Shared\Head\P_Basket.cshtml" />
+    <Content Include="Views\Shared\Head\P_Header.cshtml" />
+    <Content Include="Views\Shared\Head\P_Search_Desktop.cshtml" />
+    <Content Include="Views\Shared\Product\P_Product_Selection.cshtml" />
+    <Content Include="Views\Shared\Product\P_Product_Sidebar.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Rating.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Sliders.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Switcher__List.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductFooter.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductsCarousel.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductTabs.cshtml" />
+    <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\VerficationPayment\Finished.cshtml" />
+    <Content Include="Views\VerficationPayment\Index.cshtml" />
+    <Content Include="Views\VerficationPayment\Indexx.cshtml" />
+    <Content Include="Views\Verify\Index.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Header_MainMenu.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Footer1.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Static\Content\Excel\" />
+    <Folder Include="Static\Content\Images\Banner\Desktop\" />
+    <Folder Include="Static\Content\Images\Banner\Mobile\" />
+    <Folder Include="Static\Content\Images\Factor\" />
+    <Folder Include="Static\Content\Images\Logo\" />
+    <Folder Include="Static\Content\Images\Profile\" />
+    <Folder Include="Static\Content\Images\Sliders\Mobile\" />
+    <Folder Include="Views\VerficationMellatPayment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrdersDatabase\OrdersDatabase.csproj">
+      <Project>{56182c87-80d8-4413-ba56-8df9901d0f45}</Project>
+      <Name>OrdersDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersExtentions\OrdersExtentions.csproj">
+      <Project>{affc2c8a-1d6c-40b7-bc82-36519142049b}</Project>
+      <Name>OrdersExtentions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersGeneral\OrdersGeneral.csproj">
+      <Project>{d5b092b0-4317-4098-8c04-598c830de8f4}</Project>
+      <Name>OrdersGeneral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersInventory\OrdersInventory.csproj">
+      <Project>{4719f45a-b243-4df1-9a9f-5933bfab2530}</Project>
+      <Name>OrdersInventory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersOrders\OrdersOrders.csproj">
+      <Project>{817f0a2b-f661-4397-9420-37e8b039de00}</Project>
+      <Name>OrdersOrders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersSettings\OrdersSettings.csproj">
+      <Project>{65f15f59-f757-49a8-8551-c41b10fa8762}</Project>
+      <Name>OrdersSettings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51392</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51392/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

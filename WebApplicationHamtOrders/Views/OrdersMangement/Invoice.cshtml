@@ -1,0 +1,201 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersOrders.ViewModels.Orders
+@model IEnumerable<OrdersOrders.ViewModels.Orders.VMOrders.VmOrderItem>
+
+@{
+    ViewBag.Title = "نمایش فاکتور|ShowFactor";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+<link href="~/Helper/Layouts/css/prints.css" rel="stylesheet" />
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">نمایش فاکتور</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <a href="/OrdersMangement/CreatePDF/@Session["InvoiceManagmentId"].ToString()" class="btn btn-success" >PDF</a>
+                    <a href="/OrdersMangement" class="btn btn-danger">بازگشت</a>
+
+                    <div class="table-responsive">
+
+
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        ردیف
+                                    </th>
+                                    <th class="text-center"> عکس</th>
+                                    <th class="text-center">
+                                        نام کالا
+                                    </th>
+                                    <th class="text-center">
+                                        توضیحات
+                                    <th class="text-center">
+                                        رنگ
+                                    </th>
+                                    <th class="text-center">
+                                        سایز
+                                    </th>
+                                    <th class="text-center">
+                                        تعداد
+                                    </th>
+                                    <th class="text-center">
+                                        قمیت
+                                    </th>
+                                    <th class="text-center">
+                                        تخفیف
+                                    </th>
+                                    <th class="text-center">
+                                        با تخفیف
+                                    </th>
+                                    <th class="text-center">
+                                        جمع
+                                    </th>
+                            </thead>
+                            <tbody>
+                                @{
+
+                                    if (Model != null)
+                                    {
+                                        var row = 1;
+                                        foreach (var mangment in Model)
+                                        {
+                                            
+                                            <tr>
+                                                <td class="col-md-1  text-center">
+                                                    @row
+                                                </td>
+                                                <td class="col-md-1 text-center">
+                                                    <a>
+                                                        <img src="@mangment.FileName" width="50" />
+                                                    </a>
+                                                </td>
+                                                <td class="col-md-1 text-center">
+                                                    <a href="/Product/Id/@mangment.ProductId">@mangment.Title </a>
+                                                </td>
+                                                <td class="col-md-2 text-center ">
+                                                    @mangment.Note
+                                                </td>
+                                                @{
+                                                    <td class="col-md-1 text-center">
+                                                        @mangment.ColorTitle
+                                                    </td>
+                                                    <td class="col-md-1 text-center">
+                                                        @mangment.SizeTitle
+                                                    </td>
+
+                                                }
+                                                <td class="col-md-1 text-center">
+                                                    @mangment.Quantity
+                                                </td>
+                                                <td class="col-md-1 text-center dana" style="font-size: 12px;">
+                                                    @string.Format("{0:##,###}", @mangment.ProductPrice, "Price")
+                                                </td>
+
+                                                @{
+                                                    if (@mangment.Discounts > 0)
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", mangment.Discounts, "Price")
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", 0, "Price")
+                                                        </td>
+
+                                                    }
+                                                }
+
+                                                @{
+                                                    var CatSum = mangment.ProductPrice - mangment.Discounts;
+                                                    //var disproduct = (mangment.ProductPrice * mangment.ProductDiscount) / 100;
+                                                    //var ProductSum = mangment.ProductPrice - disproduct;
+
+                                                    if (@mangment.Discounts > 0)
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", CatSum, "Price")
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            0
+                                                        </td>
+                                                    }
+
+                                                }
+
+                                                @{
+                                                    decimal Fee = 0;
+                                                    Fee = mangment.Price - mangment.Discounts;
+                                                    //var ProductSumRow = (mangment.Price * mangment.Quantity);
+                                                    if (@mangment.Discounts > 0)
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", Fee, "Price")
+                                                        </td>
+                                                    }
+                                                    @*else if (@mangment.ProductDiscount > 0)
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", ProductSumRow, "Price")
+                                                        </td>
+                                                    }*@
+                                                    else
+                                                    {
+                                                        <td class="col-md-1 text-center dana">
+                                                            @string.Format("{0:##,###}", @mangment.Price, "Price")
+                                                        </td>
+                                                    }
+
+                                                }
+
+
+                                                
+
+
+
+                                            </tr>
+                                            row++;
+
+                                        }
+                                    }
+
+
+
+
+                                }
+
+
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

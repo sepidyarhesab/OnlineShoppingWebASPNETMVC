@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "حساب کاربری";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<!-- Login Wrapper Area -->
+<div class="login-wrapper d-flex align-items-center justify-content-center">
+    <div class="custom-container" dir="rtl">
+        <div class="text-center px-4"><img class="login-intro-img" src="/Helper/Layouts/img/bg-img/36.png" alt="login-intro-img"></div>
+        <!-- Register Form -->
+        <div class="register-form mt-4">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <input class="form-control" type="tel" maxlength="11" max="11" id="phone" name="phone" placeholder="از شماره تلفن ثبت شده برای ورود استفاده کنید." onchange="allnumeric(this);" data-step="1" data-intro="در این قسمت شماره موبایل خود را با کیبورد لاتین وارد کنید">
+                </div>
+                <button class="btn btn-primary w-100" type="submit">ورود</button>
+            }
+
+        </div>
+        <!-- Login Meta -->
+        <div class="login-meta-data text-center">
+            <p class="mt-3 mb-0">آیا حساب کاربری دارید؟ <a class="stretched-link" href="/Register">ثبت نام</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    function allnumeric(inputtxt) {
+        var numbers = new RegExp("09(0[1-2]|1[0-9]|3[0-9]|2[0-1]|9[0-9])-?[0-9]{3}-?[0-9]{4}");
+        if (inputtxt.value.match(numbers)) {
+            document.getElementById("phone").style.border = "1px solid green";
+            document.form1.text1.focus();
+            return true;
+        }
+        else {
+            document.getElementById("phone").style.border = "1px solid red";
+            alert('شماره موبایل وارد شده صحیح نیست');
+            document.form1.text1.focus();
+            return false;
+        }
+    }
+</script>

@@ -1,0 +1,133 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="page-header">
+    <div class="page-header__container container">
+        <div class="page-header__breadcrumb">
+            <nav aria-label="breadcrumb" class="card mb-0 contact-us box-shadows" style="padding: 10px">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Default">خانه</a>
+                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                            <use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/Product/Index">محصولات</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="shop-layout__sidebar">
+            <div class="block block-sidebar">
+                @Html.Partial("Product/P_Product_Sidebar")
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+
+        <div class="block">
+            <div class="products-view">
+                @*<div class="view-options__control">
+                        <label for="">مرتب‌سازی بر اساس</label>
+                        <div>
+                            <select class="form-control form-control-sm" name="OrderbyType" id="OrderbyType">
+                                <option value="all">همه</option>
+                                <option value="expensive">گران‌ترین</option>
+                                <option value="cheap">ارزن‌ترین</option>
+                                <option value="newest">جدید ترین</option>
+
+                            </select>
+                        </div>
+                    </div>*@
+
+                <div class="products-view__list products-list" data-layout="grid-4-full" data-with-features="false">
+                    <div class="products-list__body">
+
+                        @{
+                            if (Model != null)
+                            {
+                                foreach (var productitem in Model)
+                                {
+                                    <div class="products-list__item">
+                                        <div class="product-card">
+                                            <button class="product-card__quickview" type="button">
+                                                <svg width="16px" height="16px">
+                                                    <use xlink:href="/Helper/Layouts/images/sprite.svg#quickview-16"></use>
+                                                </svg> <span class="fake-svg-icon"></span>
+                                            </button>
+                                            <div class="product-card__badges-list">
+                                                <div class="product-card__badge product-card__badge--new @productitem.QuantityClass">@productitem.QuantityTitle</div>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})"><img src="@productitem.FileName" alt="@productitem.PrimaryTitle"></a>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name"><small> نام کالا : </small><a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">@productitem.PrimaryTitle</a></div>
+                                                <div class="product-card__name"><small> کد کالا : </small><a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">@productitem.Code</a></div>
+                                            </div>
+                                            <div class="product-card__actions">
+                                                <div class="product-card__availability">موجودی: <span class="@productitem.QuantityClass">@productitem.QuantityTitle</span></div>
+                                                @{
+                                                    var ProductFee = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                                    if (productitem.Discount > 0)
+                                                    {
+                                                        <div class="widget-products__prices ">
+                                                            <del class="product-card__prices">@string.Format("{0:##,###}", productitem.Fee, "Fee") تومان</del>
+                                                            <br />
+                                                            <span class="product-card__prices" style="color:red;">@string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-card__prices text-danger">@string.Format("{0:##,###}", productitem.Fee, "") تومان</div>
+                                                    }
+
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                    </div>
+                </div>
+
+                    <div class="products-view__pagination">
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page }), new PagedListRenderOptions()
+                            {
+                                LiElementClasses = new List<string> { "page-item" },
+                                ContainerDivClasses = new List<string> { "products-view__pagination" },
+                                UlElementClasses = new List<string> { "pagination justify-content-center" },
+                                PageCountAndCurrentLocationFormat = "page-item active",
+                                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            })
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

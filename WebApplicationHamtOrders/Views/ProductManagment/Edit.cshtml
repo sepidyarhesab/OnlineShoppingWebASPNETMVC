@@ -1,0 +1,197 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement>
+@{
+    ViewBag.Title = "ویرایش محصول|EditProduct";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<script src="/Helper/Admin/Scripts/jquery.min.js"></script>
+<script src="/Helper/Admin/Scripts/ckeditor.js"></script>
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+
+                    @{
+                        if (Model != null)
+                        {
+                            var rep = new RepProducts();
+
+                            foreach (var item in Model)
+                            {
+                                using (Html.BeginForm("EditRow", "ProductManagment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="box-header">
+                                        <i class="fa fa-envelope"></i>
+                                        <h3 class="box-title">ویرایش محصول</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-horizontal">
+                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="PrimaryTitle">کد</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                                <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@item.PrimaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@item.SecondaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="CategoriesRef">دسته بندی</label>
+                                                <div class="col-md-4">
+                                                    <select class="form-control " id="CategoriesRef" name="CategoriesRef">
+                                                        @{
+                                                            var category = rep.RepositoryCategoryManagmentDropDown();
+                                                            if (category.Count > 0)
+                                                            {
+                                                                foreach (var cat in category)
+                                                                {
+                                                                    if (cat.Id == item.CategoriesRef)
+                                                                    {
+                                                                        <option value="@cat.Id" selected="selected">@cat.PrimaryTitle</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@cat.Id">@cat.PrimaryTitle</option>
+                                                                    }
+
+                                                                }
+                                                            }
+
+
+                                                        }
+                                                    </select>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Url">لینک</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@item.Url" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="Discount">تخفیف</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="تخفیف" type="number" value="@item.Discount" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            @{
+
+                                                var typee = RepSettings.RepositoryTypeSelect();
+                                                if (typee != Guid.Empty)
+                                                {
+                                                    if (typee == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                                    {
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2" for="Fee">قیمت</label>
+                                                            <div class="col-md-4">
+                                                                <input class="form-control text-box single-line" id="Fee" name="Fee" placeholder="قیمت" type="text" value="@item.Fee" onfocusout="checkinputProduct()" />
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                            <label class="control-label col-md-2" for="Quantity">تعداد</label>
+                                                            <div class="col-md-4">
+                                                                <input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="تعداد" type="text" value="@item.Quantity" onfocusout="checkinputProduct()" />
+                                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                    }
+                                                    else if (typee == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                                    {
+
+                                                    }
+                                                }
+
+                                            }
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Note">توضیحات</label>
+                                                <div class="col-md-10">
+                                                    <textarea class="editor form-control text-box single-line" id="Note" name="Note" placeholder="توضیحات" type="text">
+                                                    @Html.Raw(@item.Note)
+                                                    </textarea>
+                                                    <script>
+                                                        CKEDITOR.replace("Note");
+                                                    </script>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-footer clearfix">
+                                        <div class="col-md-12 col-md-offset-9">
+                                            <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                            <a href="/ProductManagment/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        }
+
+
+
+
+                    }
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
+
+            licenseKey: '',
+
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: snrhjmuf85mi-mfhkwsrvxudc');
+            console.error(error);
+        });
+</script>
+
+
+
+

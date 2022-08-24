@@ -1,0 +1,77 @@
+﻿@using OrdersOrders.Repository.Orders
+@using OrdersGeneral.Repository.General
+
+
+<div class="col-12 col-lg-9 mt-4 mt-lg-0">
+    <div class="dashboard">
+
+        @{
+
+
+
+            var phone = "0";
+
+            var id = User.Identity.Name;
+
+            var result = RepAccountDashboard.RepAccountDashboardInformation(Guid.Parse(id));
+
+
+
+            if (result.Count > 0)
+            {
+                foreach (var item in result)
+                {
+
+                    phone = item.Phone;
+
+
+
+                    <div class="dashboard__profile card profile-card">
+                        <div class="card-body profile-card__body">
+                            @{
+
+                                <div class="profile-card__avatar"><img src="@item.Note" alt="Note"></div>
+
+                            }
+                            <div class="profile-card__name"></div>
+                            <div class="profile-card__email">@item.Address</div>
+                            <div class="profile-card__edit">
+                                @using (Html.BeginForm("ChangeProfile", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input id="id"  name="id" type="hidden" value="@id" />
+                                    <div class="form-group">
+                                        <input id="file" name="file" class="form-control" type="file"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">ثبت تصویر کاربر</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard__address card address-card address-card--featured">
+                        <div class="address-card__badge">آدرس پیشفرض</div>
+                        <div class="address-card__body">
+                            <div class="address-card__row-title">نام و نام خانوادگی</div>
+                            <div class="address-card__name">@item.Name @item.Family</div>
+                            <div class="address-card__row">
+                                @item.Address
+                                <br>
+                            </div>
+                            <div class="address-card__row">
+                                <div class="address-card__row-title">شماره تلفن</div>
+                                <div class="address-card__row-content"><span class="ltr_text">@item.Phone</span></div>
+                            </div>
+                            <div class="address-card__row">
+                                <div class="address-card__row-title">آدرس ایمیل</div>
+                                <div class="address-card__row-content">@item.PageId</div>
+                            </div>
+                            <div class="address-card__footer"><a href="">ویرایش آدرس</a></div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+
+    </div>
+</div>

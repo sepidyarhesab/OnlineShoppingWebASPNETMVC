@@ -1,0 +1,257 @@
+﻿
+@using OrdersDatabase.Models
+
+
+
+@{
+    ViewBag.Title = "داشبورد";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="fa fa-tasks" aria-hidden="true" style="line-height: 2"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">ترافیک سایت</span>
+                            <span class="info-box-number">90<small>%</small></span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red"><i class="far fa-thumbs-up" style="line-height: 2"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">لایک ها</span>
+                            <span class="info-box-number">41,410</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green"><i class="fa fa-shopping-cart" aria-hidden="true" style="line-height: 2"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">فروش ها</span>
+                            @{
+                                var db = new Orders_Entities();
+                                var orderCount = db.Table_Order.Count();
+                            }
+                            <span class="info-box-number">@orderCount</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="fa fa-user" style="line-height: 2"></i></span>
+                        <div class="info-box-content">
+                      
+                            <span class="info-box-text">کاربران جدید</span>
+                        @{ 
+                            var NewUser = db.Table_User.Count(c=>c.IsOk == true);
+                        }
+                            <span class="info-box-number">@NewUser</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <a href="/ProductManagment">
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                                
+                                <p>  محصولات</p>
+                            </div>
+                            <div class="icon">
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <a href="/BlogManagement">
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <i class="fa fa-fw fas fa-edit"></i>
+                                <p>مطالب</p>
+                            </div>
+                            <div class="icon">
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <a href="/SettingsManagement">
+                        <div class="small-box bg-yellow">
+                            <div class="inner">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <p>تنظیمات</p>
+                            </div>
+                            <div class="icon">
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <a href="/UserManagement/Index">
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <p>کاربران</p>
+                            </div>
+                            <div class="icon">
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div><!-- ./col -->
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12 connectedSortable">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">
+                                نمای کلی
+                            </h3>
+                            <div class="box-tools pull-left">
+                                <button class="btn btn-box-tool" data-widget="collapse" data-tooltip="tooltip" title="باز و بسته شدن"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-green">
+                                        <div class="inner">
+                                            <h3>
+                                                @{ 
+                                                    var blogCount = db.Table_Blog.Count();
+                                                }
+
+                                                @blogCount
+                                            </h3>
+                                            <p>
+                                                مطالب
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-edit" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-gold">
+                                        <div class="inner">
+                                            <h3>
+                                                @{
+                                                    var userCount = db.Table_User.Count();
+                                                }
+                                                @userCount
+                                            </h3>
+                                            <p>
+                                                کاربران
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-user" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-light-blue">
+                                        <div class="inner">
+                                            <h3>
+                                                @{
+                                                    var ProductCount = db.Table_Product.Count();
+                                                }
+                                                @ProductCount
+                                            </h3>
+                                            <p>
+                                                محصولات
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-cart-plus" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-purple">
+                                        <div class="inner">
+                                            <h3>
+                                                @{
+                                                    var ServicesCount = db.Table_Service.Count();
+                                                }
+                                                @ServicesCount
+                                            </h3>
+                                            <p>
+                                                تیکت های پشتیبانی
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-calendar-o" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-teal">
+                                        <div class="inner">
+                                            <h3>
+                                                @*@ApplicationInstance.Application["Totaluser"]*@
+                                                0
+                                            </h3>
+                                           
+                                            <p>
+                                                بازدید کنندگان فعلی
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-line-chart" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="small-box bg-olive">
+                                        <div class="inner">
+                                            <h3>
+                                               0
+                                            </h3>
+                                            <p>
+                                               بازدیدها
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-line-chart" style="line-height: 2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

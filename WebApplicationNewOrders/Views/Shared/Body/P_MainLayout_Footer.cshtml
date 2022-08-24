@@ -1,0 +1,175 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersSettings.Repository.Settings
+
+
+<section class="container-fluid footer">
+    <div class="container p-0">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+                <p class="title-footer un-link"><span>اطلاعات تماس</span></p>
+
+                @{
+                    var query = Repfooter.RepInformationFooter();
+                    if (query.Count > 0)
+                    {
+                        <ul class="footer-info p-0">
+                            @{
+                                foreach (var item in query)
+                                {
+
+                                    <li class="add-link">
+                                        <span class=""></span>
+                                        <span class="">
+                                            @item.Note
+                                        </span>
+
+                                    </li>
+                                    <li class="add-link">
+                                        <span class="add-icon"></span>
+                                        <span class="address">
+                                            @item.Address
+                                        </span>
+
+                                    </li>
+                                    <li>
+                                        <span class="icon-tel"></span>
+                                        <span>تلفن پشتیبانی:</span>
+                                        <span class="tel">
+                                            <span>
+                                                <a href="tel:@item.Phone">
+                                                    @item.Phone
+                                                </a>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="icon-mail"></span>
+                                        <span>پست الکترونیکی:</span>
+                                        <span class="tel">
+                                            <span>
+                                                <a href="mailto:@item.Email">
+                                                    @item.Email
+                                                </a>
+                                            </span>
+                                        </span>
+                                    </li>
+
+                                }
+
+                            }
+                        </ul>
+                    }
+                }
+
+
+            </div>
+            <div class="col-lg-6 p-0 accordion-container">
+                <div class="row">
+                    <div class="col-md-4 col-12 pe-md-2 ps-md-2">
+                        <div class="set">
+                            <span class="service-icon">
+                                <span class="title-footer lnk-footer un-link">
+                                    <span>
+                                        معرفی فروشگاه
+                                    </span>
+                                </span>
+
+                                <i class="fa-chevron-down fas fa-chevron-up" aria-hidden="false"></i>
+                            </span>
+                            <div class="content">
+                                <ul class="lnk-footers ps-0">
+                                    <li><a href="#">نحوه ثبت سفارش</a></li>
+                                    <li><a href="#"> رویه ارسال سفارش</a></li>
+                                    <li><a href="#"> شیوه های پرداخت</a></li>
+                                    <li><a href="#">پرسش هاي رايج </a></li>
+                                    <li><a href="#"> شكايات،انتقادات</a></li>
+                                    <li><a href="#"> شكايات،انتقادات</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 pe-md-2 ps-md-2">
+                        <div class="set">
+                            <span class="service-icon">
+                                <span class="title-footer lnk-footer un-link">
+                                    <span>
+                                        خدمات مشتریان
+                                    </span>
+                                </span>
+
+                                <i class="fa-chevron-down fas fa-chevron-up" aria-hidden="false"></i>
+                            </span>
+                            <div class="content">
+                                <ul class="lnk-footers ps-0">
+                                    <li><a href="#">پاسخ به پرسش ها </a></li>
+                                    <li><a href="#"> دليل انتخاب فروشگاه </a></li>
+                                    <li><a href="#">حريم خصوصي</a></li>
+                                    <li><a href="#">قوانین و مقررات</a></li>
+                                    <li><a href="#"> درباره ما</a></li>
+                                    <li><a href="#"> درباره ما</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 pe-md-2 ps-md-2">
+                        <div class="set">
+                            <span class="service-icon">
+                                <span class="title-footer lnk-footer un-link">
+                                    <span>
+                                        محصولات
+                                    </span>
+                                </span>
+
+
+                                <i class="fa-chevron-down fas fa-chevron-up" aria-hidden="false"></i>
+                            </span>
+                            <div class="content">
+                                @{
+                                    var repp = new RepProducts();
+
+                                    var results = repp.RepositoryMainCategoreisDefault();
+                                    if (results.Count > 0)
+                                    {
+                                        <ul class="lnk-footers ps-0">
+                                            @{
+                                                foreach (var catecoreis in results)
+                                                {
+                                                    <li><a href="@catecoreis.Url">@catecoreis.PrimaryTitle</a></li>
+                                                }
+
+                                            }
+                                        </ul>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-0">
+                <p class="title-footer un-link"><span>گواهینامه ها</span></p>
+
+                @{
+                    var rep = new RepMetaConfiguration();
+                    var result = RepMetaConfiguration.RepositoryMetaConfiguration();
+                    if (result.Count > 0)
+                    { 
+                        <ul class="namd p-0">
+                            @{
+                                foreach (var itemm in result)
+                                {
+                                    <li>
+                                        @Html.Raw(itemm.Note)
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

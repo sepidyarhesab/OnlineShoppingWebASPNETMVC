@@ -1,0 +1,167 @@
+﻿@using OrdersOrders.ViewModels.Orders
+@using WebApplicationOrders.Database
+@using WebApplicationOrders.Models.Database.OrderDatabase
+
+
+@{
+    ViewBag.Title = "علاقه مندی ها|Favorites";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+<div class="page-header">
+    <div class="page-header__container container">
+        <div class="page-header__breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Default">خانه</a>
+                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                            <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="">تکه مسیر</a>
+                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                            <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">علاقه مندی ها</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header__title">
+            <h1>علاقه مندی ها</h1>
+        </div>
+    </div>
+</div>
+<div class="cart block">
+
+    @{
+        decimal summ = 0;
+
+        <div class="container">
+            <table class="cart__table cart-table">
+                <thead class="cart-table__head">
+                    <tr class="cart-table__row text-center">
+                        <th class="cart-table__column cart-table__column--image">تصویر</th>
+                        <th class="cart-table__column cart-table__column--product">کد</th>
+                        <th class="cart-table__column cart-table__column--product">محصول</th>
+                        <th class="cart-table__column cart-table__column--remove">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody class="cart-table__body">
+                    @{
+                        var AddtoFavorites = new List
+                            <VMOrders.VmOrderSubmit>
+                            ();
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            var id = Guid.Parse(User.Identity.Name);
+                            var db = new Orders_Entities();
+                            var query = db.Table_Favorites.Where(c => c.RefUser == id).ToList();
+                            if (query.Count > 0)
+                            {
+                                foreach (var favorite in query)
+                                {
+                                    var item = db.Table_Product.FirstOrDefault(c => c.Code == favorite.Code);
+                                    if (item != null)
+                                    {
+                                        var queryfile =
+                                            db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == item.Id && c.IsMain);
+                                        if (queryfile != null)
+                                        {
+                                            var file = "/Static/Content/Images/Products/" + queryfile.FileName +
+                                                       queryfile.FileExtensions;
+                                            <tr class="cart-table__row text-center">
+                                                <td class="cart-table__column cart-table__column--image">
+                                                    <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })"><img src="@file" alt="@item.PrimaryTitle" width=""></a>
+                                                </td>
+                                                <td class="cart-table__column cart-table__column--product">
+                                                    <a href="" class="cart-table__product-name">@favorite.Code</a>
+                                                </td>
+                                                <td class="cart-table__column cart-table__column--product">
+                                                    <a href="" class="cart-table__product-name">@item.PrimaryTitle</a>
+                                                </td>
+                                               
+                                                <td class="cart-table__column cart-table__column--remove">
+                                                    <a href="/Favorites/DeleteFavorites/@item.Code" class="btn btn-light btn-sm btn-svg-icon">
+                                                        <svg width="15px" height="14px">
+                                                            <use xlink:href="/helper/Layouts/images/sprite.svg#cross-12"></use>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+
+                                }
+                            }
+                            else
+                            {
+                                Session["AddtoFavorites"] = null;
+                            }
+                        }
+                        else
+                        {
+                            if (Session["AddtoFavorites"] != null)
+                            {
+
+                                AddtoFavorites = Session["AddtoFavorites"] as List<VMOrders.VmOrderSubmit>;
+
+                                foreach (var favorite in AddtoFavorites)
+                                {var db = new Orders_Entities();
+                                    var item = db.Table_Product.FirstOrDefault(c => c.Code == favorite.Code);
+                                    if (item != null)
+                                    {
+                                        var queryfile =
+                                           db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == item.Id && c.IsMain);
+                                        if (queryfile != null)
+                                        {
+                                            var file = "/Static/Content/Images/Products/" + queryfile.FileName +
+                                                       queryfile.FileExtensions;
+                                            <tr class="cart-table__row text-center">
+                                                <td class="cart-table__column cart-table__column--image">
+                                                    <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })"><img src="@file" alt="@favorite.Name"></a>
+                                                </td>
+                                                <td class="cart-table__column cart-table__column--product">
+                                                    <a href="" class="cart-table__product-name">@favorite.Code</a>
+                                                </td>
+                                                <td class="cart-table__column cart-table__column--product">
+                                                    <a href="" class="cart-table__product-name">@favorite.Name</a>
+                                                </td>
+
+                                                <td class="cart-table__column cart-table__column--remove">
+                                                    <a href="/Orders/DeleteCarts/@favorite.Code" class="btn btn-light btn-sm btn-svg-icon">
+                                                        <svg width="12px" height="12px">
+                                                            <use xlink:href="/helper/Layouts/images/sprite.svg#cross-12"></use>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+
+                                }
+
+                            }
+
+                        }
+
+
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    }
+
+
+</div>

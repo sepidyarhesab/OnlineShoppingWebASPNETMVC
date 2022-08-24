@@ -1,0 +1,1246 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE2AA408-8BB2-43B2-8E20-F91686904DAA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplicationHamtOrders</RootNamespace>
+    <AssemblyName>WebApplicationHamtOrders</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="ZarinPal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZarinPal-SDK.0.0.7\lib\ZarinPal.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Helper\Admin\Articles.html" />
+    <Content Include="Helper\Admin\Chosen\chosen-sprite%402x.png" />
+    <Content Include="Helper\Admin\Chosen\chosen-sprite.png" />
+    <Content Include="Helper\Admin\Chosen\chosen.css" />
+    <Content Include="Helper\Admin\Chosen\chosen.jquery.js" />
+    <Content Include="Helper\Admin\Chosen\chosen.jquery.min.js" />
+    <Content Include="Helper\Admin\Chosen\chosen.min.css" />
+    <Content Include="Helper\Admin\Chosen\chosen.proto.js" />
+    <Content Include="Helper\Admin\Chosen\chosen.proto.min.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\chosen.png" />
+    <Content Include="Helper\Admin\Chosen\docsupport\init.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\init.proto.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\jquery-1.12.4.min.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\jquery-3.2.1.min.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\oss-credit.png" />
+    <Content Include="Helper\Admin\Chosen\docsupport\prism.css" />
+    <Content Include="Helper\Admin\Chosen\docsupport\prism.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\prototype-1.7.0.0.js" />
+    <Content Include="Helper\Admin\Chosen\docsupport\style.css" />
+    <Content Include="Helper\Admin\Chosen\index.html" />
+    <Content Include="Helper\Admin\Chosen\index.proto.html" />
+    <Content Include="Helper\Admin\Chosen\options.html" />
+    <Content Include="Helper\Admin\Config.js" />
+    <Content Include="Helper\Admin\Content\bootstrap-clockpicker.min.css" />
+    <Content Include="Helper\Admin\Content\bootstrap-select.css" />
+    <Content Include="Helper\Admin\Content\bootstrap-theme.css" />
+    <Content Include="Helper\Admin\Content\bootstrap-theme.min.css" />
+    <Content Include="Helper\Admin\Content\bootstrap.css" />
+    <Content Include="Helper\Admin\Content\bootstrap.min.css" />
+    <Content Include="Helper\Admin\Content\bootstrap.rtl.min.css" />
+    <Content Include="Helper\Admin\Content\font.css" />
+    <Content Include="Helper\Admin\Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Helper\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Helper\Admin\Content\fonts\primary-dana.css" />
+    <Content Include="Helper\Admin\Content\font\primary-aviny.css" />
+    <Content Include="Helper\Admin\Content\font\primary-dastnevis.css" />
+    <Content Include="Helper\Admin\Content\font\primary-droid-naskh.css" />
+    <Content Include="Helper\Admin\Content\font\primary-dubai.css" />
+    <Content Include="Helper\Admin\Content\font\primary-gandom.css" />
+    <Content Include="Helper\Admin\Content\font\primary-helvetica-neue.css" />
+    <Content Include="Helper\Admin\Content\font\primary-iran-sans.css" />
+    <Content Include="Helper\Admin\Content\font\primary-iran-yekan.css" />
+    <Content Include="Helper\Admin\Content\font\primary-lalezar.css" />
+    <Content Include="Helper\Admin\Content\font\primary-myriad.css" />
+    <Content Include="Helper\Admin\Content\font\primary-neirizi.css" />
+    <Content Include="Helper\Admin\Content\font\primary-palatino-sans.css" />
+    <Content Include="Helper\Admin\Content\font\primary-sahel.css" />
+    <Content Include="Helper\Admin\Content\font\primary-shabnam.css" />
+    <Content Include="Helper\Admin\Content\font\primary-vazir.css" />
+    <Content Include="Helper\Admin\Content\font\primary-yekan.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-aviny.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-dastnevis.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-droid-naskh.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-dubai.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-gandom.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-helvetica-neue.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-iran-sans.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-iran-yekan.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-lalezar.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-myriad.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-neirizi.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-palatino-sans.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-sahel.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-shabnam.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-vazir.css" />
+    <Content Include="Helper\Admin\Content\font\secondary-yekan.css" />
+    <Content Include="Helper\Admin\Content\img\logowhite.png" />
+    <Content Include="Helper\Admin\Content\img\logowhitemini.png" />
+    <Content Include="Helper\Admin\Content\iziToast.min.css" />
+    <Content Include="Helper\Admin\Content\jquery-confirm.min.css" />
+    <Content Include="Helper\Admin\Content\jquery.Bootstrap-PersianDateTimePicker.css" />
+    <Content Include="Helper\Admin\Content\panel.css" />
+    <Content Include="Helper\Admin\Content\prism-okaidia.css" />
+    <Content Include="Helper\Admin\Content\sepidyarhesab-custom.css" />
+    <Content Include="Helper\Admin\Content\simple.datagrid.css" />
+    <Content Include="Helper\Admin\Content\timepicker.min.css" />
+    <Content Include="Helper\Admin\Images\default-50x50.gif" />
+    <Content Include="Helper\Admin\Images\user1-128x128.jpg" />
+    <Content Include="Helper\Admin\Images\user6-128x128.jpg" />
+    <Content Include="Helper\Admin\Images\user7-128x128.jpg" />
+    <Content Include="Helper\Admin\Images\user8-128x128.jpg" />
+    <Content Include="Helper\Admin\Index.html" />
+    <Content Include="Helper\Admin\jquery.min.js" />
+    <Content Include="Helper\Admin\Products.html" />
+    <Content Include="Helper\Admin\Sales.html" />
+    <Content Include="Helper\Admin\Scripts\bootstrap-clockpicker.min.js" />
+    <Content Include="Helper\Admin\Scripts\bootstrap.js" />
+    <Content Include="Helper\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Helper\Admin\Scripts\bootstrap.rtl.min.js" />
+    <Content Include="Helper\Admin\Scripts\calendar.js" />
+    <Content Include="Helper\Admin\Scripts\chart.js" />
+    <Content Include="Helper\Admin\Scripts\ckeditor.js" />
+    <Content Include="Helper\Admin\Scripts\example-data.js" />
+    <Content Include="Helper\Admin\Scripts\iziToast.min.js" />
+    <Content Include="Helper\Admin\Scripts\jalaali.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-2.1.1.min.js" />
+    <None Include="Helper\Admin\Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-3.1.0.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Helper\Admin\Scripts\jquery-confirm.min.js" />
+    <Content Include="Helper\Admin\Scripts\jquery.Bootstrap-PersianDateTimePicker.js" />
+    <Content Include="Helper\Admin\Scripts\jquery.min.js" />
+    <Content Include="Helper\Admin\Scripts\panel.js" />
+    <Content Include="Helper\Admin\Scripts\prism.js" />
+    <Content Include="Helper\Admin\Scripts\simple.datagrid.js" />
+    <Content Include="Helper\Admin\Scripts\timepicker.min.js" />
+    <Content Include="Helper\Admin\Support.html" />
+    <Content Include="Helper\Admin\Sweetalert2\sweetalert2.min.css" />
+    <Content Include="Helper\Admin\Sweetalert2\sweetalert2.min.js" />
+    <Content Include="Helper\Admin\User.html" />
+    <Content Include="Helper\Layouts\404.html" />
+    <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
+    <Content Include="Helper\Layouts\assets\css\Invoice-Template.css" />
+    <Content Include="Helper\Layouts\assets\css\mmenu.css" />
+    <Content Include="Helper\Layouts\assets\css\whatsapp.css" />
+    <Content Include="Helper\Layouts\assets\img\amazing-1.png" />
+    <Content Include="Helper\Layouts\assets\img\whatsapp.png" />
+    <Content Include="Helper\Layouts\assets\js\whatsapp.js" />
+    <Content Include="Helper\Layouts\images\avatar\avatar.png" />
+    <Content Include="Helper\Layouts\images\banner\amazing-1.png" />
+    <Content Include="Helper\Layouts\images\banner\amazing-2.png" />
+    <Content Include="Helper\Layouts\images\banner\banner-lg-01.gif" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-01.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-02.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-03.gif" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-04.gif" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-05.gif" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-1.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-md-2.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-profile-sidebar.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-sm-01.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-sm-02.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-sm-03.jpg" />
+    <Content Include="Helper\Layouts\images\banner\banner-sm-04.jpg" />
+    <Content Include="Helper\Layouts\images\banner\lg-banner.jpg" />
+    <Content Include="Helper\Layouts\images\banner\xl-banner.jpg" />
+    <Content Include="Helper\Layouts\images\blog\201019-xiaomi-80w-wireless-charging-2_ht6z-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\20210113_135903-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\blog-detail\WhatsApp-1.jpg" />
+    <Content Include="Helper\Layouts\images\blog\blog-detail\WhatsApp-2.jpg" />
+    <Content Include="Helper\Layouts\images\blog\Chicory-Root-1-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\dacia-bigster-concept-01-1-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\darren-aronofsky-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\Galaxy-S21-Ultra-1-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\john-wilson-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\MacBook-Pro-2-Side-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\S21-Ultra-S-Pen-1-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\samsung-galaxy-buds-pro-2-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\Samsung-Galaxy-S21-1-1-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\samsung-galaxy-smarttag-item-tracker-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\Samsung-SmartThings-Goog-Android-Auto-Integration-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\blog\Samsungs-under-display-camera-284x180.jpg" />
+    <Content Include="Helper\Layouts\images\cart\cart01.jpg" />
+    <Content Include="Helper\Layouts\images\cart\cart02.jpg" />
+    <Content Include="Helper\Layouts\images\cart\cart03.jpg" />
+    <Content Include="Helper\Layouts\images\cart\item-1.jpg" />
+    <Content Include="Helper\Layouts\images\cart\item-2.jpg" />
+    <Content Include="Helper\Layouts\images\cart\item-3.jpg" />
+    <Content Include="Helper\Layouts\images\gallery\01.png" />
+    <Content Include="Helper\Layouts\images\gallery\02.png" />
+    <Content Include="Helper\Layouts\images\gallery\03.png" />
+    <Content Include="Helper\Layouts\images\gallery\04.png" />
+    <Content Include="Helper\Layouts\images\gallery\05.png" />
+    <Content Include="Helper\Layouts\images\gallery\06.png" />
+    <Content Include="Helper\Layouts\images\gallery\07.png" />
+    <Content Include="Helper\Layouts\images\gallery\08.png" />
+    <Content Include="Helper\Layouts\images\icon\Blog.svg" />
+    <Content Include="Helper\Layouts\images\icon\Booking.svg" />
+    <Content Include="Helper\Layouts\images\icon\Categoreis.svg" />
+    <Content Include="Helper\Layouts\images\icon\Contactus.svg" />
+    <Content Include="Helper\Layouts\images\icon\Contactus_f0c77b5f-bdb8-400d-91ed-cedff0105358_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Contactus_f0c77b5f-bdb8-400d-91ed-cedff0105358_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Email.svg" />
+    <Content Include="Helper\Layouts\images\icon\Hearts.svg" />
+    <Content Include="Helper\Layouts\images\icon\Here.svg" />
+    <Content Include="Helper\Layouts\images\icon\Here_43b7610c-cb17-432d-97a2-8a8f20235fe7_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Here_43b7610c-cb17-432d-97a2-8a8f20235fe7_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Home.svg" />
+    <Content Include="Helper\Layouts\images\icon\Home_02251b4f-6951-4fa4-9957-53ba0ce32882_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Home_02251b4f-6951-4fa4-9957-53ba0ce32882_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Instagram.svg" />
+    <Content Include="Helper\Layouts\images\icon\Instagram_8b85ef3e-8606-4c3c-b12d-22a528132a8e_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Instagram_8b85ef3e-8606-4c3c-b12d-22a528132a8e_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Location.svg" />
+    <Content Include="Helper\Layouts\images\icon\Location_8149f008-d5f4-46db-9f7f-d3608aa6c9d6_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Location_8149f008-d5f4-46db-9f7f-d3608aa6c9d6_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\pencil-svgrepo-com.svg" />
+    <Content Include="Helper\Layouts\images\icon\Questions.svg" />
+    <Content Include="Helper\Layouts\images\icon\Questions_5311040c-9bad-483d-821c-8306b4a39cdb_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\Questions_5311040c-9bad-483d-821c-8306b4a39cdb_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Request.svg" />
+    <Content Include="Helper\Layouts\images\icon\ShoppingCarts.svg" />
+    <Content Include="Helper\Layouts\images\icon\ShoppingCarts_1cafaf67-cd42-4ab5-ac62-76e7ee166668_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\ShoppingCarts_1cafaf67-cd42-4ab5-ac62-76e7ee166668_White.svg" />
+    <Content Include="Helper\Layouts\images\icon\Stars.svg" />
+    <Content Include="Helper\Layouts\images\icon\User.svg" />
+    <Content Include="Helper\Layouts\images\icon\User_a0bce529-d2ea-44f9-8a8b-6b0eab128ee0_Black.svg" />
+    <Content Include="Helper\Layouts\images\icon\User_a0bce529-d2ea-44f9-8a8b-6b0eab128ee0_White.svg" />
+    <Content Include="Helper\Layouts\assets\js\mmenu.js" />
+    <Content Include="Helper\Layouts\blog-detail.html" />
+    <Content Include="Helper\Layouts\blog.html" />
+    <Content Include="Helper\Layouts\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Helper\Layouts\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Helper\Layouts\cart.html" />
+    <Content Include="Helper\Layouts\compare-2.html" />
+    <Content Include="Helper\Layouts\compare.html" />
+    <Content Include="Helper\Layouts\contact-us.html" />
+    <Content Include="Helper\Layouts\assets\css\colors\amber.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\blue.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\brown.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\cyan.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\default.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\green.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\indigo.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\orange.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\pink.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\purple.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\red.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\teal.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\yellow.css" />
+    <Content Include="Helper\Layouts\assets\css\custom.css" />
+    <Content Include="Helper\Layouts\assets\css\font-awesome.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\apexcharts.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\jquery.classycountdown.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\nouislider.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\select2.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\sweetalert2.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\swiper.min.css" />
+    <Content Include="Helper\Layouts\assets\css\theme.css" />
+    <Content Include="Helper\Layouts\docs.html" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.svg" />
+    <Content Include="Helper\Layouts\images\logo-light.png" />
+    <Content Include="Helper\Layouts\images\logo.png" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-1.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-2.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-3.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-4.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-5.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-6.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-7.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-8.jpg" />
+    <Content Include="Helper\Layouts\images\main-slider\slider-9.jpg" />
+    <Content Include="Helper\Layouts\images\mega-menu\01.jpg" />
+    <Content Include="Helper\Layouts\images\mega-menu\amazing-offer.jpg" />
+    <Content Include="Helper\Layouts\images\mega-menu\brand-1.jpg" />
+    <Content Include="Helper\Layouts\images\mega-menu\brand-2.jpg" />
+    <Content Include="Helper\Layouts\images\mega-menu\brand-3.jpg" />
+    <Content Include="Helper\Layouts\images\offer-slider\01.jpg" />
+    <Content Include="Helper\Layouts\images\offer-slider\02.jpg" />
+    <Content Include="Helper\Layouts\images\offer-slider\03.jpg" />
+    <Content Include="Helper\Layouts\images\offer-slider\04.jpg" />
+    <Content Include="Helper\Layouts\images\offer-slider\05.jpg" />
+    <Content Include="Helper\Layouts\images\product-list\01.jpg" />
+    <Content Include="Helper\Layouts\images\product-list\02.jpg" />
+    <Content Include="Helper\Layouts\images\product-list\03.jpg" />
+    <Content Include="Helper\Layouts\images\products\01.jpg" />
+    <Content Include="Helper\Layouts\images\products\02.jpg" />
+    <Content Include="Helper\Layouts\images\products\021.jpg" />
+    <Content Include="Helper\Layouts\images\products\022.jpg" />
+    <Content Include="Helper\Layouts\images\products\023.jpg" />
+    <Content Include="Helper\Layouts\images\products\024.jpg" />
+    <Content Include="Helper\Layouts\images\products\025.jpg" />
+    <Content Include="Helper\Layouts\images\products\026.jpg" />
+    <Content Include="Helper\Layouts\images\products\027.jpg" />
+    <Content Include="Helper\Layouts\images\products\028.jpg" />
+    <Content Include="Helper\Layouts\images\products\029.jpg" />
+    <Content Include="Helper\Layouts\images\products\03.jpg" />
+    <Content Include="Helper\Layouts\images\products\030.jpg" />
+    <Content Include="Helper\Layouts\images\products\031.jpg" />
+    <Content Include="Helper\Layouts\images\products\032.jpg" />
+    <Content Include="Helper\Layouts\images\products\033.jpg" />
+    <Content Include="Helper\Layouts\images\products\034.jpg" />
+    <Content Include="Helper\Layouts\images\products\035.jpg" />
+    <Content Include="Helper\Layouts\images\products\036.jpg" />
+    <Content Include="Helper\Layouts\images\products\04.jpg" />
+    <Content Include="Helper\Layouts\images\products\05.jpg" />
+    <Content Include="Helper\Layouts\images\products\06.jpg" />
+    <Content Include="Helper\Layouts\images\products\07.jpg" />
+    <Content Include="Helper\Layouts\images\products\08.jpg" />
+    <Content Include="Helper\Layouts\images\products\file\product-item-1.png" />
+    <Content Include="Helper\Layouts\images\products\file\product-item-md.png" />
+    <Content Include="Helper\Layouts\images\services\debit-card.png" />
+    <Content Include="Helper\Layouts\images\services\delivery-person.png" />
+    <Content Include="Helper\Layouts\images\services\headset.png" />
+    <Content Include="Helper\Layouts\images\services\recieve.png" />
+    <Content Include="Helper\Layouts\images\single-product\01.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\02.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\03.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\04.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\05.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\06.jpg" />
+    <Content Include="Helper\Layouts\images\single-product\07.jpg" />
+    <Content Include="Helper\Layouts\images\theme\404.png" />
+    <Content Include="Helper\Layouts\images\theme\404.svg" />
+    <Content Include="Helper\Layouts\images\theme\add-to-cart.png" />
+    <Content Include="Helper\Layouts\images\theme\amazing-bg.svg" />
+    <Content Include="Helper\Layouts\images\theme\search.svg" />
+    <Content Include="Helper\Layouts\images\theme\shape-top-footer.svg" />
+    <Content Include="Helper\Layouts\index-2.html" />
+    <Content Include="Helper\Layouts\index.html" />
+    <Content Include="Helper\Layouts\assets\js\custom.js" />
+    <Content Include="Helper\Layouts\assets\js\jquery-3.5.1.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\apexcharts.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.classycountdown.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.ez-plus.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.knob.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.nicescroll.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.throttle.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\macy.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\nouislider.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\popper.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\ResizeSensor.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\select2.full.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\sweetalert2.all.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\swiper.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\theia-sticky-sidebar.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\wNumb.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\zoomsl.min.js" />
+    <Content Include="Helper\Layouts\assets\js\theme.js" />
+    <Content Include="Helper\Layouts\login.html" />
+    <Content Include="Helper\Layouts\password-forgot.html" />
+    <Content Include="Helper\Layouts\password-reset.html" />
+    <Content Include="Helper\Layouts\profile-addresses.html" />
+    <Content Include="Helper\Layouts\profile-comments.html" />
+    <Content Include="Helper\Layouts\profile-favorites.html" />
+    <Content Include="Helper\Layouts\profile-my-order-detail.html" />
+    <Content Include="Helper\Layouts\profile-my-orders.html" />
+    <Content Include="Helper\Layouts\profile-notification.html" />
+    <Content Include="Helper\Layouts\profile-personal-info.html" />
+    <Content Include="Helper\Layouts\profile-user-history.html" />
+    <Content Include="Helper\Layouts\profile.html" />
+    <Content Include="Helper\Layouts\promotion-center.html" />
+    <Content Include="Helper\Layouts\register.html" />
+    <Content Include="Helper\Layouts\shipping-payment.html" />
+    <Content Include="Helper\Layouts\shop-left-sidebar-horizontal-card.html" />
+    <Content Include="Helper\Layouts\shop-left-sidebar.html" />
+    <Content Include="Helper\Layouts\shop-right-sidebar-horizontal-card.html" />
+    <Content Include="Helper\Layouts\shop-right-sidebar.html" />
+    <Content Include="Helper\Layouts\shopping-complete-buy-failed.html" />
+    <Content Include="Helper\Layouts\shopping-complete-buy-success.html" />
+    <Content Include="Helper\Layouts\single-product--file.html" />
+    <Content Include="Helper\Layouts\single-product.html" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Static\Content\Gif\Checkmark.gif" />
+    <Content Include="Static\Content\Gif\icons8-shopping-cart %281%29.gif" />
+    <Content Include="Static\Content\Gif\icons8-whatsapp.gif" />
+    <Content Include="Static\Content\Gif\icons8-whatsapp_2.gif" />
+    <Content Include="Static\Content\Gif\success.gif" />
+    <Content Include="Static\Content\Icons\account_100px.png" />
+    <Content Include="Static\Content\Icons\add_100px.png" />
+    <Content Include="Static\Content\Icons\add_to_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\add_user_male_100px.png" />
+    <Content Include="Static\Content\Icons\air_pilot_hat_100px.png" />
+    <Content Include="Static\Content\Icons\back_100px.png" />
+    <Content Include="Static\Content\Icons\back_to_100px.png" />
+    <Content Include="Static\Content\Icons\barcode_100px.png" />
+    <Content Include="Static\Content\Icons\barcode_reader_100px.png" />
+    <Content Include="Static\Content\Icons\basket_100px.png" />
+    <Content Include="Static\Content\Icons\booking_100px.png" />
+    <Content Include="Static\Content\Icons\bug_100px.png" />
+    <Content Include="Static\Content\Icons\call_100px.png" />
+    <Content Include="Static\Content\Icons\cancel_100px.png" />
+    <Content Include="Static\Content\Icons\category_100px.png" />
+    <Content Include="Static\Content\Icons\chart_100px.png" />
+    <Content Include="Static\Content\Icons\checked_user_male_100px.png" />
+    <Content Include="Static\Content\Icons\check_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\circled_play_100px.png" />
+    <Content Include="Static\Content\Icons\clipboard_100px.png" />
+    <Content Include="Static\Content\Icons\clock_100px.png" />
+    <Content Include="Static\Content\Icons\close_window_100px.png" />
+    <Content Include="Static\Content\Icons\comments_100px.png" />
+    <Content Include="Static\Content\Icons\curved_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\database_100px.png" />
+    <Content Include="Static\Content\Icons\data_transfer_100px.png" />
+    <Content Include="Static\Content\Icons\delete_100px.png" />
+    <Content Include="Static\Content\Icons\download_100px.png" />
+    <Content Include="Static\Content\Icons\down_3_100px.png" />
+    <Content Include="Static\Content\Icons\edit_100px.png" />
+    <Content Include="Static\Content\Icons\envelope_100px.png" />
+    <Content Include="Static\Content\Icons\error_cloud_100px.png" />
+    <Content Include="Static\Content\Icons\ethernet_off_100px.png" />
+    <Content Include="Static\Content\Icons\ethernet_on_100px.png" />
+    <Content Include="Static\Content\Icons\female_profile_100px.png" />
+    <Content Include="Static\Content\Icons\file_100px.png" />
+    <Content Include="Static\Content\Icons\filter_100px.png" />
+    <Content Include="Static\Content\Icons\fingerprint_100px.png" />
+    <Content Include="Static\Content\Icons\geography_100px.png" />
+    <Content Include="Static\Content\Icons\graduate_100px.png" />
+    <Content Include="Static\Content\Icons\graduation_cap_100px.png" />
+    <Content Include="Static\Content\Icons\hashtag_large_100px.png" />
+    <Content Include="Static\Content\Icons\high_importance_100px.png" />
+    <Content Include="Static\Content\Icons\home_100px.png" />
+    <Content Include="Static\Content\Icons\important_note_100px.png" />
+    <Content Include="Static\Content\Icons\info_100px.png" />
+    <Content Include="Static\Content\Icons\investment_portfolio_100px.png" />
+    <Content Include="Static\Content\Icons\left_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\licence_100px.png" />
+    <Content Include="Static\Content\Icons\link_100px.png" />
+    <Content Include="Static\Content\Icons\lock_100px.png" />
+    <Content Include="Static\Content\Icons\male_user_100px.png" />
+    <Content Include="Static\Content\Icons\menu_vertical_100px.png" />
+    <Content Include="Static\Content\Icons\minimize_window_100px.png" />
+    <Content Include="Static\Content\Icons\minus_100px.png" />
+    <Content Include="Static\Content\Icons\news_100px.png" />
+    <Content Include="Static\Content\Icons\next_page_100px.png" />
+    <Content Include="Static\Content\Icons\notepad_100px.png" />
+    <Content Include="Static\Content\Icons\notification_100px.png" />
+    <Content Include="Static\Content\Icons\open_envelope_100px.png" />
+    <Content Include="Static\Content\Icons\paid_100px.png" />
+    <Content Include="Static\Content\Icons\person_100px.png" />
+    <Content Include="Static\Content\Icons\picture_100px.png" />
+    <Content Include="Static\Content\Icons\pie_chart_100px.png" />
+    <Content Include="Static\Content\Icons\place_marker_100px.png" />
+    <Content Include="Static\Content\Icons\plus_math_100px.png" />
+    <Content Include="Static\Content\Icons\police_100px.png" />
+    <Content Include="Static\Content\Icons\police_officer_100px.png" />
+    <Content Include="Static\Content\Icons\prev_100px.png" />
+    <Content Include="Static\Content\Icons\printer_100px.png" />
+    <Content Include="Static\Content\Icons\print_100px.png" />
+    <Content Include="Static\Content\Icons\product_100px.png" />
+    <Content Include="Static\Content\Icons\query_100px.png" />
+    <Content Include="Static\Content\Icons\question_mark_100px.png" />
+    <Content Include="Static\Content\Icons\realtime_100px.png" />
+    <Content Include="Static\Content\Icons\recurring_appointment_exception_100px.png" />
+    <Content Include="Static\Content\Icons\remove_from_inbox_100px.png" />
+    <Content Include="Static\Content\Icons\reset_100px.png" />
+    <Content Include="Static\Content\Icons\return_100px.png" />
+    <Content Include="Static\Content\Icons\right_arrow_100px.png" />
+    <Content Include="Static\Content\Icons\right_button_100px.png" />
+    <Content Include="Static\Content\Icons\sale_100px.png" />
+    <Content Include="Static\Content\Icons\save_100px.png" />
+    <Content Include="Static\Content\Icons\search_100px.png" />
+    <Content Include="Static\Content\Icons\secured_letter_100px.png" />
+    <Content Include="Static\Content\Icons\settings_100px.png" />
+    <Content Include="Static\Content\Icons\shutdown_100px.png" />
+    <Content Include="Static\Content\Icons\sorting_100px.png" />
+    <Content Include="Static\Content\Icons\sort_down_100px.png" />
+    <Content Include="Static\Content\Icons\sort_up_100px.png" />
+    <Content Include="Static\Content\Icons\speech_100px.png" />
+    <Content Include="Static\Content\Icons\stack_of_coins_100px.png" />
+    <Content Include="Static\Content\Icons\student_male_100px.png" />
+    <Content Include="Static\Content\Icons\subtract_100px.png" />
+    <Content Include="Static\Content\Icons\system_report_100px.png" />
+    <Content Include="Static\Content\Icons\tag_100px.png" />
+    <Content Include="Static\Content\Icons\test_account_100px.png" />
+    <Content Include="Static\Content\Icons\time_100px.png" />
+    <Content Include="Static\Content\Icons\unavailable_100px.png" />
+    <Content Include="Static\Content\Icons\unread_messages_100px.png" />
+    <Content Include="Static\Content\Icons\update_left_rotation_100px.png" />
+    <Content Include="Static\Content\Icons\upload_100px.png" />
+    <Content Include="Static\Content\Icons\verified_account_100px.png" />
+    <Content Include="Static\Content\Icons\video_100px.png" />
+    <Content Include="Static\Content\Icons\view_100px.png" />
+    <Content Include="Static\Content\Icons\website_100px.png" />
+    <Content Include="Static\Content\Icons\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\Banner\Desktop\Banner_SP-637944295952418615.jpg" />
+    <Content Include="Static\Content\Images\Banner\Mobile\Banner_SP-637944295952418615.jpg" />
+    <Content Include="Static\Content\Images\BlogImages\Blog_sp-999.jpg" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998023241077.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998132998106.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998216688376.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998292131987.png" />
+    <Content Include="Static\Content\Images\Footer\de.jpg" />
+    <Content Include="Static\Content\Images\Footer\Footer.jpg" />
+    <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962434505259329.png" />
+    <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962449238401674.png" />
+    <Content Include="Static\Content\Images\Logo\Logo_SP-637830308030933133.png" />
+    <Content Include="Static\Content\Images\Menu\account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\add_user_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\air_pilot_hat_100px.png" />
+    <Content Include="Static\Content\Images\Menu\back_100px.png" />
+    <Content Include="Static\Content\Images\Menu\back_to_100px.png" />
+    <Content Include="Static\Content\Images\Menu\barcode_100px.png" />
+    <Content Include="Static\Content\Images\Menu\barcode_reader_100px.png" />
+    <Content Include="Static\Content\Images\Menu\basket_100px.png" />
+    <Content Include="Static\Content\Images\Menu\booking_100px.png" />
+    <Content Include="Static\Content\Images\Menu\BPersianCalender.dll" />
+    <Content Include="Static\Content\Images\Menu\bug_100px.png" />
+    <Content Include="Static\Content\Images\Menu\call_100px.png" />
+    <Content Include="Static\Content\Images\Menu\cancel_100px.png" />
+    <Content Include="Static\Content\Images\Menu\category_100px.png" />
+    <Content Include="Static\Content\Images\Menu\chart_100px.png" />
+    <Content Include="Static\Content\Images\Menu\checked_user_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\check_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\circled_play_100px.png" />
+    <Content Include="Static\Content\Images\Menu\clipboard_100px.png" />
+    <Content Include="Static\Content\Images\Menu\clock_100px.png" />
+    <Content Include="Static\Content\Images\Menu\close_window_100px.png" />
+    <Content Include="Static\Content\Images\Menu\comments_100px.png" />
+    <Content Include="Static\Content\Images\Menu\curved_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\database_100px.png" />
+    <Content Include="Static\Content\Images\Menu\data_transfer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\delete_100px.png" />
+    <Content Include="Static\Content\Images\Menu\download_100px.png" />
+    <Content Include="Static\Content\Images\Menu\down_3_100px.png" />
+    <Content Include="Static\Content\Images\Menu\edit_100px.png" />
+    <Content Include="Static\Content\Images\Menu\envelope_100px.png" />
+    <Content Include="Static\Content\Images\Menu\error_cloud_100px.png" />
+    <Content Include="Static\Content\Images\Menu\ethernet_off_100px.png" />
+    <Content Include="Static\Content\Images\Menu\ethernet_on_100px.png" />
+    <Content Include="Static\Content\Images\Menu\female_profile_100px.png" />
+    <Content Include="Static\Content\Images\Menu\file_100px.png" />
+    <Content Include="Static\Content\Images\Menu\filter_100px.png" />
+    <Content Include="Static\Content\Images\Menu\fingerprint_100px.png" />
+    <Content Include="Static\Content\Images\Menu\geography_100px.png" />
+    <Content Include="Static\Content\Images\Menu\graduate_100px.png" />
+    <Content Include="Static\Content\Images\Menu\graduation_cap_100px.png" />
+    <Content Include="Static\Content\Images\Menu\hashtag_large_100px.png" />
+    <Content Include="Static\Content\Images\Menu\high_importance_100px.png" />
+    <Content Include="Static\Content\Images\Menu\home_100px.png" />
+    <Content Include="Static\Content\Images\Menu\important_note_100px.png" />
+    <Content Include="Static\Content\Images\Menu\info_100px.png" />
+    <Content Include="Static\Content\Images\Menu\investment_portfolio_100px.png" />
+    <Content Include="Static\Content\Images\Menu\left_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\licence_100px.png" />
+    <Content Include="Static\Content\Images\Menu\link_100px.png" />
+    <Content Include="Static\Content\Images\Menu\lock_100px.png" />
+    <Content Include="Static\Content\Images\Menu\male_user_100px.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-627-943.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961551632104304.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961555427719868.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961556264499601.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961557087445387.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961557494369896.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961558347574564.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961558662428193.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961559393719505.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961560678677649.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961561732410538.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961562192601543.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961562878193889.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961563613137544.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961565539860341.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961567232030641.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961573164188746.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961573881231836.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961574406412094.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961575093501494.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637963480752079906.png" />
+    <Content Include="Static\Content\Images\Menu\menu_vertical_100px.png" />
+    <Content Include="Static\Content\Images\Menu\minimize_window_100px.png" />
+    <Content Include="Static\Content\Images\Menu\minus_100px.png" />
+    <Content Include="Static\Content\Images\Menu\news_100px.png" />
+    <Content Include="Static\Content\Images\Menu\next_page_100px.png" />
+    <Content Include="Static\Content\Images\Menu\notepad_100px.png" />
+    <Content Include="Static\Content\Images\Menu\notification_100px.png" />
+    <Content Include="Static\Content\Images\Menu\open_envelope_100px.png" />
+    <Content Include="Static\Content\Images\Menu\paid_100px.png" />
+    <Content Include="Static\Content\Images\Menu\person_100px.png" />
+    <Content Include="Static\Content\Images\Menu\picture_100px.png" />
+    <Content Include="Static\Content\Images\Menu\pie_chart_100px.png" />
+    <Content Include="Static\Content\Images\Menu\place_marker_100px.png" />
+    <Content Include="Static\Content\Images\Menu\plus_math_100px.png" />
+    <Content Include="Static\Content\Images\Menu\police_100px.png" />
+    <Content Include="Static\Content\Images\Menu\police_officer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\prev_100px.png" />
+    <Content Include="Static\Content\Images\Menu\printer_100px.png" />
+    <Content Include="Static\Content\Images\Menu\print_100px.png" />
+    <Content Include="Static\Content\Images\Menu\product_100px.png" />
+    <Content Include="Static\Content\Images\Menu\query_100px.png" />
+    <Content Include="Static\Content\Images\Menu\question_mark_100px.png" />
+    <Content Include="Static\Content\Images\Menu\realtime_100px.png" />
+    <Content Include="Static\Content\Images\Menu\recurring_appointment_exception_100px.png" />
+    <Content Include="Static\Content\Images\Menu\remove_from_inbox_100px.png" />
+    <Content Include="Static\Content\Images\Menu\reset_100px.png" />
+    <Content Include="Static\Content\Images\Menu\return_100px.png" />
+    <Content Include="Static\Content\Images\Menu\right_arrow_100px.png" />
+    <Content Include="Static\Content\Images\Menu\right_button_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sale_100px.png" />
+    <Content Include="Static\Content\Images\Menu\save_100px.png" />
+    <Content Include="Static\Content\Images\Menu\search_100px.png" />
+    <Content Include="Static\Content\Images\Menu\secured_letter_100px.png" />
+    <Content Include="Static\Content\Images\Menu\settings_100px.png" />
+    <Content Include="Static\Content\Images\Menu\shutdown_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sorting_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sort_down_100px.png" />
+    <Content Include="Static\Content\Images\Menu\sort_up_100px.png" />
+    <Content Include="Static\Content\Images\Menu\speech_100px.png" />
+    <Content Include="Static\Content\Images\Menu\stack_of_coins_100px.png" />
+    <Content Include="Static\Content\Images\Menu\student_male_100px.png" />
+    <Content Include="Static\Content\Images\Menu\subtract_100px.png" />
+    <Content Include="Static\Content\Images\Menu\system_report_100px.png" />
+    <Content Include="Static\Content\Images\Menu\tag_100px.png" />
+    <Content Include="Static\Content\Images\Menu\test_account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\time_100px.png" />
+    <Content Include="Static\Content\Images\Menu\unavailable_100px.png" />
+    <Content Include="Static\Content\Images\Menu\unread_messages_100px.png" />
+    <Content Include="Static\Content\Images\Menu\update_left_rotation_100px.png" />
+    <Content Include="Static\Content\Images\Menu\upload_100px.png" />
+    <Content Include="Static\Content\Images\Menu\verified_account_100px.png" />
+    <Content Include="Static\Content\Images\Menu\video_100px.png" />
+    <Content Include="Static\Content\Images\Menu\view_100px.png" />
+    <Content Include="Static\Content\Images\Menu\website_100px.png" />
+    <Content Include="Static\Content\Images\Menu\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\Products\Category_SP-637940016467188797.png" />
+    <Content Include="Static\Content\Images\Request\Request_SP-97740.jpeg" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016467188797.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016552269167.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016651301450.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016765780146.png" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529179662153.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529404848484.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637939294505258747.png" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637945321481689444.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637945322052619571.gif" />
+    <Content Include="Static\Content\Images\WhatsApp\Logo_SP-637830308030933133.png" />
+    <Content Include="Static\Content\Images\WhatsApp\Menu_SP-380-803.png" />
+    <Content Include="Static\Content\Images\WhatsApp\Menu_SP-637963501240748205.png" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminCategoriesController.cs" />
+    <Compile Include="Controllers\AdmindashboardController.cs" />
+    <Compile Include="Controllers\AdminMenuManagementController.cs" />
+    <Compile Include="Controllers\BannerManagementController.cs" />
+    <Compile Include="Controllers\BlogCategoriesController.cs" />
+    <Compile Include="Controllers\BlogCategoriesManagementController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\BlogManagementController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesManagementController.cs" />
+    <Compile Include="Controllers\CommentsManagementController.cs" />
+    <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\ConfigurationManagementController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DiscountManagerController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\FavoritesController.cs" />
+    <Compile Include="Controllers\InstallerController.cs" />
+    <Compile Include="Controllers\KnowingController.cs" />
+    <Compile Include="Controllers\LinksManagementController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuManagementController.cs" />
+    <Compile Include="Controllers\MetaConfigurationManagementController.cs" />
+    <Compile Include="Controllers\MoreProductPropertyManagementController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\OrdersMangementController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductManagmentController.cs" />
+    <Compile Include="Controllers\ProductPropertyListController.cs" />
+    <Compile Include="Controllers\ProductSelectionController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ServiceManagementController.cs" />
+    <Compile Include="Controllers\SettingsManagementController.cs" />
+    <Compile Include="Controllers\SlidersManagementController.cs" />
+    <Compile Include="Controllers\SocialManagementController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\TransferManagementController.cs" />
+    <Compile Include="Controllers\UserManagementController.cs" />
+    <Compile Include="Controllers\VerficationMellatPaymentController.cs" />
+    <Compile Include="Controllers\VerficationPaymentController.cs" />
+    <Compile Include="Controllers\VerifyController.cs" />
+    <Compile Include="Controllers\ViewConfigurationAdminController.cs" />
+    <Compile Include="Controllers\WhatsAppManagementController.cs" />
+    <Compile Include="Convertor\DateConvertor.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Helper\Layouts\assets\fonts\DimaMolsaq\DimaMolsaq.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.woff2" />
+    <Content Include="Helper\Admin\Chosen\composer.json" />
+    <Content Include="Helper\Admin\Chosen\LICENSE.md" />
+    <Content Include="Helper\Admin\Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Helper\Admin\Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Helper\Admin\Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Helper\Admin\Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Helper\Admin\Content\fonts\FontAwesome.otf" />
+    <Content Include="Helper\Admin\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Helper\Admin\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Helper\Admin\Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Helper\Admin\Content\fonts\iransans\iransans-web.woff" />
+    <Content Include="Helper\Admin\Content\fonts\iransans\iransans-web_bold.woff" />
+    <Content Include="Helper\Admin\Content\fonts\iransans\iransans-web_light.woff" />
+    <Content Include="Helper\Admin\Content\fonts\iransans\iransans-web_medium.woff" />
+    <Content Include="Helper\Admin\Content\fonts\iransans\iransans-web_ultralight.woff" />
+    <Content Include="Helper\Admin\fonts\87c6c4b6.ttf" />
+    <Content Include="Helper\Admin\fonts\aviny-700.eot" />
+    <Content Include="Helper\Admin\fonts\aviny-700.ttf" />
+    <Content Include="Helper\Admin\fonts\aviny-700.woff" />
+    <Content Include="Helper\Admin\fonts\aviny-700.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-black.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-black.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-black.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-bold.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-bold.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-bold.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-demibold.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-demibold.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-demibold.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-extralight.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-extralight.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-extralight.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-light.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-light.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-light.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-medium.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-medium.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-medium.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-regular.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-regular.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-regular.woff2" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-thin.eot" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-thin.woff" />
+    <Content Include="Helper\Admin\fonts\dana-fanum-thin.woff2" />
+    <Content Include="Helper\Admin\fonts\dastnevis-400.eot" />
+    <Content Include="Helper\Admin\fonts\dastnevis-400.ttf" />
+    <Content Include="Helper\Admin\fonts\dastnevis-400.woff" />
+    <Content Include="Helper\Admin\fonts\dastnevis-400.woff2" />
+    <Content Include="Helper\Admin\fonts\droid-naskh-400.eot" />
+    <Content Include="Helper\Admin\fonts\droid-naskh-400.ttf" />
+    <Content Include="Helper\Admin\fonts\droid-naskh-400.woff" />
+    <Content Include="Helper\Admin\fonts\droid-naskh-400.woff2" />
+    <Content Include="Helper\Admin\fonts\dubai-400.eot" />
+    <Content Include="Helper\Admin\fonts\dubai-400.ttf" />
+    <Content Include="Helper\Admin\fonts\dubai-400.woff" />
+    <Content Include="Helper\Admin\fonts\dubai-400.woff2" />
+    <Content Include="Helper\Admin\fonts\gandom-400.eot" />
+    <Content Include="Helper\Admin\fonts\gandom-400.ttf" />
+    <Content Include="Helper\Admin\fonts\gandom-400.woff" />
+    <Content Include="Helper\Admin\fonts\gandom-400.woff2" />
+    <Content Include="Helper\Admin\fonts\helvetica-neue-700.eot" />
+    <Content Include="Helper\Admin\fonts\helvetica-neue-700.ttf" />
+    <Content Include="Helper\Admin\fonts\helvetica-neue-700.woff" />
+    <Content Include="Helper\Admin\fonts\helvetica-neue-700.woff2" />
+    <Content Include="Helper\Admin\fonts\iran-sans-400.eot" />
+    <Content Include="Helper\Admin\fonts\iran-sans-400.ttf" />
+    <Content Include="Helper\Admin\fonts\iran-sans-400.woff" />
+    <Content Include="Helper\Admin\fonts\iran-sans-400.woff2" />
+    <Content Include="Helper\Admin\fonts\iran-sans-700.eot" />
+    <Content Include="Helper\Admin\fonts\iran-sans-700.ttf" />
+    <Content Include="Helper\Admin\fonts\iran-sans-700.woff" />
+    <Content Include="Helper\Admin\fonts\iran-sans-700.woff2" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-400.eot" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-400.ttf" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-400.woff" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-400.woff2" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-700.eot" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-700.ttf" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-700.woff" />
+    <Content Include="Helper\Admin\fonts\iran-yekan-700.woff2" />
+    <Content Include="Helper\Admin\fonts\lalezar-700.eot" />
+    <Content Include="Helper\Admin\fonts\lalezar-700.ttf" />
+    <Content Include="Helper\Admin\fonts\lalezar-700.woff" />
+    <Content Include="Helper\Admin\fonts\lalezar-700.woff2" />
+    <Content Include="Helper\Admin\fonts\myriad-400.eot" />
+    <Content Include="Helper\Admin\fonts\myriad-400.ttf" />
+    <Content Include="Helper\Admin\fonts\myriad-400.woff" />
+    <Content Include="Helper\Admin\fonts\myriad-400.woff2" />
+    <Content Include="Helper\Admin\fonts\myriad-700.eot" />
+    <Content Include="Helper\Admin\fonts\myriad-700.ttf" />
+    <Content Include="Helper\Admin\fonts\myriad-700.woff" />
+    <Content Include="Helper\Admin\fonts\myriad-700.woff2" />
+    <Content Include="Helper\Admin\fonts\neirizi-400.eot" />
+    <Content Include="Helper\Admin\fonts\neirizi-400.ttf" />
+    <Content Include="Helper\Admin\fonts\neirizi-400.woff" />
+    <Content Include="Helper\Admin\fonts\neirizi-400.woff2" />
+    <Content Include="Helper\Admin\fonts\palatino-sans-400.eot" />
+    <Content Include="Helper\Admin\fonts\palatino-sans-400.ttf" />
+    <Content Include="Helper\Admin\fonts\palatino-sans-400.woff" />
+    <Content Include="Helper\Admin\fonts\palatino-sans-400.woff2" />
+    <Content Include="Helper\Admin\fonts\sahel-400.eot" />
+    <Content Include="Helper\Admin\fonts\sahel-400.ttf" />
+    <Content Include="Helper\Admin\fonts\sahel-400.woff" />
+    <Content Include="Helper\Admin\fonts\sahel-400.woff2" />
+    <Content Include="Helper\Admin\fonts\shabnam-400.eot" />
+    <Content Include="Helper\Admin\fonts\shabnam-400.ttf" />
+    <Content Include="Helper\Admin\fonts\shabnam-400.woff" />
+    <Content Include="Helper\Admin\fonts\shabnam-400.woff2" />
+    <Content Include="Helper\Admin\fonts\shabnam-700.eot" />
+    <Content Include="Helper\Admin\fonts\shabnam-700.ttf" />
+    <Content Include="Helper\Admin\fonts\shabnam-700.woff" />
+    <Content Include="Helper\Admin\fonts\shabnam-700.woff2" />
+    <Content Include="Helper\Admin\fonts\vazir-400.eot" />
+    <Content Include="Helper\Admin\fonts\vazir-400.ttf" />
+    <Content Include="Helper\Admin\fonts\vazir-400.woff" />
+    <Content Include="Helper\Admin\fonts\vazir-400.woff2" />
+    <Content Include="Helper\Admin\fonts\vazir-700.eot" />
+    <Content Include="Helper\Admin\fonts\vazir-700.ttf" />
+    <Content Include="Helper\Admin\fonts\vazir-700.woff" />
+    <Content Include="Helper\Admin\fonts\vazir-700.woff2" />
+    <Content Include="Helper\Admin\fonts\yekan-400.eot" />
+    <Content Include="Helper\Admin\fonts\yekan-400.ttf" />
+    <Content Include="Helper\Admin\fonts\yekan-400.woff" />
+    <Content Include="Helper\Admin\fonts\yekan-400.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\BarcodeFont.ttf" />
+    <None Include="packages.config" />
+    <Content Include="Views\Verify\Index.cshtml" />
+    <Content Include="Views\Blog\BlogMainCategory.cshtml" />
+    <Content Include="Views\Blog\BlogSubCategory.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\MoreBlog.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Categories\Id.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\MainCategory.cshtml" />
+    <Content Include="Views\Categories\SubCategory.cshtml" />
+    <Content Include="Views\Configuration\ShowAllConfiguration.cshtml" />
+    <Content Include="Views\Dashboard\ChangePassword.cshtml" />
+    <Content Include="Views\Dashboard\EditProfile.cshtml" />
+    <Content Include="Views\Dashboard\Factor.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\SubmitPicture.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Favorites\Index.cshtml" />
+    <Content Include="Views\Installer\Error.cshtml" />
+    <Content Include="Views\Installer\Index.cshtml" />
+    <Content Include="Views\Installer\Token.cshtml" />
+    <Content Include="Views\Layouts\_AdminLayouts.cshtml" />
+    <Content Include="Views\Layouts\_MainLayouts.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\OrderFinished.cshtml" />
+    <Content Include="Views\Product\Id.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\ProductPropertyList\Add.cshtml" />
+    <Content Include="Views\ProductPropertyList\Edit.cshtml" />
+    <Content Include="Views\ProductPropertyList\Index.cshtml" />
+    <Content Include="Views\ProductSelection\Product.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\SubmitRegister.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Head.cshtml" />
+    <Content Include="Views\Shared\Body\P_AdminLayout_Header.cshtml" />
+    <Content Include="Views\Shared\Body\P_Banner.cshtml" />
+    <Content Include="Views\Shared\Body\P_Categories.cshtml" />
+    <Content Include="Views\Shared\Body\P_Category_Rating.cshtml" />
+    <Content Include="Views\Shared\Body\P_CopyRight_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_DropdownSize.cshtml" />
+    <Content Include="Views\Shared\Body\P_Invoice_PDF.cshtml" />
+    <Content Include="Views\Shared\Body\P_Invoice_PDF_2.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Footer1.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_head.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_header.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Header_MainMenu.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Header_Mobile.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Mobile_Menu.cshtml" />
+    <Content Include="Views\Shared\Body\P_MainLayout_Script.cshtml" />
+    <Content Include="Views\Shared\Body\P_Panel_Center.cshtml" />
+    <Content Include="Views\Shared\Body\P_Panel_Right.cshtml" />
+    <Content Include="Views\Shared\Body\P_Products.cshtml" />
+    <Content Include="Views\Shared\Body\P_Ratings.cshtml" />
+    <Content Include="Views\Shared\Body\P_Services.cshtml" />
+    <Content Include="Views\Shared\Body\P_Sliders.cshtml" />
+    <Content Include="Views\Shared\Footer\P_Footer.cshtml" />
+    <Content Include="Views\Shared\Head\P_Basket.cshtml" />
+    <Content Include="Views\Shared\Head\P_Header.cshtml" />
+    <Content Include="Views\Shared\Head\P_Search_Desktop.cshtml" />
+    <Content Include="Views\Shared\Product\P_Product_Selection.cshtml" />
+    <Content Include="Views\Shared\Product\P_Product_Sidebar.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Rating.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Sliders.cshtml" />
+    <Content Include="Views\Shared\Product\P_Search_Switcher__List.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductFooter.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductsCarousel.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductTabs.cshtml" />
+    <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\VerficationPayment\Finished.cshtml" />
+    <Content Include="Views\VerficationPayment\Index.cshtml" />
+    <Content Include="Views\VerficationPayment\Indexx.cshtml" />
+    <Content Include="Views\Default\Indexx.cshtml" />
+    <Content Include="Views\Shared\Body\P_LatestProducts.cshtml" />
+    <Content Include="Views\AdminCategories\Add.cshtml" />
+    <Content Include="Views\AdminCategories\Edit.cshtml" />
+    <Content Include="Views\AdminCategories\Index.cshtml" />
+    <Content Include="Views\Admindashboard\Index.cshtml" />
+    <Content Include="Views\AdminMenuManagement\Add.cshtml" />
+    <Content Include="Views\AdminMenuManagement\Edit.cshtml" />
+    <Content Include="Views\AdminMenuManagement\Index.cshtml" />
+    <Content Include="Views\BannerManagement\Add.cshtml" />
+    <Content Include="Views\BannerManagement\Edit.cshtml" />
+    <Content Include="Views\BannerManagement\Index.cshtml" />
+    <Content Include="Views\BlogCategoriesManagement\Add.cshtml" />
+    <Content Include="Views\BlogCategoriesManagement\Edit.cshtml" />
+    <Content Include="Views\BlogCategoriesManagement\Index.cshtml" />
+    <Content Include="Views\BlogManagement\Add.cshtml" />
+    <Content Include="Views\BlogManagement\Edit.cshtml" />
+    <Content Include="Views\BlogManagement\Index.cshtml" />
+    <Content Include="Views\CategoriesManagement\Add.cshtml" />
+    <Content Include="Views\CategoriesManagement\Edit.cshtml" />
+    <Content Include="Views\CategoriesManagement\Index.cshtml" />
+    <Content Include="Views\CommentsManagement\Index.cshtml" />
+    <Content Include="Views\ConfigurationManagement\Add.cshtml" />
+    <Content Include="Views\ConfigurationManagement\AddSelection.cshtml" />
+    <Content Include="Views\ConfigurationManagement\Edit.cshtml" />
+    <Content Include="Views\ConfigurationManagement\Index.cshtml" />
+    <Content Include="Views\DiscountManager\CodeCreate.cshtml" />
+    <Content Include="Views\DiscountManager\CodeEdit.cshtml" />
+    <Content Include="Views\DiscountManager\CodeIndex.cshtml" />
+    <Content Include="Views\DiscountManager\Index.cshtml" />
+    <Content Include="Views\DiscountManager\Indexx.cshtml" />
+    <Content Include="Views\DiscountManager\ProductAdd.cshtml" />
+    <Content Include="Views\DiscountManager\ProductEdit.cshtml" />
+    <Content Include="Views\DiscountManager\ProductIndex.cshtml" />
+    <Content Include="Views\DiscountManager\ProductSelection.cshtml" />
+    <Content Include="Views\LinksManagement\Add.cshtml" />
+    <Content Include="Views\LinksManagement\Edit.cshtml" />
+    <Content Include="Views\LinksManagement\Index.cshtml" />
+    <Content Include="Views\MenuManagement\Add.cshtml" />
+    <Content Include="Views\MenuManagement\AdminEdit.cshtml" />
+    <Content Include="Views\MenuManagement\Edit.cshtml" />
+    <Content Include="Views\MenuManagement\Index.cshtml" />
+    <Content Include="Views\MenuManagement\ListAccess.cshtml" />
+    <Content Include="Views\MetaConfigurationManagement\Add.cshtml" />
+    <Content Include="Views\MetaConfigurationManagement\Edit.cshtml" />
+    <Content Include="Views\MetaConfigurationManagement\Index.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\AddColor.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\AddSize.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\EditColor.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\EditSize.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\IndexColor.cshtml" />
+    <Content Include="Views\MoreProductPropertyManagement\IndexSize.cshtml" />
+    <Content Include="Views\OrdersMangement\Archive.cshtml" />
+    <Content Include="Views\OrdersMangement\ChangeStatus.cshtml" />
+    <Content Include="Views\OrdersMangement\Index.cshtml" />
+    <Content Include="Views\OrdersMangement\Invoice.cshtml" />
+    <Content Include="Views\ProductManagment\Add.cshtml" />
+    <Content Include="Views\ProductManagment\ColorSize.cshtml" />
+    <Content Include="Views\ProductManagment\Edit.cshtml" />
+    <Content Include="Views\ProductManagment\EditColorSize.cshtml" />
+    <Content Include="Views\ProductManagment\Index.cshtml" />
+    <Content Include="Views\ProductManagment\Pictures.cshtml" />
+    <Content Include="Views\ProductManagment\PicturesAdd.cshtml" />
+    <Content Include="Views\ProductManagment\Property.cshtml" />
+    <Content Include="Views\ProductManagment\PropertyAdd.cshtml" />
+    <Content Include="Views\ProductManagment\Sliders.cshtml" />
+    <Content Include="Views\ServiceManagement\Add.cshtml" />
+    <Content Include="Views\ServiceManagement\Edit.cshtml" />
+    <Content Include="Views\ServiceManagement\Index.cshtml" />
+    <Content Include="Views\SettingsManagement\Add.cshtml" />
+    <Content Include="Views\SettingsManagement\Edit.cshtml" />
+    <Content Include="Views\SettingsManagement\Index.cshtml" />
+    <Content Include="Views\SlidersManagement\Add.cshtml" />
+    <Content Include="Views\SlidersManagement\Edit.cshtml" />
+    <Content Include="Views\SlidersManagement\Index.cshtml" />
+    <Content Include="Views\SlidersManagement\Pictures.cshtml" />
+    <Content Include="Views\SocialManagement\Add.cshtml" />
+    <Content Include="Views\SocialManagement\Edit.cshtml" />
+    <Content Include="Views\SocialManagement\Index.cshtml" />
+    <Content Include="Views\UserManagement\Add.cshtml" />
+    <Content Include="Views\UserManagement\DeletedUsers.cshtml" />
+    <Content Include="Views\UserManagement\Edit.cshtml" />
+    <Content Include="Views\UserManagement\Index.cshtml" />
+    <Content Include="Views\ViewConfigurationAdmin\Add.cshtml" />
+    <Content Include="Views\ViewConfigurationAdmin\Edit.cshtml" />
+    <Content Include="Views\ViewConfigurationAdmin\Index.cshtml" />
+    <Content Include="Views\Knowing\Add.cshtml" />
+    <Content Include="Views\Knowing\Index.cshtml" />
+    <Content Include="Views\Knowing\Edit.cshtml" />
+    <Content Include="Views\Knowing\AboutUs.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\ContactUs\ContactUs.cshtml" />
+    <Content Include="Views\ContactUs\Result.cshtml" />
+    <Content Include="Views\Shared\Footer\P_Whatsapp.cshtml" />
+    <Content Include="Views\Shared\Footer\P_RayChat.cshtml" />
+    <Content Include="Views\OrdersMangement\AllOrders.cshtml" />
+    <Content Include="Views\OrdersMangement\Add.cshtml" />
+    <Content Include="Views\Orders\ConnectingToMellat.cshtml" />
+    <Content Include="Views\VerficationMellatPayment\Finished.cshtml" />
+    <Content Include="Views\Dashboard\PDF.cshtml" />
+    <Content Include="Views\Dashboard\Address.cshtml" />
+    <Content Include="Views\Dashboard\AddressUpdate.cshtml" />
+    <Content Include="Views\TransferManagement\Index.cshtml" />
+    <Content Include="Views\Dashboard\AddressAdd.cshtml" />
+    <Content Include="Views\Shared\Body\P_Dropdown_Province.cshtml" />
+    <Content Include="Views\Shared\P_AddressUpdate.cshtml" />
+    <Content Include="Views\Shared\Body\P_Social.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Add.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Edit.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Index.cshtml" />
+    <Content Include="Views\TransferManagement\Create.cshtml" />
+    <Content Include="Views\TransferManagement\Edit.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Browsers\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Static\Content\Excel\" />
+    <Folder Include="Static\Content\Images\Factor\" />
+    <Folder Include="Static\Content\Images\Profile\" />
+    <Folder Include="Static\Content\Images\Sliders\Mobile\" />
+    <Folder Include="Views\Index\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrdersDatabase\OrdersDatabase.csproj">
+      <Project>{56182c87-80d8-4413-ba56-8df9901d0f45}</Project>
+      <Name>OrdersDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersExtentions\OrdersExtentions.csproj">
+      <Project>{affc2c8a-1d6c-40b7-bc82-36519142049b}</Project>
+      <Name>OrdersExtentions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersGeneral\OrdersGeneral.csproj">
+      <Project>{d5b092b0-4317-4098-8c04-598c830de8f4}</Project>
+      <Name>OrdersGeneral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersInventory\OrdersInventory.csproj">
+      <Project>{4719f45a-b243-4df1-9a9f-5933bfab2530}</Project>
+      <Name>OrdersInventory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersMellatPayment\OrdersMellatPayment.csproj">
+      <Project>{972a7af8-ee6c-4e20-9ea6-53fdc07279ce}</Project>
+      <Name>OrdersMellatPayment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersOrders\OrdersOrders.csproj">
+      <Project>{817f0a2b-f661-4397-9420-37e8b039de00}</Project>
+      <Name>OrdersOrders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrdersSettings\OrdersSettings.csproj">
+      <Project>{65f15f59-f757-49a8-8551-c41b10fa8762}</Project>
+      <Name>OrdersSettings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61311</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61311/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

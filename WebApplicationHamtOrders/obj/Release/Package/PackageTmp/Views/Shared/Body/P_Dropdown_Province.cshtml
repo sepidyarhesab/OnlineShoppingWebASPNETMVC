@@ -1,0 +1,13 @@
+﻿@model IEnumerable<OrdersOrders.ViewModels.Orders.VMOrders.VmOrderMangment>
+<option>یک شهرستان انتخاب کنید ...</option>
+@{
+    if (Model != null)
+    {
+        foreach (var location in Model)
+        {
+            <option value="@location.CityRef">@location.CityTitle</option>
+        }
+    }
+
+}
+

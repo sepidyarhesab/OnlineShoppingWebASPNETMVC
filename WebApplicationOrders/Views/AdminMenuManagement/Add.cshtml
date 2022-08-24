@@ -1,0 +1,204 @@
+﻿@using OrdersGeneral.Repository.General
+
+
+@{
+    ViewBag.Title = "افزودن فهرست جدید";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+                    @using (Html.BeginForm("Generate", "AdminMenuManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="box-header">
+                            <i class="fa fa-menu"></i>
+                            <h3 class="box-title">افزودن فهرست جدید</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-horizontal">
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="PrimaryTitle">نام فهرست اول</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="نام فهرست اول" type="text" value="" onfocusout="checkinputmenu()" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <label class="control-label col-md-2" for="SecondaryTitle">نام فهرست دوم</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="نام فهرست دوم" type="text" value="" onfocusout="checkinputmenu()" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" onfocusout="checkinputmenu()" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    <label class="control-label col-md-2" for="Url">لینک</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="" onfocusout="checkinputmenu()" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="TertiaryTitle">درج آیکن</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control text-box single-line" id="TertiaryTitle" name="TertiaryTitle" placeholder="درج آیکن" type="text" value="" onfocusout="checkinputmenu()" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <label class="control-label col-md-2">دسته بندی</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control " id="CategoryRef" name="CategoryRef" onfocusout="checkinputProduct()">
+                                            @{
+                                                var category = RepAdminCategories.RepositoryAdminCategoriesManagement();
+
+                                                foreach (var item in category)
+                                                {
+                                                    <option selected="@(item.Code == "1" ? "selected" : string.Empty)" value="@item.Id">@item.PrimaryTitle</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                    <script>
+                                        function isNumberKey(evt) {
+                                            var charCode = (evt.which) ? evt.which : evt.keyCode;
+                                            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                                return false;
+                                            return true;
+                                        }
+
+                                    </script>
+
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" for="Title">وضعیت</label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="IsOk" name="IsOk" onfocusout="checkinputmenu()">
+                                                <option selected="selected" value="1">فعال</option>
+                                                <option value="0">غیر فعال</option>
+
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Section" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <label class="control-label col-md-2" for="Title">عکس آیکن</label>
+                                        <div class="col-md-4">
+                                            <input class="form-control text-box single-line" id="FileName" name="FileName" placeholder="عکس آیکن" type="file" value="" onfocusout="checkinputslider()" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="box-footer clearfix">
+                            <div class="col-md-12 col-md-offset-9">
+                                <button type="submit" class="btn btn-labeled bg-green-active" id="Submit"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                <a href="/AdminMenuManagement/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<script>
+    function checkinputmenu() {
+        var _PrimaryTitle = document.getElementById("PrimaryTitle");
+        var _SecondaryTitle = document.getElementById("SecondaryTitle");
+        var _Sort = document.getElementById("Sort");
+        var _IsOk = document.getElementById("IsOk");
+        var _Url = document.getElementById("Url");
+        var _TertiaryTitle = document.getElementById("TertiaryTitle");
+        var _submit = document.getElementById("Submit");
+        if (_PrimaryTitle.value.length === 0) {
+            iziToast.error({
+                title: name + ' عنوان اول را وارد کنید ',
+                rtl: true,
+                position: 'topLeft'
+            });
+            _PrimaryTitle.style.borderColor = "red";
+            _submit.disabled = true;
+        } else {
+            _PrimaryTitle.style.borderColor = "green";
+            _submit.disabled = false;
+            if (_SecondaryTitle.value.length === 0) {
+                iziToast.error({
+                    title: name + ' عنوان دوم را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _SecondaryTitle.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _SecondaryTitle.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_IsOk.value.length === 0) {
+                iziToast.error({
+                    title: name + ' وضعیت را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _IsOk.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _IsOk.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_Url.value.length === 0) {
+                iziToast.error({
+                    title: name + ' لینک را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _Url.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _Url.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_TertiaryTitle.value.length === 0) {
+                iziToast.error({
+                    title: name + ' آیکون را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _TertiaryTitle.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _TertiaryTitle.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_Sort.value.length === 0) {
+                iziToast.error({
+                    title: name + ' شماره مرتب سازی را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _Sort.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _Sort.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+
+        }
+
+    }
+</script>
+

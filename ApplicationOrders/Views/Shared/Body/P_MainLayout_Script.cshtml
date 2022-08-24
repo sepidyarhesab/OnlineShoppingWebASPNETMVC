@@ -1,0 +1,339 @@
+﻿<!-- All JavaScript Files -->
+<script src="/Helper/Layouts/js/bootstrap.bundle.min.js"></script>
+<script src="/Helper/Layouts/js/slideToggle.min.js"></script>
+<script src="/Helper/Layouts/js/internet-status.js"></script>
+<script src="/Helper/Layouts/js/tiny-slider.js"></script>
+<script src="/Helper/Layouts/js/baguetteBox.min.js"></script>
+@*<script src="/Helper/Layouts/js/countdown.js"></script>*@
+<script src="/Helper/Layouts/js/rangeslider.min.js"></script>
+<script src="/Helper/Layouts/js/vanilla-dataTables.min.js"></script>
+<script src="/Helper/Layouts/js/index.js"></script>
+<script src="/Helper/Layouts/js/magic-grid.min.js"></script>
+<script src="/Helper/Layouts/js/dark-rtl.js"></script>
+<script src="/Helper/Layouts/js/active.js"></script>
+<!-- PWA -->
+<script src="/Helper/Layouts/js/pwa.js"></script>
+
+
+<script>
+    svg4everybody();
+</script>
+<!-- Main Javascript File -->
+<script src="~/Helper/Admin/Scripts/iziToast.min.js"></script>
+
+
+
+<script>
+    ///////////////// fixed menu on scroll for desktop
+    if ($(window).width() > 992) {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#navbar_top').addClass("fixed-top");
+                // add padding top to show content behind navbar
+                $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+            } else {
+                $('#navbar_top').removeClass("fixed-top");
+                // remove padding top from body
+                $('body').css('padding-top', '0');
+            }
+        });
+    } // end if
+</script>
+<script>
+    ///////////////// fixed menu on scroll for desktop
+    if ($(window).width() < 992) {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#navbar_mobile').addClass("fixed-top");
+                // add padding top to show content behind navbar
+                $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+            } else {
+                $('#navbar_mobile').removeClass("fixed-top");
+                // remove padding top from body
+                $('body').css('padding-top', '0');
+            }
+        });
+    } // end if
+</script>
+
+@*<script>
+        ///////////////// fixed menu on scroll for desktop
+        if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#navbar_top').addClass("fixed-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#navbar_top').removeClass("fixed-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if
+    </script>
+    <script>
+        ///////////////// fixed menu on scroll for desktop
+        if ($(window).width() < 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 20) {
+                    $('#navbar_mobile').addClass("fixed-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#navbar_mobile').removeClass("fixed-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if
+    </script>
+
+    <script>
+        ///////////////// fixed menu on scroll for desktop
+        if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#block-sidebar-news-details').addClass("sticky-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#block-sidebar-news-details').removeClass("sticky-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if
+    </script>
+    <script>
+        ///////////////// fixed menu on scroll for desktop
+        if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.block-sidebar').addClass("sticky-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('.block-sidebar').removeClass("sticky-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if
+    </script>*@
+
+
+
+
+
+<script>
+    $(document).on('keydown', '.farsi', function (e) {
+        console.log(e.key);
+        if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab' || e.key == 'Backspace')
+            return;
+
+        if (!e.key.match(/^[ا آ ئ ب پ ت ث ج چ ح خ د ذ ر ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن و ه ی]+$/)) {
+            iziToast.error({
+                title: 'خطای ورودی اطلاعات',
+                message: 'لطفا کیبورد خود را فارسی کنید',
+                rtl: true, position: 'topRight',
+            });
+            e.preventDefault();
+        }
+
+    });
+</script>
+
+<script>
+    $(document).on('keydown', '.numeric', function (e) {
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+            return;
+        }
+
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            iziToast.error({
+                title: 'خطای ورودی اطلاعات',
+                message: 'لطفا فقط عدد (انگلیسی) وارد کنید',
+                rtl: true, position: 'topRight',
+            });
+            e.preventDefault();
+        }
+    });
+</script>
+<script>
+    $(document).on('keydown', '.engelish', function (e) {
+        console.log(e.key);
+        if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab')
+            return;
+
+        if (!e.key.match(/^[0-9 a-z A-Z]+$/)) {
+            iziToast.error({
+                title: 'خطای ورودی اطلاعات',
+                message: 'لطفا کیبورد خود را انگلیسی کنید',
+                rtl: true, position: 'topRight',
+            });
+            e.preventDefault();
+        }
+
+    });
+
+
+</script>
+@if (TempData["JavaScriptFunction"] != null)
+{
+    <script>
+        @Html.Raw(TempData["JavaScriptFunction"])
+    </script>
+}
+
+
+<script>
+    function SuccessAdd(name) {
+        iziToast.success({
+            title: name + ' به سبد خرید اضافه شد ',
+            rtl: true,
+            position: 'bottomLeft'
+        });
+    }
+</script>
+
+<script>
+    function ErrorNoSale() {
+        iziToast.error({
+            title: ' مشتری گرامی ؛ از تاریخ 1400/12/21 لغایت 1401/01/06 سفارشی صورت نخواهد گرفت ',
+            rtl: true,
+            position: 'center',
+            timeout: 5000000000000000
+        });
+    }
+</script>
+
+<script>
+    function SuccessDiscount(sum) {
+        iziToast.success({
+            title: ' مبلغ : ' + sum + " تخفیف برای شما لحاظ شد ",
+            rtl: true,
+            position: 'bottomLeft'
+        });
+    }
+</script>
+<script>
+    function submitdiscount(sum, transferPay) {
+        var x = document.getElementById('discountcheck').value;
+        var y = document.getElementById('input-coupon-code').value;
+        var dis = document.getElementById('discountproduct').innerHTML;
+        if (x === true) {
+
+        } else {
+            $.ajax({
+                url: "/Carts/UseDiscount",
+                type: "Post",
+                data: { sum: sum, code: y }
+            }).done(function (result) {
+                document.getElementById("discounvalue").innerHTML = (parseInt(dis) + parseInt(result)) + " " + "تومان";
+                document.getElementById("allSum").innerHTML = ((sum + transferPay) - (parseInt(dis) + parseInt(result))) + " " + "تومان";
+                document.getElementById("discountcheck").value = true;
+                document.getElementById("btndiscount").disabled = true;
+                document.getElementById("input-coupon-code").disabled = true;
+
+                sessionStorage.setItem('SumPayment', sum - (dis + result));
+                $.ajax({
+                    url: "/Orders/FinalSum",
+                    type: "Post",
+                    data: { sum: ((sum + transferPay) - (parseInt(dis) + parseInt(result))) }
+                });
+                SuccessDiscount(sum);
+            });
+        }
+    }
+</script>
+
+<script>
+    function AddToCart(id, name, fee, guid) {
+        var x = document.getElementById('product-quantity').value;
+        SuccessAdd(name);
+        $.ajax({
+            url: "/Orders/AddToCarts",
+            type: "Post",
+            data: { id: id, name: name, fee: fee, quantity: x, guid: guid, CategoriesRef: null }
+        }).done(function (result) {
+            $("#shopcarts").html(result);
+            window.location.href = "/Carts";
+        });
+    }
+</script>
+
+
+<script>
+    function AddToCartWithSize(id, name, fee, guid) {
+        var x = document.getElementById('product-quantity').value;
+        var y = document.getElementById('color').value;
+        var z = document.getElementById('SizeDropDown').value;
+        
+        if (y === "00000000-0000-0000-0000-000000000000") {
+            alert("یک رنگ را انتخاب کنید");
+            document.getElementById('color').style.border = "1px solid red";
+        } else {
+            $.ajax({
+                url: "/Orders/AddToCartsWithSize",
+                type: "Post",
+                data: { id: id, name: name, fee: fee, quantity: x, Color: y, Size: z, Guid: guid }
+            }).done(function (result) {
+                $("#shopcarts").html(result);
+                window.location.href = "/Carts";
+            });
+        }
+    }
+</script>
+<script>
+    function AddToFavorites(id, name) {
+        $.ajax({
+            url: "/Favorites/AddToFavorites",
+            type: "Post",
+            data: { id: id, name: name }
+        }).done(function (result) {
+            $("#shopFavorites").html(result);
+        });
+    }
+</script>
+<script>
+    function DeleteCart(id) {
+        $.ajax({
+            url: "/Orders/DeleteCarts",
+            type: "Post",
+            data: { id: id }
+        }).done();
+    }
+</script>
+<script>
+    function DeleteFavorites(id) {
+        $.ajax({
+            url: "/Favorites/DeleteFavorites",
+            type: "Post",
+            data: { id: id }
+        }).done();
+    }
+</script>
+<script>
+    $(function () {
+        $("#shopcarts").load("/Orders/CartsCount");
+    });
+    $(function () {
+        $("#shopcarts2").load("/Orders/CartsCount");
+    });
+    $(function () {
+        $("#shopFavorites").load("/Favorites/FavoritesCount");
+    });
+    $(function () {
+        $("#shopFavorites2").load("/Favorites/FavoritesCount");
+    });
+</script>
+
+
+<script src="~/Helper/Layouts/js/intro.min.js"></script>
+
+
+
+

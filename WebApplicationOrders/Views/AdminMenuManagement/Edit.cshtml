@@ -1,0 +1,128 @@
+﻿@using OrdersGeneral.Repository.General
+@model OrdersGeneral.ViewModels.General.VmMenuAdmin.VmMenuAdminManagement
+@{
+    ViewBag.Title = "ویرایش فهرست";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+
+                    @{
+                        if (Model != null)
+                        {
+
+                            using (Html.BeginForm("Update", "AdminMenuManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="box-header">
+                                    <i class="fa fa-envelope"></i>
+                                    <h3 class="box-title">ویرایش فهرست</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-horizontal">
+
+                                        @{
+
+                                            <input type="hidden" name="Id" id="Id" value="@Model.Id">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان فرعی" type="text" value="@Model.SecondaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@Model.Sort" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="Url">لینک</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@Model.Url" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Title">وضعیت</label>
+                                                <div class="col-md-4">
+                                                    <select class="form-control" id="IsOk" name="IsOk">
+                                                        <option selected="selected" value="1">فعال</option>
+                                                        <option value="0">غیر فعال</option>
+
+                                                    </select>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Section" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                                <label class="control-label col-md-2" for="TertiaryTitle">آیکن</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="TertiaryTitle" name="TertiaryTitle" placeholder="آیکون" type="text" value="@Model.TertiaryTitle" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">دسته بندی</label>
+                                                <div class="col-md-4">
+                                                    <select class="form-control " id="CategoryRef" name="CategoryRef" onfocusout="checkinputProduct()">
+                                                        @{
+                                                            var category = RepAdminCategories.RepositoryAdminCategoriesManagement();
+                                                            if (category.Count > 0)
+                                                            {
+                                                                foreach (var item in category)
+                                                                {
+                                                                    if (item.Id == Model.CategoryRef)
+                                                                    {
+                                                                        <option value="@item.Id" selected="selected">@item.PrimaryTitle</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@item.Id">@item.PrimaryTitle</option>
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
+                                                    </select>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                <div class="box-footer clearfix">
+                                    <div class="col-md-12 col-md-offset-9">
+                                        <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                        <a href="/AdminMenuManagement/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+
+
+                    }
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+

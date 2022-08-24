@@ -1,0 +1,83 @@
+﻿@using OrdersExtentions.Extensions
+@using OrdersGeneral.Repository.General
+
+
+@{ ViewBag.Title = "افزودن مکالمه جدید|Add New Conversation";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                <div class="box box-info">
+                    @using (Html.BeginForm("Generate", "WhatsAppManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        var random = SepidyarHesabCodeGenerator.GenerateCode("", "");
+        @Html.AntiForgeryToken()
+                        <div class="box-header">
+                            <i class="fa fa-envelope"></i>
+                            <h3 class="box-title"> افزودن مکالمه آنلاین با کارشناسان جدید</h3>
+                        </div>
+                                        <div class="box-body">
+                                            <div class="form-horizontal">
+
+                                                <div class="form-group">
+                                                   <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="" onfocusout="checkinputSocial()" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="" onfocusout="checkinputSocial()" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Code">کد</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@random" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    <label class="control-label col-md-2" for="Title">وضعیت</label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" id="IsOk" name="IsOk" onfocusout="checkinputmenu()">
+                                                            <option selected="selected" value="1">فعال</option>
+                                                            <option value="0">غیر فعال</option>
+
+                                                        </select>
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Section" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="FileNameDesktop">عکس آیکون</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="FileName" name="FileName" placeholder="عکس آیکون" type="file" value="" onfocusout="checkinputslider()"/>
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="box-footer clearfix">
+                                                <div class="col-md-12 col-md-offset-9">
+
+                                                    <button type="submit" class="btn btn-labeled bg-green-active" id="Submit"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                                    <a href="/WhatsAppManagement" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                                </div>
+                                            </div>
+
+                                        </div>}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

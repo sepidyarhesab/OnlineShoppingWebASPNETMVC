@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+    <section class="content-header">
+        <h2>داشبورد</h2>
+    </section>
+
+<section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-lg-12 connectedSortable">
+                    <div class="box box-info">
+
+                        @{
+                            if (Model != null)
+                            {
+                                using (Html.BeginForm("EditRow", "BannerManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="box-header">
+                                        <i class="fa fa-envelope"></i>
+                                        <h3 class="box-title">ویرایش بنرها</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-horizontal">
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="@Model.Sort" pattern="\D" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="Url">لینک</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@Model.Url" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="PrimaryTitle">عنوان اصلی</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Name" name="PrimaryTitle" placeholder="نام کاربر " type="text" value="@Model.PrimaryTitle"  />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="SecondaryTitle">عنوان فرعی</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان فرعی" type="text" value="@Model.SecondaryTitle"  />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="FileNameDesktop">عکس کامپیوتر</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="FileNameDesktop" name="FileNameDesktop" placeholder="" type="file" value="@Model.FileName" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                                <label class="control-label col-md-2" for="FileNameMobile">عکس موبایل</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="FileNameMobile" name="FileNameMobile" placeholder="" type="file" value="@Model.FileName" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-footer clearfix">
+                                        <div class="col-md-12 col-md-offset-9">
+                                            <button type="submit" class="btn btn-labeled bg-green-active" id=""> <i class="fa fa-check-square"></i> ذخیره</button>
+                                            <a href="/BannerManagement" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+

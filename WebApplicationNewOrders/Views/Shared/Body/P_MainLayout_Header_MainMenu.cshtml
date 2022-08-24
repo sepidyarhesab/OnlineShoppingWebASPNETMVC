@@ -1,0 +1,133 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersSettings.Repository.Settings
+<div class="row row-header">
+    <div class="col-12  menu">
+        <nav class="c-navi js-navi">
+            <div class="c-navi__row">
+                <ul class="c-navi-new-list">
+                    <li class="c-navi-new-list__categories">
+                        <ul class="c-navi-new-list__category-item p-0">
+                            <li class="c-navi-new-list__a-hover js-navi-new-list-category-hover" style="width: 72px; right: 964.9px; transform: scaleX(0);">
+                                <div></div>
+                            </li>
+
+                            <li class="has-sub" data-departments-fixed-by="">
+                                <a href="">
+                                    دسته بندی ها<i class="fas fa-chevron-down"></i>
+                                </a>
+                                @{
+                                    var rep = new RepProducts();
+                                    var category = rep.RepositoryMainCategoreis();
+                                    if (category.Count > 0)
+                                    {
+                                        <ul>
+                                            @{
+                                                foreach (var item in category)
+                                                {
+
+                                                    if (item.ViewModelSubCategoreis != null)
+                                                    {
+                                                        <li class="nav-item">
+                                                            <a href="@Url.RouteUrl("MainCategories", new {id = item.Id.ToString()})">@item.PrimaryTitle <svg class="departments__link-arrow" width="6px" height="9px"><use xlink:href="/Helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use></svg></a>
+
+                                                            @{
+
+                                                                if (item.ViewModelSubCategoreis != null)
+                                                                {
+                                                                    <!-- .menu -->
+                                                                    <ul>
+                                                                        @{
+
+                                                                            foreach (var subCategoreis in item.ViewModelSubCategoreis)
+                                                                            {
+
+                                                                                <li class="nav-item"><a href="@Url.RouteUrl("Categories", new {id = subCategoreis.Id.ToString()})">@subCategoreis.PrimaryTitle</a></li>
+                                                                            }
+
+                                                                        }
+
+
+                                                                    </ul>
+                                                                    <!-- .menu / end -->
+                                                                }
+                                                            }
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="nav-item">
+                                                            <a href="@Url.RouteUrl("MainCategories", new {id = item.Id.ToString()})">@item.PrimaryTitle </a>
+                                                        </li>
+                                                    }
+                                                }
+                                            }
+                                        </ul>
+                                    }
+
+                                }
+
+                            </li>
+                        
+
+                            @*<li class="has-sub">
+                            <a href="blog.html">
+                                بلاگ<i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul>
+                                <li class="nav-item">
+                                    <a href="blog.html" class="nav-link">لیست بلاگ </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="blog-detail.html" class="nav-link">  نمایش جزئیات وبلاگ</a>
+                                </li>
+                            </ul>
+                        </li>*@
+                        
+                            @{
+                                var menu = RepMenu.RepositoryMainMenu();
+                                if (menu.Count > 0)
+                                {
+                                    foreach (var item in menu)
+                                    {
+                                        <li  class="js-categories-bar-item">
+                                            <a href="@item.Url" class="c-navi-new-list__category-link  c-navi-new-list__category-link--bold">
+                                                <span>
+                                                    <img src="@item.Icon" width="20" height="20" class="icon-space">
+                                                    @item.PrimaryTitle
+                                                </span>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+                            }
+
+                        </ul>
+                    </li>
+                    
+
+                    <li class="ms-auto support ">
+                        <span>پشتیبانی:</span>
+                        
+                        @{
+                            var phone = Repfooter.RepInformationFooter();
+                            if (phone.Count > 0)
+                            {
+                                foreach (var item in phone)
+                                {
+                                                <span>
+                                                    <a href="tel:@item.Phone">
+                                                        <span class="ltr_text">@item.Phone</span>
+                                                    </a>
+                                                </span>
+                                }
+                            }
+                        }
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

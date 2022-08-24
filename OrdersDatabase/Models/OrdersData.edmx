@@ -1,0 +1,2902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Orders_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Table_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CityRef" Type="int" Nullable="false" />
+          <Property Name="UserRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Entites" Type="nvarchar" MaxLength="150" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Click" Type="bigint" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="summary" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="CategoryRef" Type="uniqueidentifier" />
+          <Property Name="Tag" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Table_Blog_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="ParentRef" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Rating" Type="tinyint" Nullable="false" />
+          <Property Name="ProductRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Likes" Type="bigint" Nullable="false" />
+          <Property Name="Dislikes" Type="bigint" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="ParentRef" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Table_ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Objects" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Knowing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Links">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecendryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Table_Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Title_En" Type="nvarchar" MaxLength="250" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parent" Type="int" />
+          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Creator" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModifier" Type="int" />
+          <Property Name="LastModificationDate" Type="datetime" />
+          <Property Name="MinistryofFinanceCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxFileCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="Click" Type="bigint" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MenuRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserRef" Type="uniqueidentifier" />
+          <Property Name="RoleRef" Type="uniqueidentifier" />
+          <Property Name="PictureRef" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="CategoryRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAdmin_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Table_Selection_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="tertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" />
+          <Property Name="ModifierDate" Type="datetime" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CategoriesRef" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecendryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Table_Site_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecendaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_SocialMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Static_SocialMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Keys" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Entities" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RoleRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LanguageRef" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Identification" Type="nvarchar" MaxLength="10" />
+          <Property Name="RegisterCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="EconomicCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="BirthDay" Type="date" />
+          <Property Name="IsMarried" Type="bit" Nullable="false" />
+          <Property Name="MarriedDay" Type="date" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="ArchiveCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PersonalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Jobs" Type="uniqueidentifier" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsInBlacklist" Type="bit" Nullable="false" />
+          <Property Name="IsSpecial" Type="bit" Nullable="false" />
+          <Property Name="Favorite" Type="int" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CommissionPercent" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Color" Type="uniqueidentifier" />
+          <Property Name="Size" Type="int" />
+          <Property Name="SizeRef" Type="uniqueidentifier" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Whatsapp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="350" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Favorites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ref" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecendaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="RefItem" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RefUser" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_File_Upload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ref" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LanguageRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Schemas" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tables" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FileLenght" Type="bigint" Nullable="false" />
+          <Property Name="FileExtensions" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="FileUniqeName" Type="nvarchar" MaxLength="205" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Price_DisCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DiscountCode" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DiscountPrecent" Type="int" Nullable="false" />
+          <Property Name="UsableCount" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Click" Type="bigint" />
+          <Property Name="CategoriesRef" Type="uniqueidentifier" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="ParentRef" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_Product_Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Ref" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Keys" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Entity" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" />
+        </EntityType>
+        <EntityType Name="Table_Product_PropertyList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="ProductRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ColorRef" Type="uniqueidentifier" />
+          <Property Name="SizeRef" Type="uniqueidentifier" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_Product_Selection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TertitatyTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" />
+          <Property Name="ModifierDate" Type="datetime" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="ConfigurationRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="SizeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Summary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ColorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SizeRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StockRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SaleRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Discount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiscountCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountFee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountUsed" Type="int" />
+          <Property Name="DiscountCount" Type="int" />
+          <Property Name="DiscountUser" Type="uniqueidentifier" />
+          <Property Name="DiscountQuantity" Type="int" />
+          <Property Name="Entities" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="ProductRef" Type="uniqueidentifier" />
+          <Property Name="CategoriesRef" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="TransactionCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsPay" Type="bit" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Duty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Addition" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NetPrice" Type="decimal" Precision="21" Scale="0" StoreGeneratedPattern="Computed" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Order_Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SizeRef" Type="uniqueidentifier" />
+          <Property Name="ColorRef" Type="uniqueidentifier" />
+          <Property Name="ItemRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Addition" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Duty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Table_Transfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TransferPay" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CityRef" Type="int" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Meta_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="100" />
+          <Property Name="NationalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EndDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SeconderyTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Instagram" Type="nvarchar" MaxLength="300" />
+          <Property Name="Telegram" Type="nvarchar" MaxLength="300" />
+          <Property Name="Whatsapp" Type="nvarchar" MaxLength="300" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="300" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="300" />
+          <Property Name="Aparat" Type="nvarchar" MaxLength="300" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="LoginType" Type="bit" Nullable="false" />
+          <Property Name="SiteTypeRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_SMS_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Messages" Type="nvarchar(max)" />
+          <Property Name="UserRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_View_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="View" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_InsertOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Order">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Firstname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lastname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProductCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+          <Parameter Name="TransactionCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeliveryCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quantity" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsPay" Type="bit" Mode="In" />
+          <Parameter Name="Discount" Type="decimal" Mode="In" />
+          <Parameter Name="Tax" Type="decimal" Mode="In" />
+          <Parameter Name="Duty" Type="decimal" Mode="In" />
+          <Parameter Name="Addition" Type="decimal" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+          <Parameter Name="IsOk" Type="bit" Mode="In" />
+          <Parameter Name="ModifierRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ModifierDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatorRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CreatorDate" Type="datetime" Mode="In" />
+          <Parameter Name="Version" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertOrderItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Order">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="OrderRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ItemCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quantity" Type="decimal" Mode="In" />
+          <Parameter Name="Fee" Type="decimal" Mode="In" />
+          <Parameter Name="SizeRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ColorRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ItemRef" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Discount" Type="decimal" Mode="In" />
+          <Parameter Name="Addition" Type="decimal" Mode="In" />
+          <Parameter Name="Tax" Type="decimal" Mode="In" />
+          <Parameter Name="Duty" Type="decimal" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Order">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsPay" Type="bit" Mode="In" />
+          <Parameter Name="IsOk" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertSMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Settings">
+          <Parameter Name="Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Messages" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserRef" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <EntityContainer Name="Orders_ModelStoreContainer">
+          <EntitySet Name="Table_Address" EntityType="Self.Table_Address" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Banner" EntityType="Self.Table_Banner" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Blog" EntityType="Self.Table_Blog" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Blog_Category" EntityType="Self.Table_Blog_Category" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Comments" EntityType="Self.Table_Comments" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_ContactUs" EntityType="Self.Table_ContactUs" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Knowing" EntityType="Self.Table_Knowing" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Links" EntityType="Self.Table_Links" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Location" EntityType="Self.Table_Location" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Menu" EntityType="Self.Table_Menu" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_MenuAccess" EntityType="Self.Table_MenuAccess" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_MenuAdmin" EntityType="Self.Table_MenuAdmin" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_MenuAdmin_Category" EntityType="Self.Table_MenuAdmin_Category" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Role" EntityType="Self.Table_Role" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Selection_Configuration" EntityType="Self.Table_Selection_Configuration" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Service" EntityType="Self.Table_Service" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Site_Type" EntityType="Self.Table_Site_Type" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Slider" EntityType="Self.Table_Slider" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_SocialMedia" EntityType="Self.Table_SocialMedia" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Static_SocialMedia" EntityType="Self.Table_Static_SocialMedia" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_User" EntityType="Self.Table_User" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Whatsapp" EntityType="Self.Table_Whatsapp" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Table_Favorites" EntityType="Self.Table_Favorites" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_File_Upload" EntityType="Self.Table_File_Upload" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Price_DisCount" EntityType="Self.Table_Price_DisCount" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product" EntityType="Self.Table_Product" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Category" EntityType="Self.Table_Product_Category" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Color" EntityType="Self.Table_Product_Color" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Property" EntityType="Self.Table_Product_Property" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_PropertyList" EntityType="Self.Table_Product_PropertyList" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Selection" EntityType="Self.Table_Product_Selection" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Size" EntityType="Self.Table_Product_Size" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" Schema="Order" store:Type="Tables" />
+          <EntitySet Name="Table_Order" EntityType="Self.Table_Order" Schema="Order" store:Type="Tables" />
+          <EntitySet Name="Table_Order_Item" EntityType="Self.Table_Order_Item" Schema="Order" store:Type="Tables" />
+          <EntitySet Name="Table_Transfer" EntityType="Self.Table_Transfer" Schema="Order" store:Type="Tables" />
+          <EntitySet Name="Table_Meta_Configuration" EntityType="Self.Table_Meta_Configuration" Schema="Settings" store:Type="Tables" />
+          <EntitySet Name="Table_Settings" EntityType="Self.Table_Settings" Schema="Settings" store:Type="Tables" />
+          <EntitySet Name="Table_SMS_Log" EntityType="Self.Table_SMS_Log" Schema="Settings" store:Type="Tables" />
+          <EntitySet Name="Table_View_Configuration" EntityType="Self.Table_View_Configuration" Schema="Settings" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Orders_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Table_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityRef" Type="Int32" Nullable="false" />
+          <Property Name="UserRef" Type="Guid" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Entites" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Click" Type="Int64" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="CategoryRef" Type="Guid" />
+          <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Blog_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="ParentRef" Type="Guid" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="Byte" Nullable="false" />
+          <Property Name="ProductRef" Type="Guid" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Likes" Type="Int64" Nullable="false" />
+          <Property Name="Dislikes" Type="Int64" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="ParentRef" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Table_ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Objects" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Knowing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Links">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecendryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title_En" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parent" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="Creator" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifier" Type="Int32" />
+          <Property Name="LastModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="MinistryofFinanceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxFileCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="Click" Type="Int64" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MenuRef" Type="Guid" Nullable="false" />
+          <Property Name="UserRef" Type="Guid" />
+          <Property Name="RoleRef" Type="Guid" />
+          <Property Name="PictureRef" Type="Guid" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryRef" Type="Guid" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_MenuAdmin_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Selection_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" />
+          <Property Name="ModifierDate" Type="DateTime" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CategoriesRef" Type="Guid" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecendryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Site_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecendaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table_SocialMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Static_SocialMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keys" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Entities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleRef" Type="Guid" Nullable="false" />
+          <Property Name="LanguageRef" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identification" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EconomicCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="0" />
+          <Property Name="IsMarried" Type="Boolean" Nullable="false" />
+          <Property Name="MarriedDay" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="ArchiveCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Jobs" Type="Guid" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsInBlacklist" Type="Boolean" Nullable="false" />
+          <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
+          <Property Name="Favorite" Type="Int32" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CommissionPercent" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Color" Type="Guid" />
+          <Property Name="Size" Type="Int32" />
+          <Property Name="SizeRef" Type="Guid" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Whatsapp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Favorites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Ref" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecendaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RefItem" Type="Guid" Nullable="false" />
+          <Property Name="RefUser" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_File_Upload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ref" Type="Guid" Nullable="false" />
+          <Property Name="LanguageRef" Type="Guid" Nullable="false" />
+          <Property Name="Schemas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tables" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileLenght" Type="Int64" Nullable="false" />
+          <Property Name="FileExtensions" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileUniqeName" Type="String" MaxLength="205" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Price_DisCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DiscountCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiscountPrecent" Type="Int32" Nullable="false" />
+          <Property Name="UsableCount" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Click" Type="Int64" />
+          <Property Name="CategoriesRef" Type="Guid" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="ParentRef" Type="Guid" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Product_Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Ref" Type="Guid" Nullable="false" />
+          <Property Name="Keys" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Entity" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Table_Product_PropertyList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductRef" Type="Guid" Nullable="false" />
+          <Property Name="ColorRef" Type="Guid" />
+          <Property Name="SizeRef" Type="Guid" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table_Product_Selection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TertitatyTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" />
+          <Property Name="ModifierDate" Type="DateTime" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="ConfigurationRef" Type="Guid" Nullable="false" />
+          <Property Name="ProductRef" Type="Guid" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SizeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Summary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductRef" Type="Guid" Nullable="false" />
+          <Property Name="ColorRef" Type="Guid" Nullable="false" />
+          <Property Name="SizeRef" Type="Guid" Nullable="false" />
+          <Property Name="StockRef" Type="Guid" Nullable="false" />
+          <Property Name="SaleRef" Type="Guid" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Discount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiscountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountFee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountUsed" Type="Int32" />
+          <Property Name="DiscountCount" Type="Int32" />
+          <Property Name="DiscountUser" Type="Guid" />
+          <Property Name="DiscountQuantity" Type="Int32" />
+          <Property Name="Entities" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="ProductRef" Type="Guid" />
+          <Property Name="CategoriesRef" Type="Guid" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Order_Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderRef" Type="Guid" Nullable="false" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SizeRef" Type="Guid" />
+          <Property Name="ColorRef" Type="Guid" />
+          <Property Name="ItemRef" Type="Guid" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Addition" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Duty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Table_Transfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransferPay" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CityRef" Type="Int32" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Meta_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EndDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeconderyTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Instagram" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Telegram" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Whatsapp" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Twitter" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Aparat" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginType" Type="Boolean" Nullable="false" />
+          <Property Name="SiteTypeRef" Type="Guid" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_SMS_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Messages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserRef" Type="Guid" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_View_Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="View" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Orders_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table_Address" EntityType="Self.Table_Address" />
+          <EntitySet Name="Table_Banner" EntityType="Self.Table_Banner" />
+          <EntitySet Name="Table_Blog" EntityType="Self.Table_Blog" />
+          <EntitySet Name="Table_Blog_Category" EntityType="Self.Table_Blog_Category" />
+          <EntitySet Name="Table_Comments" EntityType="Self.Table_Comments" />
+          <EntitySet Name="Table_ContactUs" EntityType="Self.Table_ContactUs" />
+          <EntitySet Name="Table_Knowing" EntityType="Self.Table_Knowing" />
+          <EntitySet Name="Table_Links" EntityType="Self.Table_Links" />
+          <EntitySet Name="Table_Location" EntityType="Self.Table_Location" />
+          <EntitySet Name="Table_Menu" EntityType="Self.Table_Menu" />
+          <EntitySet Name="Table_MenuAccess" EntityType="Self.Table_MenuAccess" />
+          <EntitySet Name="Table_MenuAdmin" EntityType="Self.Table_MenuAdmin" />
+          <EntitySet Name="Table_MenuAdmin_Category" EntityType="Self.Table_MenuAdmin_Category" />
+          <EntitySet Name="Table_Role" EntityType="Self.Table_Role" />
+          <EntitySet Name="Table_Selection_Configuration" EntityType="Self.Table_Selection_Configuration" />
+          <EntitySet Name="Table_Service" EntityType="Self.Table_Service" />
+          <EntitySet Name="Table_Site_Type" EntityType="Self.Table_Site_Type" />
+          <EntitySet Name="Table_Slider" EntityType="Self.Table_Slider" />
+          <EntitySet Name="Table_SocialMedia" EntityType="Self.Table_SocialMedia" />
+          <EntitySet Name="Table_Static_SocialMedia" EntityType="Self.Table_Static_SocialMedia" />
+          <EntitySet Name="Table_User" EntityType="Self.Table_User" />
+          <EntitySet Name="Table_Whatsapp" EntityType="Self.Table_Whatsapp" />
+          <EntitySet Name="Table_Favorites" EntityType="Self.Table_Favorites" />
+          <EntitySet Name="Table_File_Upload" EntityType="Self.Table_File_Upload" />
+          <EntitySet Name="Table_Price_DisCount" EntityType="Self.Table_Price_DisCount" />
+          <EntitySet Name="Table_Product" EntityType="Self.Table_Product" />
+          <EntitySet Name="Table_Product_Category" EntityType="Self.Table_Product_Category" />
+          <EntitySet Name="Table_Product_Color" EntityType="Self.Table_Product_Color" />
+          <EntitySet Name="Table_Product_Property" EntityType="Self.Table_Product_Property" />
+          <EntitySet Name="Table_Product_PropertyList" EntityType="Self.Table_Product_PropertyList" />
+          <EntitySet Name="Table_Product_Selection" EntityType="Self.Table_Product_Selection" />
+          <EntitySet Name="Table_Product_Size" EntityType="Self.Table_Product_Size" />
+          <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" />
+          <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" />
+          <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" />
+          <EntitySet Name="Table_Order_Item" EntityType="Self.Table_Order_Item" />
+          <EntitySet Name="Table_Transfer" EntityType="Self.Table_Transfer" />
+          <EntitySet Name="Table_Meta_Configuration" EntityType="Self.Table_Meta_Configuration" />
+          <EntitySet Name="Table_Settings" EntityType="Self.Table_Settings" />
+          <EntitySet Name="Table_SMS_Log" EntityType="Self.Table_SMS_Log" />
+          <EntitySet Name="Table_View_Configuration" EntityType="Self.Table_View_Configuration" />
+          <FunctionImport Name="SP_InsertOrder">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Firstname" Mode="In" Type="String" />
+            <Parameter Name="Lastname" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="ProductCode" Mode="In" Type="String" />
+            <Parameter Name="PostalCode" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+            <Parameter Name="TransactionCode" Mode="In" Type="String" />
+            <Parameter Name="DeliveryCode" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="String" />
+            <Parameter Name="IsPay" Mode="In" Type="Boolean" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Tax" Mode="In" Type="Decimal" />
+            <Parameter Name="Duty" Mode="In" Type="Decimal" />
+            <Parameter Name="Addition" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="IsOk" Mode="In" Type="Boolean" />
+            <Parameter Name="ModifierRef" Mode="In" Type="Guid" />
+            <Parameter Name="ModifierDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatorRef" Mode="In" Type="Guid" />
+            <Parameter Name="CreatorDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Version" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertOrderItem">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="OrderRef" Mode="In" Type="Guid" />
+            <Parameter Name="ItemCode" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Decimal" />
+            <Parameter Name="Fee" Mode="In" Type="Decimal" />
+            <Parameter Name="SizeRef" Mode="In" Type="Guid" />
+            <Parameter Name="ColorRef" Mode="In" Type="Guid" />
+            <Parameter Name="ItemRef" Mode="In" Type="Guid" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Addition" Mode="In" Type="Decimal" />
+            <Parameter Name="Tax" Mode="In" Type="Decimal" />
+            <Parameter Name="Duty" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateOrder">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="IsPay" Mode="In" Type="Boolean" />
+            <Parameter Name="IsOk" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertSMS">
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Messages" Mode="In" Type="String" />
+            <Parameter Name="UserRef" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="Table_Order" EntityType="Orders_Model.Table_Order" />
+        </EntityContainer>
+        <EntityType Name="Table_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsPay" Type="Boolean" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Duty" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Addition" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NetPrice" Type="Decimal" Precision="21" Scale="0" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Orders_ModelStoreContainer" CdmEntityContainer="Orders_Entities">
+          <EntitySetMapping Name="Table_Address">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Address">
+              <MappingFragment StoreEntitySet="Table_Address">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CityRef" ColumnName="CityRef" />
+                <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Banner">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Banner">
+              <MappingFragment StoreEntitySet="Table_Banner">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Entites" ColumnName="Entites" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Blog">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Blog">
+              <MappingFragment StoreEntitySet="Table_Blog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Blog_Category">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Blog_Category">
+              <MappingFragment StoreEntitySet="Table_Blog_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Comments">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Comments">
+              <MappingFragment StoreEntitySet="Table_Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_ContactUs">
+            <EntityTypeMapping TypeName="Orders_Model.Table_ContactUs">
+              <MappingFragment StoreEntitySet="Table_ContactUs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Objects" ColumnName="Objects" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Knowing">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Knowing">
+              <MappingFragment StoreEntitySet="Table_Knowing">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Links">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Links">
+              <MappingFragment StoreEntitySet="Table_Links">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecendryTitle" ColumnName="SecendryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Location">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Location">
+              <MappingFragment StoreEntitySet="Table_Location">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Title_En" ColumnName="Title_En" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifier" ColumnName="LastModifier" />
+                <ScalarProperty Name="LastModificationDate" ColumnName="LastModificationDate" />
+                <ScalarProperty Name="MinistryofFinanceCode" ColumnName="MinistryofFinanceCode" />
+                <ScalarProperty Name="TaxFileCode" ColumnName="TaxFileCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Menu">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Menu">
+              <MappingFragment StoreEntitySet="Table_Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_MenuAccess">
+            <EntityTypeMapping TypeName="Orders_Model.Table_MenuAccess">
+              <MappingFragment StoreEntitySet="Table_MenuAccess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="MenuRef" ColumnName="MenuRef" />
+                <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+                <ScalarProperty Name="RoleRef" ColumnName="RoleRef" />
+                <ScalarProperty Name="PictureRef" ColumnName="PictureRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_MenuAdmin">
+            <EntityTypeMapping TypeName="Orders_Model.Table_MenuAdmin">
+              <MappingFragment StoreEntitySet="Table_MenuAdmin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_MenuAdmin_Category">
+            <EntityTypeMapping TypeName="Orders_Model.Table_MenuAdmin_Category">
+              <MappingFragment StoreEntitySet="Table_MenuAdmin_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Role">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Role">
+              <MappingFragment StoreEntitySet="Table_Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Selection_Configuration">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Selection_Configuration">
+              <MappingFragment StoreEntitySet="Table_Selection_Configuration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="tertiaryTitle" ColumnName="tertiaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Service">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Service">
+              <MappingFragment StoreEntitySet="Table_Service">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecendryTitle" ColumnName="SecendryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Site_Type">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Site_Type">
+              <MappingFragment StoreEntitySet="Table_Site_Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Slider">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Slider">
+              <MappingFragment StoreEntitySet="Table_Slider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecendaryTitle" ColumnName="SecendaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_SocialMedia">
+            <EntityTypeMapping TypeName="Orders_Model.Table_SocialMedia">
+              <MappingFragment StoreEntitySet="Table_SocialMedia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Static_SocialMedia">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Static_SocialMedia">
+              <MappingFragment StoreEntitySet="Table_Static_SocialMedia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Keys" ColumnName="Keys" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Entities" ColumnName="Entities" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User">
+            <EntityTypeMapping TypeName="Orders_Model.Table_User">
+              <MappingFragment StoreEntitySet="Table_User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="RoleRef" ColumnName="RoleRef" />
+                <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EconomicCode" ColumnName="EconomicCode" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="MarriedDay" ColumnName="MarriedDay" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ArchiveCode" ColumnName="ArchiveCode" />
+                <ScalarProperty Name="PersonalCode" ColumnName="PersonalCode" />
+                <ScalarProperty Name="Jobs" ColumnName="Jobs" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsInBlacklist" ColumnName="IsInBlacklist" />
+                <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+                <ScalarProperty Name="Favorite" ColumnName="Favorite" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="CommissionPercent" ColumnName="CommissionPercent" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Whatsapp">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Whatsapp">
+              <MappingFragment StoreEntitySet="Table_Whatsapp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Favorites">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Favorites">
+              <MappingFragment StoreEntitySet="Table_Favorites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecendaryTitle" ColumnName="SecendaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="RefItem" ColumnName="RefItem" />
+                <ScalarProperty Name="RefUser" ColumnName="RefUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_File_Upload">
+            <EntityTypeMapping TypeName="Orders_Model.Table_File_Upload">
+              <MappingFragment StoreEntitySet="Table_File_Upload">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+                <ScalarProperty Name="Schemas" ColumnName="Schemas" />
+                <ScalarProperty Name="Tables" ColumnName="Tables" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileLenght" ColumnName="FileLenght" />
+                <ScalarProperty Name="FileExtensions" ColumnName="FileExtensions" />
+                <ScalarProperty Name="FileUniqeName" ColumnName="FileUniqeName" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Price_DisCount">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Price_DisCount">
+              <MappingFragment StoreEntitySet="Table_Price_DisCount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+                <ScalarProperty Name="DiscountPrecent" ColumnName="DiscountPrecent" />
+                <ScalarProperty Name="UsableCount" ColumnName="UsableCount" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product">
+              <MappingFragment StoreEntitySet="Table_Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Category">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Category">
+              <MappingFragment StoreEntitySet="Table_Product_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Color">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Color">
+              <MappingFragment StoreEntitySet="Table_Product_Color">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Property">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Property">
+              <MappingFragment StoreEntitySet="Table_Product_Property">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="Keys" ColumnName="Keys" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_PropertyList">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_PropertyList">
+              <MappingFragment StoreEntitySet="Table_Product_PropertyList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+                <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Selection">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Selection">
+              <MappingFragment StoreEntitySet="Table_Product_Selection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertitatyTitle" ColumnName="TertitatyTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ConfigurationRef" ColumnName="ConfigurationRef" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Size">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Size">
+              <MappingFragment StoreEntitySet="Table_Product_Size">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="SizeTitle" ColumnName="SizeTitle" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Summary">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_Summary">
+              <MappingFragment StoreEntitySet="Table_Product_Summary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+                <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+                <ScalarProperty Name="StockRef" ColumnName="StockRef" />
+                <ScalarProperty Name="SaleRef" ColumnName="SaleRef" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Stock">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Stock">
+              <MappingFragment StoreEntitySet="Table_Stock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Discount">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Discount">
+              <MappingFragment StoreEntitySet="Table_Discount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountFee" ColumnName="DiscountFee" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountUsed" ColumnName="DiscountUsed" />
+                <ScalarProperty Name="DiscountCount" ColumnName="DiscountCount" />
+                <ScalarProperty Name="DiscountUser" ColumnName="DiscountUser" />
+                <ScalarProperty Name="DiscountQuantity" ColumnName="DiscountQuantity" />
+                <ScalarProperty Name="Entities" ColumnName="Entities" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="CategoriesRef" ColumnName="CategoriesRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Order_Item">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Order_Item">
+              <MappingFragment StoreEntitySet="Table_Order_Item">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrderRef" ColumnName="OrderRef" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="SizeRef" ColumnName="SizeRef" />
+                <ScalarProperty Name="ColorRef" ColumnName="ColorRef" />
+                <ScalarProperty Name="ItemRef" ColumnName="ItemRef" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Addition" ColumnName="Addition" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Duty" ColumnName="Duty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Transfer">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Transfer">
+              <MappingFragment StoreEntitySet="Table_Transfer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TransferPay" ColumnName="TransferPay" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="CityRef" ColumnName="CityRef" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Meta_Configuration">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Meta_Configuration">
+              <MappingFragment StoreEntitySet="Table_Meta_Configuration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Settings">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Settings">
+              <MappingFragment StoreEntitySet="Table_Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SeconderyTitle" ColumnName="SeconderyTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+                <ScalarProperty Name="Telegram" ColumnName="Telegram" />
+                <ScalarProperty Name="Whatsapp" ColumnName="Whatsapp" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Aparat" ColumnName="Aparat" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+                <ScalarProperty Name="SiteTypeRef" ColumnName="SiteTypeRef" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_SMS_Log">
+            <EntityTypeMapping TypeName="Orders_Model.Table_SMS_Log">
+              <MappingFragment StoreEntitySet="Table_SMS_Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Messages" ColumnName="Messages" />
+                <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_View_Configuration">
+            <EntityTypeMapping TypeName="Orders_Model.Table_View_Configuration">
+              <MappingFragment StoreEntitySet="Table_View_Configuration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertOrder" FunctionName="Orders_Model.Store.SP_InsertOrder" />
+          <FunctionImportMapping FunctionImportName="SP_InsertOrderItem" FunctionName="Orders_Model.Store.SP_InsertOrderItem" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateOrder" FunctionName="Orders_Model.Store.SP_UpdateOrder" />
+          <FunctionImportMapping FunctionImportName="SP_InsertSMS" FunctionName="Orders_Model.Store.SP_InsertSMS" />
+          <EntitySetMapping Name="Table_Order">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Order">
+              <MappingFragment StoreEntitySet="Table_Order">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Addition" ColumnName="Addition" />
+                <ScalarProperty Name="Duty" ColumnName="Duty" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DeliveryCode" ColumnName="DeliveryCode" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

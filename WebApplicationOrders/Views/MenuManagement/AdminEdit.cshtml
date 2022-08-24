@@ -1,0 +1,142 @@
+﻿@using OrdersGeneral.Repository.General
+
+@{
+    ViewBag.Title = "AdminEdit";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">دسته‌بندی‌ها</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                        <a href="/MenuManagement/Add" class="btn btn-success btn-block"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            ردیف
+                                        </th>
+                                        <th class="text-center">
+                                            کد
+                                        </th>
+                                        <th class="text-center">
+                                            فهرست
+                                        </th>
+                                        <th class="text-center">
+                                            نقش
+                                        </th>
+                                        <th class="text-center">
+                                            لیست سیاه
+                                        </th>
+                                        <th class="text-center">
+                                            وضعیت
+                                        </th>
+                                        <th class="text-center">ویرایش</th>
+                                        <th class="text-center">حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var qu = RepMenuAdmin. RepAdminClients();
+                                        if (user.Count > 0)
+
+                                        {
+                                            var row = 1;
+                                            foreach (var mangment in user)
+                                            {
+                                                <tr>
+
+                                                    <td class="col-md-1 text-center">
+                                                        @row
+                                                    </td>
+                                                    <td class="col-md-1 text-center">
+                                                        @mangment.Code
+                                                    </td>
+                                                    @{
+                                                        var fullName = @mangment.Name + " " + @mangment.Family;
+                                                    }
+                                                    <td class="col-md-3 text-center" style="font-size: 12px;">
+                                                        @fullName
+                                                    </td>
+                                                    <td class="col-md-3 text-center" style="font-size: 12px;">
+                                                        @mangment.RoleTitle
+                                                    </td>
+                                                    <td class="col-md-3 text-center" style="font-size: 12px;">
+                                                        @if ((bool)mangment.IsInBlacklist)
+                                                        {
+                                                            <a href="/UserManagement/ChangeBlackList/@mangment.Id" class="label label-success">خروج از لیست </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/UserManagement/ChangeBlackList/@mangment.Id" class="label label-danger">  ورود به لیست</a>
+                                                        }
+                                                    </td>
+
+                                                    <td class="col-md-1 text-center">
+                                                        @if ((bool)mangment.IsOk)
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatus/@mangment.Id" class="label label-success">فعال</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatus/@mangment.Id" class="label label-danger">غیرفعال</a>
+                                                        }
+                                                    </td>
+                                                    <th class="text-center">
+                                                        <a class="btn btn-info btn-sm glyphicon glyphicon-edit" href="/UserManagement/Edit/@mangment.Id"></a>
+                                                    </th>
+                                                    <th class="text-center">
+                                                        <a class="btn btn-danger btn-sm " href="/UserManagement/Delete/@mangment.Id">×</a>
+                                                    </th>
+                                                    <th class="text-center">
+                                                        <a class="btn btn-danger btn-sm " href="/MenuManagement//@mangment.Id">×</a>
+                                                    </th>
+
+                                                </tr>
+                                                row++;
+
+                                            }
+
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

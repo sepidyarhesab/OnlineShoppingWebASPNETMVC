@@ -1,0 +1,24 @@
+﻿@using OrdersGeneral.Repository.General
+
+<!-- Tiny Slider One Wrapper -->
+<div class="tiny-slider-one-wrapper">
+    <div class="tiny-slider-one">
+        <!-- Single Hero Slide -->
+    @{
+
+        var result = RepSliders.RepositoryMainSliders();
+        if (result.Count > 0)
+        {
+            foreach (var item in result)
+            {
+                <div>
+                    <div class="single-hero-slide " style="background-image: url('@item.FileNameMobile')">
+                    </div>
+                </div>
+            }
+        }
+    }
+        
+        
+    </div>
+</div>

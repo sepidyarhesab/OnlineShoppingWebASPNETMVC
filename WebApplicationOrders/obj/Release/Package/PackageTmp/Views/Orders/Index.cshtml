@@ -1,0 +1,146 @@
+﻿@using OrdersOrders.ViewModels.Orders
+@model IEnumerable<VMOrders.VmOrderMangment>
+@{
+    ViewBag.Title = "ثبت سفارش";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+<div class="page-header">
+    <div class="page-header__container container">
+
+        <div class="page-header__title">
+            <h1>ثبت سفارش</h1>
+        </div>
+    </div>
+</div>
+<div class="block">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell&display=swap" rel="stylesheet" >
+    <style>
+        .font-en {
+            font-family: Cantarell;
+        }
+    </style>
+    <div class="container">
+        <div class="card mb-0">
+            <div class="card-body contact-us">
+                <div class="contact-us__container">
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            @{
+                                if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        using (Html.BeginForm("SubmitOrder", "Orders", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input class="hidden" id="Browser" name="Browser" style="display: none" />
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="form-name ">نام خود را وارد کنید <small style="color: red"> * اجباری </small></label>
+                                                    <input type="text" id="Name" name="Name" class="form-control farsi" placeholder="نام " value="@item.Name">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="form-name ">نام خانوادگی خود را وارد کنید <small style="color: red"> * اجباری</small></label>
+                                                    <input type="text" id="Family" name="Family" class="form-control farsi" placeholder="نام خانوادگی" value="@item.Family">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="form-name ">آیدی پیج اینستاگرام خود را وارد کنید </label>
+                                                    <input type="text" id="PageId" name="PageId" class="form-control engelish" placeholder="آیدی پیج ">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="form-name "> شماره تماس خود را وارد کنید <small style="color: red"> * اجباری</small></label>
+                                                    <input type="tel" maxlength="11" max="11" id="Phone" name="Phone" class="form-control numeric font-en" placeholder="شماره تماس" onchange="allnumeric(this);" value="@item.Phone">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-message">در صورتی که اسکرین شات محصول را دارید بفرستید</label>
+                                                <input id="file" name="file" class="form-control" type="file" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-name">کد پستی<small style="color: red"> * اجباری</small></label>
+                                                <input type="text" id="PostalCode" name="PostalCode" class="form-control" placeholder="کد پستی" value="@item.PostalCode">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-message ">آدرس دریافت کالا خود را وارد کنید <small style="color: red"> * اجباری</small></label>
+                                                <textarea id="Address" name="Address" class="form-control " rows="4">@item.Address</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-message ">پیام خود را وارد کنید <small style="color: red"> * رنگ و سایز خود را بنویسید</small></label>
+                                                <textarea id="Note" name="Note" class="form-control " rows="4"></textarea>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary ">ثبت سفارش و پرداخت اینترنتی</button>
+
+                                            <div id="btnAddToCarts" class="hidden-lg hidden-md" style="">
+                                                <div>
+                                                    <nav class="card mb-0 contact-us box-shadows" style="padding: 10px" aria-label="breadcrumb">
+                                                        <ol class="breadcrumb">
+                                                            <li class="breadcrumb-item">
+                                                                <button type="submit" class="btn btn-primary ">ثبت نهایی و پرداخت</button>
+                                                            </li>
+                                                            <li class="breadcrumb-item">
+                                                                <a href="/Default" class="btn btn-secondary">انصراف از خرید</a>
+                                                            </li>
+                                                        </ol>
+
+                                                    </nav>
+
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script>
+    function allnumeric(inputtxt) {
+        var numbers = new RegExp("09(1[0-9]|3[0-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}");
+        if (inputtxt.value.match(numbers)) {
+            document.getElementById("Phone").style.border = "1px solid green";
+            document.form1.text1.focus();
+            return true;
+        }
+        else {
+            document.getElementById("Phone").style.border = "1px solid red";
+            alert('شماره موبایل وارد شده صحیح نیست');
+            document.form1.text1.focus();
+            return false;
+        }
+    }
+</script>*@
+
+<!-- Order End -->
+<script>
+    function getIP(json) {
+        document.getElementById("IP").innerHTML = "شناسه اینترنت شما : " + json.ip;
+        document.getElementById("IPAddress").value = json.ip;
+    }
+</script>
+<script>
+    var browserName = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "MS Edge";
+            case agent.indexOf("edg/") > -1: return "Edge ( chromium based)";
+            case agent.indexOf("opr") > -1 && !!window.opr: return "Opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "Chrome";
+            case agent.indexOf("trident") > -1: return "MS IE";
+            case agent.indexOf("firefox") > -1: return "Mozilla Firefox";
+            case agent.indexOf("safari") > -1: return "Safari";
+            default: return "other";
+        }
+    })(window.navigator.userAgent.toLowerCase());
+    document.getElementById("Browser").value = browserName;
+</script>

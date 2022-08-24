@@ -1,0 +1,363 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+@using OrdersInventory.ViewModels.Inventory
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+
+
+
+
+<!----Change Amin---->
+<link href="~/Helper/Layouts/assets/css/fancybox.css" rel="stylesheet" />
+<script src="~/Helper/Layouts/assets/js/fancybox.umd.js"></script>
+
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = "مشخصات،قیمت و خرید " + " " + Model.First().PrimaryTitle + " " + " | ";
+        Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            <div class="row mb-1">
+                <div class="col-12">
+                    <!-- breadcrumb -->
+                    <div class="breadcrumb mb-1">
+                        <nav>
+                            <a href="/Default">خانه</a>
+                            <a href="/Product/Id/@item.Id">@item.CategoreisTitle</a>
+                            <a href="/Product/Id/@item.Id">@item.PrimaryTitle</a>
+                        </nav>
+                    </div>
+                    <!-- end breadcrumb -->
+                </div>
+            </div>
+            <div class="product-detail shadow-around mb-5 py-5">
+                <div class="row mb-3 mx-0">
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-md-0 mb-3">
+                        <div class="product-gallery">
+                            <div class="swiper-container gallery-slider pb-md-0 pb-3">
+                                <div class="swiper-wrapper">
+                                    @{
+                                        if (item.FileList != null)
+                                        {
+                                            foreach (var name in item.FileList)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="@name.FileName"
+                                                         data-large="@name.FileName" class="zoom-image"
+                                                         alt="@item.PrimaryTitle" style="padding: 30px">
+                                                </div>
+                                            }
+                                        }
+                                    }
+
+
+
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination d-md-none"></div>
+                            </div>
+                            <div class="swiper-container gallery-slider-thumbs d-md-block d-none">
+                                <div class="swiper-wrapper">
+                                    @{
+                                        if (item.FileList != null)
+                                        {
+                                            foreach (var name in item.FileList)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="@name.FileName" alt="@item.PrimaryTitle">
+                                                </div>
+                                            }
+                                        }
+                                    }
+
+
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                            <!--<ul class="product--actions">
+                                <li>-->
+                            <!-- در صورت نیاز به استفاده از فرم از کد زیر استفاده کنید -->
+                            <!-- <form action="">
+                                <button class="add-to-favorite"><i class="fas fa-heart"></i></button>
+                            </form> -->
+                            <!--<a href="#" class="is-action add-to-favorite"><i class="fas fa-heart"></i></a>
+                                    <span class="tooltip--action">افزودن به علاقمندی</span>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#shareLinkModal">
+                                        <i class="fas fa-share-alt"></i>
+                                    </a>
+                                    <span class="tooltip--action">اشتراک گذاری</span>
+                                </li>
+                                <li>
+                                    <a href="#" class="is-action add-to-compare"><i class="fas fa-adjust"></i></a>
+                                    <span class="tooltip--action">افزودن به لیست مقایسه</span>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#chartModal">
+                                        <i class="fas fa-chart-area"></i>
+                                    </a>
+                                    <span class="tooltip--action">نمودار قیمت</span>
+                                </li>
+                            </ul>-->
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-6">
+                        <div class="product-title mb-3">
+                            <h1>
+                                @item.PrimaryTitle
+                            </h1>
+                            <h1 class="product-title-en">
+                                @item.SecondaryTitle
+                            </h1>
+                        </div>
+                        <div class="d-block mb-2">
+                            <span class="font-weight-bold">کد:</span>
+                            <span>@item.Code</span>
+                        </div>
+                        <div class="d-block mb-2">
+                            <span class="font-weight-bold">دسته بندی:</span>
+                            <a href="/Categories/MainCategory/@item.CategoriesRef" class="link--with-border-bottom">@item.CategoreisTitle</a>
+                        </div>
+                        <div class="d-block mb-4">
+                            <span class="font-weight-bold">موجودی:</span>
+                            <span class="@item.QuantityClass">@item.QuantityTitle</span>
+                        </div>
+
+                        <div class="product-params-special">
+                            <ul data-title="ویژگی‌های محصول">
+                                @{
+                                    foreach (var property in item.PropertyList)
+                                    {
+
+                                        <li>
+                                            <span>@property.Key:</span>
+                                            <span>@property.Value</span>
+                                        </li>
+
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="alert alert-warning">
+                            <div class="alert-body">
+                                @*<p class="d-flex align-items-center">
+                                        <i class="fad fa-history ml-2"></i>
+                                        حداکثر تا 3 روز تحویل داده می شود.
+                                    </p>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 mx-lg-0 mx-auto">
+                        <div class="box-info-product">
+                            @{
+
+                                var type = RepSettings.RepositoryTypeSelect();
+                                if (type != Guid.Empty)
+                                {
+                                    if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                    {
+                                        <div class="product-colors mb-3">
+                                            <span class="d-block mb-3">رنگ:</span>
+                                            <select class="select2 select2-hidden-accessible" id="color" onchange="dropdownColor(this);">
+
+                                                @{
+
+                                                    List<VMProduct.ViewModelProductColor> color = rep.RepositoryColorShowInProducts(ViewBag.Id);
+
+                                                    foreach (var clr in color)
+                                                    {
+                                                        <option value="@clr.ColorRef">@clr.PrimaryTitle</option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+
+                                        <div class="product-colors mb-3">
+                                            <span class="d-block mb-3">سایز:</span>
+                                            <select class="select2 select2-hidden-accessible" id="SizeDropDown" Id="SizeDropDown" name="SizeDropDown" disabled="disabled" onchange="dropdownSize(this)"></select>
+                                        </div>
+                                    }
+                                    else if (type == Guid.Parse("59a29f20-ad77-4b85-9bb3-31a0db9e7c2f"))
+                                    {
+
+                                    }
+                                }
+                            }
+                            <div class="d-block mb-3">
+                                <span class="d-block">
+                                    تعداد:
+                                </span>
+                                <div class="num-block">
+                                    <div class="num-in">
+                                        <span class="plus"></span>
+                                        <input id="product-quantity" min="1" class="in-num" value="1" readonly="">
+                                        <span class="minus dis"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-block mb-3">
+                                <span class="d-block" id="Quantities" for="product-quantity">
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-end mt-3">
+                                <div class="product-price">
+                                    @{
+                                        var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
+                                        if (item.Discount > 0)
+                                        {
+                                            <div class="product-price-info">
+                                                <div class="product-price-off">
+                                                    @item.Discount <span>تخفیف</span>
+                                                </div>
+                                                <div class="product-price-prev">
+                                                    @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                </div>
+                                            </div>
+                                            <div class="product-price-real">
+                                                <div class="product-price-raw">@string.Format("{0:##,###}", ProductFee, "Fee") </div>
+                                                تومان
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-price-real">
+                                                <div class="product-price-raw">@string.Format("{0:##,###}", item.Fee, "Fee")</div>
+                                                تومان
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+                            </div>
+
+                            @{
+                                if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
+                                    {
+
+                                        <div class="d-flex align-items-center">
+                                            <a class="add-to-cart btn-block text-white a-cursor" id="btnAddToCartsWithSize" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <a class="add-to-cart btn-block text-white a-cursor" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
+                                        </div>
+                                    }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <div class="row mx-0">
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="services pt-3 row mx-0">
+                    <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
+                        <div class="service-item">
+                            <img src="/Helper/Layouts/images/services/delivery-person.png" alt="">
+                            <div class="service-item-body">
+                                <h6>تحویل سریع و رایگان</h6>
+                                <p>تحویل رایگان کالا برای کلیه سفارشات بیش از 500 هزار تومان</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
+                        <div class="service-item">
+                            <img src="/Helper/Layouts/images/services/recieve.png" alt="">
+                            <div class="service-item-body">
+                                <h6>۷ روز ضمانت بازگشت</h6>
+                                <p>در صورت نارضایتی به هر دلیلی می توانید محصول را بازگردانید</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
+                        <div class="service-item">
+                            <img src="/Helper/Layouts/images/services/headset.png" alt="">
+                            <div class="service-item-body">
+                                <h6>پشتیبانی ۲۴ ساعته</h6>
+                                <p>در صورت وجود هرگونه سوال یا ابهامی، با ما در تماس باشید</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
+                        <div class="service-item">
+                            <img src="/Helper/Layouts/images/services/debit-card.png" alt="">
+                            <div class="service-item-body">
+                                <h6>پرداخت آنلاین ایمن</h6>
+                                <p>محصولات مدنظر خود را با خیال آسوده به صورت آنلاین خریداری کنید</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- product-tab-content -->
+            @Html.Partial("SingleProduct/P_ProductTabs")
+            <!-- end product-tab-content -->
+        }
+    }
+}
+
+<!-- .block-products-carousel -->
+@Html.Partial("SingleProduct/P_ProductsCarousel")
+
+<script>
+    function dropdownColor(a) {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        if (x == "00000000-0000-0000-0000-000000000000") {
+            document.getElementById("SizeDropDown").disabled = true;
+        } else {
+            $.ajax({
+                url: "/Product/DropDownSize",
+                type: "Post",
+                data: { id: x }
+            }).done(function (result) {
+                $("#SizeDropDown").html(result);
+                document.getElementById("SizeDropDown").disabled = false;
+            });
+        }
+    }
+</script>
+<script>
+    function dropdownSize(a) {
+        var sizeref = (a.value || a.options[a.selectedIndex].value);
+        if (sizeref == "00000000-0000-0000-0000-000000000000") {
+        } else {
+            var e = document.getElementById("color");
+            var colorref = e.value;
+            $.ajax({
+                url: "/Product/CheckQuantity",
+                type: "Post",
+                data: { sizeid: sizeref, colorid: colorref }
+            }).done(function (result) {
+                if (result < 2) {
+                    document.getElementById("Quantities").innerHTML = "تنها یک عدد در انبار باقی مانده است";
+                    //spanquantity
+                } else {
+                    document.getElementById("Quantities").innerHTML = "";
+                }
+            });
+        }
+    }
+</script>
+<script>
+    window.onload = function () {
+        var element = document.getElementById('body');
+        element.classList.remove("mm-wrapper--position-right-front mm-wrapper");
+    };
+</script>
+
