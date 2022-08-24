@@ -4,7 +4,7 @@
     ViewBag.Title = "حساب کاربری|Account";
     Layout = "~/Views/Layouts/_MainLayouts.cshtml";
 }
-
+<script src="~/Helper/Layouts/assets/js/intro.min.js"></script>
 <!-- site__body / end -->
 <div class="row mb-5">
     <div class="col-lg-3 col-md-4 mb-md-0 mb-3 sticky-sidebar">
@@ -17,7 +17,9 @@
             <div class="col-lg-12 mb-lg-0 mb-3">
                 <div class="section-title mb-2">
                     اطلاعات شخصی
+                    <button class="btn btn-warning" onclick="javascript:introJs().start();"> راهنما   </button>
                 </div>
+               
                 <section class="shadow-around p-3">
                     <div class="row">
                         @{
@@ -43,8 +45,9 @@
                                         <div class="text-dark font-weight-bold">@item.Identification</div>
                                     </div>
                                     <div class="col-12">
+
                                         <div class="text-center">
-                                            <a href="/Dashboard/EditProfile" class="link--with-border-bottom">
+                                            <a href="/Dashboard/EditProfile" class="link--with-border-bottom"  data-step="1" data-intro="برای ویرایش اطلاعات شخصی خود بر روی این قسمت کلیلک کنید">
                                                 <i class="far fa-edit"></i>
                                                 ویرایش اطلاعات شخصی
                                             </a>
@@ -53,14 +56,15 @@
                                 }
                             }
                         }
-                        
+
                     </div>
                 </section>
             </div>
-            
+
         </div>
-        
+
     </div>
 </div>
 
 @Html.Partial("Body/P_Panel_Center")
+

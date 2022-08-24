@@ -21,6 +21,10 @@ namespace WebApplicationHamtOrders.Controllers
 {
     public class OrdersController : Controller
     {
+
+        /// <summary>
+        /// Version Amin-2022-08-04
+        /// </summary>
         // GET: Orders
         public static readonly string PgwSite = ConfigurationManager.AppSettings["PgwSite"];
         public static readonly string CallBackUrl = ConfigurationManager.AppSettings["CallBackUrl"];
@@ -89,7 +93,7 @@ namespace WebApplicationHamtOrders.Controllers
                                         var codedis = "";
                                         if (Session["CodeDis"] != null)
                                         {
-                                             codedis = Session["CodeDis"].ToString();
+                                            codedis = Session["CodeDis"].ToString();
                                         }
                                         var resuult = RepOrders.RepositoryCartsCode(carts, codedis);
                                         decimal transferpay = 0;
@@ -97,7 +101,7 @@ namespace WebApplicationHamtOrders.Controllers
                                         {
                                             transferpay = decimal.Parse(Session["TransferPay"].ToString());
                                         }
-                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, Browser, IPAddress,resuult.Discount);
+                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, Browser, IPAddress, resuult.Discount);
                                         if (result.Contains("Error"))
                                         {
                                             Session["OrderCode"] = "Error";
@@ -539,8 +543,8 @@ namespace WebApplicationHamtOrders.Controllers
             {
                 Session["UserLocationRef"] = id;
             }
-        } 
-        
+        }
+
         [HttpPost]
         public ActionResult Province(int id)
         {

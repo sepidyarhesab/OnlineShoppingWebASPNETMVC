@@ -33,6 +33,7 @@
                             </div>
                             <div class="auth-form-title">
                                 دریافت کد
+                                <button class="btn btn-warning" onclick="javascript:introJs().start();"> راهنما   </button>
                             </div>
                             @using (Html.BeginForm("Verify", "Verify", FormMethod.Post))
                             {
@@ -68,12 +69,12 @@
                                     <label for="phone-number" class="label-element">کد دریافتی پیامک شده</label>
                                     <div class="form-element-with-icon">
 
-                                        <input type="number" id="code" name="code" class="numeric input-element" placeholder="کد پیامک شده را وارد کنید" >
+                                        <input type="number" id="code" name="code" class="numeric input-element" placeholder="کد پیامک شده را وارد کنید" data-step="1" data-intro="در این قسمت کد پیامک شده را با کیبورد لاتین وارد کنید" >
                                         <i class="fad fa-mobile-alt"></i>
                                     </div>
                                 </div>
                                 <div class="form-element-row text-left">
-                                    <button class="btn-element btn-block btn-info-element" type="submit">
+                                    <button class="btn-element btn-block btn-info-element" type="submit" data-step="2" data-intro="بر روی این دکمه کلیک کنید">
                                         <i class="fad fa-sign-in-alt"></i>
                                         ارسال کد تایید
                                     </button>
@@ -118,9 +119,9 @@
 
         </div>
 
-    <script src="/Helper/Layouts/assets/js/jquery-3.5.1.min.js"></script>
+        <script src="/Helper/Layouts/assets/js/jquery-3.5.1.min.js"></script>
         <script src="/Helper/Admin/Scripts/iziToast.min.js"></script>
-
+        <script src="~/Helper/Layouts/assets/js/intro.min.js"></script>
 
 
 

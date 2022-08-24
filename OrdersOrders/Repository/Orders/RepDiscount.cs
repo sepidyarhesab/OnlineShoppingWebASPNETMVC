@@ -884,11 +884,15 @@ namespace OrdersOrders.Repository.Orders
                     var color = db.Table_Product_Color.FirstOrDefault(c => c.Id == itemCarts.ColorRef);
                     if (size != null && color != null)
                     {
+                        vmCartRow.SizeRef = itemCarts.SizeRef;
+                        vmCartRow.ColorRef = itemCarts.ColorRef;
                         vmCartRow.ColorTitle = color.PrimaryTitle;
                         vmCartRow.SizeTitle = size.PrimaryTitle;
                     }
                     else
                     {
+                        vmCartRow.SizeRef = Guid.Empty;
+                        vmCartRow.ColorRef = Guid.Empty;
                         vmCartRow.ColorTitle = "بدون رنگ";
                         vmCartRow.SizeTitle = "بدون سایز";
                     }

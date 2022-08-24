@@ -240,11 +240,14 @@
     <Content Include="Helper\Admin\User.html" />
     <Content Include="Helper\Layouts\404.html" />
     <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
+    <Content Include="Helper\Layouts\assets\css\introjs.min.css" />
     <Content Include="Helper\Layouts\assets\css\Invoice-Template.css" />
     <Content Include="Helper\Layouts\assets\css\mmenu.css" />
     <Content Include="Helper\Layouts\assets\css\whatsapp.css" />
     <Content Include="Helper\Layouts\assets\img\amazing-1.png" />
     <Content Include="Helper\Layouts\assets\img\whatsapp.png" />
+    <Content Include="Helper\Layouts\assets\js\intro.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\intro.min.js" />
     <Content Include="Helper\Layouts\assets\js\whatsapp.js" />
     <Content Include="Helper\Layouts\images\avatar\avatar.png" />
     <Content Include="Helper\Layouts\images\banner\amazing-1.png" />
