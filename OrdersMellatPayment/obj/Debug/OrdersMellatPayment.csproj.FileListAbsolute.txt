@@ -33,3 +33,10 @@ C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersMellatPayment\obj\Debug\Ord
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.csproj.CoreCompileInputs.cache
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.dll
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Debug\OrdersMellatPayment.dll.config
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Debug\OrdersMellatPayment.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Debug\OrdersMellatPayment.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.csproj.AssemblyReference.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.csproj.CoreCompileInputs.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Debug\OrdersMellatPayment.pdb

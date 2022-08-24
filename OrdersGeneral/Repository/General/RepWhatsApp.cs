@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace OrdersGeneral.Repository.General
             var list = new List<VmWhatsApp.VmWhatsAppManagement>();
             try
             {
+                string Company = ConfigurationManager.AppSettings["PhoneAdmin"];
                 var db = new Orders_Entities();
+                var a = "https://wa.me/+98"+ Company+"?text=سلام_وقتتون_بخیر";
                 var rol = "5bf16139-6715-4190-988a-4849c1a0241d";
                 var query = db.Table_Whatsapp.Where(c => !c.IsDelete).ToList();
                 if (query.Count > 0)
@@ -29,14 +32,13 @@ namespace OrdersGeneral.Repository.General
                         var vm = new VmWhatsApp.VmWhatsAppManagement
                         {
                             Id = item.Id,
-                            Code = item.Code,
+                            Code = a,
                             PrimaryTitle = item.PrimaryTitle,
                             SecondaryTitle = item.SecondaryTitle,
                             IsDelete = item.IsDelete,
                             IsOk = item.IsOk,
                             CreatorDate = item.CreatorDate,
                             CreatorRef = item.CreatorRef,
-                           
                         };
 
 
@@ -87,17 +89,17 @@ namespace OrdersGeneral.Repository.General
                     switch (query.IsOk)
                     {
                         case true:
-                        {
-                            query.IsOk = false;
-                            db.SaveChanges();
-                            break;
-                        }
+                            {
+                                query.IsOk = false;
+                                db.SaveChanges();
+                                break;
+                            }
                         case false:
-                        {
-                            query.IsOk = true;
-                            db.SaveChanges();
-                            break;
-                        }
+                            {
+                                query.IsOk = true;
+                                db.SaveChanges();
+                                break;
+                            }
                     }
                 }
 
@@ -169,7 +171,7 @@ namespace OrdersGeneral.Repository.General
                     PrimaryTitle = query.PrimaryTitle,
                     Code = query.Code,
                     SecondaryTitle = query.SecondaryTitle,
-                    
+
                 };
                 return vm;
             }
@@ -205,7 +207,7 @@ namespace OrdersGeneral.Repository.General
                 });
                 db.Table_Whatsapp.Add(query);
                 db.SaveChanges();
-                
+
                 var filename = "Default";
                 var fileExtention = "png";
                 var filelenght = 200;

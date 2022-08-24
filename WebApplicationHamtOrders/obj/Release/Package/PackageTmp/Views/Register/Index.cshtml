@@ -32,7 +32,8 @@
                             }
                         </div>
                         <div class="auth-form-title">
-                           ایجاد حساب کاربری
+                            ایجاد حساب کاربری
+                            <button class="btn btn-warning" onclick="javascript:introJs().start();"> راهنما   </button>
                         </div>
                         @using (Html.BeginForm("SubmitRegister", "Register", FormMethod.Post))
                         {
@@ -40,27 +41,27 @@
                             <div class="form-element-row">
                                 <label for="password" class="label-element">نام</label>
                                 <div class="form-element-with-icon">
-                                    <input type="text" id="name" name="name" class="input-element farsi" placeholder="لطفا نام خود را به صورت فارسی وارد کنید">
+                                    <input type="text" id="name" name="name" class="input-element farsi" placeholder="لطفا نام خود را به صورت فارسی وارد کنید" data-step="1" data-intro="در این قسمت نام خود را با کیبورد فارسی وارد کنید">
                                     
                                 </div>
                             </div>
                             <div class="form-element-row">
                                 <label for="password" class="label-element">نام خانوادگی</label>
                                 <div class="form-element-with-icon">
-                                    <input type="text" id="family" name="family" class="input-element farsi" placeholder="لطفا نام خانوادگی خود را به صورت فارسی وارد کنید">
+                                    <input type="text" id="family" name="family" class="input-element farsi" placeholder="لطفا نام خانوادگی خود را به صورت فارسی وارد کنید"  data-step="2" data-intro="در این قسمت نام خانوادگی خود را با کیبورد فارسی وارد کنید">
                                     
                                 </div>
                             </div>
                             <div class="form-element-row">
                                 <label for="phone-number" class="label-element">شماره موبایل</label>
                                 <div class="form-element-with-icon">
-                                    <input type="text" style="font-family: sans-serif !important"  maxlength="11" max="11" id="phone" name="phone" class="input-element numeric" placeholder="لطفا شماره موبایل خود را به صورت انگلیسی وارد کنید">
+                                    <input type="text" style="font-family: sans-serif !important"  maxlength="11" max="11" id="phone" name="phone" class="input-element numeric" placeholder="لطفا شماره موبایل خود را به صورت انگلیسی وارد کنید"  data-step="3" data-intro="در این قسمت شماره همراه خود را با کیبورد لاتین وارد کنید">
                                     <i class="fad fa-mobile-alt"></i>
                                 </div>
                             </div>
 
                             <div class="form-element-row text-left">
-                                <button  style="cursor: pointer" class="btn-element btn-success-element btn-block">
+                                <button  style="cursor: pointer" class="btn-element btn-success-element btn-block"  data-step="4" data-intro="بر روی این دکمه کلیک  کنید">
                                     <i class="fad fa-user-edit"></i>
                              ثبت و ساخت حساب کاربری
                                 </button>
@@ -69,7 +70,7 @@
 
                         <div class="auth-form-footer">
                             <span>قبلا ثبت‌نام کرده‌اید؟</span>
-                            <a href="/Login" class="link--with-border-bottom">وارد شوید</a>
+                            <a href="/Login" class="link--with-border-bottom"  data-step="5" data-intro="اگر قبلا ثبت نام کرده اید.بر روی این قسمت کلیک کنید">وارد شوید</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +121,7 @@
 <script src="/Helper/Layouts/assets/js/jquery-3.5.1.min.js"></script>
 
 <script src="/Helper/Admin/Scripts/iziToast.min.js"></script>
-
+<script src="~/Helper/Layouts/assets/js/intro.min.js"></script>
 
 
 

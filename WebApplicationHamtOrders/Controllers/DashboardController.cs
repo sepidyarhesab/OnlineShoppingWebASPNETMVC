@@ -186,7 +186,7 @@ namespace WebApplicationHamtOrders.Controllers
                     var result = RepAccountDashboard.AddNewAddress(value, Userid);
                     if (result.Contains("Success"))
                     {
-                        TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
+                        TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "آدرس شما ثبت شد ، آدرس را انتخاب کنید سپس ادامه و پرداخت");
                         if (Session["UserLocationRef"] != null)
                         {
                             return RedirectToAction("Index", "Orders");

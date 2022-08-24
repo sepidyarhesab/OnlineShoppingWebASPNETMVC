@@ -735,6 +735,7 @@
     <Property Name="Duty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Addition" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="NetPrice" Type="decimal" Precision="21" Scale="0" StoreGeneratedPattern="Computed" />
     <Property Name="IsOk" Type="bit" Nullable="false" />
     <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ModifierDate" Type="datetime" Nullable="false" />

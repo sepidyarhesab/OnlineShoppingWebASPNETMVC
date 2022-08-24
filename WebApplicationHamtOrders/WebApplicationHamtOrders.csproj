@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebApplicationHamtOrders</RootNamespace>
     <AssemblyName>WebApplicationHamtOrders</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -239,12 +239,16 @@
     <Content Include="Helper\Admin\Sweetalert2\sweetalert2.min.js" />
     <Content Include="Helper\Admin\User.html" />
     <Content Include="Helper\Layouts\404.html" />
+    <Content Include="Helper\Layouts\assets\css\colors.css" />
     <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
     <Content Include="Helper\Layouts\assets\css\introjs.min.css" />
     <Content Include="Helper\Layouts\assets\css\Invoice-Template.css" />
     <Content Include="Helper\Layouts\assets\css\mmenu.css" />
     <Content Include="Helper\Layouts\assets\css\whatsapp.css" />
     <Content Include="Helper\Layouts\assets\img\amazing-1.png" />
+    <Content Include="Helper\Layouts\assets\img\instabanner.png" />
+    <Content Include="Helper\Layouts\assets\img\telegram.png" />
+    <Content Include="Helper\Layouts\assets\img\whats.png" />
     <Content Include="Helper\Layouts\assets\img\whatsapp.png" />
     <Content Include="Helper\Layouts\assets\js\intro.min.js" />
     <Content Include="Helper\Layouts\assets\js\plugins\intro.min.js" />

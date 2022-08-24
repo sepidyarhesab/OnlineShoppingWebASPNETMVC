@@ -712,36 +712,6 @@
     <Property Name="ModifierRef" Type="Guid" Nullable="false" />
     <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityType Name="Table_Order">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Guid" Nullable="false" />
-    <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Status" Type="Byte" />
-    <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DeliveryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="IsPay" Type="Boolean" Nullable="false" />
-    <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Tax" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Duty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Addition" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="IsOk" Type="Boolean" Nullable="false" />
-    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
-    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
-    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Version" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Table_Order_Item">
     <Key>
       <PropertyRef Name="Id" />
@@ -908,7 +878,6 @@
     <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" />
     <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" />
     <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" />
-    <EntitySet Name="Table_Order" EntityType="Self.Table_Order" />
     <EntitySet Name="Table_Order_Item" EntityType="Self.Table_Order_Item" />
     <EntitySet Name="Table_Transfer" EntityType="Self.Table_Transfer" />
     <EntitySet Name="Table_Meta_Configuration" EntityType="Self.Table_Meta_Configuration" />
@@ -969,5 +938,37 @@
       <Parameter Name="Messages" Mode="In" Type="String" />
       <Parameter Name="UserRef" Mode="In" Type="Guid" />
     </FunctionImport>
+    <EntitySet Name="Table_Order" EntityType="Orders_Model.Table_Order" />
   </EntityContainer>
+  <EntityType Name="Table_Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsPay" Type="Boolean" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Duty" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Addition" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="NetPrice" Type="Decimal" Precision="21" Scale="0" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

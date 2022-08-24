@@ -16,6 +16,7 @@
         decimal sum = 0;
         decimal Fees = 0;
         decimal dis = 0;
+        decimal diss = 0;
         decimal feedis = 0;
         decimal sumdis = 0;
         <body dir="rtl" class="font-name page" style="width: 100%">
@@ -128,11 +129,12 @@
                                 int row = 1;
                                 foreach (var item in Model)
                                 {
-                                    sum += item.Quantity * item.Fee;
+                                    sum += item.Quantity * item.ProductPrice;
                                     Fees += item.Fee;
-                                    dis += item.Discount;
-                                    feedis = (item.Quantity * item.Fee) - item.Discount;
-                                    sumdis += sum - dis;
+                                    dis = (item.Discounts * item.Quantity);
+                                    diss += (item.Discounts * item.Quantity);
+                                    feedis = item.Fee -dis;
+                                    sumdis += sum - diss;
                                     <tr class="text-center">
                                         <td>@row</td>
                                         <td>@item.Code</td>
@@ -141,9 +143,9 @@
                                         <td>@item.ColorTitle</td>
                                         <td>@item.SizeTitle</td>
                                         <td>@item.Quantity<small> عدد </small></td>
+                                        <td>@string.Format("{0:##,###}", item.ProductPrice, "Price")</td>
                                         <td>@string.Format("{0:##,###}", item.Fee, "Price")</td>
-                                        <td>@string.Format("{0:##,###}", item.SumRow, "Price")</td>
-                                        <td>@string.Format("{0:##,###}", item.Discount, "Price")</td>
+                                        <td>@string.Format("{0:##,###}",dis, "Price")</td>
                                         <td>@string.Format("{0:##,###}", feedis, "Price")</td>
                                     </tr>
                                     row++;
@@ -153,9 +155,9 @@
 
                             <tr>
                                 <th colspan="7" class="text-right">جمع کل</th>
-                                <th class="text-center">@string.Format("{0:##,###}", Fees, "Price")</th>
                                 <th class="text-center">@string.Format("{0:##,###}", sum, "Price")</th>
-                                <th class="text-center">@string.Format("{0:##,###}", dis, "Price")</th>
+                                <th class="text-center">@string.Format("{0:##,###}", Fees, "Price")</th>
+                                <th class="text-center">@string.Format("{0:##,###}", diss, "Price")</th>
                                 <th class="text-center">@string.Format("{0:##,###}", sumdis, "Price")</th>
                             </tr>
                             <tr>

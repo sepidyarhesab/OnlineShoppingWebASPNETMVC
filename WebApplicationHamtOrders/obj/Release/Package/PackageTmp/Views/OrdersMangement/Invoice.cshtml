@@ -75,10 +75,8 @@
                                         var row = 1;
                                         foreach (var mangment in Model)
                                         {
-                                            var CatFee = ((@mangment.Fee * @mangment.Discount) / 100);
-                                            var ProductFee = ((@mangment.Fee * @mangment.ProductDiscount) / 100);
+                                            
                                             <tr>
-
                                                 <td class="col-md-1  text-center">
                                                     @row
                                                 </td>
@@ -94,9 +92,6 @@
                                                     @mangment.Note
                                                 </td>
                                                 @{
-
-
-
                                                     <td class="col-md-1 text-center">
                                                         @mangment.ColorTitle
                                                     </td>
@@ -109,22 +104,15 @@
                                                     @mangment.Quantity
                                                 </td>
                                                 <td class="col-md-1 text-center dana" style="font-size: 12px;">
-                                                    @string.Format("{0:##,###}", @mangment.Fee, "Price")
+                                                    @string.Format("{0:##,###}", @mangment.ProductPrice, "Price")
                                                 </td>
 
                                                 @{
-                                                    if (@mangment.Discount > 0)
+                                                    if (@mangment.Discounts > 0)
                                                     {
                                                         <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", CatFee, "Price")
+                                                            @string.Format("{0:##,###}", mangment.Discounts, "Price")
                                                         </td>
-                                                    }
-                                                    else if (@mangment.ProductDiscount > 0)
-                                                    {
-                                                        <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", ProductFee, "Price")
-                                                        </td>
-
                                                     }
                                                     else
                                                     {
@@ -136,57 +124,52 @@
                                                 }
 
                                                 @{
-                                                    var CatSum = mangment.Fee - CatFee;
-                                                    var ProductSum = mangment.Fee - ProductFee;
+                                                    var CatSum = mangment.ProductPrice - mangment.Discounts;
+                                                    //var disproduct = (mangment.ProductPrice * mangment.ProductDiscount) / 100;
+                                                    //var ProductSum = mangment.ProductPrice - disproduct;
 
-                                                    if (@mangment.Discount > 0)
+                                                    if (@mangment.Discounts > 0)
                                                     {
                                                         <td class="col-md-1 text-center dana">
                                                             @string.Format("{0:##,###}", CatSum, "Price")
                                                         </td>
                                                     }
-                                                    else if (@mangment.ProductDiscount > 0)
-                                                    {
-                                                        <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", ProductSum, "Price")
-                                                        </td>
-                                                    }
                                                     else
                                                     {
                                                         <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", @mangment.SumRow, "Price")
+                                                            0
                                                         </td>
                                                     }
 
                                                 }
 
                                                 @{
-
-                                                    var CatSumRow = mangment.SumRow - (CatFee * mangment.Quantity);
-                                                    var ProductSumRow = mangment.SumRow - (ProductFee * mangment.Quantity);
-                                                    if (@mangment.Discount > 0)
+                                                    decimal Fee = 0;
+                                                    Fee = mangment.Price - mangment.Discounts;
+                                                    //var ProductSumRow = (mangment.Price * mangment.Quantity);
+                                                    if (@mangment.Discounts > 0)
                                                     {
                                                         <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", CatSumRow, "Price")
+                                                            @string.Format("{0:##,###}", Fee, "Price")
                                                         </td>
                                                     }
-                                                    else if (@mangment.ProductDiscount > 0)
+                                                    @*else if (@mangment.ProductDiscount > 0)
                                                     {
                                                         <td class="col-md-1 text-center dana">
                                                             @string.Format("{0:##,###}", ProductSumRow, "Price")
                                                         </td>
-                                                    }
+                                                    }*@
                                                     else
                                                     {
                                                         <td class="col-md-1 text-center dana">
-                                                            @string.Format("{0:##,###}", @mangment.SumRow, "Price")
+                                                            @string.Format("{0:##,###}", @mangment.Price, "Price")
                                                         </td>
                                                     }
 
                                                 }
 
 
-
+                                                
 
 
 

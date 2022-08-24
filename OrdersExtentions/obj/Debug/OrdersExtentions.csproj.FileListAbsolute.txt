@@ -82,3 +82,17 @@ C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\Orders
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CopyComplete
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.dll
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.dll.config
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\EntityFramework.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\SmsIrRestful.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.dll.config
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\bin\Debug\EntityFramework.xml
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.AssemblyReference.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CoreCompileInputs.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CopyComplete
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.pdb

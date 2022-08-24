@@ -316,7 +316,7 @@ namespace WebApplicationHamtOrders.Controllers
             var addision = MellatExtensions.SetDefaultTime();
             var addision2 = MellatExtensions.SetDefaultDate();
             var bp = new PaymentGatewayImplService();
-            result = bp.bpPayRequest(Int64.Parse(TerminalId), UserName, UserPassword, order, amount, addision2, addision, transcations, CallBackUrl, phone, phonenumber, "", "", "", "");
+            result = bp.bpPayRequest(Int64.Parse(TerminalId), UserName, UserPassword, order, amount * 10, addision2, addision, transcations, CallBackUrl, phone, phonenumber, "", "", "", "");
             if (result.Contains(','))
             {
                 LogWriter.Logger(result, DateTime.Now.ToLongDateString(), "1");

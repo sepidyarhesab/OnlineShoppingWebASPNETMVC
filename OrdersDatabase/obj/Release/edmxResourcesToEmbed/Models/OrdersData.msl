@@ -748,37 +748,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Table_Order">
-      <EntityTypeMapping TypeName="Orders_Model.Table_Order">
-        <MappingFragment StoreEntitySet="Table_Order">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
-          <ScalarProperty Name="DeliveryCode" ColumnName="DeliveryCode" />
-          <ScalarProperty Name="Note" ColumnName="Note" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="Duty" ColumnName="Duty" />
-          <ScalarProperty Name="Addition" ColumnName="Addition" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
-          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
-          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
-          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
-          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
-          <ScalarProperty Name="Version" ColumnName="Version" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Table_Order_Item">
       <EntityTypeMapping TypeName="Orders_Model.Table_Order_Item">
         <MappingFragment StoreEntitySet="Table_Order_Item">
@@ -919,5 +888,37 @@
     <FunctionImportMapping FunctionImportName="SP_InsertOrderItem" FunctionName="Orders_Model.Store.SP_InsertOrderItem" />
     <FunctionImportMapping FunctionImportName="SP_UpdateOrder" FunctionName="Orders_Model.Store.SP_UpdateOrder" />
     <FunctionImportMapping FunctionImportName="SP_InsertSMS" FunctionName="Orders_Model.Store.SP_InsertSMS" />
+    <EntitySetMapping Name="Table_Order">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Order">
+        <MappingFragment StoreEntitySet="Table_Order">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Addition" ColumnName="Addition" />
+          <ScalarProperty Name="Duty" ColumnName="Duty" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="DeliveryCode" ColumnName="DeliveryCode" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

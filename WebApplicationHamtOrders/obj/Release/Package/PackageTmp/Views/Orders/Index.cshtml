@@ -90,15 +90,27 @@
                                     </div>
                                     <div class="checkout-section-content">
                                         <div class="checkout-section-title">آدرس تحویل سفارش</div>
+                      
                                         <div class="row mx-0">
                                             @{
                                                 if (item.AddresList != null)
                                                 {
                                                     if (item.AddresList.Count > 0)
                                                     {
+
+
+                                                        <div class="alert alert-warning">
+                                                            <b>  آدرس خود را انتخاب کنید </b>
+                                                        </div>
+
+
                                                         var row = 0;
                                                         foreach (var itemm in item.AddresList)
                                                         {
+
+
+
+                                            
                                                             <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                                                                 <div class="custom-control custom-radio">
                                                                     <input type="radio" id="customRadio @row" name="customRadio" class="custom-control-input customRadio" value="@itemm.Id" onclick="atLeastOneRadio('@itemm.Id')">
@@ -130,6 +142,7 @@
                                                             <script>
                                                                 function atLeastOneRadio(id) {
                                                                     document.getElementById('AddressRef').value = id;
+                                                                    document.getElementById('btnPay').disabled = '';
                                                                 }
                                                             </script>
                                                             row++;
@@ -235,7 +248,7 @@
                                         </div>*@
                                     <div class="col-md-12">
                                         <div class="form-element-row">
-                                            <button class="btn btn-success col-md-8 py-2" style="margin: 5px" type="submit">
+                                            <button id="btnPay" class="btn btn-success col-md-8 py-2" style="margin: 5px" type="submit" disabled="disabled">
                                                 ثبت نهایی و پرداخت از طریق درگاه بانکی
                                             </button>
                                             <a href="/Default" class="btn btn-secondary col-md-3 " style="margin: 5px">انصراف از خرید</a>

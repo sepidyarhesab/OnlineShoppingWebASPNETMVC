@@ -77,9 +77,9 @@
                                                         <li>
                                                             <span>تخفیف: </span>
                                                             @{
-                                                                if (@item.Discount > 0)
+                                                                if (@item.RowDiscount > 0)
                                                                 {
-                                                                    <span class="text-danger">&nbsp; @string.Format("{0:##,###}", item.Discount, "") تومان</span>
+                                                                    <span class="text-danger">&nbsp; @string.Format("{0:##,###}", item.RowDiscount, "") تومان</span>
 
                                                                 }
                                                                 else
@@ -181,7 +181,7 @@
                                 <label class="custom-control-label payment-select" for="paymentSelection1">
                                     <span class="d-flex align-items-center">
                                         <span>
-                                            <span class="title">ارسال با پست پیشتاز</span>
+                                            <span class="title">ارسال با پست پیشتاز <small> (3 روز کاری) </small></span>
                                         </span>
                                     </span>
                                 </label>
@@ -192,7 +192,7 @@
                                 <label class="custom-control-label payment-select" for="paymentSelection2">
                                     <span class="d-flex align-items-center">
                                         <span>
-                                            <span class="title">ارسال با پیک در قزوین(تسویه درب منزل)</span>
+                                            <span class="title">ارسال با تیپاکس <small> (5 روز کاری) </small></span>
                                         </span>
                                     </span>
                                 </label>
@@ -231,11 +231,11 @@
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between px-3 py-2">
-                            <span class="font-weight-bold">مبلغ قابل پرداخت</span>
+                            <span class="text-muted">مبلغ کل</span>
                             @{
                                 Session["PayAmount"] = Model.SumPay;
                             }
-                            <span class="font-weight-bold" id="allSum">
+                            <span class="text-muted" id="allSum">
                                 <span id="SumPay">@string.Format("{0:##,###}", Model.SumPay, "Discount")</span>
                                 <span class="text-sm">تومان</span>
                             </span>
@@ -246,7 +246,7 @@
                                 if (Model.Discount > 0)
                                 {
                                     <span class="text-danger" id="Discount">
-                                        @string.Format("{0:##,###}", Model.sumdis, "sumdis")
+                                        @string.Format("{0:##,###}", Model.Discount, "sumdis")
                                         <span class="text-sm">تومان</span>
                                     </span>
                                 }
@@ -259,6 +259,16 @@
                                 }
                             }
 
+                        </div>
+                        <div class="d-flex justify-content-between px-3 py-2">
+                            <span class="font-weight-bold" style="font-size: 18px">مبلغ قابل پرداخت</span>
+                            @{
+                                Session["PayAmount"] = Model.SumPay;
+                            }
+                            <span class="font-weight-bold" id="allSum" style="font-size: 18px">
+                                <span id="SumPay">@string.Format("{0:##,###}", Model.SumPay, "Discount")</span>
+                                <span class="text-sm">تومان</span>
+                            </span>
                         </div>
                         @using (Html.BeginForm("Index", "Orders", FormMethod.Post))
                         {
@@ -277,7 +287,7 @@
                 var z = document.getElementById('transferpay');
                 var y = document.getElementById('SumPay');
                 x.innerHTML = 0;
-                z.value = 0;
+                z.value = 35000;
                 y.innerHTML = @Model.SumPay - @Model.Transfer;
             }
         </script>

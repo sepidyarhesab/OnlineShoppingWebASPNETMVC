@@ -38,3 +38,13 @@ C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Release\Orders
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.csproj.CopyComplete
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.dll
 C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\bin\Release\OrdersDatabase.dll.config
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\bin\Release\OrdersDatabase.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\bin\Release\OrdersDatabase.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\bin\Release\EntityFramework.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\bin\Release\EntityFramework.xml
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.csproj.AssemblyReference.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.csproj.CoreCompileInputs.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.csproj.CopyComplete
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\obj\Release\OrdersDatabase.pdb

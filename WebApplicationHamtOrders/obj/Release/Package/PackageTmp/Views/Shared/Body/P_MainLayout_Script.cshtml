@@ -446,9 +446,11 @@
         $.ajax({
             url: "/Dashboard/EditAddress",
             type: "Post",
-            data: { id : id }
+            data: { id: id }
         }).done(function (result) {
             $("#BodyModal").html(result);
         });
     }
 </script>
+
+<script src="~/Helper/Layouts/assets/js/intro.min.js"></script>

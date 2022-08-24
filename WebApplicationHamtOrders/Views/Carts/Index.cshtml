@@ -181,7 +181,7 @@
                                 <label class="custom-control-label payment-select" for="paymentSelection1">
                                     <span class="d-flex align-items-center">
                                         <span>
-                                            <span class="title">ارسال با پست پیشتاز</span>
+                                            <span class="title">ارسال با پست پیشتاز <small> (3 روز کاری) </small></span>
                                         </span>
                                     </span>
                                 </label>
@@ -192,7 +192,7 @@
                                 <label class="custom-control-label payment-select" for="paymentSelection2">
                                     <span class="d-flex align-items-center">
                                         <span>
-                                            <span class="title">ارسال با پیک در قزوین(تسویه درب منزل)</span>
+                                            <span class="title">ارسال با تیپاکس <small> (5 روز کاری) </small></span>
                                         </span>
                                     </span>
                                 </label>
@@ -287,7 +287,7 @@
                 var z = document.getElementById('transferpay');
                 var y = document.getElementById('SumPay');
                 x.innerHTML = 0;
-                z.value = 0;
+                z.value = 35000;
                 y.innerHTML = @Model.SumPay - @Model.Transfer;
             }
         </script>

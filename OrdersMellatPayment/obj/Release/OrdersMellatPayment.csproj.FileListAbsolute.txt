@@ -16,3 +16,12 @@ E:\Document\Developers\Source\WebApplicationOrdersMaster\WebApplicationOrders\Or
 E:\Document\Developers\Source\WebApplicationOrdersMaster\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.dll
 E:\Document\Developers\Source\WebApplicationOrdersMaster\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.pdb
 E:\Document\Developers\Source\WebApplicationOrdersMaster\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.XmlSerializers.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Release\OrdersMellatPayment.dll.config
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Release\OrdersMellatPayment.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Release\OrdersMellatPayment.XmlSerializers.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\bin\Release\OrdersMellatPayment.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.csproj.AssemblyReference.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.csproj.CoreCompileInputs.cache
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.dll
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.pdb
+E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersMellatPayment\obj\Release\OrdersMellatPayment.XmlSerializers.dll

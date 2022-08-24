@@ -223,8 +223,21 @@
 
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <span>@string.Format("{0:##,###}", mangment.Price, "Fee") <small> تومان </small></span>
-
+                                                    @{
+                                                        if (mangment.Discount > 0)
+                                                        {
+                                                            decimal Fee = 0;
+                                                            decimal dis = 0;
+                                                            dis = mangment.Discount * mangment.Quantity;
+                                                            Fee = mangment.Price - dis;
+                                                            <span>@string.Format("{0:##,###}", Fee, "Fee") <small> تومان </small></span>
+                                                        }
+                                                        else
+                                                        {
+                                                <span>0<small> تومان </small></span>
+                                                        }
+                                                      
+                                                    }
                                                 </td>
                                                 <td class="col-md-1">
                                                     <a href="/OrdersMangement/Invoice/@mangment.Id">

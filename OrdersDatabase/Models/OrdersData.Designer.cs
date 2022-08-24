@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\Models\OrdersData.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Document\Developers\Source\SepidyarHesabWebApplication-Orders\WebApplicationOrders\OrdersDatabase\Models\OrdersData.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

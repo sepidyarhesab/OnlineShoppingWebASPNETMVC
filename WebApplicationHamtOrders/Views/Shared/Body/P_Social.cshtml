@@ -1,128 +1,96 @@
-﻿@using OrdersGeneral.Repository.General
-@using OrdersInventory.Repository.Inventory
+﻿@using System.Configuration
 
 
-<ul class="pagination justify-content-center">
-    <div class="product-carousel align-items-center amazing-section mb-8 col-md-8 col-8" style="padding: 80px; background: rgb(253 245 245); border-radius: 25px; ">
-
-        <div class="row " style="transform: translate3d(0px, 0px, 0px); align-items: center;">
-
-            <div class="col custom-footer-cta-border-left medium-12 small-6 large-6" style="width: 253.25px;  ">
-                <div class="product-card default-ui" style=" background-color: #fdf5f5;">
-                   <div class="product-card-bottom">
-                        
-                       <div class="" style="color: black; text-align: center;">
-                           <img width="100" height="100" style="width: 85px;" src="https://ishikoo.com/wp-content/uploads/2022/02/icons8-instagram.gif">
-                           <br />
-                           <br />
-                           <br />
-                           <h6>اینستاگرام</h6>
-                           <p>پاییزان را نیز از طریق اینستاگرام دنبال نمایید</p>
-                       </div>
-                        <a href="https://instagram.com/paeezan.shopp?igshid=YmMyMTA2M2Y=" class="btn-add-to-cart" style="width: 295px;">
-                            <i class="fad fa-instagram-square"></i>
-                            Paeezan
-                        </a>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-            <div class="col custom-footer-cta-border-left medium-12 small-6 large-6" style="width: 253.25px; margin-left: 10px;">
-                <div class="product-card default-ui" style=" background-color: #fdf5f5;">
-                    <div class="product-card-top">
-                       @*<img width="300" height="300" style="width: 85px;" src="~/Static/Content/Gif/icons8-whatsapp.gif" class="attachment-medium size-medium" alt="" loading="lazy">*@
-                       
-                       
-                    </div>
-
-                    <div class="product-card-bottom">
-
-                        <div class="" style="color: black; text-align: center;">
-                            <img width="100" height="100" src="~/Static/Content/Gif/icons8-whatsapp_2.gif" />
-                            <br/>
-                            <br/>
-                            <br/>
-                            <h6>پشتیبانی آنلاین</h6>
-                            <p>پاسخگوی شما عزیزان از طریق واتس آپ هستیم</p>
-                        </div>
-                        <a href="https://api.whatsapp.com/send?phone=989337971495&amp;text=%D8%B3%D9%84%D8%A7%D9%85%20%D8%AF%D8%B1%20%D8%AE%D8%AF%D9%85%D8%AA%20%D8%B4%D9%85%D8%A7%20%D9%87%D8%B3%D8%AA%DB%8C%D9%85%20%D8%B3%D9%88%D8%A7%D9%84%DB%8C%20%D8%AF%D8%A7%D8%B1%DB%8C%D8%AF%20%D8%A8%D9%81%D8%B1%D9%85%D8%A7%DB%8C%DB%8C%D8%AF" class="btn-add-to-cart" style="width: 295px;>
-                            <i class="fad fa-whatsapp-square"></i>
-                            09337971495
-                        </a>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-
+<div class="row">
+    <div class="col-12">
+        <div class="section-title mb-2 text-center">
+            ما را د فضای مجازی دنبال کنید
         </div>
     </div>
-</ul>
+    <div class="col-12">
+        <div class="shadow-around p-3">
+            <ul class="d-flex flex-wrap justify-content-center">
+                @{
+                    string instagram = ConfigurationManager.AppSettings["PageAdmin"];
+                    string Company = ConfigurationManager.AppSettings["PhoneAdmin"];
+                    var a = "https://wa.me/+98"+ Company+"?text=سلام_وقتتون_بخیر";
+                }
+                <li class="shadow-around text-center px-2 py-3 m-2 ">
+                    <a href="@instagram">
+                        <img src="~/Helper/Layouts/assets/img/instabanner.png" class="img-responsive" width="250"/>
+                    </a>
+                </li>
+
+                <li class="shadow-around text-center px-2 py-3 m-2 ">
+                    <a href="@a">
+                        <img src="~/Helper/Layouts/assets/img/whats.png" class="img-responsive" width="250"/>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 
-        @*<div class="widget">
-                <h2 class="widget-title">
-                    ما را در شبکه‌های اجتماعی دنبال کنید:
-                </h2>
-                <div class="social">
-                    <ul>
-                        @{ var querySocialMedia1 = RepSocialMedia.RepositorySocialMedia();
-                            if (querySocialMedia1.Count > 0)
-                            {
-                                foreach (var management in querySocialMedia1)
-                                {
-                                    <li>
+@*<div class="widget">
+        <h2 class="widget-title">
+            ما را در شبکه‌های اجتماعی دنبال کنید:
+        </h2>
+        <div class="social">
+            <ul>
+                @{ var querySocialMedia1 = RepSocialMedia.RepositorySocialMedia();
+                    if (querySocialMedia1.Count > 0)
+                    {
+                        foreach (var management in querySocialMedia1)
+                        {
+                            <li>
 
-                                        @{
-                                            switch (@management.Class)
-                                           {
-                                               case "Instagram":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="src=&quot;https://ishikoo.com/wp-content/uploads/2022/02/icons8-instagram.gif&quot;" alt="Instagram" width="30px"/>
-                                                   </a>
-                                                   break;
-                                               case "Twitter":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="~/Helper/Layouts/assets/images/SocialMedia/twitter.png" alt="Twitter" width="30px"/>
-                                                   </a>
-                                                   break;
-                                               case "Whatsapp":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="~/Helper/Layouts/assets/images/SocialMedia/whatsapp.png" alt="Whatsapp" width="30px"/>
-                                                   </a>
-                                                   break;
-                                               case "Youtube":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="~/Helper/Layouts/assets/images/SocialMedia/youtube.png" alt="Youtube" width="30px"/>
-                                                   </a>
-                                                   break;
-                                               case "Telegram":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="~/Helper/Layouts/assets/images/SocialMedia/telegram.png" alt="Telegram" width="30px"/>
-                                                   </a>
-                                                   break;
-                                               case "Facebook":
-                                                   <a href="@management.Url" target="_blank">
-                                                       <img src="~/Helper/Layouts/assets/images/SocialMedia/facebook.png" alt="Facebook" width="30px"/>
-                                                   </a>
-                                                   break;
+                                @{
+                                    switch (@management.Class)
+                                   {
+                                       case "Instagram":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="src=&quot;https://ishikoo.com/wp-content/uploads/2022/02/icons8-instagram.gif&quot;" alt="Instagram" width="30px"/>
+                                           </a>
+                                           break;
+                                       case "Twitter":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="~/Helper/Layouts/assets/images/SocialMedia/twitter.png" alt="Twitter" width="30px"/>
+                                           </a>
+                                           break;
+                                       case "Whatsapp":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="~/Helper/Layouts/assets/images/SocialMedia/whatsapp.png" alt="Whatsapp" width="30px"/>
+                                           </a>
+                                           break;
+                                       case "Youtube":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="~/Helper/Layouts/assets/images/SocialMedia/youtube.png" alt="Youtube" width="30px"/>
+                                           </a>
+                                           break;
+                                       case "Telegram":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="~/Helper/Layouts/assets/images/SocialMedia/telegram.png" alt="Telegram" width="30px"/>
+                                           </a>
+                                           break;
+                                       case "Facebook":
+                                           <a href="@management.Url" target="_blank">
+                                               <img src="~/Helper/Layouts/assets/images/SocialMedia/facebook.png" alt="Facebook" width="30px"/>
+                                           </a>
+                                           break;
 
-                                           }
+                                   }
 
-                                        }
-                                    </li>
                                 }
-
-                            }
-
+                            </li>
                         }
-                    </ul>
-                </div>
-            </div>*@
+
+                    }
+
+                }
+            </ul>
+        </div>
+    </div>*@
