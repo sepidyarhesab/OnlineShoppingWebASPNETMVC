@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using WebApplicationOrders.Database;
+using OrdersDatabase.Models;
 using WebApplicationOrders.Extensions;
-using WebApplicationOrders.Models.Database.OrderDatabase;
+
 
 namespace WebApplicationOrders.Controllers
 {

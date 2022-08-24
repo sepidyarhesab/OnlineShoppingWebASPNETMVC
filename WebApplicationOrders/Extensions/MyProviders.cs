@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-using WebApplicationOrders.Database;
-using WebApplicationOrders.Models.Database.OrderDatabase;
+using OrdersDatabase.Models;
+
 
 namespace WebApplicationOrders.Extensions
 {

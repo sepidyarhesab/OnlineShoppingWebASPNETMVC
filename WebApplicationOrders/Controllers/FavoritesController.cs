@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OrdersOrders.ViewModels.Orders;
-using WebApplicationOrders.Database;
-using WebApplicationOrders.Models.Database.OrderDatabase;
+using OrdersDatabase.Models;
+
 
 
 namespace WebApplicationOrders.Controllers

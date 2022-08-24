@@ -68,3 +68,17 @@ C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersExtentions\obj\Debug\O
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CopyComplete
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.dll
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.pdb
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.dll.config
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersExtentions.pdb
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\EntityFramework.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\SmsIrRestful.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.pdb
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\OrdersDatabase.dll.config
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\bin\Debug\EntityFramework.xml
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.AssemblyReference.cache
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CoreCompileInputs.cache
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.csproj.CopyComplete
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersExtentions\obj\Debug\OrdersExtentions.pdb

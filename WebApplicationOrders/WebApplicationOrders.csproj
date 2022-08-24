@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebApplicationOrders</RootNamespace>
     <AssemblyName>WebApplicationOrders</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -190,6 +190,65 @@
     <Content Include="Helper\Layouts\account-orders.html" />
     <Content Include="Helper\Layouts\account-password.html" />
     <Content Include="Helper\Layouts\account-profile.html" />
+    <Content Include="Helper\Layouts\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Helper\Layouts\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Helper\Layouts\assets\css\colors\amber.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\blue.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\brown.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\cyan.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\default.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\green.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\indigo.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\orange.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\pink.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\purple.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\red.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\teal.css" />
+    <Content Include="Helper\Layouts\assets\css\colors\yellow.css" />
+    <Content Include="Helper\Layouts\assets\css\custom.css" />
+    <Content Include="Helper\Layouts\assets\css\font-awesome.min.css" />
+    <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
+    <Content Include="Helper\Layouts\assets\css\introjs.min.css" />
+    <Content Include="Helper\Layouts\assets\css\Invoice-Template.css" />
+    <Content Include="Helper\Layouts\assets\css\mmenu.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\apexcharts.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\jquery.classycountdown.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\nouislider.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\select2.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\sweetalert2.min.css" />
+    <Content Include="Helper\Layouts\assets\css\plugins\swiper.min.css" />
+    <Content Include="Helper\Layouts\assets\css\theme.css" />
+    <Content Include="Helper\Layouts\assets\css\whatsapp.css" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.svg" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.svg" />
+    <Content Include="Helper\Layouts\assets\img\amazing-1.png" />
+    <Content Include="Helper\Layouts\assets\img\whatsapp.png" />
+    <Content Include="Helper\Layouts\assets\js\custom.js" />
+    <Content Include="Helper\Layouts\assets\js\intro.min.js" />
+    <Content Include="Helper\Layouts\assets\js\jquery-3.5.1.min.js" />
+    <Content Include="Helper\Layouts\assets\js\mmenu.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\apexcharts.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\intro.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.classycountdown.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.ez-plus.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.knob.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.nicescroll.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\jquery.throttle.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\macy.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\nouislider.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\popper.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\ResizeSensor.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\select2.full.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\sweetalert2.all.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\swiper.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\theia-sticky-sidebar.min.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\wNumb.js" />
+    <Content Include="Helper\Layouts\assets\js\plugins\zoomsl.min.js" />
+    <Content Include="Helper\Layouts\assets\js\theme.js" />
+    <Content Include="Helper\Layouts\assets\js\whatsapp.js" />
     <Content Include="Helper\Layouts\blog-classic.html" />
     <Content Include="Helper\Layouts\blog-grid.html" />
     <Content Include="Helper\Layouts\blog-list.html" />
@@ -407,6 +466,8 @@
     <Content Include="Helper\Layouts\vendor\owl-carousel-2.3.4\assets\owl.video.play.png" />
     <Content Include="Helper\Layouts\vendor\owl-carousel-2.3.4\owl.carousel.min.js" />
     <Content Include="Helper\Layouts\vendor\svg4everybody-2.1.9\svg4everybody.min.js" />
+    <Content Include="Helper\Layouts\css\whatsapp.css" />
+    <Content Include="Helper\Layouts\js\whatsapp.js" />
     <Content Include="Helper\Layouts\wishlist.html" />
     <Content Include="Global.asax" />
     <Content Include="Helper\Admin\Articles.html" />
@@ -464,16 +525,6 @@
     <Content Include="Helper\Admin\Support.html" />
     <Content Include="Helper\Admin\User.html" />
     <Content Include="Log.txt" />
-    <Content Include="Models\Database\OrderDatabase\OrdersData.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrdersData.edmx</DependentUpon>
-      <LastGenOutput>OrdersData.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Database\OrderDatabase\OrdersData.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrdersData.edmx</DependentUpon>
-      <LastGenOutput>OrdersData.cs</LastGenOutput>
-    </Content>
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -587,9 +638,18 @@
     <Content Include="Static\Content\Icons\view_100px.png" />
     <Content Include="Static\Content\Icons\website_100px.png" />
     <Content Include="Static\Content\Icons\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\Banner\Desktop\Banner_SP-637944295952418615.jpg" />
+    <Content Include="Static\Content\Images\Banner\Mobile\Banner_SP-637944295952418615.jpg" />
     <Content Include="Static\Content\Images\BlogImages\Blog_sp-999.jpg" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998023241077.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998132998106.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998216688376.png" />
+    <Content Include="Static\Content\Images\Categories\Category_SP-637939998292131987.png" />
     <Content Include="Static\Content\Images\Footer\Footer.jpg" />
     <Content Include="Static\Content\Images\Footer\de.jpg" />
+    <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962434505259329.png" />
+    <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962449238401674.png" />
+    <Content Include="Static\Content\Images\Logo\Logo_SP-637830308030933133.png" />
     <Content Include="Static\Content\Images\Menu\account_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
@@ -643,6 +703,27 @@
     <Content Include="Static\Content\Images\Menu\link_100px.png" />
     <Content Include="Static\Content\Images\Menu\lock_100px.png" />
     <Content Include="Static\Content\Images\Menu\male_user_100px.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-627-943.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961551632104304.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961555427719868.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961556264499601.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961557087445387.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961557494369896.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961558347574564.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961558662428193.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961559393719505.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961560678677649.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961561732410538.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961562192601543.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961562878193889.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961563613137544.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961565539860341.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961567232030641.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961573164188746.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961573881231836.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961574406412094.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637961575093501494.png" />
+    <Content Include="Static\Content\Images\Menu\Menu_SP-637963480752079906.png" />
     <Content Include="Static\Content\Images\Menu\menu_vertical_100px.png" />
     <Content Include="Static\Content\Images\Menu\minimize_window_100px.png" />
     <Content Include="Static\Content\Images\Menu\minus_100px.png" />
@@ -698,6 +779,7 @@
     <Content Include="Static\Content\Images\Menu\view_100px.png" />
     <Content Include="Static\Content\Images\Menu\website_100px.png" />
     <Content Include="Static\Content\Images\Menu\windows_calendar_100px.png" />
+    <Content Include="Static\Content\Images\Products\Category_SP-637940016467188797.png" />
     <Content Include="Static\Content\Images\Products\Product_SP-1101.png" />
     <Content Include="Static\Content\Images\Products\Product_SP-1166.png" />
     <Content Include="Static\Content\Images\Products\Product_SP-1176.png" />
@@ -832,10 +914,22 @@
     <Content Include="Static\Content\Images\Products\Product_SP-9815.png" />
     <Content Include="Static\Content\Images\Products\Product_SP-9980.png" />
     <Content Include="Static\Content\Images\Request\Request_SP-97740.jpeg" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016467188797.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016552269167.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016651301450.png" />
+    <Content Include="Static\Content\Images\Services\Category_SP-637940016765780146.png" />
     <Content Include="Static\Content\Images\Services\Services_SP-40098.png" />
     <Content Include="Static\Content\Images\Services\Services_SP-44202.png" />
     <Content Include="Static\Content\Images\Services\Services_SP-57833.png" />
     <Content Include="Static\Content\Images\Services\Services_SP-84278.png" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529179662153.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529404848484.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637939294505258747.png" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637945321481689444.jpg" />
+    <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637945322052619571.gif" />
+    <Content Include="Static\Content\Images\WhatsApp\Logo_SP-637830308030933133.png" />
+    <Content Include="Static\Content\Images\WhatsApp\Menu_SP-380-803.png" />
+    <Content Include="Static\Content\Images\WhatsApp\Menu_SP-637963501240748205.png" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -883,13 +977,13 @@
     <Compile Include="Controllers\VerficationPaymentController.cs" />
     <Compile Include="Controllers\VerifyController.cs" />
     <Compile Include="Controllers\ViewConfigurationAdminController.cs" />
+    <Compile Include="Controllers\WhatsAppManagementController.cs" />
     <Compile Include="Convertor\DateConvertor.cs" />
     <Compile Include="Extensions\LogWriter.cs" />
     <Compile Include="Extensions\Secure.cs" />
     <Compile Include="Extensions\SmsAuthentication.cs" />
     <Compile Include="Extensions\SmsProviders.cs" />
     <Compile Include="Extensions\SmsToken.cs" />
-    <Compile Include="Models\Database\DatabaseEntites.cs" />
     <Compile Include="Extensions\ConnectStrings.cs" />
     <Compile Include="Extensions\Crypto.cs" />
     <Compile Include="Extensions\GetTables.cs" />
@@ -908,120 +1002,6 @@
     <Compile Include="Extensions\UsedSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\OrdersData.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersData.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\OrdersData.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\OrdersData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersData.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Blog.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Blog_Category.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Comments.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Discount.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Favorites.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_File_Upload.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Links.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Menu.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_MenuAccess.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_MenuAdmin.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_MenuAdmin_Category.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Order.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Order_Item.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Price_DisCount.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Category.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Color.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Property.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_PropertyList.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Selection.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Size.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Product_Summary.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Role.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Selection_Configuration.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Service.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Settings.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Site_Type.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Slider.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_SMS_Log.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_SocialMedia.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Static_SocialMedia.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_Stock.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\OrderDatabase\Table_User.cs">
-      <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -1281,15 +1261,50 @@
     <Content Include="Helper\Layouts\fonts\dana-fanum-thin.eot" />
     <Content Include="Helper\Layouts\fonts\dana-fanum-thin.woff" />
     <Content Include="Helper\Layouts\fonts\dana-fanum-thin.woff2" />
-    <EntityDeploy Include="Models\Database\OrderDatabase\OrdersData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OrdersData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Database\OrderDatabase\OrdersData.edmx.diagram">
-      <DependentUpon>OrdersData.edmx</DependentUpon>
-    </Content>
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Helper\Layouts\fonts\BarcodeFont.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\BarcodeFont.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\DimaMolsaq\DimaMolsaq.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-brands-400.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-duotone-900.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-light-300.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-regular-400.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\font-awesome\fa-solid-900.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Bold.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Light.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Medium.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam-Thin.woff2" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.eot" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.ttf" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.woff" />
+    <Content Include="Helper\Layouts\assets\fonts\shabnam\Shabnam.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Layouts\_MainLayouts.cshtml" />
     <Content Include="Views\Shared\Head\P_Header.cshtml" />
@@ -1460,6 +1475,10 @@
     <Content Include="Views\DiscountManager\Indexx.cshtml" />
     <Content Include="Views\VerficationMellatPayment\Index.cshtml" />
     <Content Include="Views\OrdersMangement\AllOrders.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Add.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Edit.cshtml" />
+    <Content Include="Views\WhatsAppManagement\Index.cshtml" />
+    <Content Include="Views\Shared\Footer\P_Whatsapp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1469,15 +1488,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helper\Layouts\assets\Image\" />
     <Folder Include="Helper\Layouts\images\Request\" />
+    <Folder Include="Models\" />
     <Folder Include="Static\Content\Excel\" />
-    <Folder Include="Static\Content\Images\Banner\Desktop\" />
-    <Folder Include="Static\Content\Images\Banner\Mobile\" />
-    <Folder Include="Static\Content\Images\Categories\" />
     <Folder Include="Static\Content\Images\Factor\" />
-    <Folder Include="Static\Content\Images\Logo\" />
     <Folder Include="Static\Content\Images\Profile\" />
-    <Folder Include="Static\Content\Images\Sliders\Desktop\" />
     <Folder Include="Static\Content\Images\Sliders\Mobile\" />
     <Folder Include="Views\Index\" />
   </ItemGroup>
@@ -1511,6 +1527,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrdersDatabase\OrdersDatabase.csproj">
+      <Project>{56182c87-80d8-4413-ba56-8df9901d0f45}</Project>
+      <Name>OrdersDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrdersGeneral\OrdersGeneral.csproj">
       <Project>{d5b092b0-4317-4098-8c04-598c830de8f4}</Project>
       <Name>OrdersGeneral</Name>

@@ -493,3 +493,4 @@ Application Write  : New Order = فروشگاه اینترنتی شال و رو�
 Application Write  : New Order = Success Datetime : 29/05/1401 04:17:03 ب.ظ Line  : 174
 Application Write  : New Order = 100 Datetime : 29/05/1401 04:17:06 ب.ظ Line  : 184
 Application Write  : New Order  res= 100 Datetime : 29/05/1401 04:17:08 ب.ظ Line  : 184
+Application Write  : Input string was not in a correct format. Datetime : 31/05/1401 04:39:43 ب.ظ Line  : 

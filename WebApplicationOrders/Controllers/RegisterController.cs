@@ -6,8 +6,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using OrdersGeneral.Repository.General;
 using SepidyarHesabExtensions.Extentions;
-using WebApplicationOrders.Database;
-using WebApplicationOrders.Models.Database.OrderDatabase;
+using OrdersDatabase.Models;
+
 
 
 namespace WebApplicationOrders.Controllers

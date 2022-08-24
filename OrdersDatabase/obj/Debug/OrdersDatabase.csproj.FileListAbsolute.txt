@@ -48,3 +48,13 @@ C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersDatabase\obj\Debug\Ord
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.csproj.CopyComplete
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.dll
 C:\Users\SoBi\Documents\GitHub\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.pdb
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\bin\Debug\OrdersDatabase.dll.config
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\bin\Debug\OrdersDatabase.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\bin\Debug\OrdersDatabase.pdb
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\bin\Debug\EntityFramework.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\bin\Debug\EntityFramework.xml
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.csproj.AssemblyReference.cache
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.csproj.CoreCompileInputs.cache
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.csproj.CopyComplete
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.dll
+C:\Document\Sepidyarhesab\WebApplicationOrders\OrdersDatabase\obj\Debug\OrdersDatabase.pdb

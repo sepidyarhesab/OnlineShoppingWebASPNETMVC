@@ -37,5 +37,6 @@ namespace SepidyarHesabExtensions.Classes
         //public static string ServerPathFileUploadMainOthers = "/Static/Contents/Images/Others/";
         //public static string ServerPathFileUploadMainResume = "/Static/Contents/Images/Resume/";
         //public static string ServerPathFileUploadMainKnowing = "/Helper/Layouts/Fa/images";
+        public static string ServerPathFileUploadWhatsApp = "/Static/Content/Images/WhatsApp/";
     }
 }

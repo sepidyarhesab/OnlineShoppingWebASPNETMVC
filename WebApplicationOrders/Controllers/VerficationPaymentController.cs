@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using SepidyarHesabExtensions.Classes;
-using WebApplicationOrders.Database;
+using OrdersDatabase.Models;
 using WebApplicationOrders.Extensions;
-using WebApplicationOrders.Models.Database.OrderDatabase;
+
 
 namespace WebApplicationOrders.Controllers
 {
