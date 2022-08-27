@@ -3313,11 +3313,11 @@ header.page-header {
                 }
 
                 .checkout-section .checkout-step ul li.active {
-                    color: #979797;
+                    color: #d04429;
                 }
 
                     .checkout-section .checkout-step ul li.active:before, .checkout-section .checkout-step ul li.active:after {
-                        background-color: #979797;
+                        background-color: #d04429;
                     }
 
     .checkout-section .checkout-section-content .checkout-section-title {
@@ -3486,6 +3486,7 @@ header.page-header {
                 position: absolute;
                 right: -10px;
                 text-align: center;
+                color: #3d3d3d;
             }
 
             .checkout-section .checkout-section-content .cart-items .cart-item .item-info .item-detail ul li span {
@@ -4184,7 +4185,7 @@ header.page-header {
 }
 
     .product-detail .product-title h1 {
-        font-size: 18px;
+        font-size: 25px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

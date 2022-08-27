@@ -202,7 +202,7 @@ namespace WebApplicationHamtOrders.Controllers
 
                                             if (configPayment == "Mellat")
                                             {
-                                                MellatStart(Amount, result, values.Phone.PersianToEnglish());
+                                                MellatStart(Amount + long.Parse((transferpay).ToString()), result, values.Phone.PersianToEnglish());
                                                 return RedirectToAction("ConnectingToMellat");
                                             }
                                             //Response.Redirect("/Orders/OrderFinished");
@@ -517,6 +517,63 @@ namespace WebApplicationHamtOrders.Controllers
                     {
                         found.Quantity--;
                     }
+                }
+            }
+            Response.Redirect("/Carts");
+        }
+
+        [HttpPost]
+        public void DeleteCartsPost(string id)
+        {
+            var carts = new List<VMOrders.VmOrderSubmit>();
+
+            if (Session["Carts"] != null)
+            {
+                carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
+                var found = carts.FirstOrDefault(c => c.Code == id);
+                if (found != null)
+                {
+                    if (found.Quantity <= 1)
+                    {
+                        carts.Remove(found);
+                    }
+                    else
+                    {
+                        found.Quantity--;
+                    }
+                }
+            }
+            Response.Redirect("/Carts");
+        }    
+        
+        
+        [HttpPost]
+        public void UpdateCartsPost(string id,string entites)
+        {
+            var carts = new List<VMOrders.VmOrderSubmit>();
+
+            if (Session["Carts"] != null)
+            {
+                carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
+                var found = carts.FirstOrDefault(c => c.Code == id);
+                if (found != null)
+                {
+                    if (entites == "+")
+                    {
+                        found.Quantity++;
+                    }
+                    else
+                    {
+                        if (found.Quantity <= 1)
+                        {
+                            carts.Remove(found);
+                        }
+                        else
+                        {
+                            found.Quantity--;
+                        }
+                    }
+
                 }
             }
             Response.Redirect("/Carts");

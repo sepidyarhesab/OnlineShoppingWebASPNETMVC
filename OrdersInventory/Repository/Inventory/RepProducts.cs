@@ -1874,7 +1874,7 @@ namespace OrdersInventory.Repository.Inventory
                     {
                         ColorCode = "000000",
                         ColorRef = Guid.Parse("00000000-0000-0000-0000-000000000000"),
-                        PrimaryTitle = "---انتخاب کنید---",
+                        PrimaryTitle = "--- رنگ را انتخاب کنید ---",
                     };
 
                     list.Add(vmm);

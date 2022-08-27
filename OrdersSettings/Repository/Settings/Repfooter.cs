@@ -73,5 +73,48 @@ namespace OrdersSettings.Repository.Settings
             return list;
 
         }
+
+        public static List<Vmsettinginformation.Vmsettingfooter> RepTransferPay()
+        {
+            var list = new List<Vmsettinginformation.Vmsettingfooter>();
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Transfer.AsNoTracking().ToList();
+                if (query.Count > 0)
+                {
+                    var vmm = new Vmsettinginformation.Vmsettingfooter
+                    {
+                        Phone = "SP-22211",
+                        PrimaryTitle = "--- نحوه ارسال را انتخاب کنید ---",
+                        TarnsferPay = "0",
+                    };
+                    list.Add(vmm);
+                    foreach (var transfer in query)
+                    {
+                        var vm = new Vmsettinginformation.Vmsettingfooter
+                        {
+                            Phone = transfer.Code,
+                            PrimaryTitle = transfer.PrimaryTitle,
+                            Note = transfer.SecondaryTitle,
+                            TarnsferPay = transfer.TransferPay.ToString(),
+                        };
+                        list.Add(vm);
+                    }
+
+                    return list;
+                }
+            }
+            catch (Exception e)
+            {
+
+                return list;
+
+            }
+
+
+            return list;
+
+        }
     }
 }

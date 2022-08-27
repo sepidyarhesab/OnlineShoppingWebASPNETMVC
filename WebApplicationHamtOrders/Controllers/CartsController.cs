@@ -50,7 +50,7 @@ namespace WebApplicatioNewOrders.Controllers
                 }
                 else
                 {
-             
+
                     return RedirectToAction("Index", "Default");
                 }
             }
@@ -60,33 +60,42 @@ namespace WebApplicatioNewOrders.Controllers
         [HttpPost]
         public ActionResult Index(string code)
         {
-            Session["CodeDis"] = code;
-            if (Session["Carts"] != null)
+            if (code != "")
             {
-                var carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
-                var resuult = RepOrders.RepositoryCartsCode(carts, code);
-                //Session["Carts"] = null;
-                Session["Carts"] = resuult.CartsItems;
-                if (resuult.CartsItems.Count > 0)
+                Session["CodeDis"] = code;
+                if (Session["Carts"] != null)
                 {
-                    var mes = resuult.CartsItems.First().Message;
-                    if (mes.Contains("Success"))
+                    var carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
+                    var resuult = RepOrders.RepositoryCartsCode(carts, code);
+                    //Session["Carts"] = null;
+                    Session["Carts"] = resuult.CartsItems;
+                    if (resuult.CartsItems.Count > 0)
                     {
-                        TempData["JavaScriptFunction"] = IziToast.Success("کد تخفیف با موفقیت اعمال شد.", "کد تخفیف با موفقیت اعمال شد.");
+                        var mes = resuult.CartsItems.First().Message;
+                        if (mes.Contains("Success"))
+                        {
+                            TempData["JavaScriptFunction"] = IziToast.Success("کد تخفیف با موفقیت اعمال شد.", "کد تخفیف با موفقیت اعمال شد.");
+                        }
+                        else
+                        {
+                            TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                        }
+
                     }
-                    else
-                    {
-                        TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
-                    }
-                    
+
+                    return View(resuult);
                 }
-                
-                return View(resuult);
+                else
+                {
+                    return RedirectToAction("Index", "Default");
+                }
             }
             else
             {
-                return RedirectToAction("Index", "Default");
+                TempData["JavaScriptFunction"] = IziToast.Error("خطای ورودی اطلاعات.", "کد تخفیف را وارد کنید");
+                return RedirectToAction("Index", "Carts");
             }
+
         }
 
 

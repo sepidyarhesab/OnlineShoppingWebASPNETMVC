@@ -912,7 +912,7 @@ namespace OrdersOrders.Repository.Orders
             _FinalOrder.Discount = _sumdis;
             _FinalOrder.Sum = _RowSum;
 
-            //var resultPay = Repfooter.RepInformationFooter();
+            //var resultPay = Repfooter.RepTransferPay();
             //if (resultPay.Count > 0)
             //{
             //    foreach (var item in resultPay)

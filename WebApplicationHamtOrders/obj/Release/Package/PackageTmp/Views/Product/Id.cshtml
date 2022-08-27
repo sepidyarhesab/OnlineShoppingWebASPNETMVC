@@ -46,7 +46,7 @@
                                             {
                                                 <div class="swiper-slide">
                                                     <img src="@name.FileName"
-                                                         data-large="@name.FileName" class="zoom-image"
+                                                         data-fancybox="@item.PrimaryTitle" data-src="@name.FileName" data-caption="@item.PrimaryTitle"
                                                          alt="@item.PrimaryTitle" style="padding: 30px">
                                                 </div>
                                             }
@@ -117,19 +117,27 @@
                             </h1>
                         </div>
                         <div class="d-block mb-2">
-                            <span class="font-weight-bold">کد:</span>
+                            <span class="font-weight-bold">کد کالا:</span>
                             <span>@item.Code</span>
                         </div>
                         <div class="d-block mb-2">
-                            <span class="font-weight-bold">دسته بندی:</span>
+                            <span class="font-weight-bold">دسته بندی کالا:</span>
                             <a href="/Categories/MainCategory/@item.CategoriesRef" class="link--with-border-bottom">@item.CategoreisTitle</a>
                         </div>
                         <div class="d-block mb-4">
-                            <span class="font-weight-bold">موجودی:</span>
+                            <span class="font-weight-bold">موجودی کالا:</span>
                             <span class="@item.QuantityClass">@item.QuantityTitle</span>
                         </div>
+                        @*<div class="d-flex ai-center jc-between border-200 radius-medium bg-000 mb-3">
+
+                            <div class="pr-4 py-3 pl-1 grow-1 shrink-0">
+                                <div class="text-subtitle-strong d-flex ai-center"><span class="color-800 ">ارسال رایگان</span></div>
+                                <p class="color-500 text-body-2">برای سفارش&zwnj; بالای ۵۰۰ هزار تومان</p></div>
+                            <div style="width: 132px; height: 77px;"><img class="w-100 d-inline-block ls-is-cached lazyloaded" data-src="https://www.digikala.com/_next/static/media/normalFreeShippingTouchPointImage.d4416515.svg" width="132" height="77" alt="" style="object-fit: contain;" src="https://www.digikala.com/_next/static/media/normalFreeShippingTouchPointImage.d4416515.svg"></div>
+                        </div>*@
 
                         <div class="product-params-special">
+           
                             <ul data-title="ویژگی‌های محصول">
                                 @{
                                     foreach (var property in item.PropertyList)
@@ -144,19 +152,18 @@
                                 }
                             </ul>
                         </div>
-                        <div class="alert alert-warning">
-                            <div class="alert-body">
-                                @*<p class="d-flex align-items-center">
-                                        <i class="fad fa-history ml-2"></i>
-                                        حداکثر تا 3 روز تحویل داده می شود.
-                                    </p>*@
-                            </div>
-                        </div>
+
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 mx-lg-0 mx-auto">
+                    <div class="col-xl-3 col-lg-4 col-md-6 mx-lg-0 mx-auto" style="border: 1px solid #f8f8f8 ">
                         <div class="box-info-product">
                             @{
-
+                                <div class="product-colors mb-3">
+                                    <button class="link--with-border-bottom" data-toggle="modal"
+                                            data-target="#addAddressModal">
+                                        <i class="fa fa-pencil-ruler"></i>
+                                        راهنمای سایز
+                                    </button>
+                                </div>
                                 var type = RepSettings.RepositoryTypeSelect();
                                 if (type != Guid.Empty)
                                 {
@@ -179,6 +186,8 @@
                                             </select>
                                         </div>
 
+
+
                                         <div class="product-colors mb-3">
                                             <span class="d-block mb-3">سایز:</span>
                                             <select class="select2 select2-hidden-accessible" id="SizeDropDown" Id="SizeDropDown" name="SizeDropDown" disabled="disabled" onchange="dropdownSize(this)"></select>
@@ -194,10 +203,10 @@
                                 <span class="d-block">
                                     تعداد:
                                 </span>
-                                <div class="num-block">
-                                    <div class="num-in">
+                                <div class="num-block ">
+                                    <div class="num-in ">
                                         <span class="plus"></span>
-                                        <input id="product-quantity" min="1" class="in-num" value="1" readonly="">
+                                        <input id="product-quantity"  min="1" class="in-num " value="1" readonly="">
                                         <span class="minus dis"></span>
                                     </div>
                                 </div>
@@ -207,7 +216,6 @@
                                 <span class="d-block" id="Quantities" for="product-quantity">
                                 </span>
                             </div>
-
                             <div class="d-flex align-items-center justify-content-end mt-3">
                                 <div class="product-price">
                                     @{
@@ -216,7 +224,7 @@
                                         {
                                             <div class="product-price-info">
                                                 <div class="product-price-off">
-                                                   <small>%</small>@item.Discount <span>تخفیف</span>
+                                                    <small>%</small>@item.Discount <span>تخفیف</span>
                                                 </div>
                                                 <div class="product-price-prev">
                                                     @string.Format("{0:##,###}", item.Fee, "Fee")
@@ -242,18 +250,18 @@
 
                             @{
                                 if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
-                                    {
+                                {
 
-                                        <div class="d-flex align-items-center">
-                                            <a class="add-to-cart btn-block text-white a-cursor" id="btnAddToCartsWithSize" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="d-flex align-items-center">
-                                            <a class="add-to-cart btn-block text-white a-cursor" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
-                                        </div>
-                                    }
+                                    <div class="d-flex align-items-center">
+                                        <a class="btn btn-primary btn-block text-white a-cursor" aria-disabled="true" id="btnAddToCartsWithSize" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="d-flex align-items-center">
+                                        <a class="btn btn-primary  btn-block text-white a-cursor" aria-disabled="true" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</a>
+                                    </div>
+                                }
                             }
 
                         </div>
@@ -320,6 +328,7 @@
         var x = (a.value || a.options[a.selectedIndex].value);
         if (x == "00000000-0000-0000-0000-000000000000") {
             document.getElementById("SizeDropDown").disabled = true;
+            document.getElementById("color").focus();
         } else {
             $.ajax({
                 url: "/Product/DropDownSize",
@@ -361,3 +370,4 @@
     };
 </script>
 
+@Html.Partial("Body/P_HelpSize")
