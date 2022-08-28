@@ -22,6 +22,7 @@ namespace OrdersOrders.Repository.Orders
             try
             {
                 var db = new Orders_Entities();
+                var tick = DateTime.Now.Ticks;
                 var query = db.Table_User.ToList().Exists(c => c.Phone == phone);
                 if (query)
                 {
@@ -92,7 +93,7 @@ namespace OrdersOrders.Repository.Orders
 
 
                         var inlog = db.SP_InsertOrder(id, code, values.Name, values.Family, phone,
-                             values.Address, "", "", 0, code, "", values.Note, values.Quantity.ToString(), false, sumdis, 0, 0, transfer, sum, false,
+                             values.Address, "", "", 0, tick.ToString(), "", values.Note, values.Quantity.ToString(), false, sumdis, 0, 0, transfer, sum, false,
                              queryusers.Id, DateTime.Now, queryusers.Id, DateTime.Now, 1);
                         if (inlog == -1)
                         {
@@ -207,7 +208,7 @@ namespace OrdersOrders.Repository.Orders
 
 
                         LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                        return code;
+                        return code + "&" + tick;
 
                         #endregion
                     }
@@ -267,7 +268,7 @@ namespace OrdersOrders.Repository.Orders
                             sum = sum + transfer;
                         }
                         var inlog = db.SP_InsertOrder(id, code, values.Name, values.Family, phone,
-                            values.Address, "", "", 0, code, "", values.Note, values.Quantity.ToString(), false, sumdis, 0, 0, transfer, sum, false,
+                            values.Address, "", "", 0, tick.ToString(), "", values.Note, values.Quantity.ToString(), false, sumdis, 0, 0, transfer, sum, false,
                             idusers, DateTime.Now, idusers, DateTime.Now, 1);
                         if (inlog == -1)
                         {
@@ -453,7 +454,7 @@ namespace OrdersOrders.Repository.Orders
 
                         }
                         LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                        return code;
+                        return code + "&" + tick;
 
                         #endregion
                     }
@@ -514,7 +515,7 @@ namespace OrdersOrders.Repository.Orders
                         sum = sum + transfer;
                     }
                     var inlog = db.SP_InsertOrder(id, code, values.Name, values.Family, phone,
-                        values.Address, "", "", 0, code, "", values.Note, values.Quantity.ToString(), false, sumdis , 0, 0, transfer, sum, false,
+                        values.Address, "", "", 0, tick.ToString(), "", values.Note, values.Quantity.ToString(), false, sumdis , 0, 0, transfer, sum, false,
                         idusers, DateTime.Now, idusers, DateTime.Now, 1);
                     if (inlog == -1)
                     {
@@ -705,7 +706,7 @@ namespace OrdersOrders.Repository.Orders
 
                     }
                     LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                    return code;
+                    return code + "&" + tick;
 
                     #endregion
                 }

@@ -111,11 +111,12 @@ namespace WebApplicationHamtOrders.Controllers
                                         }
                                         else
                                         {
-                                            Session["OrderCode"] = result;
                                             Session["JavaScriptFunction"] = "Success";
                                             TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
-
-
+                                            var SplitResult = result.Split('&');
+                                            var SplitCode = SplitResult[0];
+                                            Session["OrderCode"] = SplitCode;
+                                            var SplitTransaction = SplitResult[1];
 
 
                                             long Amount = 0;
@@ -197,12 +198,12 @@ namespace WebApplicationHamtOrders.Controllers
                                             string configPayment = WebConfigurationManager.AppSettings["PaymentMethod"];
                                             if (configPayment == "Zarinpal")
                                             {
-                                                Response.Redirect(ZarinPalStart(values.Name, values.Family, values.Phone, result, Amount));
+                                                Response.Redirect(ZarinPalStart(values.Name, values.Family, values.Phone, SplitCode, Amount));
                                             }
 
                                             if (configPayment == "Mellat")
                                             {
-                                                MellatStart(Amount + long.Parse((transferpay).ToString()), result, values.Phone.PersianToEnglish());
+                                                MellatStart(Amount + long.Parse((transferpay).ToString()), SplitTransaction, values.Phone.PersianToEnglish());
                                                 return RedirectToAction("ConnectingToMellat");
                                             }
                                             //Response.Redirect("/Orders/OrderFinished");
@@ -312,7 +313,7 @@ namespace WebApplicationHamtOrders.Controllers
             var result = "";
             var phonenumber = "98" + phone;
             MellatExtensions.BypassCertificateError();
-            var order = DateTime.Now.Ticks;
+            var order = long.Parse(payid);
             var addision = MellatExtensions.SetDefaultTime();
             var addision2 = MellatExtensions.SetDefaultDate();
             var bp = new PaymentGatewayImplService();

@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <div class="checkout-message">
-                <div class="checkout-message-failed mb-3">
+                <div class="checkout-message-success mb-3">
                     <div class="icon-message failed-icon">
                         <i class="fas fa-check"></i>
                     </div>
@@ -39,7 +39,12 @@
                         <form action="https://bpm.shaparak.ir/pgwchannel/startpay.mellat" method="post" id="paymentform">
                             <input type="hidden" name="RefId" value="@token" />
                             <input type="hidden" name="mobileNo" value="@token" />
-                            <input type="submit" id="pay" class="btn btn-primary btn-sm" value="در صورتی که به صورت خودکار به درگاه متصل نشدید این «دکمه» را بزنید" />
+                            <div class="px-3 py-4">
+                                <button type="submit" id="pay" class=" btn btn-danger">
+                                    پرداخت
+                                    مجدد<i class="fad fa-redo mr-3"></i>
+                                </button>
+                            </div>
                         </form>
                         <script>
                             $(document).ready(function () {
@@ -103,7 +108,13 @@
                         <form action="https://bpm.shaparak.ir/pgwchannel/startpay.mellat" method="post" id="paymentform">
                             <input type="hidden" name="RefId" value="@token" />
                             <input type="hidden" name="mobileNo" value="@mobilenumber" />
-                            <input type="submit" id="pay" class="btn btn-primary btn-sm" value="در صورتی که به صورت خودکار به درگاه متصل نشدید این «دکمه» را بزنید" />
+                            <div class="px-3 py-4">
+                                <button type="submit" id="pay" class=" btn btn-danger">
+                                    پرداخت
+                                    مجدد<i class="fad fa-redo mr-3"></i>
+                                </button>
+                            </div>
+
                         </form>
                         <script>
                             $(document).ready(function () {

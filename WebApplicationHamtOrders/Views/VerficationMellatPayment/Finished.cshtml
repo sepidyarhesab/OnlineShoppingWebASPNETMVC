@@ -22,10 +22,10 @@
             </div>
             <div class="checkout-message">
                 @{
-                    if (Session["JavaScriptFunction"] != null)
+                    if (Session["JavaScriptFunctionPayment"] != null)
                     {
-                        var message = Session["JavaScriptFunction"].ToString();
-                        if (message.Contains("Error"))
+                        var message = Session["JavaScriptFunctionPayment"].ToString();
+                        if (message.Contains("خطا"))
                         {
                             <div class="checkout-message-failed mb-3">
                                 <div class="icon-message failed-icon">
@@ -45,10 +45,16 @@
                             </div>
 
                         }
-
-
                     }
-
+                    else
+                    {
+                        <div class="checkout-message-failed mb-3">
+                            <div class="icon-message failed-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            عملیات ثبت سفارش با خطا مواجه شد
+                        </div>
+                    }
                 }
 
             </div>

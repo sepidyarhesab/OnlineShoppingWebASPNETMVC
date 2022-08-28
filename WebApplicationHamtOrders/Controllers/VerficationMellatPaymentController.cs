@@ -48,7 +48,7 @@ namespace WebApplicationHamtOrders.Controllers
 "Payment Order  Success = " + saleOrderId.ToString(), DateTime.Now.ToString(), "54");
                     var db = new Orders_Entities();
                     var code = saleOrderId;
-                    var queryUpdate = db.Table_Order.FirstOrDefault(c => c.Code == code);
+                    var queryUpdate = db.Table_Order.FirstOrDefault(c => c.TransactionCode == code);
                     if (queryUpdate != null)
                     {
                         db.SP_UpdateOrder(queryUpdate.Id, queryUpdate.Code, true, true);
@@ -88,15 +88,20 @@ namespace WebApplicationHamtOrders.Controllers
                     else
                     {
                         Session["JavaScriptFunctionPayment"] = "عملیات پرداخت شما با خطا مواجه شد!";
-                        LogWriter.Logger("Table_Order == null", DateTime.Now.ToString(), "91");
+                        LogWriter.Logger("Table_Order == null - " + code, DateTime.Now.ToString(), "91");
                         return RedirectToAction("Finished");
                     }
 
                 }
                 else
                 {
+                    LogWriter.Logger("error " + result + "Ref = " + refId + "- ResCode = " + resCode + "-SaleOrderCode = " + saleOrderId + " - SaleRefrecnce = " + saleReferenceId, DateTime.Now.ToString(), "98");
                     TempData["JavaScriptFunction"] = IziToast.Error("عملیات خطا دارد", "error " + result + "Ref = " + refId + "- ResCode = " + resCode + "-SaleOrderCode = " + saleOrderId + " - SaleRefrecnce = " + saleReferenceId);
                 }
+            }
+            else
+            {
+                LogWriter.Logger("error " + resCode + "Ref = " + refId + "- ResCode = " + resCode + "-SaleOrderCode = " + saleOrderId + " - SaleRefrecnce = " + saleReferenceId + resCode, DateTime.Now.ToString(), "104");
             }
             return RedirectToAction("Finished");
         }
