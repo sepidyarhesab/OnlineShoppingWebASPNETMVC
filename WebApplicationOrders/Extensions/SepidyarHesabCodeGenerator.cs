@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,9 @@ namespace SepidyarHesabExtensions.Classes
             var message = "SP-000000";
             try
             {
-                message = "SP-" + DateTime.Now.Ticks;
+                var spell = ConfigurationManager.AppSettings["CodeSpell"];
+                var random = new Random();
+                message = spell + "-" + random.Next(10, 99) + "-" + random.Next(100, 999);
                 //var random = new Random();
                 //message = "SP-" + random.Next(100000, 999999);
                 //string con = WebConfigurationManager.AppSettings["Connection"];

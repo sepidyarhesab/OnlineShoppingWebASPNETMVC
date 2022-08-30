@@ -1,9 +1,15 @@
-﻿@using OrdersGeneral.Repository.General
+﻿@using System.Configuration
+@using OrdersGeneral.Repository.General
 
 
 <link href="~/Helper/Layouts/Fa/css/whatsapp.css" rel="stylesheet" />
 <div class="wa__btn_popup">
-    <div class="wa__btn_popup_txt">مکالمه آنلاین با کارشناسان ما</div>
+    <div class="wa__btn_popup_txt">
+        @{
+            var spell = ConfigurationManager.AppSettings["CallWhatsAppText"];
+        }
+        @spell
+    </div>
     <div class="wa__btn_popup_icon"></div>
 </div>
 
@@ -47,11 +53,11 @@
                 }
             }
 
-            
+
 
         </div>
-        
-        
+
+
 
         <!-- /.wa__popup_content_list -->
     </div>

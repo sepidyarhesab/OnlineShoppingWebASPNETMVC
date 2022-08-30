@@ -1,5 +1,44 @@
-@import url("font/primary-iran-yekan.css");
-@import url("font/secondary-iran-yekan.css");
+@font-face {
+    font-family: Shabnam;
+    src: url("../fonts/shabnam/Shabnam.eot");
+    src: url("../fonts/shabnam/Shabnam.eot?#iefix") format("embedded-opentype"), url("../fonts/shabnam/Shabnam.woff2") format("woff2"), url("../fonts/shabnam/Shabnam.woff") format("woff"), url("../fonts/shabnam/Shabnam.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Shabnam;
+    src: url("../fonts/shabnam/Shabnam-Bold.eot");
+    src: url("../fonts/shabnam/Shabnam-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/shabnam/Shabnam-Bold.woff2") format("woff2"), url("../fonts/shabnam/Shabnam-Bold.woff") format("woff"), url("../fonts/shabnam/Shabnam-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Shabnam;
+    src: url("../fonts/shabnam/Shabnam-Thin.eot");
+    src: url("../fonts/shabnam/Shabnam-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/shabnam/Shabnam-Thin.woff2") format("woff2"), url("../fonts/shabnam/Shabnam-Thin.woff") format("woff"), url("../fonts/shabnam/Shabnam-Thin.ttf") format("truetype");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Shabnam;
+    src: url("../fonts/shabnam/Shabnam-Light.eot");
+    src: url("../fonts/shabnam/Shabnam-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/shabnam/Shabnam-Light.woff2") format("woff2"), url("../fonts/shabnam/Shabnam-Light.woff") format("woff"), url("../fonts/shabnam/Shabnam-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Shabnam;
+    src: url("../fonts/shabnam/Shabnam-Medium.eot");
+    src: url("../fonts/shabnam/Shabnam-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/shabnam/Shabnam-Medium.woff2") format("woff2"), url("../fonts/shabnam/Shabnam-Medium.woff") format("woff"), url("../fonts/shabnam/Shabnam-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: DimaMolsaq;
+    src: url("../fonts/DimaMolsaq/DimaMolsaq.woff") format("woff");
+    font-weight: 500;
+}
+
 @-webkit-keyframes introjspulse {
     0% {
         -webkit-transform: scale(0);
@@ -127,7 +166,7 @@ tr.introjs-showElement > th {
     }
 
 .introjs-tooltipReferenceLayer {
-    font-family: "primary-font";
+    font-family: Shabnam;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     position: absolute;
@@ -140,11 +179,11 @@ tr.introjs-showElement > th {
 }
 
     .introjs-tooltipReferenceLayer * {
-        font-family: "primary-font";
+        font-family: Shabnam;
     }
 
 .introjs-helperNumberLayer {
-       font-family: "primary-font";
+       font-family: Shabnam;
     color: #9e9e9e;
     text-align: center;
     padding-top: 10px;

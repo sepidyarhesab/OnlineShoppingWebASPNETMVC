@@ -78,7 +78,15 @@
                                                     <li>
                                                         <i class="fal fa-barcode"></i>
                                                         <span>کد: &nbsp;</span>
-                                                        <span style="font-weight: bold;font-size: 15px">@item.Code &nbsp;</span>
+                                                        <span style="font-weight: bold; font-size: 15px;font-family: sans-serif">@item.Code &nbsp;</span>
+                                                    </li>
+                                                    <li>
+                                                        <i class='bx bx-purchase-tag-alt' ></i>
+
+                                                        <span>قیمت: </span>
+                                                        <span style="font-weight: bold;font-size: 20px">
+                                                            &nbsp; @string.Format("{0:##,###}", item.Fee, "")<span class="text-sm mr-1">تومان</span>
+                                                        </span>
                                                     </li>
                                                     <li>
                                                         <i class="fal fa-percent"></i>
@@ -98,24 +106,17 @@
                                                         }
 
                                                     </li>
-                                                    <li>
-                                                        <i class="fal fa-tags"></i>
-
-                                                        <span>قیمت: </span>
-                                                        <span style="font-weight: bold;font-size: 20px">
-                                                            &nbsp; @string.Format("{0:##,###}", item.Fee, "")<span class="text-sm mr-1">تومان</span>
-                                                        </span>
-                                                    </li>
+              
                                                     <li>
                                                         <i class="fal fa-calculator"></i>
 
                                                         <span>تعداد: </span>
-                                                        <span style="font-weight: bold;font-size: 20px">&nbsp;@item.Quantity <span class="text-sm mr-1">عدد</span></span>
+                                                        <span style="font-weight: bold;font-size: 20px">&nbsp;@item.Quantity   <span class="text-sm mr-1">x عدد</span></span>
                                                     </li>
                                                     <li>
                                                         <i class="fal fa-tags"></i>
 
-                                                        <span>قیمت: </span>
+                                                        <span>قیمت کل: </span>
                                                         <span style="font-weight: bold;font-size: 20px">
                                                             &nbsp; @String.Format(((Math.Round(@item.Price) == item.Price) ? "{0:##,###}" : "{0:##,###}"), item.Price)<span class="text-sm mr-1">تومان</span>
 
@@ -211,7 +212,9 @@
                             if (resultPay.Count > 0)
                             {
                                 <div class="product-colors m-3"  style="margin: 10px">
-                                    <span class="d-block mb-3">نحوه ارسال :</span>
+                                                            <span class="d-block mb-3">
+                                                                نحوه ارسال :
+                                                            </span>
                                     <select class="select2 select2-hidden-accessible" id="TransferPrice" onchange="transferSum(this);">
                                         @foreach (var transfer in resultPay)
                                         {

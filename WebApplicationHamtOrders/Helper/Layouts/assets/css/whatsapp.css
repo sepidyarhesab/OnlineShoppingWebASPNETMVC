@@ -907,7 +907,7 @@
 .wa__btn_popup {
     position: fixed;
     right: 30px;
-    bottom: 30px;
+    bottom: 90px;
     cursor: pointer;
     font-family: Shabnam;
     z-index: 999;

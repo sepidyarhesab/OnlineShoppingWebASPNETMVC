@@ -70,23 +70,23 @@ namespace OrdersOrders.Repository.Orders
                         var random = new Random();
                         code = "SP-" + random.Next(10000, 99999);
                         var id = Guid.NewGuid();
-                        if (transfer <= 0)
-                        {
-                            sum = sum - transfer;
-                        }
-                        else
-                        {
-                            var resultPay = Repfooter.RepInformationFooter();
-                            if (resultPay.Count > 0)
-                            {
-                                foreach (var item in resultPay)
-                                {
-                                    transfer = decimal.Parse(item.TarnsferPay ?? "0");
-                                }
-                            }
+                        //if (transfer <= 0)
+                        //{
+                        //    sum = sum - transfer;
+                        //}
+                        //else
+                        //{
+                        //    var resultPay = Repfooter.RepInformationFooter();
+                        //    if (resultPay.Count > 0)
+                        //    {
+                        //        foreach (var item in resultPay)
+                        //        {
+                        //            transfer = decimal.Parse(item.TarnsferPay ?? "0");
+                        //        }
+                        //    }
 
-                            sum = sum + transfer;
-                        }
+                        //    sum = sum + transfer;
+                        //}
 
 
 
@@ -515,7 +515,7 @@ namespace OrdersOrders.Repository.Orders
                         sum = sum + transfer;
                     }
                     var inlog = db.SP_InsertOrder(id, code, values.Name, values.Family, phone,
-                        values.Address, "", "", 0, tick.ToString(), "", values.Note, values.Quantity.ToString(), false, sumdis , 0, 0, transfer, sum, false,
+                        values.Address, "", "", 0, tick.ToString(), "", values.Note, values.Quantity.ToString(), false, sumdis, 0, 0, transfer, sum, false,
                         idusers, DateTime.Now, idusers, DateTime.Now, 1);
                     if (inlog == -1)
                     {
@@ -896,7 +896,7 @@ namespace OrdersOrders.Repository.Orders
 
                         }
 
-                        if (order.IsOk == true)
+                        if (order.IsOk)
                         {
                             vm.IsPayClass = "label label-success";
                             vm.IsPayTitle = "پرداخت شده";
@@ -1051,6 +1051,14 @@ namespace OrdersOrders.Repository.Orders
             }
             catch (Exception e)
             {
+                if (e.InnerException != null)
+                {
+                    LogWriter.Logger("Application Error : " + e.InnerException.Message, "", "");
+                }
+                else
+                {
+                    LogWriter.Logger("Application Error : " + e.Message, "", "");
+                }
                 return list;
 
             }
@@ -1303,7 +1311,7 @@ namespace OrdersOrders.Repository.Orders
                             Price = order.Price,
                             Discount = order.Discount
                         };
-                        
+
                         try
                         {
                             var a = Guid.Parse(order.Address);
@@ -1440,7 +1448,7 @@ namespace OrdersOrders.Repository.Orders
                             Price = order.Price,
                             Discount = order.Discount
                         };
-                        
+
                         try
                         {
                             var a = Guid.Parse(order.Address);
@@ -1610,7 +1618,7 @@ namespace OrdersOrders.Repository.Orders
                             Address = order.Address,
                             Price = order.Price
                         };
-                       
+
                         try
                         {
                             var a = Guid.Parse(order.Address);

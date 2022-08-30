@@ -104,7 +104,7 @@ namespace WebApplicationHamtOrders.Controllers
                         //db.SaveChanges();
                         LogWriter.Logger("Order Success = " + queryUpdate.Phone, DateTime.Now.ToString(), "82");
                         Session["JavaScriptFunctionPayment"] = "عملیات پرداخت شما با موفقیت انجام شد!";
-                        Session["PaymentCode"] = verificationResponse.RefID;
+                        Session["PaymentCode"] = queryUpdate.Code;
                         Session["Carts"] = null;
                         return RedirectToAction("Finished");
                     }

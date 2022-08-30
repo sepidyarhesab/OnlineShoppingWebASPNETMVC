@@ -1,7 +1,4 @@
-﻿@using OrdersGeneral.Repository.General
-@using OrdersInventory.Repository.Inventory
-@using OrdersOrders.Repository.Orders
-@using OrdersSettings.Repository.Settings
+﻿@using OrdersSettings.Repository.Settings
 
 
 
@@ -29,7 +26,7 @@
     <div class="user-items">
         <div class="user-item cart-list">
             <a href="/Carts">
-                <i><img src="~/Static/Content/Gif/icons8-shopping-cart (1).gif" width="25" height="25" style="width: 25px;" /></i>
+                <i class='bx bx-basket'></i>
                 <span class="bag-items-number" id="shopcarts">0</span>
             </a>
             @*<ul>
@@ -118,7 +115,7 @@
         </div>
         <div class="user-item account">
             <a href="/Login" class="btn-auth">
-                        <i class="fal fa-user-circle"></i>
+                <i class='bx bx-user-circle' ></i>
                         حساب کاربری
                     </a>
         </div>

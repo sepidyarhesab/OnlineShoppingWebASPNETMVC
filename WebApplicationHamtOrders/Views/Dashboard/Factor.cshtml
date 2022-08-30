@@ -33,6 +33,7 @@
                                                 <th>کد</th>
                                                 <th>تاریخ</th>
                                                 <th>وضعیت</th>
+                                                <th>پرداخت</th>
                                                 <th>جمع کل</th>
                                                 <th>فاکتور</th>
                                                 <th>دانلود</th>
@@ -57,8 +58,9 @@
                                                             <td>@mangment.Code</td>
                                                             <td>@string.Format("{0:dddd dd MMMM yyyy}", mangment.CreatorDateTime, "date")</td>
                                                             <td>@mangment.Status</td>
+                                                            <td class="@mangment.IsPayClass">@mangment.IsPayTitle</td>
                                                             <td>@string.Format("{0:##,###}", mangment.Price, "Price") <small> ریال </small></td>
-                                                            <td> <a href="/Dashboard/Factors/@mangment.Id">ارسال فاکتور</a></td>
+                                                            <td> <a href="/Dashboard/Factors/@mangment.Id">ارسال رسید پرداخت</a></td>
                                                             <td> <a href="/Dashboard/PDF/@mangment.Id">دانلود فاکتور</a></td>
                                                         </tr>
                                                     }

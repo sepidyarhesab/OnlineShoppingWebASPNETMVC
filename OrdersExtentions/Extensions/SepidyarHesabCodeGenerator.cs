@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,14 @@ namespace OrdersExtentions.Extensions
 {
     public static class SepidyarHesabCodeGenerator
     {
-        public static string GenerateCode(string schema , string table)
+        public static string GenerateCode(string schema, string table)
         {
             var message = "SP-000000";
             try
             {
+                var spell = ConfigurationManager.AppSettings["CodeSpell"];
                 var random = new Random();
-                message = "SP-" + random.Next(10, 999) + "-" + random.Next(100, 999) ;
+                message = spell + "-" + random.Next(10, 99) + "-" + random.Next(100, 999);
                 //var random = new Random();
                 //message = "SP-" + random.Next(100000, 999999);
                 //string con = WebConfigurationManager.AppSettings["Connection"];
