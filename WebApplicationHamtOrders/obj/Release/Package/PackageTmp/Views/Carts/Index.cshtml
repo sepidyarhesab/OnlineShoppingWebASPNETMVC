@@ -165,7 +165,7 @@
                 @using (Html.BeginForm("Index", "Carts", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="col-md-12">
+                    <div class="col-md-12" data-step="1" data-intro="در صورتی که کد تخفیف دارید وارد کنید">
                         <div class="checkout-section-title">کد تخفیف</div>
 
                         <div class="form-element-row mr-1">
@@ -183,6 +183,10 @@
                         </div>
                     </div>
                 }
+                
+                <div class="form-element-row m-3">
+                    <button class="btn btn-outline-info btn-block" onclick="javascript:introJs().start();"> راهنمای ثبت سفارش   </button>
+                </div>
                 <div class="form-element-row">
                     <div class="payment-selection">
 
@@ -211,7 +215,7 @@
                             var resultPay = Repfooter.RepTransferPay();
                             if (resultPay.Count > 0)
                             {
-                                <div class="product-colors m-3"  style="margin: 10px">
+                                <div class="product-colors m-3"  style="margin: 10px" data-step="2" data-intro="نحوه ارسال را انتخاب کنید">
                                                             <span class="d-block mb-3">
                                                                 نحوه ارسال :
                                                             </span>
@@ -231,7 +235,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-around pt-3">
+                <div class="shadow-around pt-3" data-step="3" data-intro="صورت حساب خود را چک کنید">
                     <div class="d-flex justify-content-between px-3 py-2">
                         <span class="text-muted">قیمت کالاها</span>
                         <span class="text-muted">

@@ -707,3 +707,20 @@ Application Write  : MAMAD:be jaaane bacham pooore Datetime : 06/06/1401 09:19:4
 Application Write  : Success Datetime : SMS Line  : Success
 Application Write  : Success Datetime : SMS Line  : Success
 Application Write  : Success Datetime : SMS Line  : Success
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:46:18 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:46:34 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:46:54 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:47:02 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:47:14 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:47:19 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:47:24 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:47:57 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:48:22 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:48:54 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:51:25 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 12:53:05 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 06:02:38 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 07:06:30 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 07:06:32 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 07:06:50 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 09/06/1401 07:06:50 ب.ظ Line  : 50
