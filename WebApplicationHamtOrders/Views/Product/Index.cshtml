@@ -19,109 +19,273 @@
                 <!-- end breadcrumb -->
             </div>
         </div>
-        <div class="listing-items row">
-
-            @{
-                if (Model != null)
-                {
-                    foreach (var productitem in Model)
-                    {
-                        <div class="col-lg-3 col-md-4 col-sm-6 px-0">
-                            <div class="product-card">
-                                <div class="product-card-top">
-                                    <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="product-image">
-                                        <img src="@productitem.FileName" alt="@productitem.PrimaryTitle">
-                                    </a>
-                                </div>
-                                <div class="product-card-middle">
-
-                                    <h6 class="product-name">
-                                        <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">
-                                            @productitem.PrimaryTitle
-                                        </a>
-                                    </h6>
-                                    <h6 class="product-name">
-                                        موجودی: <span class="@productitem.QuantityClass">@productitem.QuantityTitle</span>
-                                    </h6>
-                                    @{
-                                        var ProductFee1 = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
-                                        if (productitem.Discount > 0)
-                                        {
-                                            <div class="product-price product-price-clone">
-                                                <del>@string.Format("{0:##,###}", ProductFee1, "Fee") تومان</del>
-                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="product-price product-price-clone">
-                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
-                                            </div>
-                                        }
-                                    }
 
 
-                                </div>
-                                @{
-                                    var ProductFee = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
-                                    if (productitem.Discount > 0)
-                                    {
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-
-
-                                                <del>
-                                                    @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
-                                                </del>
-                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
-                                            </div>
-                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
-                                                مشاهده کالا
-                                            </a>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
-                                            </div>
-                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
-                                                مشاهده کالا
-                                            </a>
-                                        </div>
-                                    }
-
-                                }
-
+        <div class="row mb-5">
+            <div class="col-lg-3 col-md-4 sticky-sidebar filter-options-sidebar">
+                <div class="d-md-none">
+                    <div class="header-filter-options">
+                        <span>جستجوی پیشرفته <i class="fad fa-sliders-h"></i></span>
+                        <button class="btn-close-filter-sidebar"><i class="fal fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <div class="widget widget-filter-options shadow-around">
+                        <div class="widget-title">رنگ</div>
+                        <div class="search-in-options form-element-row">
+                            <div class="form-element-with-icon">
+                                <input type="text" class="input-element" placeholder="جستجوی نام رنگ...">
+                                <i class="fad fa-file-search"></i>
                             </div>
                         </div>
-                    }
-                }
-            }
+                        <div class="widget-content pl-3">
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>مشکی</span>
+                                    <span class="color-option" style="background-color: #000;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>آبی</span>
+                                    <span class="color-option" style="background-color: #0000ff;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>خاکستری</span>
+                                    <span class="color-option" style="background-color: #808080;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>سفید</span>
+                                    <span class="color-option" style="background-color: #fff;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>سبز</span>
+                                    <span class="color-option" style="background-color: #008000;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>قرمز</span>
+                                    <span class="color-option" style="background-color: #f44336;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>طلایی</span>
+                                    <span class="color-option" style="background-color: #c99212;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>نقره ای</span>
+                                    <span class="color-option" style="background-color: #dedede;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>زرد</span>
+                                    <span class="color-option" style="background-color: #ffff00;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container-checkbox">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <span>بنفش</span>
+                                    <span class="color-option" style="background-color: #800080;"></span>
+                                </span>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widget shadow-around">
+                        <div class="widget-content">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1">
+                                    فقط کالاهای موجود در
+                                    انبار
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget shadow-around">
+                        <div class="widget-content">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label" for="customSwitch2">فقط ارسال فوری</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget shadow-around">
+                        <div class="widget-title">محدوده قیمت</div>
+                        <div class="widget-content">
+                            <form action="#" class="filter-price">
+                                <div class="mt-2 mb-2">
+                                    <div class="filter-slider">
+                                        <div id="slider-non-linear-step" class="price-slider"></div>
+                                    </div>
+                                    <ul class="filter-range">
+                                        <li data-label="از" data-currency=" تومان">
+                                            <input type="text" data-value="0" value="0" name="price[min]"
+                                                   data-range="0" class="js-slider-range-from disabled example-val"
+                                                   id="skip-value-lower" disabled="disabled">
+                                        </li>
+                                        <li data-label="تا" data-currency="تومان">
+                                            <input type="text" data-value="17700000" value="17700000"
+                                                   name="price[max]" data-range="17700000"
+                                                   class="js-slider-range-to disabled example-val"
+                                                   id="skip-value-upper" disabled="disabled">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mt-3 mb-3">
+                                    <button class="btn btn-primary d-inline-flex align-items-center">
+                                        <i class="fad fa-funnel-dollar ml-2"></i>
+                                        اعمال محدوده قیمت
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
+                    <div class="d-md-none">
+                        <button class="btn-filter-product-submit">جستجوی پیشرفته</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8">
+                <div class="d-md-none">
+                    <button class="btn-filter-sidebar">
+                        جستجوی پیشرفته <i class="fad fa-sliders-h"></i>
+                    </button>
+                </div>
 
-
-
-
-            <div class="col-12 px-0">
-                <div class="pagination">
-                    @Html.PagedListPager(Model, page => Url.Action("Index",
-                        new { page }), new PagedListRenderOptions()
+                <div class="listing-items row">
+                    @{
+                        if (Model != null)
                         {
-                            LiElementClasses = new List<string> { "page-item" },
-                            ContainerDivClasses = new List<string> { "products-view__pagination" },
-                            UlElementClasses = new List<string> { "pagination justify-content-center" },
-                            PageCountAndCurrentLocationFormat = "page-item active",
-                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                        })
+                            foreach (var productitem in Model)
+                            {
+                                <div class="col-lg-6 px-0">
+                                    <div class="product-card product-card-horizontal">
+                                        <div class="product-card-top">
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="product-image">
+                                                <img src="@productitem.FileName" alt="@productitem.PrimaryTitle">
+                                            </a>
+                                        </div>
+                                        <div class="product-card-middle">
+                                            <h6 class="product-name">
+                                                <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})">
+                                                    @productitem.PrimaryTitle
+                                                </a>
+                                            </h6>
+                                            @{
+                                                var ProductFee1 = (productitem.Fee - ((productitem.Fee * productitem.Discount) / 100));
+                                                if (productitem.Discount > 0)
+                                                {
+                                                    <div class="product-price product-price-clone">
+                                                        <del>@string.Format("{0:##,###}", ProductFee1, "Fee") تومان</del>
+                                                        @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="product-price product-price-clone">
+                                                        @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                        <div class="product-card-bottom">
+                                            @{
+                                                if (productitem.Discount > 0)
+                                                {
+                                                    <div class="product-price">
+                                                        <del>@string.Format("{0:##,###}", ProductFee1, "Fee") تومان</del>
+                                                        @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="product-price">
+                                                        @string.Format("{0:##,###}", productitem.Fee, "Fee") تومان
+                                                    </div>
+                                                }
+                                            }
+                                            <a href="@Url.RouteUrl("Product", new {id = productitem.Id.ToString()})" class="btn-add-to-cart">
+                                                <i class='bx bx-cart-alt' ></i>
+                                                مشاهده کالا
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+
+
+
+
+
+                    <div class="col-12 px-0">
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page }), new PagedListRenderOptions()
+                            {
+                                LiElementClasses = new List<string> { "page-item" },
+                                ContainerDivClasses = new List<string> { "products-view__pagination" },
+                                UlElementClasses = new List<string> { "pagination justify-content-center" },
+                                PageCountAndCurrentLocationFormat = "page-item active",
+                                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            })
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<div id="colorswitch-option">
+    <button><i class="fas fa-swatchbook"></i></button>
+    <ul>
+        <li data-path="/Helper/Layouts/assets/css/colors/amber.css"><span style="background-color: #ffab00;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/blue.css"><span style="background-color: #2962ff;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/brown.css"><span style="background-color: #3e2723;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/cyan.css"><span style="background-color: #00b8d4;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/green.css"><span style="background-color: #00c853;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/indigo.css"><span style="background-color: #304ffe;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/orange.css"><span style="background-color: #ff6d00;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/pink.css"><span style="background-color: #c51162;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/red.css"><span style="background-color: #d50000;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/teal.css"><span style="background-color: #009688;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/purple.css"><span style="background-color: #aa00ff;"></span></li>
+        <li data-path="/Helper/Layouts/assets/css/colors/yellow.css"><span style="background-color: #ffd600;"></span></li>
+    </ul>
+</div>
+<!-- end color switcher -->
 
 
 

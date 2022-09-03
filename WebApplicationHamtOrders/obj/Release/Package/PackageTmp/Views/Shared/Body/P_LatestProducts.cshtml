@@ -49,7 +49,8 @@
                                                 @string.Format("{0:##,###}", ProductFee, "Fee") تومان
                                             </span>
                                         </div>
-                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="btn-add-to-cart">
+                                        <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
+                                            <i class='bx bx-cart-alt'></i>
                                             مشاهده کالا
                                         </a>
                                     </div>
@@ -60,7 +61,8 @@
                                         <div class="product-price">
                                             @string.Format("{0:##,###}", item.Fee, "Fee") تومان
                                         </div>
-                                        <a href="@Url.RouteUrl("Product", new {id = item.Id.ToString()})" class="btn-add-to-cart">
+                                        <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
+                                            <i class='bx bx-cart-alt' ></i>
                                             مشاهده کالا
                                         </a>
                                     </div>
