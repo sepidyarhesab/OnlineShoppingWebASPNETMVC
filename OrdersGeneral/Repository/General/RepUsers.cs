@@ -57,6 +57,7 @@ namespace OrdersGeneral.Repository.General
                 var db = new Orders_Entities();
                 var id = Guid.NewGuid();
                 var random = new Random();
+                var code = random.Next(10000, 99999);
                 var query = db.Table_User.Add(new Table_User
                 {
                     Id = id,
@@ -98,6 +99,8 @@ namespace OrdersGeneral.Repository.General
                 });
                 db.Table_User.Add(query);
                 db.SaveChanges();
+                var sms = new SmsProviders();
+                sms.SendAuthentication(long.Parse(query.Phone), code.ToString());
                 return id.ToString();
             }
             catch (Exception e)

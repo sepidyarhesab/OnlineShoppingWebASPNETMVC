@@ -198,7 +198,7 @@ namespace WebApplicationHamtOrders.Controllers
                                             string configPayment = WebConfigurationManager.AppSettings["PaymentMethod"];
                                             if (configPayment == "Zarinpal")
                                             {
-                                                Response.Redirect(ZarinPalStart(values.Name, values.Family, values.Phone, SplitCode, Amount));
+                                                Response.Redirect(ZarinPalStart(values.Name, values.Family, values.Phone, SplitCode, Amount + long.Parse((transferpay).ToString())));
                                             }
 
                                             if (configPayment == "Mellat")

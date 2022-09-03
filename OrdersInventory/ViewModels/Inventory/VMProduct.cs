@@ -270,7 +270,14 @@ namespace OrdersInventory.ViewModels.Inventory
         }
 
 
-
+        public class ViewModelAjaxProduct
+        {
+            public decimal Discount { get; set; }
+            public decimal Percent { get; set; }
+            public decimal Fee { get; set; }
+            public decimal Price { get; set; }
+            public decimal Quantity { get; set; }
+        }
 
 
 

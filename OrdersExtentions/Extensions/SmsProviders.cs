@@ -8,13 +8,13 @@ using SmsIrRestful;
 
 namespace OrdersExtentions.Extensions
 {
-    public  class SmsProviders
+    public class SmsProviders
     {
         public string token = new SmsToken().Token;
-        public  void SendAuthentication(long mobile, string code)
+        public void SendAuthentication(long mobile, string code)
         {
             var db = new Orders_Entities();
-            var query =db.Table_Settings.FirstOrDefault(c => c.IsOk);
+            var query = db.Table_Settings.FirstOrDefault(c => c.IsOk);
             if (query != null)
             {
                 var ultraFastSend = new UltraFastSend
@@ -26,7 +26,24 @@ namespace OrdersExtentions.Extensions
                 var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
                 if (ultraFastSendRespone.IsSuccessful)
                 {
-                    LogWriter.Logger("Success","SMS","Success");
+                    var id = Guid.NewGuid();
+                    var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                    {
+                        Id = id,
+                        Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                        CreatorDate = DateTime.Now,
+                        IsOk = true,
+                        IsDelete = false,
+                        ModifierDate = DateTime.Now,
+                        ModifierRef = id,
+                        CreatorRef = id,
+                        UserRef = id,
+                        Version = 1,
+                        Messages = 25020.ToString(),
+                    });
+                    db.Table_SMS_Log.Add(smslog);
+                    db.SaveChanges();
+                    LogWriter.Logger("Success", "SMS", "Success");
                 }
                 else
                 {
@@ -39,6 +56,24 @@ namespace OrdersExtentions.Extensions
                     var ultraFastSendRespone2 = new UltraFast().Send(token, ultraFastSend2);
                     if (ultraFastSendRespone2.IsSuccessful)
                     {
+                        var id = Guid.NewGuid();
+                        var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                        {
+                            Id = id,
+                            Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                            CreatorDate = DateTime.Now,
+                            IsOk = true,
+                            IsDelete = false,
+                            ModifierDate = DateTime.Now,
+                            ModifierRef = id,
+                            CreatorRef = id,
+                            UserRef = id,
+                            Version = 1,
+                            Messages = 25020.ToString(),
+                        });
+                        db.Table_SMS_Log.Add(smslog);
+                        db.SaveChanges();
+
                         LogWriter.Logger("Success", "SMS", "Success");
                     }
                     else
@@ -60,11 +95,28 @@ namespace OrdersExtentions.Extensions
                 {
                     Mobile = mobile,
                     TemplateId = 68613,
-                    ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "FullName", ParameterValue = Name },new UltraFastParameters { Parameter = "Object", ParameterValue = Objects },new UltraFastParameters { Parameter = "Code", ParameterValue = code }, new UltraFastParameters { Parameter = "CompanyName", ParameterValue = query.PrimaryTitle } }).ToArray()
+                    ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "FullName", ParameterValue = Name }, new UltraFastParameters { Parameter = "Object", ParameterValue = Objects }, new UltraFastParameters { Parameter = "Code", ParameterValue = code }, new UltraFastParameters { Parameter = "CompanyName", ParameterValue = query.PrimaryTitle } }).ToArray()
                 };
                 var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
                 if (ultraFastSendRespone.IsSuccessful)
                 {
+                    var id = Guid.NewGuid();
+                    var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                    {
+                        Id = id,
+                        Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                        CreatorDate = DateTime.Now,
+                        IsOk = true,
+                        IsDelete = false,
+                        ModifierDate = DateTime.Now,
+                        ModifierRef = id,
+                        CreatorRef = id,
+                        UserRef = id,
+                        Version = 1,
+                        Messages = 68613.ToString(),
+                    });
+                    db.Table_SMS_Log.Add(smslog);
+                    db.SaveChanges();
                     LogWriter.Logger("Success", "SMS", "Success");
                 }
                 else
@@ -73,10 +125,10 @@ namespace OrdersExtentions.Extensions
             }
         }
 
-        public  void SendAuthenticationInformation(long mobile, string username)
+        public void SendAuthenticationInformation(long mobile, string username)
         {
             var db = new Orders_Entities();
-            var query =db.Table_Settings.FirstOrDefault(c => c.IsOk);
+            var query = db.Table_Settings.FirstOrDefault(c => c.IsOk);
             if (query != null)
             {
                 var ultraFastSend = new UltraFastSend
@@ -88,30 +140,23 @@ namespace OrdersExtentions.Extensions
                 var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
                 if (ultraFastSendRespone.IsSuccessful)
                 {
-
-                }
-                else
-                {
-
-                }
-            }
-        }       
-        public  void SendSmsStatus(long mobile, string status)
-        {
-            var db = new Orders_Entities();
-            var query =db.Table_Settings.FirstOrDefault(c => c.IsOk);
-            if (query != null)
-            {
-                var ultraFastSend = new UltraFastSend
-                {
-                    Mobile = mobile,
-                    TemplateId = 57497,
-                    ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "CompanyName", ParameterValue = query.TertiaryTitle }, new UltraFastParameters { Parameter = "Status", ParameterValue = status }}).ToArray()
-                };
-                var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
-                if (ultraFastSendRespone.IsSuccessful)
-                {
-
+                    var id = Guid.NewGuid();
+                    var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                    {
+                        Id = id,
+                        Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                        CreatorDate = DateTime.Now,
+                        IsOk = true,
+                        IsDelete = false,
+                        ModifierDate = DateTime.Now,
+                        ModifierRef = id,
+                        CreatorRef = id,
+                        UserRef = id,
+                        Version = 1,
+                        Messages = 25021.ToString(),
+                    });
+                    db.Table_SMS_Log.Add(smslog);
+                    db.SaveChanges();
                 }
                 else
                 {
@@ -119,13 +164,52 @@ namespace OrdersExtentions.Extensions
                 }
             }
         }
-        public  void SendSmsPostalCode(long mobile, string postalcode)
+        public void SendSmsStatus(long mobile, string status)
         {
             var db = new Orders_Entities();
-            var query =db.Table_Settings.FirstOrDefault(c => c.IsOk);
+            var query = db.Table_Settings.FirstOrDefault(c => c.IsOk);
             if (query != null)
             {
-                var stringphone = "0"+mobile.ToString();
+                var ultraFastSend = new UltraFastSend
+                {
+                    Mobile = mobile,
+                    TemplateId = 57497,
+                    ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "CompanyName", ParameterValue = query.TertiaryTitle }, new UltraFastParameters { Parameter = "Status", ParameterValue = status } }).ToArray()
+                };
+                var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
+                if (ultraFastSendRespone.IsSuccessful)
+                {
+                    var id = Guid.NewGuid();
+                    var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                    {
+                        Id = id,
+                        Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                        CreatorDate = DateTime.Now,
+                        IsOk = true,
+                        IsDelete = false,
+                        ModifierDate = DateTime.Now,
+                        ModifierRef = id,
+                        CreatorRef = id,
+                        UserRef = id,
+                        Version = 1,
+                        Messages = 57497.ToString(),
+                    });
+                    db.Table_SMS_Log.Add(smslog);
+                    db.SaveChanges();
+                }
+                else
+                {
+
+                }
+            }
+        }
+        public void SendSmsPostalCode(long mobile, string postalcode)
+        {
+            var db = new Orders_Entities();
+            var query = db.Table_Settings.FirstOrDefault(c => c.IsOk);
+            if (query != null)
+            {
+                var stringphone = "0" + mobile.ToString();
                 var user = db.Table_User.FirstOrDefault(c => c.Phone == stringphone);
                 if (user != null)
                 {
@@ -138,7 +222,23 @@ namespace OrdersExtentions.Extensions
                     var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
                     if (ultraFastSendRespone.IsSuccessful)
                     {
-
+                        var id = Guid.NewGuid();
+                        var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                        {
+                            Id = id,
+                            Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                            CreatorDate = DateTime.Now,
+                            IsOk = true,
+                            IsDelete = false,
+                            ModifierDate = DateTime.Now,
+                            ModifierRef = id,
+                            CreatorRef = id,
+                            UserRef = id,
+                            Version = 1,
+                            Messages = 62575.ToString(),
+                        });
+                        db.Table_SMS_Log.Add(smslog);
+                        db.SaveChanges();
                     }
                     else
                     {
@@ -149,14 +249,14 @@ namespace OrdersExtentions.Extensions
 
             }
         }
-        public  void SendGenerateQuotations(long mobile, string code)
+        public void SendGenerateQuotations(long mobile, string code)
         {
             var db = new Orders_Entities();
             var phone = "0" + mobile.ToString();
-            var query =db.Table_Settings.FirstOrDefault(c => c.IsOk);
+            var query = db.Table_Settings.FirstOrDefault(c => c.IsOk);
             if (query != null)
             {
-                var user =db.Table_User.FirstOrDefault(c => c.Phone == phone);
+                var user = db.Table_User.FirstOrDefault(c => c.Phone == phone);
                 if (user != null)
                 {
                     var ultraFastSend = new UltraFastSend
@@ -168,7 +268,23 @@ namespace OrdersExtentions.Extensions
                     var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
                     if (ultraFastSendRespone.IsSuccessful)
                     {
-
+                        var id = Guid.NewGuid();
+                        var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                        {
+                            Id = id,
+                            Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                            CreatorDate = DateTime.Now,
+                            IsOk = true,
+                            IsDelete = false,
+                            ModifierDate = DateTime.Now,
+                            ModifierRef = id,
+                            CreatorRef = id,
+                            UserRef = id,
+                            Version = 1,
+                            Messages = 25022.ToString(),
+                        });
+                        db.Table_SMS_Log.Add(smslog);
+                        db.SaveChanges();
                     }
                     else
                     {
@@ -197,7 +313,7 @@ namespace OrdersExtentions.Extensions
                 }
             }
         }
-        public  string SendGenerateQuotationsAdmin(long phone, string admin, string fullname, string companyName)
+        public string SendGenerateQuotationsAdmin(long phone, string admin, string fullname, string companyName)
         {
             var message = "";
             var ultraFastSend = new UltraFastSend
@@ -209,6 +325,24 @@ namespace OrdersExtentions.Extensions
             var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
             if (ultraFastSendRespone.IsSuccessful)
             {
+                var db = new Orders_Entities();
+                var id = Guid.NewGuid();
+                var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                {
+                    Id = id,
+                    Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                    CreatorDate = DateTime.Now,
+                    IsOk = true,
+                    IsDelete = false,
+                    ModifierDate = DateTime.Now,
+                    ModifierRef = id,
+                    CreatorRef = id,
+                    UserRef = id,
+                    Version = 1,
+                    Messages = 56703.ToString(),
+                });
+                db.Table_SMS_Log.Add(smslog);
+                db.SaveChanges();
                 message = "Success";
             }
             else
@@ -219,7 +353,7 @@ namespace OrdersExtentions.Extensions
             return message;
         }
 
-        public  string SendPayment(long phone, string fullname, string companyName, string code)
+        public string SendPayment(long phone, string fullname, string companyName, string code)
         {
             var message = "";
             var ultraFastSend = new UltraFastSend
@@ -231,6 +365,24 @@ namespace OrdersExtentions.Extensions
             var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
             if (ultraFastSendRespone.IsSuccessful)
             {
+                var db = new Orders_Entities();
+                var id = Guid.NewGuid();
+                var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                {
+                    Id = id,
+                    Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                    CreatorDate = DateTime.Now,
+                    IsOk = true,
+                    IsDelete = false,
+                    ModifierDate = DateTime.Now,
+                    ModifierRef = id,
+                    CreatorRef = id,
+                    UserRef = id,
+                    Version = 1,
+                    Messages = 62657.ToString(),
+                });
+                db.Table_SMS_Log.Add(smslog);
+                db.SaveChanges();
                 message = "Success";
             }
             else
@@ -240,7 +392,7 @@ namespace OrdersExtentions.Extensions
 
             return message;
         }
-        public  void SendAdminNewsLetter(long phone, string admin, string companyname)
+        public void SendAdminNewsLetter(long phone, string admin, string companyname)
         {
             var ultraFastSend = new UltraFastSend
             {
@@ -251,25 +403,59 @@ namespace OrdersExtentions.Extensions
             var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
             if (ultraFastSendRespone.IsSuccessful)
             {
-
+                var db = new Orders_Entities();
+                var id = Guid.NewGuid();
+                var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                {
+                    Id = id,
+                    Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                    CreatorDate = DateTime.Now,
+                    IsOk = true,
+                    IsDelete = false,
+                    ModifierDate = DateTime.Now,
+                    ModifierRef = id,
+                    CreatorRef = id,
+                    UserRef = id,
+                    Version = 1,
+                    Messages = 56704.ToString(),
+                });
+                db.Table_SMS_Log.Add(smslog);
+                db.SaveChanges();
             }
             else
             {
             }
 
-        }   
-        public  void SendAdmin(long phone, string computer , string cpu , string hdd , string ip , string start)
+        }
+        public void SendAdmin(long phone, string computer, string cpu, string hdd, string ip, string start)
         {
             var ultraFastSend = new UltraFastSend
             {
                 Mobile = phone,
                 TemplateId = 62382,
-                ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "ComputerName", ParameterValue =computer }, new UltraFastParameters { Parameter = "ComputerHDD", ParameterValue = hdd }, new UltraFastParameters { Parameter = "ComputerCPU", ParameterValue = cpu }, new UltraFastParameters { Parameter = "InternetProtocol", ParameterValue = ip }, new UltraFastParameters { Parameter = "Date", ParameterValue = start } }).ToArray()
+                ParameterArray = new List<UltraFastParameters>(new[] { new UltraFastParameters { Parameter = "ComputerName", ParameterValue = computer }, new UltraFastParameters { Parameter = "ComputerHDD", ParameterValue = hdd }, new UltraFastParameters { Parameter = "ComputerCPU", ParameterValue = cpu }, new UltraFastParameters { Parameter = "InternetProtocol", ParameterValue = ip }, new UltraFastParameters { Parameter = "Date", ParameterValue = start } }).ToArray()
             };
             var ultraFastSendRespone = new UltraFast().Send(token, ultraFastSend);
             if (ultraFastSendRespone.IsSuccessful)
             {
-
+                var db = new Orders_Entities();
+                var id = Guid.NewGuid();
+                var smslog = db.Table_SMS_Log.Add(new Table_SMS_Log()
+                {
+                    Id = id,
+                    Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_User"),
+                    CreatorDate = DateTime.Now,
+                    IsOk = true,
+                    IsDelete = false,
+                    ModifierDate = DateTime.Now,
+                    ModifierRef = id,
+                    CreatorRef = id,
+                    UserRef = id,
+                    Version = 1,
+                    Messages = 62382.ToString(),
+                });
+                db.Table_SMS_Log.Add(smslog);
+                db.SaveChanges();
             }
             else
             {

@@ -94,6 +94,21 @@ namespace WebApplicationHamtOrders.Controllers
             }
             return 0;
         }
+        [HttpPost]
+        public ActionResult CheckFee(string colorid, string sizeid)
+        {
+            if (Session["ProductRef"] != null)
+            {
+                var productRef = Guid.Parse(Session["ProductRef"].ToString());
+                if (colorid != null)
+                {
+                    var rep = new RepProducts();
+                    var Fee = rep.RepositoryCheckFeeProducts(productRef, Guid.Parse(colorid),Guid.Parse(sizeid));
+                    return PartialView("Body/P_Product_Price", Fee);
+                }
+            }
+            return PartialView("Body/P_Product_Price");
+        }
 
 
         [HttpPost]

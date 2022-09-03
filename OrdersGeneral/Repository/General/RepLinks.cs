@@ -334,7 +334,40 @@ namespace OrdersGeneral.Repository.General
 
 
 
+        public static List<VMLinks.VMMainLinksManagement> RepositoryLinks()
+        {
+            var list = new List<VMLinks.VMMainLinksManagement>();
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Links.Where(c=>c.IsOk).AsNoTracking().ToList();
+                if (query.Count > 0)
+                {
+                    foreach (var linkse in query)
+                    {
+                        var vm = new VMLinks.VMMainLinksManagement
+                        {
 
+                            Id = linkse.Id,
+                            PrimaryTitle = linkse.PrimaryTitle,
+                            SecondaryTitle = linkse.SecendryTitle,
+                            Url = linkse.Url,
+                            Code = linkse.Code,
+                            Sort = linkse.Sort,
+                            CreatorDateTime = linkse.CreatorDate,
+
+                        };
+                        list.Add(vm);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return list;
+        }
 
 
 

@@ -269,11 +269,11 @@ namespace WebApplicationHamtOrders.Controllers
                     else
                     {
                         TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                        return View("Address");
+                        return View("/Address");
                     }
                 }
             }
-            return View("Address");
+            return View("/Address");
         }
 
         [HttpPost]
