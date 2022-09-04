@@ -22,10 +22,12 @@ namespace WebApplicationOrders.Controllers
             {
                 if (User.Identity.IsAuthenticated)
                 {
+                    var UserRef = Guid.Parse(User.Identity.Name);
                     if (Session["Carts"] != null)
                     {
+
                         var carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
-                        var resuult = RepOrders.RepositoryCarts(carts);
+                        var resuult = RepOrders.RepositoryCarts(carts, UserRef);
                         return View(resuult);
                     }
                     else
@@ -44,11 +46,12 @@ namespace WebApplicationOrders.Controllers
                 if (Session["Carts"] != null)
                 {
                     var carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
-                    var resuult = RepOrders.RepositoryCarts(carts);
+                    var resuult = RepOrders.RepositoryCarts(carts, Guid.Empty);
                     return View(resuult);
                 }
                 else
                 {
+
                     return RedirectToAction("Index", "Default");
                 }
             }

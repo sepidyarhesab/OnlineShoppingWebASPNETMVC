@@ -87,6 +87,7 @@ namespace OrdersOrders.ViewModels.Orders
             public List<VmOrderSubmit> CartsItems { get; set; }
             public decimal Sum { get; set; }
             public decimal Discount { get; set; }
+            public decimal DiscountFree { get; set; }
             public decimal Transfer { get; set; }
             public decimal SumPay { get; set; }
             //public decimal sumdis { get; set; }

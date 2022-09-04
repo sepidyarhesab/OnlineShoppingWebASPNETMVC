@@ -318,7 +318,7 @@
         });
         var sliderLg = new Swiper('.slider-lg', {
             speed: 800,
-            spaceBetween: 10,
+            spaceBetween: 8,
             observer: true,
             observeParents: true,
             navigation: {
@@ -418,7 +418,7 @@
         });
         var sliderAmazing = new Swiper('.slider-amazing', {
             speed: 800,
-            spaceBetween: 10,
+            spaceBetween: 6,
             observer: true,
             observeParents: true,
             navigation: {
@@ -427,7 +427,7 @@
             },
             breakpoints: {
                 1400: {
-                    slidesPerView: 5,
+                    slidesPerView: 4,
                 },
                 1060: {
                     slidesPerView: 4,

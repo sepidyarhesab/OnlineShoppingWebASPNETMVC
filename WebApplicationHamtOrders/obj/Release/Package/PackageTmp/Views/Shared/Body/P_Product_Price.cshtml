@@ -1,0 +1,40 @@
+﻿@model OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelAjaxProduct
+@{
+    if (Model != null)
+    {
+        <div class="product-price">
+            
+            @{
+
+                if (Model.Discount > 0)
+                {
+                    <div class="product-price-info">
+                        <div class="product-price-off">
+                            <small>%</small>@Model.Discount <span>تخفیف</span>
+                        </div>
+                        <div class="product-price-prev">
+                            @string.Format("{0:##,###}", Model.Fee, "Fee")
+                        </div>
+                    </div>
+                    <div class="product-price-real">
+                        <div class="product-price-raw">@string.Format("{0:##,###}", Model.Price, "Fee") </div>
+                        تومان
+                    </div>
+
+                }
+                else
+                {
+                    <div class="product-price-real">
+                        <div class="product-price-raw" id="Price">@string.Format("{0:##,###}", Model.Fee, "Fee")</div>
+                        تومان
+                    </div>
+                }
+
+
+            }
+
+        </div>
+
+    }
+
+}

@@ -58,13 +58,13 @@
                                     <div class="col-lg-12" data-step="1" data-intro="نام خود را با کیبورد فارسی وارد کنید">
                                         <div class="form-element-row">
                                             <label for="name" class="label-element">نام<small style="color: red"> * اجباری </small></label>
-                                            <input   type="text" class="farsi input-element" id="Name" name="Name" value="@item.Name">
+                                            <input   type="text" class=" input-element" id="Name" name="Name" value="@item.Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-12" data-step="2" data-intro="نام خانوادگی خود را با کیبورد فارسی وارد کنید">
                                         <div class="form-element-row">
                                             <label for="name" class="label-element">نام خانوادگی<small style="color: red"> * اجباری </small></label>
-                                            <input type="text" class="farsi input-element" id="Family" name="Family" value="@item.Family">
+                                            <input type="text" class=" input-element" id="Family" name="Family" value="@item.Family">
                                         </div>
                                     </div>
 
@@ -72,7 +72,7 @@
                                         <div class="form-element-row">
                                             <label for="phone-number" class="label-element">شماره موبایل<small style="color: red"> * اجباری (حتما کیبورد گوشی خود را انگلیسی کنید) </small></label>
                                             <div class="form-element-with-icon">
-                                                <input class="input-element numeric" type="tel" maxlength="11" max="11" id="Phone" name="Phone" onchange="allnumeric(this);" value="@item.Phone">
+                                                <input class="input-element " type="tel" maxlength="11" max="11" id="Phone" name="Phone" onchange="allnumeric(this);" value="@item.Phone">
                                                 <i class="fad fa-mobile-alt"></i>
                                             </div>
                                         </div>
@@ -324,7 +324,7 @@
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <input type="hidden" id="Id" name="Id" class="input-element" value="@itemmm.Id">
-                                    <div class="text-sm text-muted mb-1">کد پستی:</div>
+                                    <div class="text-sm text-muted mb-1">کد پستی:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <input type="text" id="PostalCode" name="PostalCode" class="input-element" value="@itemmm.PostalCode">
@@ -332,7 +332,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <div class="text-sm text-muted mb-1">نوع آدرس:</div>
+                                    <div class="text-sm text-muted mb-1">نوع آدرس:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <select name="Type" id="Type" class="select2 select2-hidden-accessible" data-select2-id="select2-data-1-vrkm" tabindex="-1" aria-hidden="true">
@@ -345,7 +345,7 @@
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
-                                    <div class="text-sm text-muted mb-1">استان:</div>
+                                    <div class="text-sm text-muted mb-1">استان:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <select name="ProvinceRef" id="ProvinceRef" class="select2 select2-hidden-accessible" data-select2-id="select2-data-9-pary " onchange="dropdowncity(this)" tabindex="-1" aria-hidden="true">
@@ -368,7 +368,7 @@
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
-                                    <div class="text-sm text-muted mb-1">شهرستان:</div>
+                                    <div class="text-sm text-muted mb-1">شهرستان:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <select id="CityReff" name="CityReff" class="select2 select2-hidden-accessible" data-select2-id="select2-data-8-pary" tabindex="-1" aria-hidden="true" disabled="disabled"></select>
@@ -376,7 +376,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <div class="text-sm text-muted mb-1">اصلی؟:</div>
+                                    <div class="text-sm text-muted mb-1">اصلی؟:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <select name="IsMain" id="IsMain" class="select2 select2-hidden-accessible" data-select2-id="select2-data-4-71on" tabindex="-1" aria-hidden="true">
@@ -387,7 +387,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <div class="text-sm text-muted mb-1">آدرس کامل:</div>
+                                    <div class="text-sm text-muted mb-1">آدرس کامل:<small style="color: red"> * اجباری </small></div>
                                     <div class="text-dark font-weight-bold">
                                         <div class="form-element-row mb-0">
                                             <textarea name="Address" id="Address" cols="30" rows="10"

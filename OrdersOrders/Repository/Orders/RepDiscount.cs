@@ -580,6 +580,7 @@ namespace OrdersOrders.Repository.Orders
                             Id = item.Id,
                             Code = item.Code,
                             Discount = item.Discount,
+                            DiscountFee = item.DiscountFee,
                             DiscountCode = item.DiscountCode,
                             ProductRef = item.ProductRef,
                             DiscountQuantity = item.DiscountQuantity,
@@ -738,7 +739,7 @@ namespace OrdersOrders.Repository.Orders
 
 
 
-        public static List<VMDiscount.VmDiscountManagement> AllDiscount(int Discount, string DiscountCode, string startdate, string enddate, int discountquantity, Guid UserRef)
+        public static List<VMDiscount.VmDiscountManagement> AllDiscount(int? Discount, int? DiscountFee, string DiscountCode, string startdate, string enddate, int discountquantity, Guid UserRef)
         {
             var list = new List<VMDiscount.VmDiscountManagement>();
             try
@@ -776,6 +777,7 @@ namespace OrdersOrders.Repository.Orders
                         if (queryDiscount != null)
                         {
                             queryDiscount.Discount = Discount;
+                            queryDiscount.DiscountFee = DiscountFee;
                             queryDiscount.DiscountCode = DiscountCode;
                             queryDiscount.EndDate = e;
                             queryDiscount.StartDate = s;
@@ -793,6 +795,7 @@ namespace OrdersOrders.Repository.Orders
                             {
                                 Code = code,
                                 Discount = Discount,
+                                DiscountFee = DiscountFee,
                                 DiscountCode = DiscountCode,
                                 Id = id,
                                 ProductRef = item.Id,
@@ -829,7 +832,7 @@ namespace OrdersOrders.Repository.Orders
 
         #region RepositoryCartsNoDiscount
 
-        public static VMOrders.VmOrderCarts RepositoryCartsNoDiscount(List<VMOrders.VmOrderSubmit> carts)
+        public static VMOrders.VmOrderCarts RepositoryCartsNoDiscount(List<VMOrders.VmOrderSubmit> carts,Guid _user)
         {
             var list = new VMOrders.VmOrderCarts();
             var db = new Orders_Entities();
@@ -838,6 +841,7 @@ namespace OrdersOrders.Repository.Orders
             decimal _FinalSum = 0;
             decimal _Transfer = 0;
             decimal _discount = 0;
+            decimal _discountFree = 0;
             decimal _sumdis = 0;
             var _FinalOrder = new VMOrders.VmOrderCarts();
             var _FinalCarts = new List<VMOrders.VmOrderSubmit>();
@@ -897,6 +901,8 @@ namespace OrdersOrders.Repository.Orders
                         vmCartRow.SizeTitle = "بدون سایز";
                     }
 
+                    
+
 
                 }
 
@@ -907,6 +913,8 @@ namespace OrdersOrders.Repository.Orders
                 //vmCartRow.Discount = (_discount * itemCarts.Quantity);
                 _FinalCarts.Add(vmCartRow);
             }
+
+         
 
             _FinalOrder.CartsItems = _FinalCarts;
             _FinalOrder.Discount = _sumdis;
@@ -923,6 +931,23 @@ namespace OrdersOrders.Repository.Orders
             //}
 
             _FinalSum += (_RowSum + _Transfer) - _sumdis;
+            _FinalOrder.DiscountFree = 0;
+            if (_user != Guid.Empty)
+            {
+                var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == _user);
+                if (!ordercheck)
+                {
+                    var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
+                    if (disFree != null)
+                    {
+                        var a  = (disFree.Discount * _FinalSum) / 100;
+                        _discountFree = _FinalSum - a ?? 0;
+                        _FinalSum = _discountFree;
+                        _FinalOrder.DiscountFree = a ?? 0;
+                    }
+                }
+            }
+
             _FinalOrder.SumPay = _FinalSum;
             //_FinalOrder.sumdis = _sumdis;
             list = _FinalOrder;
@@ -1212,6 +1237,14 @@ namespace OrdersOrders.Repository.Orders
                         if (queryDiscount.Discount > 0)
                         {
                             _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                            vmCartRow.DisCode = queryDiscount.DiscountCode;
+                            vmCartRow.DisUse = true;
+                            vmCartRow.Message = "Success";
+                        }
+
+                        if (queryDiscount.DiscountFee > 0)
+                        {
+                            _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
                             vmCartRow.DisCode = queryDiscount.DiscountCode;
                             vmCartRow.DisUse = true;
                             vmCartRow.Message = "Success";

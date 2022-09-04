@@ -40,6 +40,7 @@ namespace OrdersSettings.ViewModels.Settings
             public string Phone { get; set; }
             public  string Whatsapp { get; set; }
             public string Twitter { get; set; }
+            public string TertiaryTitle { get; set; }
             
 
         }
