@@ -1,3 +1,9 @@
 
 *.vsidx
 *.cache
+*.dll
+*.xml
+*.rsp
+*.pdb
+*.cache
+*.suo
