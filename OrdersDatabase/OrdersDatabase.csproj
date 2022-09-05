@@ -145,6 +145,12 @@
     <Compile Include="Models\Table_Product_Size.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table_Product_SizeGuide.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Product_SizeGuideValues.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Table_Product_Summary.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>

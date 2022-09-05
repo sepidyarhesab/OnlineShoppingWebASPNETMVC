@@ -920,5 +920,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_SizeGuide">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_SizeGuide">
+        <MappingFragment StoreEntitySet="Table_Product_SizeGuide">
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Product_SizeGuideValues">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Product_SizeGuideValues">
+        <MappingFragment StoreEntitySet="Table_Product_SizeGuideValues">
+          <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="SizeValue" ColumnName="SizeValue" />
+          <ScalarProperty Name="SizeGuideRef" ColumnName="SizeGuideRef" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="PropertyTitle" ColumnName="PropertyTitle" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
