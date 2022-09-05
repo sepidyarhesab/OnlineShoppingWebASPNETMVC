@@ -208,3 +208,7 @@ OrdersGeneral/obj/Debug/OrdersGeneral.csproj.AssemblyReference.cache
 OrdersExtentions/obj/Debug/OrdersExtentions.csproj.AssemblyReference.cache
 ApplicationOrders/obj/Debug/ApplicationOrders.csproj.AssemblyReference.cache
 .vs/WebApplicationOrders/v17/.suo
+.dll
+.pdb
+.cache
+.exe
