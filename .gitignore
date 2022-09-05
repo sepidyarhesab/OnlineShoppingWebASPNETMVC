@@ -3,3 +3,5 @@
 *.cache
 *.csproj
 *.csproj.resolveComRefrence.cache
+*/bin/*
+*/obj/*
