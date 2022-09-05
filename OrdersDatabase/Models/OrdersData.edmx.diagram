@@ -47,6 +47,8 @@
         <EntityTypeShape EntityType="Orders_Model.Table_SMS_Log" Width="1.5" PointX="10.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Orders_Model.Table_View_Configuration" Width="1.5" PointX="12.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Orders_Model.Table_Order" Width="1.5" PointX="19.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Orders_Model.Table_Product_SizeGuide" Width="2.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="Orders_Model.Table_Product_SizeGuideValues" Width="2.5" PointX="7.75" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

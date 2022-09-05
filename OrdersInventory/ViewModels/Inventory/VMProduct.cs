@@ -269,10 +269,7 @@ namespace OrdersInventory.ViewModels.Inventory
             public string CategoryTitle { get; set; }
         }
 
-
-
-
-
+        //End-------------------------------
 
     }
 }

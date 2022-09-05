@@ -2400,6 +2400,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServiceManagementController.cs" />
     <Compile Include="Controllers\SettingsManagementController.cs" />
+    <Compile Include="Controllers\SizeGuideManagementController.cs" />
     <Compile Include="Controllers\SlidersManagementController.cs" />
     <Compile Include="Controllers\SocialManagementController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
@@ -2778,6 +2779,12 @@
     <Content Include="Views\TransferManagement\Create.cshtml" />
     <Content Include="Views\TransferManagement\Edit.cshtml" />
     <Content Include="Views\Shared\Body\P_HelpSize.cshtml" />
+    <Content Include="Views\SizeGuideManagement\Index.cshtml" />
+    <Content Include="Views\SizeGuideManagement\Add.cshtml" />
+    <Content Include="Views\SizeGuideManagement\EditProductSizeGuide.cshtml" />
+    <Content Include="Views\SizeGuideManagement\IndexProductSizeGuideValues.cshtml" />
+    <Content Include="Views\SizeGuideManagement\AddNewSizeGuideValues.cshtml" />
+    <Content Include="Views\SizeGuideManagement\EditProductSizeGuideValue.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

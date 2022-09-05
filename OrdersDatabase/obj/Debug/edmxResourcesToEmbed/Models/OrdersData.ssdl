@@ -642,6 +642,45 @@
     <Property Name="SizeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Sort" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Table_Product_SizeGuide">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="CategoryRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="IsOk" Type="bit" Nullable="false" />
+    <Property Name="IsMain" Type="bit" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="int" Nullable="false" />
+    <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Product_SizeGuideValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PropertyTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="SizeGuideRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SizeValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="IsOk" Type="bit" Nullable="false" />
+    <Property Name="IsMain" Type="bit" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="int" Nullable="false" />
+    <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Table_Product_Summary">
     <Key>
       <PropertyRef Name="Id" />
@@ -960,6 +999,8 @@
     <EntitySet Name="Table_Product_PropertyList" EntityType="Self.Table_Product_PropertyList" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Product_Selection" EntityType="Self.Table_Product_Selection" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Product_Size" EntityType="Self.Table_Product_Size" Schema="Inventory" store:Type="Tables" />
+    <EntitySet Name="Table_Product_SizeGuide" EntityType="Self.Table_Product_SizeGuide" Schema="Inventory" store:Type="Tables" />
+    <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Self.Table_Product_SizeGuideValues" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" Schema="Order" store:Type="Tables" />

@@ -70,6 +70,8 @@ namespace OrdersDatabase.Models
         public DbSet<Table_SMS_Log> Table_SMS_Log { get; set; }
         public DbSet<Table_View_Configuration> Table_View_Configuration { get; set; }
         public DbSet<Table_Order> Table_Order { get; set; }
+        public DbSet<Table_Product_SizeGuide> Table_Product_SizeGuide { get; set; }
+        public DbSet<Table_Product_SizeGuideValues> Table_Product_SizeGuideValues { get; set; }
     
         public virtual int SP_InsertOrder(Nullable<System.Guid> id, string code, string firstname, string lastname, string phone, string address, string productCode, string postalCode, Nullable<byte> status, string transactionCode, string deliveryCode, string note, string quantity, Nullable<bool> isPay, Nullable<decimal> discount, Nullable<decimal> tax, Nullable<decimal> duty, Nullable<decimal> addition, Nullable<decimal> price, Nullable<bool> isOk, Nullable<System.Guid> modifierRef, Nullable<System.DateTime> modifierDate, Nullable<System.Guid> creatorRef, Nullable<System.DateTime> creatorDate, Nullable<int> version)
         {

@@ -647,6 +647,45 @@
           <Property Name="SizeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Sort" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Table_Product_SizeGuide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="CategoryRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_SizeGuideValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="SizeGuideRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SizeValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Table_Product_Summary">
           <Key>
             <PropertyRef Name="Id" />
@@ -965,6 +1004,8 @@
           <EntitySet Name="Table_Product_PropertyList" EntityType="Self.Table_Product_PropertyList" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Product_Selection" EntityType="Self.Table_Product_Selection" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Product_Size" EntityType="Self.Table_Product_Size" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_SizeGuide" EntityType="Self.Table_Product_SizeGuide" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Self.Table_Product_SizeGuideValues" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" Schema="Order" store:Type="Tables" />
@@ -1919,6 +1960,8 @@
             <Parameter Name="UserRef" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="Table_Order" EntityType="Orders_Model.Table_Order" />
+          <EntitySet Name="Table_Product_SizeGuide" EntityType="Orders_Model.Table_Product_SizeGuide" />
+          <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Orders_Model.Table_Product_SizeGuideValues" />
         </EntityContainer>
         <EntityType Name="Table_Order">
           <Key>
@@ -1950,6 +1993,45 @@
           <Property Name="CreatorRef" Type="Guid" Nullable="false" />
           <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_SizeGuide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryRef" Type="Guid" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Product_SizeGuideValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SizeGuideRef" Type="Guid" Nullable="false" />
+          <Property Name="SizeValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2871,6 +2953,47 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_SizeGuide">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_SizeGuide">
+              <MappingFragment StoreEntitySet="Table_Product_SizeGuide">
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_SizeGuideValues">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Product_SizeGuideValues">
+              <MappingFragment StoreEntitySet="Table_Product_SizeGuideValues">
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="SizeValue" ColumnName="SizeValue" />
+                <ScalarProperty Name="SizeGuideRef" ColumnName="SizeGuideRef" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="PropertyTitle" ColumnName="PropertyTitle" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
