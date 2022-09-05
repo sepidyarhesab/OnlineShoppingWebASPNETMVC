@@ -202,6 +202,7 @@ namespace OrdersGeneral.Repository.General
                         ModifierDate = query.ModifireDate,
                         Name = query.Name,
                         Family = query.Family,
+                        SiteType = query.SiteTypeRef,
                     };
 
 

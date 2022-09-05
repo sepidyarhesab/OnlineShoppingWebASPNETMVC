@@ -2433,7 +2433,7 @@ namespace OrdersInventory.Repository.Inventory
 
                     var querySummary =
                         db.Table_Product_Summary.FirstOrDefault(c =>
-                            c.ProductRef == query.Id && c.IsOk && c.Quantity > 0);
+                            c.ProductRef == query.Id && c.IsOk && c.IsMain && c.Quantity > 0);
                     if (querySummary != null)
                     {
                         if (querySummary.Quantity > 0)

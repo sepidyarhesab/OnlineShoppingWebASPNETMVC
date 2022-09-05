@@ -944,6 +944,7 @@ namespace OrdersOrders.Repository.Orders
                         _discountFree = _FinalSum - a ?? 0;
                         _FinalSum = _discountFree;
                         _FinalOrder.DiscountFree = a ?? 0;
+                        _FinalOrder.DiscountPercent = disFree.Discount ?? 0;
                     }
                 }
             }

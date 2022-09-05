@@ -88,6 +88,7 @@ namespace OrdersOrders.ViewModels.Orders
             public decimal Sum { get; set; }
             public decimal Discount { get; set; }
             public decimal DiscountFree { get; set; }
+            public decimal DiscountPercent { get; set; }
             public decimal Transfer { get; set; }
             public decimal SumPay { get; set; }
             //public decimal sumdis { get; set; }
