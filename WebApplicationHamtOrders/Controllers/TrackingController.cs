@@ -22,6 +22,16 @@ namespace WebApplicationHamtOrders.Controllers
             Session["TrackingOrder"] = result;
             Response.Redirect("Index");
             return Session["TrackingOrder"].ToString();
+        }      
+        
+        
+        
+        public string YourOrders(string Code)
+        {
+            var result = RepOrders.MyOrders(Code);
+            Session["TrackingOrder"] = result;
+            Response.Redirect("Index");
+            return Session["TrackingOrder"].ToString();
         }
 
 
