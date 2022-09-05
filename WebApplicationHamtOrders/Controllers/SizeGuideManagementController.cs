@@ -44,7 +44,7 @@ namespace WebApplicationHamtOrders.Controllers
             return View();
         }
 
-        public void Generate(VMProductsSizeGuide.ViewModelProductSizeGuide value)
+        public void Generate(VMProductsSizeGuides.ViewModelProductSizeGuide value)
         {
             var Userid = Guid.Parse(User.Identity.Name);
             var result = RepProductsSizeGuide.Add(value, Userid);
@@ -195,7 +195,7 @@ namespace WebApplicationHamtOrders.Controllers
             return View();
         }
 
-        public void GenerateSizeGuideValues(VMProductsSizeGuide.ViewModelProductSizeValuesGuide value)
+        public void GenerateSizeGuideValues(VMProductsSizeGuides.ViewModelProductSizeValuesGuide value)
         {
             var Userid = Guid.Parse(User.Identity.Name);
             var result = RepProductsSizeGuide.AddSizeGuideValues(value, Userid);
