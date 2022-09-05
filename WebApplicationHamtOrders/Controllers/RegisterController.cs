@@ -52,11 +52,13 @@ namespace WebApplicationHamtOrders.Controllers
 
                                     if (Session["UrlBack"] != null)
                                     {
-                                        return RedirectToAction("Index", "Orders");
+                                        return RedirectToAction("Index", "Verify");
+                                        //return RedirectToAction("Index", "Orders");
                                     }
                                     else
                                     {
-                                        return RedirectToAction("Index");
+                                        return RedirectToAction("Index", "Verify");
+                                        //return RedirectToAction("Index");
                                     }
                                 }
                             }

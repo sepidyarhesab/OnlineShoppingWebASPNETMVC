@@ -121,7 +121,7 @@
 </script>
 
 
-    <script>
+  @*<script>
         $(document).on('keydown', '.farsi', function (e) {
             console.log(e.key);
             if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab' || e.key == 'Backspace')
@@ -137,9 +137,9 @@
             }
 
         });
-    </script>
+    </script>*@
 
-    <script>
+    @*<script>
         $(document).on('keydown', '.numeric', function (e) {
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
                 (e.keyCode === 65 && e.ctrlKey === true) ||
@@ -156,26 +156,26 @@
                 e.preventDefault();
             }
         });
-    </script>
-    <script>
-        $(document).on('keydown', '.engelish', function (e) {
-            console.log(e.key);
-            if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab')
-                return;
+    </script>*@
+@*<script>
+    $(document).on('keydown', '.engelish', function (e) {
+        console.log(e.key);
+        if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab')
+            return;
 
-            if (!e.key.match(/^[0-9 a-z A-Z]+$/)) {
-                iziToast.error({
-                    title: 'خطای ورودی اطلاعات',
-                    message: 'لطفا کیبورد خود را انگلیسی کنید',
-                    rtl: true, position: 'topRight',
-                });
-                e.preventDefault();
-            }
+        if (!e.key.match(/^[0-9 a-z A-Z]+$/)) {
+            iziToast.error({
+                title: 'خطای ورودی اطلاعات',
+                message: 'لطفا کیبورد خود را انگلیسی کنید',
+                rtl: true, position: 'topRight',
+            });
+            e.preventDefault();
+        }
 
-        });
+    });
 
 
-    </script>
+</script>*@
 
 </body>
 

@@ -387,6 +387,7 @@
             data: { id: x }
         }).done(function (result) {
             $('#CityReff').removeAttr('disabled');
+            $('.btnSubmit').removeAttr("disabled", '');
             $("#CityReff").html(result);
         });
     }
@@ -400,6 +401,7 @@
             data: { id: x }
         }).done(function (result) {
             $('.CityRef').removeAttr('disabled');
+            $('#btnSubmit').removeAttr("disabled", '');
             $(".CityRef").html(result);
         });
     }

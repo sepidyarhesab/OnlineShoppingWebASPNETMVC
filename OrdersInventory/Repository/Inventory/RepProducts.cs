@@ -1166,7 +1166,7 @@ namespace OrdersInventory.Repository.Inventory
                     Fee = values.Fee,
                     Quantity = values.Quantity,
                     Discount = values.Discount,
-                    
+
                 });
                 db.Table_Product.Add(query);
                 db.SaveChanges();
@@ -1959,7 +1959,6 @@ namespace OrdersInventory.Repository.Inventory
 
                 if (query.Count > 0)
                 {
-
                     foreach (var item in query)
                     {
                         if (list.FindIndex(c => c.SizeRef == item.SizeRef) < 0)
@@ -1970,7 +1969,6 @@ namespace OrdersInventory.Repository.Inventory
                                 Code = item.Code,
                                 IsDelete = item.IsDelete,
                             };
-
 
                             var SizeQuery =
                                 db.Table_Product_Size.FirstOrDefault(c => c.Id == item.SizeRef && c.IsOk);
@@ -1985,6 +1983,15 @@ namespace OrdersInventory.Repository.Inventory
                             list.Add(vm);
                         }
                     }
+                    //var vmm = new VMProduct.ViewModelProductPropertyList()
+                    //{
+                    //    SizeRef = Guid.Parse("00000000-0000-0000-0000-000000000000"),
+                    //    SizeTitle = "--- سایز را انتخاب کنید ---",
+                    //    Code = "000000",
+                    //};
+
+                    //list.Add(vmm);
+
                 }
             }
             catch (Exception e)
@@ -2062,6 +2069,50 @@ namespace OrdersInventory.Repository.Inventory
                 return 0;
             }
         }
+
+        public VMProduct.ViewModelAjaxProduct RepositoryCheckFeeProducts(Guid id, Guid colorRef, Guid sizeRef)
+        {
+            decimal productfee = 0;
+            var list= new VMProduct.ViewModelAjaxProduct();
+            try
+            {
+                var vm = new VMProduct.ViewModelAjaxProduct();
+                var query = db.Table_Product_Summary
+                    .FirstOrDefault(c => c.ProductRef == id && c.ColorRef == colorRef && c.SizeRef == sizeRef);
+                if (query != null)
+                {
+                    vm.Fee = query.Fee;
+                    var product = db.Table_Product.FirstOrDefault(c => c.Id == id);
+                    if (product != null)
+                    {
+                        vm.Quantity = product.Quantity;
+                        if (product.Discount > 0)
+                        {
+                            vm.Discount = product.Discount;
+                            productfee = query.Fee - ((query.Fee * product.Discount) / 100);
+                        }
+                        else
+                        {
+                            productfee = query.Fee;
+                        }
+                    }
+
+                    vm.Price = productfee;
+                    list = vm;
+                    return list;
+
+                }
+                else
+                {
+                    return list;
+                }
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
+        }
+
         public List<VMProduct.ViewModelProductPropertyList> RepositoryColorSizeList(Guid id)
         {
             var list = new List<VMProduct.ViewModelProductPropertyList>();
@@ -2137,7 +2188,7 @@ namespace OrdersInventory.Repository.Inventory
         //    var list = new List<VMProduct.ViewModelProductPropertyList>();
         //    try
         //    {
-                
+
         //        var search = searchnew.Replace("	", "");
         //        var size = Guid.Parse(search);
         //        var color = Guid.Parse(search);
@@ -2361,10 +2412,10 @@ namespace OrdersInventory.Repository.Inventory
             var list = new List<VMProduct.VmMainProduct>();
             try
             {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                // Run your query
 
                 var query = db.Table_Product.FirstOrDefault(c => c.Id == id);
-
-
                 if (query != null)
                 {
                     var vm = new VMProduct.VmMainProduct
@@ -2383,7 +2434,7 @@ namespace OrdersInventory.Repository.Inventory
 
                     var querySummary =
                         db.Table_Product_Summary.FirstOrDefault(c =>
-                            c.ProductRef == query.Id && c.IsOk && c.IsMain && c.Quantity != 0);
+                            c.ProductRef == query.Id && c.IsOk && c.IsMain && c.Quantity > 0);
                     if (querySummary != null)
                     {
                         if (querySummary.Quantity > 0)
@@ -2431,7 +2482,7 @@ namespace OrdersInventory.Repository.Inventory
 
                     var list2 = new List<VMProduct.FileUploadName>();
                     var queryFullPictures = db.Table_File_Upload
-                        .Where(c => c.IsOk && c.Ref == query.Id ).OrderBy(c=>c.IsMain).AsNoTracking().ToList();
+                        .Where(c => c.IsOk && c.Ref == query.Id).OrderBy(c => c.IsMain).AsNoTracking().ToList();
                     if (queryFullPictures.Count > 0)
                     {
                         foreach (var fileUpload in queryFullPictures)
@@ -2484,7 +2535,10 @@ namespace OrdersInventory.Repository.Inventory
                     }
 
                     list.Add(vm);
-
+                    watch.Stop();
+                    //This is the time it took in miliseconds
+                    var elapsedTime = watch.ElapsedMilliseconds;
+                    LogWriter.Logger("Time Span : RepositoryMainProductsById = " + elapsedTime,DateTime.Now.ToString(),"");
                 }
             }
             catch (Exception e)
@@ -3353,7 +3407,7 @@ namespace OrdersInventory.Repository.Inventory
                             CreatorDateTime = product.CreatorDate,
                             Discount = product.Discount,
                             Note = product.Note,
-                            };
+                        };
 
                         var querySummary =
                             db.Table_Product_Summary.FirstOrDefault(c =>
@@ -3552,7 +3606,7 @@ namespace OrdersInventory.Repository.Inventory
                             }
 
 
-                            vm.Fee = querySummary.Fee; 
+                            vm.Fee = querySummary.Fee;
                             vm.Quantity = querySummary.Quantity;
 
                         }
@@ -3570,7 +3624,7 @@ namespace OrdersInventory.Repository.Inventory
                             }
 
 
-                            vm.Fee = product.Fee; 
+                            vm.Fee = product.Fee;
                             vm.Quantity = product.Quantity;
                         }
 
@@ -3715,7 +3769,7 @@ namespace OrdersInventory.Repository.Inventory
                         }
 
 
-                        vm.Fee = querySummary.Fee; 
+                        vm.Fee = querySummary.Fee;
                         vm.Quantity = querySummary.Quantity;
 
                     }
@@ -4114,7 +4168,7 @@ namespace OrdersInventory.Repository.Inventory
             }
             return "Success";
         }
-        
+
         public string ChangeStatusIsMainProperty(Guid id)
         {
             var query = db.Table_Product_Property.FirstOrDefault(c => c.Id == id);
@@ -4169,7 +4223,7 @@ namespace OrdersInventory.Repository.Inventory
             }
             return "Success";
         }
-        
+
         public string DeletePicturesIsMain(Guid id)
         {
             var query = db.Table_File_Upload.FirstOrDefault(c => c.Id == id);
@@ -4208,7 +4262,7 @@ namespace OrdersInventory.Repository.Inventory
             }
             return "Success";
         }
-        
+
         public List<VMProduct.VmMainProduct> RepositoryMainProductSearch(string values)
         {
             var list = new List<VMProduct.VmMainProduct>();
@@ -5766,7 +5820,7 @@ namespace OrdersInventory.Repository.Inventory
                                     Note = product.Note,
                                     Discount = product.Discount,
                                 };
-            
+
 
                                 var queryfile =
                                     db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == product.Id && c.IsMain);

@@ -74,13 +74,15 @@
                                         <th>
                                             تعداد کل تخفیف
                                         </th>
-                                        @*<th>
+                                        <th>
                                                 کد تخفیف
-                                            </th>
-                                            <th>
-                                                درصد تخفیف
-                                            </th>*@
-
+                                         </th>
+                                        <th>
+                                            درصد تخفیف
+                                        </th> 
+                                        <th>
+                                            قیمت تخفیف
+                                        </th>
                                         <th>
                                             تاریخ شروع
                                         </th>
@@ -116,6 +118,16 @@
                                                     <td class="col-md-1">
                                                         @mangment.DiscountQuantity
                                                     </td>
+                                                    <td class="col-md-2">
+                                                        @mangment.DiscountCode
+                                                    </td>
+                                                    <td class="col-md-2">
+                                                        @mangment.Discount
+                                                    </td>
+                                                    <td class="col-md-2">
+                                                        @mangment.DiscountFee
+                                                    </td>
+                                                   
                                                     <td class="col-md-2">
                                                         @mangment.StartDate1
                                                     </td>
@@ -188,14 +200,26 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="col-md-6">
-                                        <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصدتخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <div class="col-md-6">
                                         <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="" />
                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصدتخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="قیمت تخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px">

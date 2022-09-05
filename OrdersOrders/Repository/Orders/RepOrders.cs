@@ -1198,12 +1198,12 @@ namespace OrdersOrders.Repository.Orders
             }
         }
 
-        public static VMOrders.VmOrderCarts RepositoryCarts(List<VMOrders.VmOrderSubmit> carts)
+        public static VMOrders.VmOrderCarts RepositoryCarts(List<VMOrders.VmOrderSubmit> carts, Guid UserRef)
         {
             var list = new VMOrders.VmOrderCarts();
             try
             {
-                list = RepDiscount.RepositoryCartsNoDiscount(carts);
+                list = RepDiscount.RepositoryCartsNoDiscount(carts,UserRef);
             }
             catch (Exception e)
             {
@@ -1226,7 +1226,7 @@ namespace OrdersOrders.Repository.Orders
                 {
                     if (carts.Count > 0)
                     {
-                        list = RepDiscount.RepositoryCartsNoDiscount(carts);
+                        list = RepDiscount.RepositoryCartsNoDiscount(carts, Guid.Empty);
                     }
                 }
                 else

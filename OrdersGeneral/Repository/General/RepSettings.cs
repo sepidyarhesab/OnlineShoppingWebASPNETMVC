@@ -127,6 +127,7 @@ namespace OrdersGeneral.Repository.General
                             Code = settings.Code,
                             PrimaryTitle = settings.PrimaryTitle,
                             SecondaryTitle = settings.SeconderyTitle,
+                            TertiaryTitle = settings.TertiaryTitle,
                             Aparat = settings.Aparat,
                             CreatorDate = settings.CreatorDate,
                             CreatorRef = settings.CreatorRef,
@@ -185,6 +186,7 @@ namespace OrdersGeneral.Repository.General
                         Code = query.Code,
                         PrimaryTitle = query.PrimaryTitle,
                         SecondaryTitle = query.SeconderyTitle,
+                        TertiaryTitle = query.TertiaryTitle,
                         Aparat = query.Aparat,
                         CreatorDate = query.CreatorDate,
                         CreatorRef = query.CreatorRef,
@@ -198,7 +200,9 @@ namespace OrdersGeneral.Repository.General
                         Telegram = query.Telegram,
                         Version = query.Version,
                         ModifierDate = query.ModifireDate,
-                        
+                        Name = query.Name,
+                        Family = query.Family,
+                        SiteType = query.SiteTypeRef,
                     };
 
 
@@ -260,9 +264,6 @@ namespace OrdersGeneral.Repository.General
         }
 
 
-
-
-
         #region Edit
 
         public static string RepositoryMainSettingsManagemenetEditById(VMSettings.VMSettingsManagmet values, HttpPostedFileBase file, HttpPostedFileBase file2, Guid userId)
@@ -276,6 +277,7 @@ namespace OrdersGeneral.Repository.General
                 {
                     query.PrimaryTitle = values.PrimaryTitle;
                     query.SeconderyTitle = values.SecondaryTitle;
+                    query.TertiaryTitle = values.TertiaryTitle;
                     query.Facebook = values.Facebook;
                     query.Aparat = values.Aparat;
                     query.Email = values.Email;
@@ -288,6 +290,8 @@ namespace OrdersGeneral.Repository.General
                     query.ModifierRef = userRef;
                     query.Version++;
                     query.IsOk = true;
+                    query.Name = values.Name;
+                    query.Family = values.Family;
                     db.SaveChanges();
 
                     var filename = "Default";

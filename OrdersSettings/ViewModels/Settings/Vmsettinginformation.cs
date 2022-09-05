@@ -12,6 +12,7 @@ namespace OrdersSettings.ViewModels
             public Guid Id { get; set; }
   
             public string PrimaryTitle { get; set; }
+            public string TertiaryTitle { get; set; }
             public string TarnsferPay { get; set; }
             public string Phone { get; set; }
             public string Instagram { get; set; }

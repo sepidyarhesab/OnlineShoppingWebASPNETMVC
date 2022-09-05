@@ -21,7 +21,7 @@
                                     <a href="#" class="widget-list-link">@item.PrimaryTitle</a>
                                 </li>
                                 <li class="widget-list-item">
-                                    <a href="#" class="widget-list-link">@item.Address</a>
+                                    <a href="@item.Note" class="widget-list-link">@item.Address</a>
                                 </li>
                                 <li class="widget-list-item">
                                     <a href="tel:@item.Phone" class="widget-list-link">@item.Phone</a>
@@ -38,40 +38,46 @@
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
-        @*<div class="widget widget-links">
-            <h2 class="widget-title">راهنمای خرید از همتا</h2>
+        <div class="widget widget-links">
+            <h2 class="widget-title">لینک های پرکاربرد</h2>
             <ul class="widget-list">
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">نحوه ثبت سفارش</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">رویه ارسال سفارش</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">شیوه‌های پرداخت</a>
-                </li>
+                @{
+                    var link = RepLinks.RepositoryLinks();
+                    if (link.Count > 0)
+                    {
+                        foreach (var items in link)
+                        {
+                            <li class="widget-list-item">
+                            <a href="@items.Url" class="widget-list-link">@items.PrimaryTitle</a>
+                            </li>
+                        }
+                    }
+
+                }
+
+
             </ul>
         </div>
-        <div class="widget widget-links">
-            <h2 class="widget-title">خدمات مشتریان</h2>
-            <ul class="widget-list">
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">پاسخ به پرسش‌های متداول</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">رویه‌های بازگرداندن کالا</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">شرایط استفاده</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">حریم خصوصی</a>
-                </li>
-                <li class="widget-list-item">
-                    <a href="#" class="widget-list-link">گزارش باگ</a>
-                </li>
-            </ul>
-        </div>*@
+        @* <div class="widget widget-links">
+                <h2 class="widget-title">خدمات مشتریان</h2>
+                <ul class="widget-list">
+                    <li class="widget-list-item">
+                        <a href="#" class="widget-list-link">پاسخ به پرسش‌های متداول</a>
+                    </li>
+                    <li class="widget-list-item">
+                        <a href="#" class="widget-list-link">رویه‌های بازگرداندن کالا</a>
+                    </li>
+                    <li class="widget-list-item">
+                        <a href="#" class="widget-list-link">شرایط استفاده</a>
+                    </li>
+                    <li class="widget-list-item">
+                        <a href="#" class="widget-list-link">حریم خصوصی</a>
+                    </li>
+                    <li class="widget-list-item">
+                        <a href="#" class="widget-list-link">گزارش باگ</a>
+                    </li>
+                </ul>
+            </div>*@
     </div>
     <div class="col-md-4">
         <div class="widget widget-newsletter">
@@ -107,32 +113,32 @@
                                         {
                                             case "Instagram":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/instagram.png" alt="Instagram" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/instagram.png" alt="Instagram" width="30px" />
                                                 </a>
                                                 break;
                                             case "Twitter":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/twitter.png" alt="Twitter" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/twitter.png" alt="Twitter" width="30px" />
                                                 </a>
                                                 break;
                                             case "Whatsapp":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/whatsapp.png" alt="Whatsapp" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/whatsapp.png" alt="Whatsapp" width="30px" />
                                                 </a>
                                                 break;
                                             case "Youtube":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/youtube.png" alt="Youtube" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/youtube.png" alt="Youtube" width="30px" />
                                                 </a>
                                                 break;
                                             case "Telegram":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/telegram.png" alt="Telegram" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/telegram.png" alt="Telegram" width="30px" />
                                                 </a>
                                                 break;
                                             case "Facebook":
                                                 <a href="@management.Url" target="_blank">
-                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/facebook.png" alt="Facebook" width="30px"/>
+                                                    <img src="~/Helper/Layouts/assets/images/SocialMedia/facebook.png" alt="Facebook" width="30px" />
                                                 </a>
                                                 break;
                                         }
@@ -167,9 +173,9 @@
                     }
                 </div>
                 <div class="ml-2 mb-2">
-                           
+
                     <img src="/Static/Content/Images/Behpardakht.png" />
-                                     
+
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<OrdersSettings.ViewModels.Settings.VMSettings.VMSettingsManagmet>
+﻿@using OrdersGeneral.Repository.General
+@model IEnumerable<OrdersSettings.ViewModels.Settings.VMSettings.VMSettingsManagmet>
 @{
     ViewBag.Title = "ویرایش تنظیمات|EditSettings";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -32,56 +33,69 @@
                                             foreach (var Edit in Model)
                                             {
                                                 <input type="hidden" name="Id" id="Id" value="@Edit.Id">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Edit.PrimaryTitle" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Name">نام</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Name" name="Name" placeholder="نام" type="text" value="@Edit.Name" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
 
-                                                        <label class="control-label col-md-2" for="SecondaryTitle">قیمت باربری</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="قیمت باربری" type="text" value="@Edit.SecondaryTitle" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
+                                                    <label class="control-label col-md-2" for="SecondaryTitle">نام خانوادگی</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Family" name="Family" placeholder="نام خانوادگی" type="text" value="@Edit.Family" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-2" for="Email">ایمیل</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Email" name="Email" placeholder="ایمیل" type="text" value="@Edit.Email" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
-                                                        <label class="control-label col-md-2" for="Phone">تلفن</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="@Edit.Phone" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Edit.PrimaryTitle" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-2" for="Telegram">تلگرام</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Telegram" name="Telegram" placeholder="تلگرام" type="text" value="@Edit.Telegram" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
-                                                        <label class="control-label col-md-2" for="Instagram">اینستاگرام</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Instagram" name="Instagram" placeholder="اینستاگرام" type="text" value="@Edit.Instagram" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-2" for="Whatsupp">واتساپ</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Whatsapp" name="Whatsapp" placeholder="واتساپ" type="text" value="@Edit.Whatsapp" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
 
-                                                        <label class="control-label col-md-2" for="Facebook">فیسبوک</label>
-                                                        <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Facebook" name="Facebook" placeholder="فیسبوک" type="text" value="@Edit.Facebook" />
-                                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                                        </div>
+                                                    <label class="control-label col-md-2" for="SecondaryTitle">قیمت باربری</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="قیمت باربری" type="text" value="@Edit.SecondaryTitle" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Email">ایمیل</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Email" name="Email" placeholder="ایمیل" type="text" value="@Edit.Email" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    <label class="control-label col-md-2" for="Phone">تلفن</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="@Edit.Phone" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Telegram">تلگرام</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Telegram" name="Telegram" placeholder="تلگرام" type="text" value="@Edit.Telegram" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    <label class="control-label col-md-2" for="Instagram">اینستاگرام</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Instagram" name="Instagram" placeholder="اینستاگرام" type="text" value="@Edit.Instagram" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Whatsupp">واتساپ</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Whatsapp" name="Whatsapp" placeholder="واتساپ" type="text" value="@Edit.Whatsapp" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+
+                                                    <label class="control-label col-md-2" for="Facebook">فیسبوک</label>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control text-box single-line" id="Facebook" name="Facebook" placeholder="فیسبوک" type="text" value="@Edit.Facebook" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Facebook">آپارات</label>
                                                     <div class="col-md-4">
@@ -89,25 +103,64 @@
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
 
-                                                    </div>    
-                                                        
+                                                    </div>
                                                     <label class="control-label col-md-2" for="FileUploadPc">لوگو کامپیوتر</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="file" name="file" placeholder="لوگو" type="file"  />
+                                                        <input class="form-control text-box single-line" id="file" name="file" placeholder="لوگو" type="file" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-
                                                     <label class="control-label col-md-2" for="FileUploadMobile">لوگو موبایل</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="file2" name="file2" placeholder="لوگو" type="file"  />
+                                                        <input class="form-control text-box single-line" id="file2" name="file2" placeholder="لوگو" type="file" />
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    
+                                                    <label class="control-label col-md-2" for="Value">نوع سایت</label>
+                                                    <div class=" col-md-4">
+                                                        <select class="form-control " id="Value" name="Value" onfocusout="checkinputEdit()">
+                                                            @{
+                                                                var result = RepSettings.RepositorySiteType();
+                                                                if (result.Count > 0)
+                                                                {
+                                                                    foreach (var items in result)
+                                                                    {
+                                                                        if (items.Id == Edit.SiteType)
+                                                                        {
+                                                                            <option value="@items.Id" selected="selected" >@items.PrimaryTitle</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option value="@items.Id"  >@items.PrimaryTitle</option>
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        </select>
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="TertiaryTitle">آدرس</label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control text-box single-line" id="TertiaryTitle" name="TertiaryTitle" rows="4">@Edit.TertiaryTitle</textarea>
+                                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" for="Note">آدرس با گوگل map</label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control text-box single-line" id="Note" name="Note" rows="4">@Edit.Note</textarea>
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
                                                     </div>
                                                 </div>
-
                                                 <div class="box-footer clearfix">
                                                     <div class="col-md-12 col-md-offset-9">
                                                         <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
