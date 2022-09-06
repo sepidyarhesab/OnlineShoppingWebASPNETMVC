@@ -37,6 +37,23 @@ namespace WebApplicationHamtOrders.Controllers
 
         }
 
+
+        public void ChangeStatusAmin(Guid id)
+        {
+            var result = RepWhatsApp.ChangeStatus(id);
+            if (result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/WhatsAppManagement");
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                Response.Redirect("/WhatsAppManagement");
+            }
+
+        }
+
         public void Delete(Guid id)
         {
             var result = RepWhatsApp.Delete(id);

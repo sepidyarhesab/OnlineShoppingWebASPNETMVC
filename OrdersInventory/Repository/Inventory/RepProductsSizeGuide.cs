@@ -14,10 +14,11 @@ namespace OrdersInventory.Repository.Inventory
         //<<<<<<<<<<<<<<SIZE GUIDE REPOSITOREIS>>>>>>>>>>>>>>>>>
 
         //Repository AdminProductSizeGuideList
-        public static List<VMProductsSizeGuide.ViewModelProductSizeGuide> RepositoryAdminProductSizeGuideList()
+        public static List<VMProductsSizeGuides.ViewModelProductSizeGuide> RepositoryAdminProductSizeGuideList()
         {
-            var list = new List<VMProductsSizeGuide.ViewModelProductSizeGuide>();
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeGuide>();
             var db = new Orders_Entities();
+            //var db = new Orders_Entities();
             try
             {
                 var query = db.Table_Product_SizeGuide.OrderBy(c => c.Sort).AsNoTracking().ToList();
@@ -25,7 +26,7 @@ namespace OrdersInventory.Repository.Inventory
                 {
                     foreach (var item in query)
                     {
-                        var vm = new VMProductsSizeGuide.ViewModelProductSizeGuide()
+                        var vm = new VMProductsSizeGuides.ViewModelProductSizeGuide()
                         {
                             Id = item.Id,
                             Code = item.Code,
@@ -58,9 +59,9 @@ namespace OrdersInventory.Repository.Inventory
         }
         //End-----------------------------------------
         //Repository AdminProductSizeGuideSearch
-        public static List<VMProductsSizeGuide.ViewModelProductSizeGuide> RepositoryAdminProductSizeGuideSearch(string searchnew)
+        public static List<VMProductsSizeGuides.ViewModelProductSizeGuide> RepositoryAdminProductSizeGuideSearch(string searchnew)
         {
-            var list = new List<VMProductsSizeGuide.ViewModelProductSizeGuide>();
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeGuide>();
             var db = new Orders_Entities();
             try
             {
@@ -71,7 +72,7 @@ namespace OrdersInventory.Repository.Inventory
                 {
                     foreach (var item in query)
                     {
-                        var vm = new VMProductsSizeGuide.ViewModelProductSizeGuide()
+                        var vm = new VMProductsSizeGuides.ViewModelProductSizeGuide()
                         {
                             Id = item.Id,
                             Code = item.Code,
@@ -104,9 +105,9 @@ namespace OrdersInventory.Repository.Inventory
 
         //End-----------------------------
         //Repository ListCategory
-        public static List<VMProductsSizeGuide.ViewModelProductSizeGuide> ListCategory()
+        public static List<VMProductsSizeGuides.ViewModelProductSizeGuide> ListCategory()
         {
-            var list = new List<VMProductsSizeGuide.ViewModelProductSizeGuide>();
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeGuide>();
             try
             {
                 var db = new Orders_Entities();
@@ -115,7 +116,7 @@ namespace OrdersInventory.Repository.Inventory
                 {
                     foreach (var item in query)
                     {
-                        var vm = new VMProductsSizeGuide.ViewModelProductSizeGuide
+                        var vm = new VMProductsSizeGuides.ViewModelProductSizeGuide
                         {
                             CategoriesRef = item.Id,
                             CategoryTitle = item.PrimaryTitle,
@@ -136,7 +137,7 @@ namespace OrdersInventory.Repository.Inventory
 
         //End---------------------------------
         //Repository Add New SizeGuide
-        public static string Add(VMProductsSizeGuide.ViewModelProductSizeGuide value, Guid UserId)
+        public static string Add(VMProductsSizeGuides.ViewModelProductSizeGuide value, Guid UserId)
         {
             try
             {
@@ -237,13 +238,13 @@ namespace OrdersInventory.Repository.Inventory
         }
         //End-----------------------------
         //Repository Edit ProductSizeGuide
-        public static VMProductsSizeGuide.ViewModelProductSizeGuide EditSizeGuide(Guid id)
+        public static VMProductsSizeGuides.ViewModelProductSizeGuide EditSizeGuide(Guid id)
         {
             var db = new Orders_Entities();
             var query = db.Table_Product_SizeGuide.FirstOrDefault(c => c.Id == id);
             if (query != null)
             {
-                var vm = new VMProductsSizeGuide.ViewModelProductSizeGuide
+                var vm = new VMProductsSizeGuides.ViewModelProductSizeGuide
                 {
                     Id = query.Id,
                     PrimaryTitle = query.PrimaryTitle,
@@ -260,14 +261,14 @@ namespace OrdersInventory.Repository.Inventory
                 return vm;
             }
 
-            return new VMProductsSizeGuide.ViewModelProductSizeGuide();
+            return new VMProductsSizeGuides.ViewModelProductSizeGuide();
         }
         //End----------------------------------------------------
         // <<<<<<<<<<<<Table_Product_SizeGuideValues Repositories>>>>>>>>>>>>>
         //Repository AdminProductSizeGuideValuesList
-        public static List<VMProductsSizeGuide.ViewModelProductSizeValuesGuide> RepositoryAdminProductSizeGuideValuesList(Guid id)
+        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryAdminProductSizeGuideValuesList(Guid id)
         {
-            var list = new List<VMProductsSizeGuide.ViewModelProductSizeValuesGuide>();
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
             var db = new Orders_Entities();
             try
             {
@@ -276,7 +277,7 @@ namespace OrdersInventory.Repository.Inventory
                 {
                     foreach (var item in query)
                     {
-                        var vm = new VMProductsSizeGuide.ViewModelProductSizeValuesGuide()
+                        var vm = new VMProductsSizeGuides.ViewModelProductSizeValuesGuide()
                         {
                             Id = item.Id,
                             Code = item.Code,
@@ -318,9 +319,9 @@ namespace OrdersInventory.Repository.Inventory
         }
         //End-----------------------------------------
         //Repository AdminProductSizeGuideSearch
-        public static List<VMProductsSizeGuide.ViewModelProductSizeValuesGuide> RepositoryAdminProductSizeGuideValuesSearch(string searchnew)
+        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryAdminProductSizeGuideValuesSearch(string searchnew)
         {
-            var list = new List<VMProductsSizeGuide.ViewModelProductSizeValuesGuide>();
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
             var db = new Orders_Entities();
             try
             {
@@ -331,7 +332,7 @@ namespace OrdersInventory.Repository.Inventory
                 {
                     foreach (var item in query)
                     {
-                        var vm = new VMProductsSizeGuide.ViewModelProductSizeValuesGuide()
+                        var vm = new VMProductsSizeGuides.ViewModelProductSizeValuesGuide()
                         {
                             Id = item.Id,
                             Code = item.Code,
@@ -432,7 +433,7 @@ namespace OrdersInventory.Repository.Inventory
         }
         //End---------------------------------
         //Repository Add New SizeGuideValue
-        public static string AddSizeGuideValues(VMProductsSizeGuide.ViewModelProductSizeValuesGuide value, Guid UserId)
+        public static string AddSizeGuideValues(VMProductsSizeGuides.ViewModelProductSizeValuesGuide value, Guid UserId)
         {
             try
             {
@@ -469,13 +470,13 @@ namespace OrdersInventory.Repository.Inventory
         }
         //End-----------------------------
         //Repository Edit ProductSizeGuideValues
-        public static VMProductsSizeGuide.ViewModelProductSizeValuesGuide EditSizeGuideValues(Guid id)
+        public static VMProductsSizeGuides.ViewModelProductSizeValuesGuide EditSizeGuideValues(Guid id)
         {
             var db = new Orders_Entities();
             var query = db.Table_Product_SizeGuideValues.FirstOrDefault(c => c.Id == id);
             if (query != null)
             {
-                var vm = new VMProductsSizeGuide.ViewModelProductSizeValuesGuide()
+                var vm = new VMProductsSizeGuides.ViewModelProductSizeValuesGuide()
                 {
                     Id = query.Id,
                     PropertyTitle= query.PropertyTitle,
@@ -493,7 +494,51 @@ namespace OrdersInventory.Repository.Inventory
                 return vm;
             }
 
-            return new VMProductsSizeGuide.ViewModelProductSizeValuesGuide();
+            return new VMProductsSizeGuides.ViewModelProductSizeValuesGuide();
+        }
+        //End---------------------------------------------------
+        //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //Repository Show Size Guide Table for a Category
+        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryClientProductCategorySizeGuideValuesList(Guid CategoryId)
+        {
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
+            var db = new Orders_Entities();
+            try
+            {
+                var qcat = db.Table_Product_SizeGuide.FirstOrDefault(c => c.CategoryRef == CategoryId);
+                if (qcat != null)
+                {
+                    var query = db.Table_Product_SizeGuideValues.Where(c => c.SizeGuideRef == qcat.Id).AsNoTracking().ToList();
+                    if (query.Count > 0)
+                    {
+
+                        foreach (var item in query)
+                        {
+                            var vm = new VMProductsSizeGuides.ViewModelProductSizeValuesGuide()
+                            {
+                                Id = item.Id,
+                                Code = item.Code,
+                                PropertyTitle = item.PropertyTitle,
+                                SecondaryTitle = item.SecondaryTitle,
+                                SizeGuideRef = item.SizeGuideRef,
+                                SizeValue = item.SizeValue,
+                                Sort = item.Sort,
+                                IsOk = item.IsOk,
+                                CreatorDate = item.CreatorDate,
+                                SizeGuideTitle = qcat.PrimaryTitle,
+                            };
+
+                            list.Add(vm);
+                        }
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrdersInventory.ViewModels.Inventory
 {
-    public class VMProductsSizeGuide
+    public class VMProductsSizeGuides
     {
         //ViewModel Table Product_SizeGuide
         public class ViewModelProductSizeGuide
