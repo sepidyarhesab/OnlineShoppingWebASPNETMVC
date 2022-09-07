@@ -1,6 +1,6 @@
 ﻿
 @using OrdersGeneral.Repository.General
-@model IEnumerable<OrdersGeneral.ViewModels.General.VMBlogs.ViewModelCategories>
+@model OrdersGeneral.ViewModels.General.VMBlogs.ViewModelCategories
 
 
 @{
@@ -20,8 +20,7 @@
                     @{
                         if (Model != null)
                         {
-                            foreach (var item in Model)
-                            {
+                            
                                 using (Html.BeginForm("EditRow", "BlogCategoriesManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
@@ -31,17 +30,17 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="">کد</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@item.Code" />
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@Model.Code" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@item.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -49,13 +48,13 @@
 
                                                 <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@item.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
                                                 <label class="control-label col-md-2" for="Sort">شماره مرتب سازی </label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="text" value="@item.Sort" />
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="text" value="@Model.Sort" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <hr />
@@ -64,8 +63,8 @@
                                                     <label class="control-label col-md-2" for="IsMain">گروه اصلی؟ </label>
                                                     <div class="  col-md-4">
                                                         <select class="form-control " id="IsMain" name="IsMain">
-                                                            <option @((item.IsMain == true) ? "selected" : "") value="true">بله</option>
-                                                            <option @((item.IsMain == false) ? "selected" : "") value="false">خیر</option>
+                                                            <option @((Model.IsMain == true) ? "selected" : "") value="true">بله</option>
+                                                            <option @((Model.IsMain == false) ? "selected" : "") value="false">خیر</option>
                                                         </select>
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
@@ -104,13 +103,6 @@
                             }
 
                         }
-
-
-
-
-                    }
-
-
 
                 </div>
             </div>

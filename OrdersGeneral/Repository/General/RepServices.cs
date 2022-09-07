@@ -341,9 +341,8 @@ namespace OrdersGeneral.Repository.General
             return list;
         }
 
-        public static List<VMServices.VMMainServicesManagement> RepositoryMainServicesManagemenetById(Guid Id)
+        public static VMServices.VMMainServicesManagement RepositoryMainServicesManagemenetById(Guid Id)
         {
-            var list = new List<VMServices.VMMainServicesManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -387,14 +386,14 @@ namespace OrdersGeneral.Repository.General
                         vm.IsOkTitle = "غیر فعال";
                     }
                     
-                    list.Add(vm);
+                    return vm;
                 }
             }
             catch (Exception e)
             {
             }
 
-            return list;
+            return new VMServices.VMMainServicesManagement();
         }
 
         public static string ChangeStatus(Guid id)

@@ -71,10 +71,10 @@ namespace WebApplicationHamtOrders.Controllers
                     var rep = new RepProducts();
 
                     var size = rep.RepositorySizeShowInProducts(productRef, Guid.Parse(id));
-                    return PartialView("Body/P_DropdownSize", size);
+                    return PartialView("SingleProduct/P_DropdownSize", size);
                 }
             }
-            return PartialView("Body/P_DropdownSize");
+            return PartialView("SingleProduct/P_DropdownSize");
         }
 
 
@@ -104,10 +104,10 @@ namespace WebApplicationHamtOrders.Controllers
                 {
                     var rep = new RepProducts();
                     var Fee = rep.RepositoryCheckFeeProducts(productRef, Guid.Parse(colorid),Guid.Parse(sizeid));
-                    return PartialView("Body/P_Product_Price", Fee);
+                    return PartialView("SingleProduct/P_Product_Price", Fee);
                 }
             }
-            return PartialView("Body/P_Product_Price");
+            return PartialView("SingleProduct/P_Product_Price");
         }
 
 

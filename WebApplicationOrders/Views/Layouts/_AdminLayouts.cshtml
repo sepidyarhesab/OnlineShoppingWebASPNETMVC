@@ -9,13 +9,13 @@
 
     <html>
     <head>
-        @Html.Partial("Body/P_AdminLayout_Head")
+        @Html.Partial("head/admin/P_AdminLayout_Head")
 
     </head>
     <body class="hold-transition skin-admin sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                @Html.Partial("Body/P_AdminLayout_Header")
+                @Html.Partial("head/admin/P_AdminLayout_Header")
 
             </header>
             <aside class="main-sidebar">
@@ -98,7 +98,7 @@
             <div class="content-wrapper">
                 @RenderBody()
             </div>
-            @Html.Partial("Body/P_AdminLayout_Footer")
+            @Html.Partial("footer/admin/P_AdminLayout_Footer")
             <div class="control-sidebar-bg"></div>
         </div>
 

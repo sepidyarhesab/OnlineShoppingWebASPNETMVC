@@ -1,6 +1,6 @@
 ﻿@using OrdersInventory.Repository.Inventory
 
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelProductPropertyList>
+@model OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelProductPropertyList
 
 
 @{
@@ -22,8 +22,7 @@
 
                         if (Model != null)
                         {
-                            foreach (var item in Model)
-                            {
+                           
                                 using (Html.BeginForm("EditRow", "ProductPropertyList", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
@@ -33,13 +32,13 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
-                                            <input type="hidden" id="ProductRef" name="ProductRef" value="@item.ProductRef" />
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                                            <input type="hidden" id="ProductRef" name="ProductRef" value="@Model.ProductRef" />
 
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Code">کد</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@item.Code" />
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@Model.Code" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
@@ -47,7 +46,7 @@
 
                                                 <label class="control-label col-md-2" for="ProductRef">نام محصول</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" disabled="disabled" id="ProductRef" name="ProductRef" placeholder="نام محصول" type="text" value="@item.ProductTitle" />
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="ProductRef" name="ProductRef" placeholder="نام محصول" type="text" value="@Model.ProductTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -86,7 +85,7 @@
                                                 <hr />
                                                 <label class="control-label col-md-2" for="Count">تعداد</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Count" name="Count" placeholder="" type="number" value="@item.Count" />
+                                                    <input class="form-control text-box single-line" id="Count" name="Count" placeholder="" type="number" value="@Model.Count" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
@@ -106,7 +105,7 @@
                             }
                         }
 
-                    }
+                    
 
                 </div>
 

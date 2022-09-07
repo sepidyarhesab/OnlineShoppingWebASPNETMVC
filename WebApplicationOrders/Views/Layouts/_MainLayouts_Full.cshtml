@@ -10,7 +10,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    @Html.Partial("Body/P_MainLayout_head")
+    @Html.Partial("head/P_MainLayout_head")
 </head>
 <body @*onload="ErrorNoSale()"*@>
 
@@ -23,19 +23,19 @@
     <!-- quickview-modal / end -->
     <!-- mobilemenu -->
 
-    @Html.Partial("Body/P_MainLayout_Mobile_Menu")
+    @Html.Partial("head/P_MainLayout_Mobile_Menu")
 
     <!-- mobilemenu / end -->
     <!-- site -->
     <div class="site">
         <!-- mobile site__header -->
         <header class="site__header d-lg-none">
-            @Html.Partial("Body/P_MainLayout_Header_Mobile")
+            @Html.Partial("head/P_MainLayout_Header_Mobile")
         </header>
         <!-- mobile site__header / end -->
         <!-- desktop site__header -->
         <header class="site__header d-lg-block d-none">
-            @Html.Partial("Body/P_MainLayout_header_Full")
+            @Html.Partial("head/P_MainLayout_header_Full")
         </header>
         <!-- desktop site__header / end -->
         <!-- site__body -->
@@ -45,13 +45,13 @@
         <!-- site__body / end -->
         <!-- site__footer -->
         <footer class="site__footer footer-bkc">
-            @Html.Partial("Body/P_MainLayout_Footer_Full")
+            @Html.Partial("footer/P_MainLayout_Footer_Full")
         </footer>
         <!-- site__footer / end -->
     </div>
     <!-- site / end -->
     <!-- js -->
-    @Html.Partial("Body/P_MainLayout_Script")
+    @Html.Partial("footer/P_MainLayout_Script")
 
 </body>
 </html>

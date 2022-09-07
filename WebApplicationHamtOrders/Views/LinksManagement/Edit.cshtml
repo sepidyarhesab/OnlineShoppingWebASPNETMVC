@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMLinks.VMMainLinksManagement>
+﻿@model OrdersGeneral.ViewModels.General.VMLinks.VMMainLinksManagement
 @{
     ViewBag.Title = "ویرایش لینک|EditLink";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -26,33 +26,28 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-horizontal">
-
-                                        @{
-
-                                            foreach (var Linkedit in Model)
-                                            {
-                                                <input type="hidden" name="Id" id="Id" value="@Linkedit.Id">
+                                        <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Linkedit.PrimaryTitle" />
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="SecondaryTitle">عنوان  دوم</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان اصلی" type="text" value="@Linkedit.SecondaryTitle" />
+                                                        <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.SecondaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@Linkedit.Sort" />
+                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@Model.Sort" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="Url">لینک</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@Linkedit.Url" />
+                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@Model.Url" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -70,14 +65,6 @@
                                                  
 
                                                 </div>
-                                            }
-
-
-
-
-
-                                        }
-
                                     </div>
                                 </div>
                                 <div class="box-footer clearfix">
@@ -88,9 +75,6 @@
                                 </div>
                             }
                         }
-
-
-
 
                     }
 

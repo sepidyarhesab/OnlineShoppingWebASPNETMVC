@@ -1,7 +1,7 @@
 ﻿@using OrdersGeneral.Repository.General
 @using OrdersInventory.Repository.Inventory
 
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement>
+@model OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement
 @{
     ViewBag.Title = "ویرایش محصول";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -24,8 +24,7 @@
                         {
                             var rep = new RepProducts();
 
-                            foreach (var item in Model)
-                            {
+                          
                                 using (Html.BeginForm("EditRow", "ProductManagment", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
@@ -35,7 +34,7 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="PrimaryTitle">کد</label>
                                                 <div class="col-md-4">
@@ -45,7 +44,7 @@
 
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@item.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -53,7 +52,7 @@
 
                                                 <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@item.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="CategoriesRef">دسته بندی</label>
@@ -65,7 +64,7 @@
                                                             {
                                                                 foreach (var cat in category)
                                                                 {
-                                                                    if (cat.Id == item.CategoriesRef)
+                                                                    if (cat.Id == Model.CategoriesRef)
                                                                     {
                                                                         <option value="@cat.Id" selected="selected">@cat.PrimaryTitle</option>
                                                                     }
@@ -88,12 +87,12 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Url">لینک</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@item.Url" />
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@Model.Url" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="Discount">تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="تخفیف" type="number" value="@item.Discount" />
+                                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="تخفیف" type="number" value="@Model.Discount" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -107,12 +106,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-2" for="Fee">قیمت</label>
                                                             <div class="col-md-4">
-                                                                <input class="form-control text-box single-line" id="Fee" name="Fee" placeholder="قیمت" type="text" value="@item.Fee" onfocusout="checkinputProduct()" />
+                                                                <input class="form-control text-box single-line" id="Fee" name="Fee" placeholder="قیمت" type="text" value="@Model.Fee" onfocusout="checkinputProduct()" />
                                                                 <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                             </div>
                                                             <label class="control-label col-md-2" for="Quantity">تعداد</label>
                                                             <div class="col-md-4">
-                                                                <input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="تعداد" type="text" value="@item.Quantity" onfocusout="checkinputProduct()" />
+                                                                <input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="تعداد" type="text" value="@Model.Quantity" onfocusout="checkinputProduct()" />
                                                                 <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                             </div>
                                                         </div>
@@ -129,7 +128,7 @@
                                                 <label class="control-label col-md-2" for="Note">توضیحات</label>
                                                 <div class="col-md-10">
                                                     <textarea class="editor form-control text-box single-line" id="Note" name="Note" placeholder="توضیحات" type="text">
-                                                    @Html.Raw(@item.Note)
+                                                    @Html.Raw(Model.Note)
                                                     </textarea>
                                                     <script>
                                                         CKEDITOR.replace("Note");
@@ -153,10 +152,6 @@
 
                         }
 
-
-
-
-                    }
 
 
 

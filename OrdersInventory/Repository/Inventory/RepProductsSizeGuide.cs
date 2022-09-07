@@ -18,6 +18,7 @@ namespace OrdersInventory.Repository.Inventory
         {
             var list = new List<VMProductsSizeGuides.ViewModelProductSizeGuide>();
             var db = new Orders_Entities();
+            //var db = new Orders_Entities();
             try
             {
                 var query = db.Table_Product_SizeGuide.OrderBy(c => c.Sort).AsNoTracking().ToList();
@@ -65,7 +66,7 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
                 var search = searchnew.Replace("  ", "");
-                var searcha = string.IsNullOrWhiteSpace(searchnew);
+                //var searcha = string.IsNullOrWhiteSpace(searchnew);
                 var query = db.Table_Product_SizeGuide.OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
@@ -494,6 +495,50 @@ namespace OrdersInventory.Repository.Inventory
             }
 
             return new VMProductsSizeGuides.ViewModelProductSizeValuesGuide();
+        }
+        //End---------------------------------------------------
+        //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //Repository Show Size Guide Table for a Category
+        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryClientProductCategorySizeGuideValuesList(Guid? CategoryId)
+        {
+            var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
+            var db = new Orders_Entities();
+            try
+            {
+                var qcat = db.Table_Product_SizeGuide.FirstOrDefault(c => c.CategoryRef == CategoryId);
+                if (qcat != null)
+                {
+                    var query = db.Table_Product_SizeGuideValues.Where(c => c.SizeGuideRef == qcat.Id).AsNoTracking().ToList();
+                    if (query.Count > 0)
+                    {
+
+                        foreach (var item in query)
+                        {
+                            var vm = new VMProductsSizeGuides.ViewModelProductSizeValuesGuide()
+                            {
+                                Id = item.Id,
+                                Code = item.Code,
+                                PropertyTitle = item.PropertyTitle,
+                                SecondaryTitle = item.SecondaryTitle,
+                                SizeGuideRef = item.SizeGuideRef,
+                                SizeValue = item.SizeValue,
+                                Sort = item.Sort,
+                                IsOk = item.IsOk,
+                                CreatorDate = item.CreatorDate,
+                                SizeGuideTitle = qcat.PrimaryTitle,
+                            };
+
+                            list.Add(vm);
+                        }
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
         }
 
     }

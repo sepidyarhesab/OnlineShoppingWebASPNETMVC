@@ -120,9 +120,8 @@ namespace OrdersGeneral.Repository.General
         }
 
 
-        public static List<VMMenu.VmMenuMainMenuManagement> RepositoryMainMenuManagementById(Guid Id)
+        public static VMMenu.VmMenuMainMenuManagement RepositoryMainMenuManagementById(Guid Id)
         {
-            var list = new List<VMMenu.VmMenuMainMenuManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -150,15 +149,15 @@ namespace OrdersGeneral.Repository.General
                         vm.IsOkClass = "btn btn-danger";
                         vm.IsOkTitle = "غیر فعال";
                     }
-                    list.Add(vm);
+                    return vm;
 
                 }
 
-                return list;
+                return new VMMenu.VmMenuMainMenuManagement();
             }
             catch (Exception e)
             {
-                return list;
+                return new VMMenu.VmMenuMainMenuManagement();
             }
         }
 
