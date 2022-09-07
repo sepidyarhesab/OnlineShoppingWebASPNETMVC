@@ -9,7 +9,7 @@
 
 
 <head>
-    @Html.Partial("Body/P_MainLayout_head")
+    @Html.Partial("head/P_MainLayout_head")
     <link href="~/Helper/Layouts/assets/css/plugins/bottom/styles.css" rel="stylesheet" />
 </head>
 
@@ -74,12 +74,12 @@
                 </div>
             </div>
             <div class="container">
-                @Html.Partial("Body/P_MainLayout_header")
-                @Html.Partial("Body/P_MainLayout_Header_MainMenu")
+                @Html.Partial("head/P_MainLayout_header")
+                @Html.Partial("head/P_MainLayout_Header_MainMenu")
             </div>
         </header>
         <!-- header responsive -->
-        @Html.Partial("Body/P_MainLayout_Header_Mobile")
+        @Html.Partial("head/P_MainLayout_Header_Mobile")
         <!-- end header responsive -->
         <!-- end Page Header -->
         <!-- Page Content -->
@@ -88,6 +88,7 @@
                 @RenderBody()
 
             </div>
+            @Html.Partial("body/P_Social")
         </main>
         <!-- Page Loader -->
         <div class="page-loader">
@@ -110,7 +111,7 @@
             </div>
         </div>
         <!-- end Page Loader -->
-
+        
         <footer class="main-footer">
             <div class="back-to-top">
                 <div class="back-btn">
@@ -119,9 +120,9 @@
                 </div>
             </div>
             <div class="container">
-                @Html.Partial("Body/P_Services")
-                @Html.Partial("Body/P_MainLayout_Footer")
-                @Html.Partial("Body/P_CopyRight_Footer")
+                @Html.Partial("footer/P_Services")
+                @Html.Partial("footer/P_MainLayout_Footer")
+                @Html.Partial("footer/P_CopyRight_Footer")
             </div>
             @Html.Partial("Footer/P_Whatsapp")
             @Html.Partial("Footer/P_RayChat")
@@ -129,10 +130,10 @@
         <!-- end Page Footer -->
 
     </div>
-    @Html.Partial("Body/P_MainLayout_Mobile_Menu")
+    @Html.Partial("head/P_MainLayout_Mobile_Menu")
 
     <!-- JS Global Compulsory -->
-    @Html.Partial("Body/P_MainLayout_Script")
+    @Html.Partial("footer/P_MainLayout_Script")
 
     <div class="nav__menu" id="nav-menu" dir="rtl">
         <ul class="nav__list">

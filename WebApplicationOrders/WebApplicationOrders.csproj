@@ -1385,7 +1385,7 @@
     <Content Include="Views\ProductPropertyList\Index.cshtml" />
     <Content Include="Views\ProductPropertyList\Add.cshtml" />
     <Content Include="Views\ProductPropertyList\Edit.cshtml" />
-    <Content Include="Views\Shared\Body\P_DropdownSize.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_DropdownSize.cshtml" />
     <Content Include="Views\DiscountManager\CodeCreate.cshtml" />
     <Content Include="Views\DiscountManager\CodeIndex.cshtml" />
     <Content Include="Views\DiscountManager\CodeEdit.cshtml" />
@@ -1428,7 +1428,7 @@
     <Content Include="Views\CommentsManagement\Index.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
     <Content Include="Views\OrdersMangement\Archive.cshtml" />
-    <Content Include="Views\Shared\Body\P_Ratings.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_Ratings.cshtml" />
     <Content Include="Views\Shared\Head\P_Search_Desktop.cshtml" />
     <Content Include="Views\ProductSelection\Product.cshtml" />
     <Content Include="Views\Shared\SingleProduct\P_ProductsCarousel.cshtml" />
@@ -1439,15 +1439,15 @@
     <Content Include="Views\Shared\Product\P_Search_Sliders.cshtml" />
     <Content Include="Views\Shared\Product\P_Search_Switcher__List.cshtml" />
     <Content Include="Views\Shared\Body\P_Category_Rating.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_header.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_head.cshtml" />
-    <Content Include="Views\Shared\Body\P_AdminLayout_Footer.cshtml" />
-    <Content Include="Views\Shared\Body\P_AdminLayout_Header.cshtml" />
-    <Content Include="Views\Shared\Body\P_AdminLayout_Head.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_Header_Mobile.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_Mobile_Menu.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_Footer.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_Script.cshtml" />
+    <Content Include="Views\Shared\Head\P_MainLayout_header.cshtml" />
+    <Content Include="Views\Shared\Head\P_MainLayout_head.cshtml" />
+    <Content Include="Views\Shared\Footer\Admin\P_AdminLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Head\Admin\P_AdminLayout_Header.cshtml" />
+    <Content Include="Views\Shared\Head\Admin\P_AdminLayout_Head.cshtml" />
+    <Content Include="Views\Shared\Head\P_MainLayout_Header_Mobile.cshtml" />
+    <Content Include="Views\Shared\Head\P_MainLayout_Mobile_Menu.cshtml" />
+    <Content Include="Views\Shared\Footer\P_MainLayout_Footer.cshtml" />
+    <Content Include="Views\Shared\Footer\P_MainLayout_Script.cshtml" />
     <Content Include="Views\Shared\Product\P_Product_Selection.cshtml" />
     <Content Include="Views\Installer\Index.cshtml" />
     <Content Include="Views\Installer\Token.cshtml" />
@@ -1463,8 +1463,8 @@
     <Content Include="Views\Shared\Body\P_Products_Full.cshtml" />
     <Content Include="Views\Shared\Body\P_Banner_Full.cshtml" />
     <Content Include="Views\Layouts\_MainLayouts_Full.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_Footer_Full.cshtml" />
-    <Content Include="Views\Shared\Body\P_MainLayout_header_Full.cshtml" />
+    <Content Include="Views\Shared\Footer\P_MainLayout_Footer_Full.cshtml" />
+    <Content Include="Views\Shared\Head\P_MainLayout_header_Full.cshtml" />
     <Content Include="Views\Shared\Body\P_CopyRight_Footer.cshtml" />
     <Content Include="Views\ViewConfigurationAdmin\Add.cshtml" />
     <Content Include="Views\ViewConfigurationAdmin\Edit.cshtml" />
@@ -1479,6 +1479,7 @@
     <Content Include="Views\WhatsAppManagement\Edit.cshtml" />
     <Content Include="Views\WhatsAppManagement\Index.cshtml" />
     <Content Include="Views\Shared\Footer\P_Whatsapp.cshtml" />
+    <Content Include="Views\Shared\Footer\P_CopyRight_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

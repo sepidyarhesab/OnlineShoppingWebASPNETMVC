@@ -127,10 +127,10 @@ namespace OrdersGeneral.Repository.General
                 {
                     case true:
 
-                    {
-                        isok = true;
-                        break;
-                    }
+                        {
+                            isok = true;
+                            break;
+                        }
                 }
                 var query = db.Table_Blog_Category.Add(new Table_Blog_Category()
                 {
@@ -161,9 +161,8 @@ namespace OrdersGeneral.Repository.General
                 return "Application Error : " + e.Message;
             }
         }
-        public static List<VMBlogs.ViewModelCategories> RepositoryBlogCategoryMangmentByid(Guid Id)
+        public static VMBlogs.ViewModelCategories RepositoryBlogCategoryMangmentByid(Guid Id)
         {
-            var list = new List<VMBlogs.ViewModelCategories>();
             try
             {
                 var db = new Orders_Entities();
@@ -185,7 +184,7 @@ namespace OrdersGeneral.Repository.General
                         Sort = query.Sort,
                     };
 
-                    list.Add(vm);
+                    return vm;
                 }
 
             }
@@ -193,7 +192,7 @@ namespace OrdersGeneral.Repository.General
             {
 
             }
-            return list;
+            return new VMBlogs.ViewModelCategories();
         }
         public static string RepositoryBlogCategoryMangmentEditById(VMBlogs.ViewModelCategories values, Guid Userid)
         {
@@ -242,16 +241,16 @@ namespace OrdersGeneral.Repository.General
                     switch (query.IsOk)
                     {
                         case true:
-                        {
-                            return "true";
+                            {
+                                return "true";
 
-                        }
+                            }
                         case false:
-                        {
-                            db.Table_Blog_Category.Remove(query);
-                            db.SaveChanges();
-                            return "success";
-                        }
+                            {
+                                db.Table_Blog_Category.Remove(query);
+                                db.SaveChanges();
+                                return "success";
+                            }
                     }
                 }
 
@@ -274,15 +273,15 @@ namespace OrdersGeneral.Repository.General
                 switch (Result.IsOk)
                 {
                     case true:
-                    {
-                        Result.IsOk = false;
-                        break;
-                    }
+                        {
+                            Result.IsOk = false;
+                            break;
+                        }
                     case false:
-                    {
-                        Result.IsOk = true;
-                        break;
-                    }
+                        {
+                            Result.IsOk = true;
+                            break;
+                        }
                 }
 
 
@@ -299,7 +298,7 @@ namespace OrdersGeneral.Repository.General
             try
             {
                 var db = new Orders_Entities();
-                var query = db.Table_Blog_Category.Where(c => c.IsMain ).OrderBy(c => c.Sort)
+                var query = db.Table_Blog_Category.Where(c => c.IsMain).OrderBy(c => c.Sort)
                     .ToList();
                 if (query.Count > 0)
                 {
@@ -374,11 +373,11 @@ namespace OrdersGeneral.Repository.General
                                     PrimaryTitle = blog.PrimaryTitle,
                                     SecondaryTitle = blog.SecondaryTitle,
                                     Url = blog.Url,
-                                   Description = blog.Description,
-                                   Sort = blog.Sort,
-                                   Summary = blog.summary,
-                                   CreatorDate = blog.CreatorDate,
-                                   Tag = blog.Tag,
+                                    Description = blog.Description,
+                                    Sort = blog.Sort,
+                                    Summary = blog.summary,
+                                    CreatorDate = blog.CreatorDate,
+                                    Tag = blog.Tag,
                                 };
 
                                 var queryfile =
@@ -454,7 +453,7 @@ namespace OrdersGeneral.Repository.General
                             vm.FileName = "/Static/Content/Images/";
                         }
 
-                        
+
 
                         var queryCategories =
                             db.Table_Blog_Category.FirstOrDefault(c => c.Id == blog.CategoryRef && c.IsOk && !c.IsDelete);
@@ -490,13 +489,13 @@ namespace OrdersGeneral.Repository.General
 
         public static List<VMBlogs.VMBlog> RepositoryRelatedBlog(Guid? CategoryRef)
         {
-           
+
             var list = new List<VMBlogs.VMBlog>();
             try
             {
                 var db = new Orders_Entities();
                 var query = db.Table_Blog
-                    .Where(c=>c.CategoryRef == CategoryRef).Take(2).AsNoTracking().ToList();
+                    .Where(c => c.CategoryRef == CategoryRef).Take(2).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var blog in query)
@@ -537,7 +536,7 @@ namespace OrdersGeneral.Repository.General
 
             return list;
         }
-        public static string RepositoryMainBlogManagemenetEditById(VMBlogs.VMBlog values,HttpPostedFileBase files, Guid UserId)
+        public static string RepositoryMainBlogManagemenetEditById(VMBlogs.VMBlog values, HttpPostedFileBase files, Guid UserId)
         {
             try
             {
@@ -698,7 +697,7 @@ namespace OrdersGeneral.Repository.General
             return "Sucsess";
         }
 
-        public static string AddNewBlogRow(VMBlogs.VMBlog values, HttpPostedFileBase file,Guid Userid)
+        public static string AddNewBlogRow(VMBlogs.VMBlog values, HttpPostedFileBase file, Guid Userid)
         {
             try
             {
@@ -739,7 +738,7 @@ namespace OrdersGeneral.Repository.General
                     Tag = values.Tag,
                     CategoryRef = values.CategoryRef,
                 });
-                
+
                 db.Table_Blog.Add(query);
                 db.SaveChanges();
 
@@ -929,7 +928,7 @@ namespace OrdersGeneral.Repository.General
                         }
 
 
-                       
+
                         list.Add(vm);
                     }
                 }
@@ -1067,7 +1066,7 @@ namespace OrdersGeneral.Repository.General
                 var searcha = string.IsNullOrWhiteSpace(searchnew);
                 var db = new Orders_Entities();
                 var query = db.Table_Blog
-                    .OrderByDescending(c => c.CreatorDate).Where(c=>c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking().ToList();
+                    .OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var blog in query)
@@ -1097,7 +1096,7 @@ namespace OrdersGeneral.Repository.General
                             vm.FileName = "/Static/Content/Images/";
                         }
 
-                        list.Add(vm); 
+                        list.Add(vm);
                     }
                 }
             }
@@ -1109,9 +1108,8 @@ namespace OrdersGeneral.Repository.General
             return list;
         }
 
-        public static List<VMBlogs.VMBlog> RepositoryMainBlogMangmentByid(Guid Id)
+        public static VMBlogs.VMBlog RepositoryMainBlogMangmentByid(Guid Id)
         {
-            var list = new List<VMBlogs.VMBlog>();
             try
             {
                 var db = new Orders_Entities();
@@ -1146,7 +1144,7 @@ namespace OrdersGeneral.Repository.General
                     }
 
 
-                    list.Add(vm);
+                    return vm;
                 }
             }
             catch (Exception e)
@@ -1154,7 +1152,7 @@ namespace OrdersGeneral.Repository.General
 
             }
 
-            return list;
+            return new VMBlogs.VMBlog();
         }
 
 

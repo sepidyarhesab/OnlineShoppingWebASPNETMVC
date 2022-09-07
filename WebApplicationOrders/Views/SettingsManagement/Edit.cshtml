@@ -1,5 +1,5 @@
 ﻿@using WebApplicationOrders.Controllers
-@model IEnumerable<OrdersSettings.ViewModels.Settings.VMSettings.VMSettingsManagmet>
+@model OrdersSettings.ViewModels.Settings.VMSettings.VMSettingsManagmet
 @{
     ViewBag.Title = "ویرایش تنظیمات";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -28,65 +28,61 @@
                                 <div class="box-body">
                                     <div class="form-horizontal">
 
-                                        @{
-
-                                            foreach (var Edit in Model)
-                                            {
-                                                <input type="hidden" name="Id" id="Id" value="@Edit.Id">
+                                                <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                                     <div class="form-group">
                                                         <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Edit.PrimaryTitle" />
+                                                            <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
 
                                                         <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان اصلی" type="text" value="@Edit.SecondaryTitle" />
+                                                            <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.SecondaryTitle" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-2" for="Email">ایمیل</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Email" name="Email" placeholder="ایمیل" type="text" value="@Edit.Email" />
+                                                            <input class="form-control text-box single-line" id="Email" name="Email" placeholder="ایمیل" type="text" value="@Model.Email" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                         <label class="control-label col-md-2" for="Phone">تلفن</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="@Edit.Phone" />
+                                                            <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="@Model.Phone" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-2" for="Telegram">تلگرام</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Telegram" name="Telegram" placeholder="تلگرام" type="text" value="@Edit.Telegram" />
+                                                            <input class="form-control text-box single-line" id="Telegram" name="Telegram" placeholder="تلگرام" type="text" value="@Model.Telegram" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                         <label class="control-label col-md-2" for="Instagram">اینستاگرام</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Instagram" name="Instagram" placeholder="اینستاگرام" type="text" value="@Edit.Instagram" />
+                                                            <input class="form-control text-box single-line" id="Instagram" name="Instagram" placeholder="اینستاگرام" type="text" value="@Model.Instagram" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-2" for="Whatsupp">واتساپ</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Whatsapp" name="Whatsapp" placeholder="واتساپ" type="text" value="@Edit.Whatsapp" />
+                                                            <input class="form-control text-box single-line" id="Whatsapp" name="Whatsapp" placeholder="واتساپ" type="text" value="@Model.Whatsapp" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
 
                                                         <label class="control-label col-md-2" for="Facebook">فیسبوک</label>
                                                         <div class="col-md-4">
-                                                            <input class="form-control text-box single-line" id="Facebook" name="Facebook" placeholder="فیسبوک" type="text" value="@Edit.Facebook" />
+                                                            <input class="form-control text-box single-line" id="Facebook" name="Facebook" placeholder="فیسبوک" type="text" value="@Model.Facebook" />
                                                             <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                         </div>
                                                     </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Facebook">آپارات</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Aparat" name="Aparat" placeholder="آپارات" type="text" value="@Edit.Aparat" />
+                                                        <input class="form-control text-box single-line" id="Aparat" name="Aparat" placeholder="آپارات" type="text" value="@Model.Aparat" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
 
@@ -115,12 +111,6 @@
                                                         <a href="/SettingsManagement/Index" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
                                                     </div>
                                                 </div>
-                                            }
-                                        }
-
-
-
-
 
                                     </div>
                                 </div>
