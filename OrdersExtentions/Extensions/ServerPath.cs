@@ -22,6 +22,7 @@ namespace OrdersExtentions.Extensions
         //public static string ServerPathFileUploadMainNews = "/Static/Contents/Images/News/";
         public static string ServerPathFileUploadWhatsApp = "/Static/Content/Images/WhatsApp/";
         public static string ServerPathFileUploadMainSliderDesktop= "/Static/Content/Images/Sliders/Desktop/";
+        public static string ServerPathFileUploadMainSizeGuide = "/Static/Content/Images/SizeGuide/";
         public static string ServerPathFileUploadMainBannerDesktop = "/Static/Content/Images/Banners/Desktop/";
         public static string ServerPathFileUploadMainCategories = "/Static/Content/Images/Categories/";
         public static string ServerPathFileUploadMainSliderMobile= "/Static/Content/Images/Sliders/Mobile/";

@@ -287,20 +287,20 @@ namespace WebApplicationHamtOrders.Controllers
             {
 
                 TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                Response.Redirect("/ProductManagment/");
+                Response.Redirect("/ProductManagment/Property/" + Session["PropertyId"]);
 
             }
 
             if (Result.Contains("true"))
             {
                 TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "لطفا غیر فعال کنید");
-                Response.Redirect("/ProductManagment/");
+                Response.Redirect("/ProductManagment/Property/" + Session["PropertyId"]);
 
             }
             else
             {
                 TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                Response.Redirect("/ProductManagment/");
+                Response.Redirect("/ProductManagment/Property/" + Session["PropertyId"]);
             }
 
 
@@ -314,12 +314,12 @@ namespace WebApplicationHamtOrders.Controllers
             if (Result.Contains("Error"))
             {
                 TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                Response.Redirect("/ProductManagment/");
+                Response.Redirect("/ProductManagment/Property/"+Session["PropertyId"]);
             }
             else
             {
                 TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                Response.Redirect("/ProductManagment/");
+                Response.Redirect("/ProductManagment/Property/" + Session["PropertyId"]);
             }
 
         }

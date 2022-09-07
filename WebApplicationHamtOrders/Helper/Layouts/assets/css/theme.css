@@ -429,8 +429,8 @@ hr {
 
     .product-card .product-card-middle {
         position: relative;
-        height: 90px;
         margin-top: auto;
+        height: 80px;
         padding-bottom: 9px;
         z-index: 0;
     }
@@ -3971,8 +3971,6 @@ header.page-header {
 
     .product-carousel .swiper-container {
         position: relative;
-        padding-top: 30px;
-        padding-bottom: 60px;
     }
 
         .product-carousel .swiper-container .swiper-button-next,
@@ -4622,8 +4620,6 @@ header.page-header {
 .amazing-section .container {
     background: url(../images/theme/amazing-bg.svg) 90% no-repeat;
     background-size: auto 100%;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
 
 .product-list-section {
@@ -5745,7 +5741,6 @@ footer.mini-footer {
 @media only screen and (max-width: 1150px) {
     .amazing-section .container .row {
         position: relative;
-        padding-right: 200px;
     }
 
         .amazing-section .container .row .amazing-img-column {
@@ -5976,7 +5971,6 @@ footer.mini-footer {
     }*/
 
     .amazing-section .container .row {
-        padding-right: 100px;
     }
 
     .amazing-section .amazing-img-column img {

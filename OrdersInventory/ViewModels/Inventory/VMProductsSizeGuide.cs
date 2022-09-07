@@ -18,6 +18,8 @@ namespace OrdersInventory.ViewModels.Inventory
             public string CategoryTitle { get; set; }
             public Guid CategoriesRef { get; set; }
             public int Sort { get; set; }
+            public string Url { get; set; }
+            public string FileName { get; set; }
             public bool IsOk { get; set; }
             public string IsOkClass { get; set; }
             public string IsOkTitle { get; set; }
@@ -50,6 +52,16 @@ namespace OrdersInventory.ViewModels.Inventory
             public DateTime CreatorDate { get; set; }
             public DateTime? ModifierDate { get; set; }
             public int Version { get; set; }
+        }
+        //End--------------------------------
+        // //ViewModel Table Product_SizeGuide client
+        public class ViewModelProductSizeGuideClient
+        {
+            public string Url { get; set; }
+            public string FileName { get; set; }
+            public string CategoryTitle { get; set; }
+            public Guid CategoriesRef { get; set; }
+            public List<ViewModelProductSizeValuesGuide> GuideValue { get; set; }
         }
     }
 }
