@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMSliders.VmMainSlidersGenerate>
+﻿@model OrdersGeneral.ViewModels.General.VMSliders.VmMainSlidersGenerate
 
 @{
     ViewBag.Title = "ویرایش اسلایدر";
@@ -28,20 +28,17 @@
                                 <div class="box-body">
                                     <div class="form-horizontal">
 
-                                        @{
-
-                                            foreach (var sliderEdit in Model)
-                                            {
-                                                <input type="hidden" name="Id" id="Id" value="@sliderEdit.Id">
+                                     
+                                                <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="PrimaryTitle">نام اسلایدر</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@sliderEdit.PrimaryTitle" />
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="SecendaryTitle">عنوان اسلایدر دوم</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="SecendaryTitle" name="SecendaryTitle" placeholder="عنوان اصلی" type="text" value="@sliderEdit.SecendaryTitle" />
+                                                        <input class="form-control text-box single-line" id="SecendaryTitle" name="SecendaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.SecendaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -49,12 +46,12 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Title">عکس کامپیوتر</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="FileNameDesktop" name="FileNameDesktop" placeholder="" type="file" value="@sliderEdit.FileName" />
+                                                        <input class="form-control text-box single-line" id="FileNameDesktop" name="FileNameDesktop" placeholder="" type="file" value="@Model.FileName" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="Title">عکس موبایل</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="FileNameMobile" name="FileNameMobile" placeholder="" type="file" value="@sliderEdit.FileName" />
+                                                        <input class="form-control text-box single-line" id="FileNameMobile" name="FileNameMobile" placeholder="" type="file" value="@Model.FileName" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -62,7 +59,7 @@
                                                     <label class="control-label col-md-2" for="Title">وضعیت</label>
                                                     <div class="col-md-4">
                                                         <select class="form-control" id="IsOk" name="IsOk">
-                                                            <option selected="selected" value="@sliderEdit.IsOk">فعال</option>
+                                                            <option selected="selected" value="@Model.IsOk">فعال</option>
                                                             <option value="0">غیر فعال</option>
 
                                                         </select>
@@ -71,21 +68,18 @@
 
                                                     <label class="control-label col-md-2" for="Url">لینک</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@sliderEdit.Url" onfocusout="checkinputslider()" />
+                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@Model.Url" onfocusout="checkinputslider()" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="@sliderEdit.Sort" pattern="\D" onfocusout="checkinputmenu()" />
+                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="@Model.Sort" pattern="\D" onfocusout="checkinputmenu()" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                             </div>
-                                             }
-
-                                        }
-
+                                       
                                                 </div>
                                             </div>
                                 <div class="box-footer clearfix">

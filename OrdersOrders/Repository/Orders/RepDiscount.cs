@@ -292,9 +292,8 @@ namespace OrdersOrders.Repository.Orders
             }
         }
 
-        public static List<VMDiscount.VmDiscountManagement> EditDiscount(Guid Id)
+        public static VMDiscount.VmDiscountManagement EditDiscount(Guid Id)
         {
-            var list = new List<VMDiscount.VmDiscountManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -326,7 +325,7 @@ namespace OrdersOrders.Repository.Orders
                         EndDate1 = endd,
                         StartDate1 = startd,
                     };
-                    list.Add(vm);
+                   return vm;
                 }
 
 
@@ -336,7 +335,7 @@ namespace OrdersOrders.Repository.Orders
 
             }
 
-            return list;
+            return new VMDiscount.VmDiscountManagement();
         }
 
 

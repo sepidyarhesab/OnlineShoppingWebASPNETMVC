@@ -171,9 +171,8 @@ namespace OrdersGeneral.Repository.General
 
 
 
-        public static List<VMSettings.VMSettingsManagmet> RepositoryMainsSettingsManagmetsById(Guid id)
+        public static VMSettings.VMSettingsManagmet RepositoryMainsSettingsManagmetsById(Guid id)
         {
-            var list = new List<VMSettings.VMSettingsManagmet>();
             try
             {
                 var db = new Orders_Entities();
@@ -218,14 +217,14 @@ namespace OrdersGeneral.Repository.General
                     }
 
 
-                    list.Add(vm);
+                    return vm;
                 }
 
-                return list;
+                return new VMSettings.VMSettingsManagmet();
             }
             catch (Exception e)
             {
-                return list;
+                return new VMSettings.VMSettingsManagmet();
             }
         }
 

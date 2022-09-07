@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMKnowing.VmKnowingManagement>
+﻿@model OrdersGeneral.ViewModels.General.VMKnowing.VmKnowingManagement
 @{
     ViewBag.Title = "ویرایش درباره ما|EditAboutUs";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -22,21 +22,18 @@
                                     <i class="fa fa-envelope"></i>
                                     <h3 class="box-title">ویرایش درباره ما</h3>
                                 </div>
-                               
-                                    foreach (var Edit in Model)
-                                    {
-                                        <div class="box-body">
+                                <div class="box-body">
                                             <div class="form-horizontal">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="PrimaryTitle">عنوان اصلی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Edit.PrimaryTitle" />
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
 
                                                     <label class="control-label col-md-2" for="Url">لینک</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@Edit.Url" onfocusout="checkinputslider()" />
+                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="text" value="@Model.Url" onfocusout="checkinputslider()" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
 
@@ -45,13 +42,13 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Title">عکس کامپیوتر</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="FileName" name="FileName" placeholder="" type="file" value="@Edit.FileName" onfocusout="checkinputslider()" />
+                                                        <input class="form-control text-box single-line" id="FileName" name="FileName" placeholder="" type="file" value="@Model.FileName" onfocusout="checkinputslider()" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
 
                                                     <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="@Edit.Sort" pattern="\D" onfocusout="checkinputmenu()" />
+                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" onkeypress="return isNumberKey(event)" value="@Model.Sort" pattern="\D" onfocusout="checkinputmenu()" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -60,7 +57,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="SecondaryTitle">توضیحات</label>
                                                     <div class="col-md-10">
-                                                        <textarea class="editor form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="توضیحات" type="text" value="">@Edit.SecondaryTitle</textarea>
+                                                        <textarea class="editor form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="توضیحات" type="text" value="">@Model.SecondaryTitle</textarea>
                                                         <script>
                                                             CKEDITOR.replace("SecondaryTitle");
                                                         </script>
@@ -69,7 +66,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                    
                                
 
                                 <div class="box-footer clearfix">

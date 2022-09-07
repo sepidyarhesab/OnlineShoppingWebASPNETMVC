@@ -217,7 +217,7 @@ namespace WebApplicationHamtOrders.Controllers
         public ActionResult EditAddress(Guid id)
         {
             var result = RepAccountDashboard.RepAccountDashboardAddressById(id);
-            return PartialView("P_AddressUpdate", result);
+            return PartialView("Order/P_AddressUpdate", result);
         }
 
 

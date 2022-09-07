@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMMenu.VmMenuMainMenuManagement>
+﻿@model OrdersGeneral.ViewModels.General.VMMenu.VmMenuMainMenuManagement
 @{
     ViewBag.Title = "ویرایش فهرست";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -27,32 +27,28 @@
                                 <div class="box-body">
                                     <div class="form-horizontal">
 
-                                        @{
-
-                                            foreach (var MenuManagement in Model)
-                                            {
-                                                <input type="hidden" name="Id" id="Id"  value="@MenuManagement.Id">
+                                                <input type="hidden" name="Id" id="Id"  value="@Model.Id">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول فهرست</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@MenuManagement.PrimaryTitle" />
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="SecondryTitle">عنوان دوم فهرست</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="SecondryTitle" name="SecondryTitle" placeholder="عنوان اصلی" type="text" value="@MenuManagement.SecondryTitle" />
+                                                        <input class="form-control text-box single-line" id="SecondryTitle" name="SecondryTitle" placeholder="عنوان اصلی" type="text" value="@Model.SecondryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@MenuManagement.Sort" />
+                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@Model.Sort" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="Url">لینک</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@MenuManagement.Url" />
+                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@Model.Url" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -69,14 +65,10 @@
 
                                                     <label class="control-label col-md-2" for="Url">آیکن</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Icon" name="Icon" placeholder="عنوان اصلی" type="text" value="@MenuManagement.Icon" />
+                                                        <input class="form-control text-box single-line" id="Icon" name="Icon" placeholder="عنوان اصلی" type="text" value="@Model.Icon" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
-                                            }
-
-
-                                        }
 
                                     </div>
                                 </div>

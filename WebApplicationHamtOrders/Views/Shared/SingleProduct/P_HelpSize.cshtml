@@ -1,0 +1,79 @@
+﻿@using OrdersDatabase.Models
+@using OrdersInventory.Repository.Inventory
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+
+<!-- addAddressModal -->
+@{
+    if (Model != null)
+    {
+        var rep = new RepProducts();
+
+        foreach (var item in Model)
+        {
+            var guide = RepProductsSizeGuide.RepositoryClientProductCategorySizeGuideValuesList(item.CategoriesRef);
+            if (guide != null)
+            {
+
+                <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addAddressModalLabel">راهنمای سایز</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12 center-block">
+                                        @*@{
+                                            var db = new Orders_Entities();
+                                            var filename = db.Table_File_Upload.FirstOrDefault(c => c.Id == guide.);
+                                        }*@
+                                        <img src="~/Helper/Layouts/assets/img/Images-Szie.jpg" style="width: 100%"/>
+                                    </div>
+                                </div>
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <table class="table  text-center mb-0">
+                                                <tbody>
+                                                    <tr class="pr_price">
+                                                        <th class="row_title" style="width: 30px">عنوان</th>
+                                                        <th class="row_title" style="width: 30px">اندازه</th>
+                                                        <th class="row_title" style="width: 30px">سایز</th>
+                                                    </tr>
+                                                    @foreach (var itemm in guide)
+                                                    {
+
+                                                        <tr class="pr_price">
+
+                                                            <td class="row_title">@itemm.PropertyTitle</td>
+                                                            <td class="row_title">@itemm.SizeValue</td>
+                                                            <td class="row_title">@itemm.SecondaryTitle</td>
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        }
+    }
+}
+
+
+<!-- end addAddressModal -->

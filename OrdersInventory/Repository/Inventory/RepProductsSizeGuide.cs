@@ -81,7 +81,7 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
                 var search = searchnew.Replace("  ", "");
-                var searcha = string.IsNullOrWhiteSpace(searchnew);
+                //var searcha = string.IsNullOrWhiteSpace(searchnew);
                 var query = db.Table_Product_SizeGuide.OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
@@ -553,6 +553,7 @@ namespace OrdersInventory.Repository.Inventory
         //End---------------------------------------------------
         //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
         //Repository Show Size Guide Table for a Category
+
         public static VMProductsSizeGuides.ViewModelProductSizeGuideClient RepositoryClientProductCategorySizeGuideValuesList(Guid CategoryId)
         {
             var VMGuideClient = new VMProductsSizeGuides.ViewModelProductSizeGuideClient();

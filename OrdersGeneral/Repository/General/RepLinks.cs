@@ -249,9 +249,8 @@ namespace OrdersGeneral.Repository.General
             return list;
         }
 
-        public static List<VMLinks.VMMainLinksManagement> RepositoryMainLinksManagementById(Guid id)
+        public static VMLinks.VMMainLinksManagement RepositoryMainLinksManagementById(Guid id)
         {
-            var list = new List<VMLinks.VMMainLinksManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -280,7 +279,7 @@ namespace OrdersGeneral.Repository.General
                         vm.IsOkClass = "btn btn-danger";
                         vm.IsOkTitle = "غیر فعال";
                     }
-                    list.Add(vm);
+                    return vm;
                 }
             }
             catch (Exception e)
@@ -288,7 +287,7 @@ namespace OrdersGeneral.Repository.General
 
             }
 
-            return list;
+            return new VMLinks.VMMainLinksManagement();
         }
 
 

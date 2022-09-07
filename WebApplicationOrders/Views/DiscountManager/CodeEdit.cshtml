@@ -2,7 +2,7 @@
 @using OrdersOrders.Repository.Orders
 @using OrdersGeneral.Repository.General;
 
-@model IEnumerable<OrdersOrders.ViewModels.Orders.VMDiscount.VmDiscountManagement>
+@model OrdersOrders.ViewModels.Orders.VMDiscount.VmDiscountManagement
 
 
 @{
@@ -30,10 +30,7 @@
                         if (Model != null)
                         {
                             var rep = new RepProducts();
-
-                            foreach (var item in Model)
-                            {
-                                using (Html.BeginForm("CodeEditRow", "DiscountManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            using (Html.BeginForm("CodeEditRow", "DiscountManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     <div class="box-header">
@@ -42,17 +39,17 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
 
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Code">کد</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@item.Code" />
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@Model.Code" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="DiscountCode">کد تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="@item.DiscountCode" />
+                                                    <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="@Model.DiscountCode" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -60,7 +57,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Discount">درصد تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصد تخفیف" type="number" value="@item.Discount" />
+                                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصد تخفیف" type="number" value="@Model.Discount" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -68,7 +65,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="DiscountFee">مبلغ تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="مبلغ تخفیف" type="number" value="@item.DiscountFee" />
+                                                    <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="مبلغ تخفیف" type="number" value="@Model.DiscountFee" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -76,7 +73,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="DiscountQuantity">تعداد کل تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="@item.DiscountQuantity" />
+                                                    <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="@Model.DiscountQuantity" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="Entities">تخفیف بر اساس</label>
@@ -100,7 +97,7 @@
                                                             {
                                                                 foreach (var Users in User)
                                                                 {
-                                                                    if (Users.Id == item.DiscountUser)
+                                                                    if (Users.Id == Model.DiscountUser)
                                                                     {
                                                                         <option value="@Users.Id" selected="selected">@Users.FullName</option>
                                                                     }
@@ -121,13 +118,13 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="DiscountPercent">واحد درصد تخفیف</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="DiscountPercent" name="DiscountPercent" placeholder="واحد درصد تخفیف" type="number" value="@item.DiscountPercent" />
+                                                    <input class="form-control text-box single-line" id="DiscountPercent" name="DiscountPercent" placeholder="واحد درصد تخفیف" type="number" value="@Model.DiscountPercent" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
                                                 <label class="control-label col-md-2" for="DiscountCount">تعداد تخفیف کاربر</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="DiscountCount" name="DiscountCount" placeholder="تعداد تخفیف کاربر" type="number" value="@item.DiscountCount" />
+                                                    <input class="form-control text-box single-line" id="DiscountCount" name="DiscountCount" placeholder="تعداد تخفیف کاربر" type="number" value="@Model.DiscountCount" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -146,7 +143,7 @@
                                                             {
                                                                 foreach (var Products in Product)
                                                                 {
-                                                                    if (Products.Id == item.ProductRef)
+                                                                    if (Products.Id == Model.ProductRef)
                                                                     {
                                                                         <option value="@Products.Id" selected="selected">@Products.PrimaryTitle</option>
                                                                     }
@@ -170,7 +167,7 @@
                                                             {
                                                                 foreach (var categorries in category)
                                                                 {
-                                                                    if (categorries.Id == item.CategoriesRef)
+                                                                    if (categorries.Id == Model.CategoriesRef)
                                                                     {
                                                                         <option value="@categorries.Id" selected="selected">@categorries.PrimaryTitle</option>
                                                                     }
@@ -197,7 +194,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </div>
                                                         <input type="text" class="form-control" id="StartDate1" name="StartDate1" placeholder="از تاریخ" data-mddatetimepicker="true" data-trigger="click"
-                                                               data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" value="@item.StartDate1" />
+                                                               data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" value="@Model.StartDate1" />
                                                     </div>
                                                 </div>
                                                 <label class="control-label col-md-2" for="EndDate1">تا تاریخ</label>
@@ -208,7 +205,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </div>
                                                         <input type="text" class="form-control" id="EndDate1" name="EndDate1" placeholder="تا تاریخ" data-mddatetimepicker="true" data-trigger="click"
-                                                               data-targetselector="#EndDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" value="@item.EndDate1" />
+                                                               data-targetselector="#EndDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" value="@Model.EndDate1" />
                                                     </div>
                                                 </div>
 
@@ -226,9 +223,7 @@
                                 }
                             }
                         }
-                    }
-
-
+               
 
                 </div>
 

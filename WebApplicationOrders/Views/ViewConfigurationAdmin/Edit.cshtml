@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersSettings.ViewModels.Settings.ViewModelsMainViewConfigurations>
+﻿@model OrdersSettings.ViewModels.Settings.ViewModelsMainViewConfigurations
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -11,8 +11,7 @@
 @{
     if (Model != null)
     {
-        foreach (var item in Model)
-        {
+       
             <section class="content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -28,28 +27,28 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" name="Id" id="Id" value="@item.Id">
+                                            <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@item.Sort" />
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@Model.Sort" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اصلی</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@item.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="SecondaryTitle">محل قرارگیری</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="محل قرارگیری" type="text" value="@item.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="محل قرارگیری" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="TertiaryTitle">صفحه مورد استفاده</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="TertiaryTitle" name="TertiaryTitle" placeholder="صفحه مورد استفاده" type="text" value="@item.TertiaryTitle" />
+                                                    <input class="form-control text-box single-line" id="TertiaryTitle" name="TertiaryTitle" placeholder="صفحه مورد استفاده" type="text" value="@Model.TertiaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -57,7 +56,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="View">اسم ویو</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="View" name="View" placeholder="اسم ویو" type="text" value="@item.View" />
+                                                    <input class="form-control text-box single-line" id="View" name="View" placeholder="اسم ویو" type="text" value="@Model.View" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -85,6 +84,6 @@
         }
 
     }
-}
+
 
 

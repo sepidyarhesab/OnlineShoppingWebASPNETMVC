@@ -71,10 +71,10 @@ namespace WebApplicationOrders.Controllers
                     var rep = new RepProducts();
 
                     var size = rep.RepositorySizeShowInProducts(productRef, Guid.Parse(id));
-                    return PartialView("Body/P_DropdownSize", size);
+                    return PartialView("SingleProduct/P_DropdownSize", size);
                 }
             }
-            return PartialView("Body/P_DropdownSize");
+            return PartialView("SingleProduct/P_DropdownSize");
         }
 
 

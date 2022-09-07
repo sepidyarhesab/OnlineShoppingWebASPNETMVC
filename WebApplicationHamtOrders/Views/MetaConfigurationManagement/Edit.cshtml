@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersSettings.ViewModels.Settings.VMMetaConfiguration.ViewModelsMetaConfigurations>
+﻿@model OrdersSettings.ViewModels.Settings.VMMetaConfiguration.ViewModelsMetaConfigurations
 @{
     ViewBag.Title = "ویرایش گواهینامه|EditCertificate";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -11,9 +11,7 @@
 @{
     if (Model != null)
     {
-        foreach (var item in Model)
-        {
-            <section class="content">
+        <section class="content">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="col-lg-12 connectedSortable">
@@ -28,28 +26,28 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" name="Id" id="Id" value="@item.Id">
+                                            <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@item.Sort" />
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@Model.Sort" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اصلی</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@item.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="SecondaryTitle">عنوان فرعی</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان فرعی" type="text" value="@item.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان فرعی" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="Note">HTML گواهینامه</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Note" name="Note" placeholder="HTML گواهینامه" type="text" value="@item.Note" />
+                                                    <input class="form-control text-box single-line" id="Note" name="Note" placeholder="HTML گواهینامه" type="text" value="@Model.Note" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -75,6 +73,6 @@
         }
 
     }
-}
+
 
 

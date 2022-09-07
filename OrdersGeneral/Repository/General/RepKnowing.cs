@@ -115,9 +115,8 @@ namespace OrdersGeneral.Repository.General
 
 
 
-        public static List<VMKnowing.VmKnowingManagement> EditKnowingManagement(Guid Id)
+        public static VMKnowing.VmKnowingManagement EditKnowingManagement(Guid Id)
         {
-            var list = new List<VMKnowing.VmKnowingManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -147,13 +146,13 @@ namespace OrdersGeneral.Repository.General
 
 
 
-                    list.Add(vm);
+                    return vm;
                 }
-                return list;
+                return new VMKnowing.VmKnowingManagement();
             }
             catch (Exception e)
             {
-                return list;
+                return new VMKnowing.VmKnowingManagement();
             }
         }
 
