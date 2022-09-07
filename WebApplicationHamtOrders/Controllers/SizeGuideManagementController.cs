@@ -44,10 +44,10 @@ namespace WebApplicationHamtOrders.Controllers
             return View();
         }
 
-        public void Generate(VMProductsSizeGuides.ViewModelProductSizeGuide value)
+        public void Generate(VMProductsSizeGuides.ViewModelProductSizeGuide value, HttpPostedFileBase FileName)
         {
             var Userid = Guid.Parse(User.Identity.Name);
-            var result = RepProductsSizeGuide.Add(value, Userid);
+            var result = RepProductsSizeGuide.Add(value, FileName, Userid);
             if (result.Contains("Error"))
             {
                 TempData["JavaScriptFunction"] =

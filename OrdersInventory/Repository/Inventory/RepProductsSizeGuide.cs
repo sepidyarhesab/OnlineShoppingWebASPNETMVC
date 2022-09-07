@@ -1,11 +1,14 @@
 ﻿using OrdersDatabase.Models;
+using OrdersExtentions.Extensions;
 using OrdersInventory.ViewModels.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace OrdersInventory.Repository.Inventory
 {
@@ -45,6 +48,18 @@ namespace OrdersInventory.Repository.Inventory
                         {
                             vm.IsOkClass = "btn btn-danger";
                             vm.IsOkTitle = "غیر فعال";
+                        }
+
+                        var qpic = db.Table_File_Upload.FirstOrDefault(c => c.Ref == item.Id);
+                        if (qpic != null)
+                        {
+                            vm.FileName = "/Static/Content/Images/SizeGuide/" + qpic.FileName +
+                                                     qpic.FileExtensions;
+                        }
+                        else
+                        {
+                            vm.FileName = "/Helper/Main/img/bg/bg.svg";
+
                         }
                         list.Add(vm);
                     }
@@ -137,7 +152,7 @@ namespace OrdersInventory.Repository.Inventory
 
         //End---------------------------------
         //Repository Add New SizeGuide
-        public static string Add(VMProductsSizeGuides.ViewModelProductSizeGuide value, Guid UserId)
+        public static string Add(VMProductsSizeGuides.ViewModelProductSizeGuide value, HttpPostedFileBase file, Guid UserId)
         {
             try
             {
@@ -163,6 +178,45 @@ namespace OrdersInventory.Repository.Inventory
                 });
                 db.Table_Product_SizeGuide.Add(query);
                 db.SaveChanges();
+
+                //Add Size Guide Picture to fileUpload Table
+                var filename = "Default";
+                var fileExtention = "png";
+                var filelenght = 200;
+                if (file != null)
+                {
+
+                    filelenght = file.ContentLength;
+                    filename = "SizeGuide_" + code;
+                    fileExtention = Path.GetExtension(file.FileName);
+                    string pathCombine =
+                        HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainSizeGuide + filename + fileExtention);
+                    file.SaveAs(pathCombine);
+
+
+                    var qAddPic = db.Table_File_Upload.Add(new Table_File_Upload());
+                    qAddPic.Id = Guid.NewGuid();
+                    qAddPic.Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload");
+                    qAddPic.Tables = "Table_Product_SizeGuide";
+                    qAddPic.Schemas = "Inventory";
+                    qAddPic.Ref = id;
+                    qAddPic.FileExtensions = fileExtention;
+                    qAddPic.FileLenght = filelenght;
+                    qAddPic.FileUniqeName = filename + fileExtention;
+                    qAddPic.Sort = 1;
+                    qAddPic.IsDelete = false;
+                    qAddPic.FileName = filename;
+                    qAddPic.Version = 1;
+                    qAddPic.CreatorDate = DateTime.Now;
+                    qAddPic.CreatorRef = UserRef;
+                    qAddPic.ModifierRef = UserRef;
+                    qAddPic.ModifierDate = DateTime.Now;
+                    qAddPic.IsOk = true;
+                    qAddPic.IsMain = true;
+                    db.Table_File_Upload.Add(qAddPic);
+                    db.SaveChanges();
+                }
+
                 return "Success";
             }
             catch (Exception e)
@@ -499,9 +553,11 @@ namespace OrdersInventory.Repository.Inventory
         //End---------------------------------------------------
         //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
         //Repository Show Size Guide Table for a Category
-        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryClientProductCategorySizeGuideValuesList(Guid? CategoryId)
+
+        public static VMProductsSizeGuides.ViewModelProductSizeGuideClient RepositoryClientProductCategorySizeGuideValuesList(Guid CategoryId)
         {
-            var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
+            var VMGuideClient = new VMProductsSizeGuides.ViewModelProductSizeGuideClient();
+            var listGuideValue=new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
             var db = new Orders_Entities();
             try
             {
@@ -528,16 +584,28 @@ namespace OrdersInventory.Repository.Inventory
                                 SizeGuideTitle = qcat.PrimaryTitle,
                             };
 
-                            list.Add(vm);
+                            listGuideValue.Add(vm);
                         }
                     }
+
+                    var qpic = db.Table_File_Upload.FirstOrDefault(c =>
+                    c.IsOk && c.Ref == qcat.Id && c.IsMain);
+                    if (qpic != null)
+                    {
+                        VMGuideClient.FileName = "/Static/Content/Images/SizeGuide/" + qpic.FileName +
+                                                 qpic.FileExtensions;
+                        
+                    }
+
+                    VMGuideClient.GuideValue = listGuideValue;
+
                 }
 
-                return list;
+                return VMGuideClient;
             }
             catch (Exception e)
             {
-                return list;
+                return VMGuideClient;
             }
         }
 
