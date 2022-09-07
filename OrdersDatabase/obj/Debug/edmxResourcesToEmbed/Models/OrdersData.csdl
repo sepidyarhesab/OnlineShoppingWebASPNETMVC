@@ -941,6 +941,7 @@
     <EntitySet Name="Table_Order" EntityType="Orders_Model.Table_Order" />
     <EntitySet Name="Table_Product_SizeGuide" EntityType="Orders_Model.Table_Product_SizeGuide" />
     <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Orders_Model.Table_Product_SizeGuideValues" />
+    <EntitySet Name="Table_Discount_Entities" EntityType="Orders_Model.Table_Discount_Entities" />
   </EntityContainer>
   <EntityType Name="Table_Order">
     <Key>
@@ -1011,5 +1012,21 @@
     <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifierRef" Type="Guid" Nullable="false" />
     <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Table_Discount_Entities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsOk" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+    <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+    <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

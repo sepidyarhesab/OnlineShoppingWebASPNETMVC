@@ -756,6 +756,22 @@
           <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ModifireDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Table_Discount_Entities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Table_Order">
           <Key>
             <PropertyRef Name="Id" />
@@ -1009,6 +1025,7 @@
           <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" Schema="Inventory" store:Type="Tables" />
           <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" Schema="Order" store:Type="Tables" />
+          <EntitySet Name="Table_Discount_Entities" EntityType="Self.Table_Discount_Entities" Schema="Order" store:Type="Tables" />
           <EntitySet Name="Table_Order" EntityType="Self.Table_Order" Schema="Order" store:Type="Tables" />
           <EntitySet Name="Table_Order_Item" EntityType="Self.Table_Order_Item" Schema="Order" store:Type="Tables" />
           <EntitySet Name="Table_Transfer" EntityType="Self.Table_Transfer" Schema="Order" store:Type="Tables" />
@@ -1962,6 +1979,7 @@
           <EntitySet Name="Table_Order" EntityType="Orders_Model.Table_Order" />
           <EntitySet Name="Table_Product_SizeGuide" EntityType="Orders_Model.Table_Product_SizeGuide" />
           <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Orders_Model.Table_Product_SizeGuideValues" />
+          <EntitySet Name="Table_Discount_Entities" EntityType="Orders_Model.Table_Discount_Entities" />
         </EntityContainer>
         <EntityType Name="Table_Order">
           <Key>
@@ -2032,6 +2050,22 @@
           <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifierRef" Type="Guid" Nullable="false" />
           <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Discount_Entities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2994,6 +3028,23 @@
                 <ScalarProperty Name="SizeGuideRef" ColumnName="SizeGuideRef" />
                 <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
                 <ScalarProperty Name="PropertyTitle" ColumnName="PropertyTitle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Discount_Entities">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Discount_Entities">
+              <MappingFragment StoreEntitySet="Table_Discount_Entities">
+                <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

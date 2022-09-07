@@ -751,6 +751,22 @@
     <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ModifireDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Table_Discount_Entities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsOk" Type="bit" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="int" Nullable="false" />
+    <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifireDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Table_Order">
     <Key>
       <PropertyRef Name="Id" />
@@ -1004,6 +1020,7 @@
     <EntitySet Name="Table_Product_Summary" EntityType="Self.Table_Product_Summary" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Stock" EntityType="Self.Table_Stock" Schema="Inventory" store:Type="Tables" />
     <EntitySet Name="Table_Discount" EntityType="Self.Table_Discount" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="Table_Discount_Entities" EntityType="Self.Table_Discount_Entities" Schema="Order" store:Type="Tables" />
     <EntitySet Name="Table_Order" EntityType="Self.Table_Order" Schema="Order" store:Type="Tables" />
     <EntitySet Name="Table_Order_Item" EntityType="Self.Table_Order_Item" Schema="Order" store:Type="Tables" />
     <EntitySet Name="Table_Transfer" EntityType="Self.Table_Transfer" Schema="Order" store:Type="Tables" />

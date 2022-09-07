@@ -85,6 +85,9 @@
     <Compile Include="Models\Table_Discount.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table_Discount_Entities.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Table_Favorites.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>

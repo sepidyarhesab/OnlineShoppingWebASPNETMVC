@@ -14,6 +14,7 @@ namespace OrdersOrders.ViewModels.Orders
             public string Code { get; set; }
             public string DiscountCode { get; set; } 
             public string PrimaryTitle { get; set; }
+            public string SecondaryTitle { get; set; }
             public string Entities { get; set; }
             public decimal? Discount { get; set; }
             public decimal? DiscountFee { get; set; }

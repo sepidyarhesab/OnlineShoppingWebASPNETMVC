@@ -961,5 +961,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Table_Discount_Entities">
+      <EntityTypeMapping TypeName="Orders_Model.Table_Discount_Entities">
+        <MappingFragment StoreEntitySet="Table_Discount_Entities">
+          <ScalarProperty Name="ModifireDate" ColumnName="ModifireDate" />
+          <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+          <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+          <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+          <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+          <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

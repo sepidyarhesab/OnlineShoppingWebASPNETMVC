@@ -70,13 +70,16 @@
                                     <label class="control-label col-md-2" for="Entities">تخفیف بر اساس</label>
                                     <div class="col-md-4">
                                         <select class="form-control " id="Entities" name="Entities">
-                                            <option value="DiscountUser">تخفیف کاربر</option>
-                                            <option value="DiscountFee">تخفیف قیمتی</option>
-                                            <option value="DiscountPercent">تخفیف درصدی</option>
-                                            <option value="DiscountStep">تخفیف مرحله ایی</option>
-                                            <option value="DiscountStepUsers">تخفیف مرحله ایی روی کاربر</option>
-                                            <option value="DiscountTransfer">تخفیف باربری</option>
-                                            <option value="DiscountFree">اولین خرید رایگان</option>
+                                            @{
+                                                var Entities = RepDiscount.RepositoryDiscountEntities();
+                                                if (Entities.Count > 0)
+                                                {
+                                                    foreach (var item in Entities)
+                                                    {
+                                                        <option value="@item.SecondaryTitle">@item.PrimaryTitle</option>
+                                                    }                                    
+                                                }
+                                            }
                                         </select>
                                     </div>
                                 </div>

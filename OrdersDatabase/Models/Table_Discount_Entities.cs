@@ -15,7 +15,7 @@ namespace OrdersDatabase.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Table_Whatsapp
+public partial class Table_Discount_Entities
 {
 
     public System.Guid Id { get; set; }
@@ -26,11 +26,11 @@ public partial class Table_Whatsapp
 
     public string SecondaryTitle { get; set; }
 
-    public string Phone { get; set; }
-
     public bool IsOk { get; set; }
 
     public bool IsDelete { get; set; }
+
+    public int Version { get; set; }
 
     public System.Guid CreatorRef { get; set; }
 
@@ -39,8 +39,6 @@ public partial class Table_Whatsapp
     public System.Guid ModifierRef { get; set; }
 
     public System.DateTime ModifireDate { get; set; }
-
-    public int Version { get; set; }
 
 }
 

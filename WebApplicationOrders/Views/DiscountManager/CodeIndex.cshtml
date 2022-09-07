@@ -1,4 +1,5 @@
 ﻿@using OrdersInventory.Repository.Inventory
+@using OrdersOrders.Repository.Orders
 @*@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProductMangement>*@
 @model IEnumerable<OrdersOrders.ViewModels.Orders.VMDiscount.VmDiscountManagement>
 @{
@@ -174,84 +175,110 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">درصد و کد تخفیف را وارد کنید</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">درصد و کد تخفیف را وارد کنید</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
 
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصدتخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control text-box single-line" id="Entities" name="Entities" disabled="disabled" type="text" value="AllDiscount" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
+                                <div class="col-md-6">
+                                    <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                 </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                            <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#StartDate1" data-groupid="group1"
-                                                 data-fromdate="true" data-enabletimepicker="true" data-placement="left">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="StartDate1" name="StartDate1" placeholder="از تاریخ" data-mddatetimepicker="true" data-trigger="click"
-                                                   data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                            <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#EndDate1" data-groupid="group1"
-                                                 data-fromdate="true" data-enabletimepicker="true" data-placement="left">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="EndDate1" name="EndDate1" placeholder="تا تاریخ" data-mddatetimepicker="true" data-trigger="click"
-                                                   data-targetselector="#EndDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <input class="form-control text-box single-line" id="Discount" name="Discount" placeholder="درصدتخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="قیمت تخفیف" type="number" onkeypress="return isNumberKey(event)" value="" pattern="\D" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
 
 
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <select class="form-control selectpicker" id="DiscountUser" name="DiscountUser" data-show-subtext="true" data-live-search="true">
+                                        @{
+                                            var User = RepDiscount.RepositoryUserManagment();
+                                            if (User.Count > 0)
+                                            {
+                                                foreach (var Users in User)
+                                                {
+                                                    <option selected="@(Users.Code == "1" ? "selected" : string.Empty)" value="@Users.Id">@Users.FullName</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control text-box single-line" id="Entities" name="Entities" placeholder="تخفیف روی همه" type="number" value="AllDiscount" disabled="disabled" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
 
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#StartDate1" data-groupid="group1"
+                                             data-fromdate="true" data-enabletimepicker="true" data-placement="left">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="StartDate1" name="StartDate1" placeholder="از تاریخ" data-mddatetimepicker="true" data-trigger="click"
+                                               data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#EndDate1" data-groupid="group1"
+                                             data-fromdate="true" data-enabletimepicker="true" data-placement="left">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="EndDate1" name="EndDate1" placeholder="تا تاریخ" data-mddatetimepicker="true" data-trigger="click"
+                                               data-targetselector="#EndDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                    <button type="submit" class="btn btn-primary">افزودن</button>
-                </div>
+
+
+
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                <button type="submit" class="btn btn-primary">افزودن</button>
+            </div>
+        </div>
         }
     </div>
 </div>
