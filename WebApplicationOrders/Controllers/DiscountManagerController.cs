@@ -91,10 +91,10 @@ namespace WebApplicationOrders.Controllers
 
 
         [HttpPost]
-        public ActionResult AllDiscounts(int? Discount, string DiscountCode, int discountquantity, string StartDate1, string EndDate1)
+        public ActionResult AllDiscounts(int? Discount, int? DiscountFee, string DiscountCode,Guid DiscountUser, int discountquantity, string StartDate1, string EndDate1)
         {
             var Userid = Guid.Parse(User.Identity.Name);
-            if (RepDiscount.AllDiscount(Discount, 0,DiscountCode, StartDate1, EndDate1, discountquantity, Userid) != null)
+            if (RepDiscount.AllDiscount(Discount, DiscountFee, DiscountCode, DiscountUser, StartDate1, EndDate1, discountquantity, Userid) != null)
             {
                 this.TempData["JavaScriptFunction"] = (object)IziToast.Success("عملیات با موفقیت امیز به پایان رسید", "دسترسی ها داده شد");
                 this.Response.Redirect("/DiscountManager/CodeIndex/");

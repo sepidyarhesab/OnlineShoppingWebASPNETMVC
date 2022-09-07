@@ -325,7 +325,7 @@ namespace OrdersOrders.Repository.Orders
                         EndDate1 = endd,
                         StartDate1 = startd,
                     };
-                   return vm;
+                    return vm;
                 }
 
 
@@ -592,6 +592,12 @@ namespace OrdersOrders.Repository.Orders
                         {
                             vm.ProductTitle = queryProduct.PrimaryTitle;
                         }
+                        var queryUser = db.Table_User.FirstOrDefault(c => c.Id == item.DiscountUser);
+                        if (queryUser != null)
+                        {
+
+                            vm.FullName = queryUser.Name + " " + queryUser.Family;
+                        }
 
                         list.Add(vm);
                     }
@@ -604,6 +610,36 @@ namespace OrdersOrders.Repository.Orders
             }
             return list;
         }
+
+
+        public static List<VMDiscount.VmDiscountManagement> RepositoryDiscountEntities()
+        {
+            var list = new List<VMDiscount.VmDiscountManagement>();
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Discount_Entities.Where(c => !c.IsDelete).AsNoTracking().ToList();
+                if (query.Count > 0)
+                {
+                    foreach (var item in query)
+                    {
+                        var vm = new VMDiscount.VmDiscountManagement()
+                        {
+                            PrimaryTitle = item.PrimaryTitle,
+                            SecondaryTitle = item.SecondaryTitle,
+                        };
+                        list.Add(vm);
+                    }
+                }
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
+
+        }
+
 
         public static List<VMDiscount.VmDiscountManagement> RepositoryDiscountManagement(string search)
         {
@@ -738,7 +774,7 @@ namespace OrdersOrders.Repository.Orders
 
 
 
-        public static List<VMDiscount.VmDiscountManagement> AllDiscount(int? Discount, int? DiscountFee, string DiscountCode, string startdate, string enddate, int discountquantity, Guid UserRef)
+        public static List<VMDiscount.VmDiscountManagement> AllDiscount(int? Discount, int? DiscountFee, string DiscountCode, Guid DiscountUser, string startdate, string enddate, int discountquantity, Guid UserRef)
         {
             var list = new List<VMDiscount.VmDiscountManagement>();
             try
@@ -782,6 +818,7 @@ namespace OrdersOrders.Repository.Orders
                             queryDiscount.StartDate = s;
                             queryDiscount.DiscountQuantity = discountquantity;
                             queryDiscount.Entities = "AllDiscount";
+                            queryDiscount.DiscountUser = DiscountUser;
                             db.SaveChanges();
                         }
                         else
@@ -796,6 +833,7 @@ namespace OrdersOrders.Repository.Orders
                                 Discount = Discount,
                                 DiscountFee = DiscountFee,
                                 DiscountCode = DiscountCode,
+                                DiscountUser = DiscountUser,
                                 Id = id,
                                 ProductRef = item.Id,
                                 IsOk = true,
@@ -831,7 +869,7 @@ namespace OrdersOrders.Repository.Orders
 
         #region RepositoryCartsNoDiscount
 
-        public static VMOrders.VmOrderCarts RepositoryCartsNoDiscount(List<VMOrders.VmOrderSubmit> carts,Guid _user)
+        public static VMOrders.VmOrderCarts RepositoryCartsNoDiscount(List<VMOrders.VmOrderSubmit> carts, Guid _user)
         {
             var list = new VMOrders.VmOrderCarts();
             var db = new Orders_Entities();
@@ -900,7 +938,7 @@ namespace OrdersOrders.Repository.Orders
                         vmCartRow.SizeTitle = "بدون سایز";
                     }
 
-                    
+
 
 
                 }
@@ -913,7 +951,7 @@ namespace OrdersOrders.Repository.Orders
                 _FinalCarts.Add(vmCartRow);
             }
 
-         
+
 
             _FinalOrder.CartsItems = _FinalCarts;
             _FinalOrder.Discount = _sumdis;
@@ -939,7 +977,7 @@ namespace OrdersOrders.Repository.Orders
                     var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
                     if (disFree != null)
                     {
-                        var a  = (disFree.Discount * _FinalSum) / 100;
+                        var a = (disFree.Discount * _FinalSum) / 100;
                         _discountFree = _FinalSum - a ?? 0;
                         _FinalSum = _discountFree;
                         _FinalOrder.DiscountFree = a ?? 0;
@@ -968,6 +1006,7 @@ namespace OrdersOrders.Repository.Orders
             decimal _FinalSum = 0;
             decimal _Transfer = 0;
             decimal _discount = 0;
+            decimal _discountFree = 0;
             decimal _sumdis = 0;
             var _FinalOrder = new VMOrders.VmOrderCarts();
             var _FinalCarts = new List<VMOrders.VmOrderSubmit>();
@@ -1234,26 +1273,50 @@ namespace OrdersOrders.Repository.Orders
 
                     if (queryDiscount.Entities == "AllDiscount" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
                     {
-                        if (queryDiscount.Discount > 0)
+                        if (HttpContext.Current.User.Identity.IsAuthenticated)
                         {
-                            _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
-                        }
+                            var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                            if ((queryDiscount.Discount > 0 || queryDiscount.Discount != null) && queryDiscount.DiscountUser == userid)
+                            {
+                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                vmCartRow.DisUse = true;
+                                vmCartRow.Message = "Success";
+                            }
 
-                        if (queryDiscount.DiscountFee > 0)
-                        {
-                            _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
+                            if (queryDiscount.DiscountFee > 0 && queryDiscount.DiscountUser == userid)
+                            {
+                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                vmCartRow.DisUse = true;
+                                vmCartRow.Message = "Success";
+                            }
                         }
                         else
                         {
-                            _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                            vmCartRow.Message = "Error";
+                            if (queryDiscount.Discount > 0)
+                            {
+                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                vmCartRow.DisUse = true;
+                                vmCartRow.Message = "Success";
+                            }
+
+                            if (queryDiscount.DiscountFee > 0)
+                            {
+                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                vmCartRow.DisUse = true;
+                                vmCartRow.Message = "Success";
+                            }
+                            else
+                            {
+                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                vmCartRow.Message = "Error";
+                            }
                         }
+
+
 
                     }
 
@@ -1292,6 +1355,29 @@ namespace OrdersOrders.Repository.Orders
             //}
 
             _FinalSum += (_RowSum + _Transfer) - _sumdis;
+
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                _FinalOrder.DiscountFree = 0;
+                if (userid != Guid.Empty)
+                {
+                    var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == userid);
+                    if (!ordercheck)
+                    {
+                        var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
+                        if (disFree != null)
+                        {
+                            var a = (disFree.Discount * _FinalSum) / 100;
+                            _discountFree = _FinalSum - a ?? 0;
+                            _FinalSum = _discountFree;
+                            _FinalOrder.DiscountFree = a ?? 0;
+                            _FinalOrder.DiscountPercent = disFree.Discount ?? 0;
+                        }
+                    }
+                }
+            }
+
             _FinalOrder.SumPay = _FinalSum;
             //_FinalOrder.sumdis = _sumdis;
             list = _FinalOrder;
