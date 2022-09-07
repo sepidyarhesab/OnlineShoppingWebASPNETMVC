@@ -1,5 +1,5 @@
 ﻿@using OrdersGeneral.Repository.General
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProductsSizeGuide.ViewModelProductSizeGuide>
+@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProductsSizeGuides.ViewModelProductSizeGuide>
 
 @{
     ViewBag.Title = "Index";
@@ -77,6 +77,9 @@
                                         عنوان
                                     </th>
                                     <th>
+                                        عکس
+                                    </th>
+                                    <th>
                                         تاریخ
                                     </th>
                                     <th>نمایش</th>
@@ -114,6 +117,9 @@
                                                 </td>
                                                 <td class="col-md-2 copy">
                                                     @mangment.PrimaryTitle
+                                                </td>
+                                                <td class="col-md-2 copy">
+                                                    <img src="@mangment.FileName" width="50"/>
                                                 </td>
                                                 <td class="col-md-1">
                                                     @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", mangment.CreatorDate)
