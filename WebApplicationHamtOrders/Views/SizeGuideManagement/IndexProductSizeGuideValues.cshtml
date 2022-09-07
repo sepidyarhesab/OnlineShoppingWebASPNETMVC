@@ -17,38 +17,41 @@
 
             <div class="box box-info">
                 <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
-                    @*@if (Model != null)
-                    {
-                        <h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز دسته بندی /@Model.First().SizeGuideTitle</h3>
+                    @{
+                        if (Model != null)
+                        {
+                            <h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز / @Model.First().SizeGuideTitle</h3>
+
+                        }
+                        else
+                        {
+                            <h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز </h3>
+                        }
                     }
-                    else
-                    {
-                        <h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز  </h3>
-                    }*@
-                    <h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز  </h3>
+                    @*<h3 class="box-title"> تنظیمات مقادیر برای راهنمای سایز </h3>*@
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
                     @*<div class="site-header__search">
-                        <div class="search">
+                            <div class="search">
 
-                            <form class="search__form" action="/SizeGuideManagement/IndexProductSizeGuideValues" method="post">
-                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی عنوان کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
-                                <button class="search__button" type="submit">
-                                    <svg width="20px" height="20px">
-                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
-                                    </svg>
-                                </button>
-                                <div class="search__border"></div>
-                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
-                                    بازیابی مجدد
-                                </button>
-                            </form>
+                                <form class="search__form" action="/SizeGuideManagement/IndexProductSizeGuideValues" method="post">
+                                    <input class="search__input" name="Search" id="Search" placeholder="جستجوی عنوان کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                    <button class="search__button" type="submit">
+                                        <svg width="20px" height="20px">
+                                            <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search__border"></div>
+                                    <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
+                                        بازیابی مجدد
+                                    </button>
+                                </form>
 
-                        </div>
+                            </div>
 
-                    </div>*@
+                        </div>*@
                     <script>
 
                         function reload() {
@@ -109,57 +112,45 @@
                                         var row = 1;
                                         foreach (var mangment in Model)
                                         {
-                                                                <tr>
-                                                                    <td>
-                                                                        <input type="checkbox" value="">
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        @row
-                                                                    </td>
-                                                                    <td class="col-md-2 copy">
-                                                                        @mangment.Code
-                                                                    </td>
-                                                                    <td class="col-md-2 copy">
-                                                                        @mangment.PropertyTitle
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        @mangment.SizeValue
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        @mangment.SecondaryTitle
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", mangment.CreatorDate)
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        <a href="/SizeGuideManagement/ChangeStatusSizeGuideValue/@mangment.Id" class="@mangment.IsOkClass">@mangment.IsOkTitle</a>
-                                                                    </td>
-                                                                    <td class="col-md-1">
-                                                                        <a class="btn btn-info glyphicon glyphicon-edit" href="/SizeGuideManagement/EditProductSizeGuideValue/@mangment.Id"></a>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <a class="btn btn-danger" href="/SizeGuideManagement/DeleteSizeGuideValue/@mangment.Id">×</a>
-                                                                    </td>
-                                                                </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" value="">
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @row
+                                                </td>
+                                                <td class="col-md-2 copy">
+                                                    @mangment.Code
+                                                </td>
+                                                <td class="col-md-2 copy">
+                                                    @mangment.PropertyTitle
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @mangment.SizeValue
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @mangment.SecondaryTitle
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", mangment.CreatorDate)
+                                                </td>
+                                                <td class="col-md-1">
+                                                    <a href="/SizeGuideManagement/ChangeStatusSizeGuideValue/@mangment.Id" class="@mangment.IsOkClass">@mangment.IsOkTitle</a>
+                                                </td>
+                                                <td class="col-md-1">
+                                                    <a class="btn btn-info glyphicon glyphicon-edit" href="/SizeGuideManagement/EditProductSizeGuideValue/@mangment.Id"></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-danger" href="/SizeGuideManagement/DeleteSizeGuideValue/@mangment.Id">×</a>
+                                                </td>
+                                            </tr>
                                             row++;
 
                                         }
                                     }
-
-
-
-
                                 }
-
-
-
                             </tbody>
                         </table>
-
-
-
-
-
                     </div>
                 </div>
             </div>

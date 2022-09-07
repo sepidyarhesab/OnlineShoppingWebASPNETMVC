@@ -32,7 +32,7 @@
                                             var db = new Orders_Entities();
                                             var filename = db.Table_File_Upload.FirstOrDefault(c => c.Id == guide.);
                                         }*@
-                                        <img src="~/Helper/Layouts/assets/img/Images-Szie.jpg" style="width: 100%"/>
+                                        <img src="@guide.FileName" style="width: 100%"/>
                                     </div>
                                 </div>
                                 <form action="#">
@@ -45,7 +45,7 @@
                                                         <th class="row_title" style="width: 30px">اندازه</th>
                                                         <th class="row_title" style="width: 30px">سایز</th>
                                                     </tr>
-                                                    @foreach (var itemm in guide)
+                                                    @foreach (var itemm in guide.GuideValue)
                                                     {
 
                                                         <tr class="pr_price">

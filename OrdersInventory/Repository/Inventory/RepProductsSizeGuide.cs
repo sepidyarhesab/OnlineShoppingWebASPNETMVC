@@ -224,6 +224,85 @@ namespace OrdersInventory.Repository.Inventory
                 return "Application Error : " + e.Message;
             }
         }
+        //End----------------------------------
+        //RepositoryUpdateProductSizeGuide
+        public static string RepositoryUpdateProductSizeGuide(Guid Id, string Sort, string PrimaryTitle, string SecondaryTitle, Guid CategoriesRef, HttpPostedFileBase FileName,Guid userRef)
+        {
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Product_SizeGuide.FirstOrDefault(c => c.Id == Id);
+                if (query != null)
+                {
+                    query.PrimaryTitle = PrimaryTitle;
+                    query.SecondaryTitle = SecondaryTitle;
+                    query.Sort = int.Parse(Sort);
+                    query.ModifierDate = DateTime.Now;
+                    query.CategoryRef = CategoriesRef;
+                    query.Version++;
+                    db.SaveChanges();
+
+                    //Edit Picture
+                    var filename = "Default";
+                    var fileExtention = "png";
+                    var time = DateTime.Now.Ticks.ToString();
+                    var code = "SP-" + time;
+                    var filelenght = 200;
+                    if (FileName != null)
+                    {
+                        var qPics = db.Table_File_Upload.Where(c => c.Ref == query.Id && c.IsMain).ToList();
+                        if (qPics.Count > 0)
+                        {
+                            foreach (var fileUpload in qPics)
+                            {
+                                if (System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainSizeGuide + fileUpload.FileName + fileUpload.FileExtensions)))
+                                {
+                                    System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainSizeGuide + fileUpload.FileName + fileUpload.FileExtensions));
+                                }
+                                db.Table_File_Upload.Remove(fileUpload);
+                                db.SaveChanges();
+                            }
+                        }
+                        filelenght = FileName.ContentLength;
+                        filename = "SizeGuid_" + code;
+                        fileExtention = Path.GetExtension(FileName.FileName);
+                        string pathCombine =
+                            System.Web.HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainSizeGuide + filename + fileExtention);
+                        FileName.SaveAs(pathCombine);
+                        var qadd = db.Table_File_Upload.Add(new Table_File_Upload
+                        {
+                            Id = Guid.NewGuid(),
+                            Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload"),
+                            Tables = "Table_ProductSizeGuide",
+                            Schemas = "Inventory",
+                            Ref = query.Id,
+                            FileExtensions = fileExtention,
+                            FileLenght = filelenght,
+                            FileUniqeName = filename + fileExtention,
+                            Sort = 1,
+                            IsDelete = false,
+                            FileName = filename,
+                            Version = 1,
+                            CreatorDate = DateTime.Now,
+                            CreatorRef = userRef,
+                            ModifierRef = userRef,
+                            ModifierDate = DateTime.Now,
+                            IsOk = true,
+                            IsMain = true,
+                        });
+                        db.Table_File_Upload.Add(qadd);
+                        db.SaveChanges();
+                    }
+
+                }
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Application Error : " + e.Message;
+            }
+        }
+
         //End--------------------------------
         //Repository Delete SizeGuide for a Category
         public static string DeleteSizeGuideCategory(Guid id)
@@ -234,6 +313,7 @@ namespace OrdersInventory.Repository.Inventory
                 var query = db.Table_Product_SizeGuide.FirstOrDefault(c => c.Id == id);
                 if (query != null)
                 {
+
                     switch (query.IsOk)
                     {
                         case true:
@@ -355,10 +435,14 @@ namespace OrdersInventory.Repository.Inventory
                             vm.IsOkTitle = "غیر فعال";
                         }
 
-                        var qcat = db.Table_Product_SizeGuide.FirstOrDefault(c => c.Id == item.SizeGuideRef);
+                        var qcat = db.Table_Product_SizeGuide.FirstOrDefault(c => c.Id == id);
                         if (qcat != null)
                         {
                             vm.SizeGuideTitle = qcat.PrimaryTitle;
+                        }
+                        else
+                        {
+                            vm.SizeGuideTitle = "یافت نشد";
                         }
                         list.Add(vm);
                     }
@@ -554,7 +638,7 @@ namespace OrdersInventory.Repository.Inventory
         //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
         //Repository Show Size Guide Table for a Category
 
-        public static VMProductsSizeGuides.ViewModelProductSizeGuideClient RepositoryClientProductCategorySizeGuideValuesList(Guid CategoryId)
+        public static VMProductsSizeGuides.ViewModelProductSizeGuideClient RepositoryClientProductCategorySizeGuideValuesList(Guid? CategoryId)
         {
             var VMGuideClient = new VMProductsSizeGuides.ViewModelProductSizeGuideClient();
             var listGuideValue=new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
