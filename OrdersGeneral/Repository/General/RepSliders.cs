@@ -21,7 +21,7 @@ namespace OrdersGeneral.Repository.General
             try
             {
                 var db = new Orders_Entities();
-                var query = db.Table_Slider.Where(c => c.IsOk).OrderBy(c=>c.Sort).AsNoTracking().ToList();
+                var query = db.Table_Slider.Where(c => c.IsOk).OrderBy(c => c.Sort).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var slider in query)
@@ -109,10 +109,10 @@ namespace OrdersGeneral.Repository.General
                         else
                         {
                             vm.FileNameDesktop = "/Helper/Main/img/bg/bg.svg";
-            
+
                         }
-                                   
-                        
+
+
                         var queryFiless =
                             db.Table_File_Upload.AsNoTracking().FirstOrDefault(c =>
                                 c.IsOk && !c.IsMain && c.Ref == slider.Id);
@@ -159,7 +159,7 @@ namespace OrdersGeneral.Repository.General
                 var search = searchnew.Replace("	", "");
                 var searcha = string.IsNullOrWhiteSpace(searchnew);
                 var db = new Orders_Entities();
-                var query = db.Table_Slider.OrderByDescending(c=>c.CreatorDate).Where(c=>c.Code == search || c.PrimaryTitle.Contains(search) || c.SecendaryTitle.Contains(search) || c.Url.Contains(search)).AsNoTracking().AsNoTracking().ToList();
+                var query = db.Table_Slider.OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search) || c.SecendaryTitle.Contains(search) || c.Url.Contains(search)).AsNoTracking().AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var slider in query)
@@ -530,9 +530,8 @@ namespace OrdersGeneral.Repository.General
         #endregion
 
         #region ManagemenetById
-        public static List<VMSliders.VmMainSlidersGenerate> RepositoryMainSlidersManagemenetById(Guid id)
+        public static VMSliders.VmMainSlidersGenerate RepositoryMainSlidersManagemenetById(Guid id)
         {
-            var list = new List<VMSliders.VmMainSlidersGenerate>();
             try
             {
                 var db = new Orders_Entities();
@@ -547,7 +546,7 @@ namespace OrdersGeneral.Repository.General
                         SecendaryTitle = query.SecendaryTitle,
                         Url = query.Url,
                         Sort = query.Sort,
-                        
+
 
                     };
                     var queryFiles =
@@ -555,7 +554,7 @@ namespace OrdersGeneral.Repository.General
                             c.IsOk && c.IsMain && c.Ref == query.Id);
                     if (queryFiles != null)
                     {
-                        vm.FileName = "/Static/Content/images/Sliders/" + queryFiles.FileName + 
+                        vm.FileName = "/Static/Content/images/Sliders/" + queryFiles.FileName +
                                       queryFiles.FileExtensions;
                     }
                     else
@@ -565,14 +564,14 @@ namespace OrdersGeneral.Repository.General
 
 
 
-                    list.Add(vm);
+                    return vm;
                 }
 
-                return list;
+                return new VMSliders.VmMainSlidersGenerate();
             }
             catch (Exception e)
             {
-                return list;
+                return new VMSliders.VmMainSlidersGenerate();
             }
         }
         #endregion
@@ -595,7 +594,7 @@ namespace OrdersGeneral.Repository.General
                     query.ModifierRef = userRef;
                     query.Version++;
                     query.Sort = values.Sort;
-                    
+
                     db.SaveChanges();
 
                     var filename = "Default";
@@ -677,7 +676,7 @@ namespace OrdersGeneral.Repository.General
                         string pathCombine =
                             System.Web.HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainSliderMobile + filename2 + fileExtention2);
                         FileNameMobile.SaveAs(pathCombine);
-                        var queryadd =db.Table_File_Upload.Add(new Table_File_Upload
+                        var queryadd = db.Table_File_Upload.Add(new Table_File_Upload
                         {
                             Id = Guid.NewGuid(),
                             Code = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload"),

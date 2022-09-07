@@ -2073,7 +2073,7 @@ namespace OrdersInventory.Repository.Inventory
         public VMProduct.ViewModelAjaxProduct RepositoryCheckFeeProducts(Guid id, Guid colorRef, Guid sizeRef)
         {
             decimal productfee = 0;
-            var list= new VMProduct.ViewModelAjaxProduct();
+            var list = new VMProduct.ViewModelAjaxProduct();
             try
             {
                 var vm = new VMProduct.ViewModelAjaxProduct();
@@ -2256,12 +2256,10 @@ namespace OrdersInventory.Repository.Inventory
         //    return list;
         //}
 
-        public List<VMProduct.VmMainProductMangement> RepositoryEditListColorSize(Guid id)
+        public VMProduct.VmMainProductMangement RepositoryEditListColorSize(Guid id)
         {
-            var list = new List<VMProduct.VmMainProductMangement>();
             try
             {
-
                 var query = db.Table_Product_Summary.FirstOrDefault(c => c.Id == id);
                 if (query != null)
                 {
@@ -2312,7 +2310,7 @@ namespace OrdersInventory.Repository.Inventory
                         vm.IsMainClass = "btn btn-danger";
                         vm.IsMainTitle = "غیر اصلی";
                     }
-                    list.Add(vm);
+                    return vm;
 
 
                 }
@@ -2321,7 +2319,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
-            return list;
+            return new VMProduct.VmMainProductMangement();
         }
 
 
@@ -2538,7 +2536,7 @@ namespace OrdersInventory.Repository.Inventory
                     watch.Stop();
                     //This is the time it took in miliseconds
                     var elapsedTime = watch.ElapsedMilliseconds;
-                    LogWriter.Logger("Time Span : RepositoryMainProductsById = " + elapsedTime,DateTime.Now.ToString(),"");
+                    LogWriter.Logger("Time Span : RepositoryMainProductsById = " + elapsedTime, DateTime.Now.ToString(), "");
                 }
             }
             catch (Exception e)
@@ -3677,13 +3675,10 @@ namespace OrdersInventory.Repository.Inventory
             return list;
         }
 
-        public List<VMProduct.ViewModelProductPropertyList> RepositoryMainProductListMangmentByid(Guid Id)
+        public VMProduct.ViewModelProductPropertyList RepositoryMainProductListMangmentByid(Guid Id)
         {
-            var list = new List<VMProduct.ViewModelProductPropertyList>();
             try
             {
-
-
                 var query = db.Table_Product_PropertyList.FirstOrDefault(c => c.Id == Id);
                 if (query != null)
                 {
@@ -3705,7 +3700,7 @@ namespace OrdersInventory.Repository.Inventory
 
 
 
-                    list.Add(vm);
+                    return vm;
                 }
             }
             catch (Exception e)
@@ -3713,10 +3708,10 @@ namespace OrdersInventory.Repository.Inventory
 
             }
 
-            return list;
+            return new VMProduct.ViewModelProductPropertyList();
         }
 
-        public List<VMProduct.VmMainProductMangement> RepositoryMainProductsMangmentByid(Guid Id)
+        public VMProduct.VmMainProductMangement RepositoryMainProductsMangmentByid(Guid Id)
         {
             var list = new List<VMProduct.VmMainProductMangement>();
             try
@@ -3805,7 +3800,7 @@ namespace OrdersInventory.Repository.Inventory
                     }
 
 
-                    list.Add(vm);
+                    return vm;
                 }
             }
             catch (Exception e)
@@ -3813,12 +3808,11 @@ namespace OrdersInventory.Repository.Inventory
 
             }
 
-            return list;
+            return new VMProduct.VmMainProductMangement();
         }
 
-        public List<VMProduct.ViewModelConfiguration> RepositoryConfigurationMangmentByid(Guid Id)
+        public VMProduct.ViewModelConfiguration RepositoryConfigurationMangmentByid(Guid Id)
         {
-            var list = new List<VMProduct.ViewModelConfiguration>();
             try
             {
 
@@ -3844,7 +3838,7 @@ namespace OrdersInventory.Repository.Inventory
 
                     };
 
-                    list.Add(vm);
+                    return vm;
                 }
 
             }
@@ -3852,12 +3846,11 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
-            return list;
+            return new VMProduct.ViewModelConfiguration();
         }
 
-        public List<VMProduct.ViewModelProductSize> RepositorySizeMangmentByid(Guid id)
+        public VMProduct.ViewModelProductSize RepositorySizeMangmentByid(Guid id)
         {
-            var list = new List<VMProduct.ViewModelProductSize>();
             try
             {
 
@@ -3879,7 +3872,7 @@ namespace OrdersInventory.Repository.Inventory
                         Sort = query.Sort
                     };
 
-                    list.Add(vm);
+                    return vm;
                 }
 
             }
@@ -3887,7 +3880,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
-            return list;
+            return new VMProduct.ViewModelProductSize();
         }
 
         public List<VMProduct.ViewModelProductColor> RepositoryColorMangmentByid(Guid id)
@@ -3925,9 +3918,8 @@ namespace OrdersInventory.Repository.Inventory
             return list;
         }
 
-        public List<VMProduct.ViewModelCategoreis> RepositoryCategoryMangmentByid(Guid Id)
+        public VMProduct.ViewModelCategoreis RepositoryCategoryMangmentByid(Guid Id)
         {
-            var list = new List<VMProduct.ViewModelCategoreis>();
             try
             {
 
@@ -3962,7 +3954,7 @@ namespace OrdersInventory.Repository.Inventory
                         vm.FileName = "/Helper/Main/img/bg/bg.svg";
                     }
 
-                    list.Add(vm);
+                    return vm;
                 }
 
             }
@@ -3970,7 +3962,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
-            return list;
+            return new VMProduct.ViewModelCategoreis();
         }
 
         public List<VMProduct.VmMainProductMangement> RepositoryGetFullPictures(Guid id)
@@ -6274,6 +6266,6 @@ namespace OrdersInventory.Repository.Inventory
 
         #endregion
         //End------------------------------------
-        
+
     }
 }

@@ -511,9 +511,9 @@ namespace OrdersGeneral.Repository.General
 
         #region Edit
 
-        public static List<VMUser.VMUsers> RepositoryUserMangmentByid(Guid Id)
+        public static VMUser.VMUsers RepositoryUserMangmentByid(Guid Id)
         {
-            var list = new List<VMUser.VMUsers>();
+            
             try
             {
                 var db = new Orders_Entities();
@@ -535,7 +535,7 @@ namespace OrdersGeneral.Repository.General
                         RoleRef = query.RoleRef,
                     };
 
-                    list.Add(vm);
+                    return vm;
                 }
 
             }
@@ -543,7 +543,7 @@ namespace OrdersGeneral.Repository.General
             {
 
             }
-            return list;
+            return new VMUser.VMUsers();
         }
         public static string RepositoryUserMangmentEditById(VMUser.VMUsers values, Guid userid)
         {

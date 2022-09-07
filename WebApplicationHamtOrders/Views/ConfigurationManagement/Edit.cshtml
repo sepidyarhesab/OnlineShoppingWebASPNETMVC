@@ -1,6 +1,6 @@
 ﻿@using OrdersInventory.Repository.Inventory
 
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelConfiguration>
+@model OrdersInventory.ViewModels.Inventory.VMProduct.ViewModelConfiguration
 @{
     ViewBag.Title = "ویرایش بخش بندی|EditingSegmentation";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -20,8 +20,6 @@
                         {
                             var rep = new RepProducts();
 
-                            foreach (var item in Model)
-                            {
                                 using (Html.BeginForm("EditRow", "ConfigurationManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
@@ -31,29 +29,29 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                                            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="PrimaryTitle">کد</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@item.Code" />
+                                                    <input class="form-control text-box single-line" disabled="disabled" id="Code" name="Code" placeholder="کد" type="text" value="@Model.Code" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@item.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@item.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="SecondaryTitle">شماره مرتب سازی </label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@item.Sort" />
+                                                    <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="شماره مرتب سازی" type="number" value="@Model.Sort" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -69,7 +67,7 @@
                                                             {
                                                                 foreach (var items in category)
                                                                 {
-                                                                    if (items.Id == item.CategoriesRef)
+                                                                    if (items.Id == Model.CategoriesRef)
                                                                     {
                                                                         <option selected="@(items.Code == "1" ? "selected" : string.Empty)" value="@items.Id">@items.PrimaryTitle</option>
                                                                     }
@@ -88,14 +86,14 @@
 
                                                 <label class="control-label col-md-2" for="SecondaryTitle">تعداد نمایش </label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Count" name="Count" placeholder="تعداد نمایش" type="number" value="@item.Count"/>
+                                                    <input class="form-control text-box single-line" id="Count" name="Count" placeholder="تعداد نمایش" type="number" value="@Model.Count"/>
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Url">لینک</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="number" value="@item.Url" />
+                                                    <input class="form-control text-box single-line" id="Url" name="Url" placeholder="لینک" type="number" value="@Model.Url" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -112,13 +110,6 @@
                             }
 
                         }
-
-
-
-
-                    }
-
-
 
                 </div>
             </div>

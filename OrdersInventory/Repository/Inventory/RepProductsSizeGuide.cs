@@ -499,7 +499,7 @@ namespace OrdersInventory.Repository.Inventory
         //End---------------------------------------------------
         //<<<<<<<<<<<<<<<<<<<Client Repositories>>>>>>>>>>>>>>>>>>>>>>>>>>
         //Repository Show Size Guide Table for a Category
-        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryClientProductCategorySizeGuideValuesList(Guid CategoryId)
+        public static List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide> RepositoryClientProductCategorySizeGuideValuesList(Guid? CategoryId)
         {
             var list = new List<VMProductsSizeGuides.ViewModelProductSizeValuesGuide>();
             var db = new Orders_Entities();

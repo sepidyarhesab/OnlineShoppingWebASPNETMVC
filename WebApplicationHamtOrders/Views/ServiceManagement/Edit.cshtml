@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrdersGeneral.ViewModels.General.VMServices.VMMainServicesManagement>
+﻿@model OrdersGeneral.ViewModels.General.VMServices.VMMainServicesManagement
 @{
     ViewBag.Title = "ویرایش سرویس|EditService";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -25,33 +25,28 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-horizontal">
-
-                                        @{
-
-                                            foreach (var ServiceEdit in Model)
-                                            {
-                                                <input type="hidden" name="Id" id="Id" value="@ServiceEdit.Id">
+                                        <input type="hidden" name="Id" id="Id" value="@Model.Id">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="PrimaryTitle">نام اسلایدر</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@ServiceEdit.PrimaryTitle" />
+                                                        <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.PrimaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="SecendaryTitle">عنوان اسلایدر دوم</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="SecendaryTitle" name="SecendaryTitle" placeholder="عنوان اصلی" type="text" value="@ServiceEdit.SecendaryTitle" />
+                                                        <input class="form-control text-box single-line" id="SecendaryTitle" name="SecendaryTitle" placeholder="عنوان اصلی" type="text" value="@Model.SecendaryTitle" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2" for="Sort">شماره مرتب سازی</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@ServiceEdit.Sort" />
+                                                        <input class="form-control text-box single-line" id="Sort" name="Sort" placeholder="عنوان اصلی" type="text" value="@Model.Sort" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                     <label class="control-label col-md-2" for="Url">لینک</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@ServiceEdit.Url" />
+                                                        <input class="form-control text-box single-line" id="Url" name="Url" placeholder="عنوان اصلی" type="text" value="@Model.Url" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
                                                 </div>
@@ -67,16 +62,11 @@
                                                     </div>
                                                     <label class="control-label col-md-2" for="filename">عکس</label>
                                                     <div class="col-md-4">
-                                                        <input class="form-control text-box single-line" id="filename" name="filename" placeholder="عنوان اصلی" type="file" value="@ServiceEdit.FileName" />
+                                                        <input class="form-control text-box single-line" id="filename" name="filename" placeholder="عنوان اصلی" type="file" value="@Model.FileName" />
                                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                     </div>
            
                                                 </div>
-                                            }
-
-
-                                        }
-
                                     </div>
                                 </div>
                                 <div class="box-footer clearfix">

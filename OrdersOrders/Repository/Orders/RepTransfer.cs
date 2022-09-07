@@ -165,9 +165,8 @@ namespace OrdersGeneral.Repository.General
         }
 
 
-        public static List<VMTransfer.VMTransferManagement> Edit(Guid Id)
+        public static VMTransfer.VMTransferManagement Edit(Guid Id)
         {
-            var list = new List<VMTransfer.VMTransferManagement>();
             try
             {
                 var db = new Orders_Entities();
@@ -185,7 +184,7 @@ namespace OrdersGeneral.Repository.General
                         Weight = query.Weight,
                         TransferPay = query.TransferPay,
                     };
-                    list.Add(vm);
+                    return vm;
                 }
 
 
@@ -195,7 +194,7 @@ namespace OrdersGeneral.Repository.General
 
             }
 
-            return list;
+            return new VMTransfer.VMTransferManagement();
         }
 
 

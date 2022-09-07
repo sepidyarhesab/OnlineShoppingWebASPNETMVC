@@ -73,7 +73,7 @@ namespace WebApplicationHamtOrders.Controllers
                     TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
                 }
             }
-            Response.Redirect("/MoreProductPropertyManagement/ IndexColor");
+            Response.Redirect("/MoreProductPropertyManagement/IndexColor");
         }
 
         public void Delete(Guid Id)

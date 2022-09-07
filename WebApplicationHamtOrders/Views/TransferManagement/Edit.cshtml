@@ -1,5 +1,5 @@
 ﻿@using OrdersGeneral.Repository.General
-@model IEnumerable<OrdersGeneral.ViewModels.General.VMTransfer.VMTransferManagement>
+@model OrdersGeneral.ViewModels.General.VMTransfer.VMTransferManagement
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
@@ -16,8 +16,7 @@
                     @{
                         if (Model != null)
                         {
-                            foreach (var itemm in Model)
-                            {
+                           
                                 using (Html.BeginForm("EditRow", "TransferManagement", FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
@@ -27,16 +26,16 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-horizontal">
-                                            <input class="form-control" id="Id" name="Id" type="hidden" value="@itemm.Id" />
+                                            <input class="form-control" id="Id" name="Id" type="hidden" value="@Model.Id" />
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="PrimaryTitle">عنوان اول</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@itemm.PrimaryTitle" />
+                                                    <input class="form-control text-box single-line" id="PrimaryTitle" name="PrimaryTitle" placeholder="عنوان اول" type="text" value="@Model.PrimaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="SecondaryTitle">عنوان دوم</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@itemm.SecondaryTitle" />
+                                                    <input class="form-control text-box single-line" id="SecondaryTitle" name="SecondaryTitle" placeholder="عنوان دوم" type="text" value="@Model.SecondaryTitle" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
@@ -44,7 +43,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="TransferPay"> باربری </label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="TransferPay" name="TransferPay" placeholder="باربری" type="number" value="@itemm.TransferPay" />
+                                                    <input class="form-control text-box single-line" id="TransferPay" name="TransferPay" placeholder="باربری" type="number" value="@Model.TransferPay" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2">استان</label>
@@ -57,7 +56,7 @@
                                                             foreach (var item in city)
                                                             {
 
-                                                                if (item.CityRef == item.CityRef)
+                                                                if (item.CityRef == Model.CityRef)
                                                                 {
                                                                     <option value="@item.CityRef" selected="selected">@item.CityTitle</option>
                                                                 }
@@ -75,12 +74,12 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="Weight">وزن </label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Weight" name="Weight" placeholder="وزن" type="text" value="@itemm.Weight" />
+                                                    <input class="form-control text-box single-line" id="Weight" name="Weight" placeholder="وزن" type="text" value="@Model.Weight" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
                                                 <label class="control-label col-md-2" for="Fee">قیمت بر وزن</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line" id="Fee" name="Fee" placeholder="قیمت بر وزن" type="text" value="@itemm.Fee" />
+                                                    <input class="form-control text-box single-line" id="Fee" name="Fee" placeholder="قیمت بر وزن" type="text" value="@Model.Fee" />
                                                     <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                                 </div>
 
@@ -99,7 +98,7 @@
                                 }
                             }
                         }
-                    }
+                    
 
 
 

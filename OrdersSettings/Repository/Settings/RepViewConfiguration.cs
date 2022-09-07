@@ -118,9 +118,8 @@ namespace OrdersSettings.Repository.Settings
         }
 
 
-        public static List<ViewModelsMainViewConfigurations> Edit(Guid Id)
+        public static ViewModelsMainViewConfigurations Edit(Guid Id)
         {
-            var list = new List<ViewModelsMainViewConfigurations>();
             try
             {
                 var db = new Orders_Entities();
@@ -138,7 +137,7 @@ namespace OrdersSettings.Repository.Settings
                         Sort = query.Sort,
 
                     };
-                    list.Add(vm);
+                    return vm;
                 }
 
 
@@ -148,7 +147,7 @@ namespace OrdersSettings.Repository.Settings
 
             }
 
-            return list;
+            return new ViewModelsMainViewConfigurations();
         }
 
         public static string EditRow(ViewModelsMainViewConfigurations values, Guid userRef)

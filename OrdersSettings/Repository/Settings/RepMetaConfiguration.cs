@@ -140,9 +140,8 @@ namespace OrdersSettings.Repository.Settings
         }
 
 
-        public static List<VMMetaConfiguration.ViewModelsMetaConfigurations> Edit(Guid Id)
+        public static VMMetaConfiguration.ViewModelsMetaConfigurations Edit(Guid Id)
         {
-            var list = new List<VMMetaConfiguration.ViewModelsMetaConfigurations>();
             try
             {
                 var db = new Orders_Entities();
@@ -160,7 +159,7 @@ namespace OrdersSettings.Repository.Settings
                         Sort = query.Sort,
 
                     };
-                    list.Add(vm);
+                    return vm;
                 }
 
 
@@ -170,7 +169,7 @@ namespace OrdersSettings.Repository.Settings
 
             }
 
-            return list;
+            return new VMMetaConfiguration.ViewModelsMetaConfigurations();
         }
 
         public static string EditRow(VMMetaConfiguration.ViewModelsMetaConfigurations values, Guid userRef)
