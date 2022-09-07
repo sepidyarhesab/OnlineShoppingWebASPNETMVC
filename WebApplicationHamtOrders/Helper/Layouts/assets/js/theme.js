@@ -360,7 +360,7 @@
                     spaceBetween: 8,
                 },
                 0: {
-                    slidesPerView: 1.5,
+                    slidesPerView: 2,
                     scrollbar: {
                         el: '.swiper-scrollbar',
                         hide: true,
@@ -407,7 +407,7 @@
                     spaceBetween: 8,
                 },
                 0: {
-                    slidesPerView: 1.5,
+                    slidesPerView: 2,
                     scrollbar: {
                         el: '.swiper-scrollbar',
                         hide: true,
@@ -427,7 +427,7 @@
             },
             breakpoints: {
                 1400: {
-                    slidesPerView: 4,
+                    slidesPerView: 5,
                 },
                 1060: {
                     slidesPerView: 4,
@@ -449,6 +449,14 @@
                     spaceBetween: 10,
                 },
                 576: {
+                    slidesPerView: 2,
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        hide: true,
+                    },
+                    spaceBetween: 10,
+                },
+                350: {
                     slidesPerView: 1.5,
                     scrollbar: {
                         el: '.swiper-scrollbar',
@@ -456,6 +464,7 @@
                     },
                     spaceBetween: 10,
                 }
+
             }
         });
         var sliderSm = new Swiper('.slider-sm', {
@@ -488,7 +497,7 @@
                     spaceBetween: 10,
                 },
                 480: {
-                    slidesPerView: 1.2,
+                    slidesPerView: 2,
                     scrollbar: {
                         el: '.swiper-scrollbar',
                         hide: true,
@@ -496,7 +505,7 @@
                     spaceBetween: 8,
                 },
                 0: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                     scrollbar: {
                         el: '.swiper-scrollbar',
                         hide: true,
