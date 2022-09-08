@@ -578,7 +578,6 @@ hr {
         transform: scale(1);
         bottom: 0;
         margin-top: 10px;
-        background: var(--DefaultThemeColor);
         background-blend-mode: multiply, multiply;
     }
 
@@ -1454,7 +1453,7 @@ hr {
 
         .nav-tabs li a.active {
             border-color: #000 !important;
-        }
+        }f
 
 /*------------------------------------
     SweetAlert
@@ -6040,4 +6039,12 @@ footer.mini-footer {
 }
 .overflow-wrap {
     overflow-wrap: anywhere;
+}
+.page-item {
+
+}
+.page-item.active {
+    background: var(--PrimaryColor);
+    border-radius: 2px;
+    color: white;
 }

@@ -5,7 +5,7 @@
 
 <head>
     <title>ثبت نام | Register</title>
-    @Html.Partial("Body/P_MainLayout_head")
+    @Html.Partial("Head/P_MainLayout_head")
 </head>
 
 <body>
@@ -42,35 +42,48 @@
                                 <label for="password" class="label-element">نام</label>
                                 <div class="form-element-with-icon">
                                     <input type="text" id="name" name="name" class="input-element farsi" placeholder="لطفا نام خود را به صورت فارسی وارد کنید" data-step="1" data-intro="در این قسمت نام خود را با کیبورد فارسی وارد کنید">
-                                    
+
                                 </div>
                             </div>
                             <div class="form-element-row">
                                 <label for="password" class="label-element">نام خانوادگی</label>
                                 <div class="form-element-with-icon">
-                                    <input type="text" id="family" name="family" class="input-element farsi" placeholder="لطفا نام خانوادگی خود را به صورت فارسی وارد کنید"  data-step="2" data-intro="در این قسمت نام خانوادگی خود را با کیبورد فارسی وارد کنید">
-                                    
+                                    <input type="text" id="family" name="family" class="input-element farsi" placeholder="لطفا نام خانوادگی خود را به صورت فارسی وارد کنید" data-step="2" data-intro="در این قسمت نام خانوادگی خود را با کیبورد فارسی وارد کنید">
+
                                 </div>
                             </div>
-                            <div class="form-element-row">
-                                <label for="phone-number" class="label-element">شماره موبایل</label>
-                                <div class="form-element-with-icon">
-                                    <input type="text" style="font-family: sans-serif !important"  maxlength="11" max="11" id="phone" name="phone" class="input-element numeric" placeholder="لطفا شماره موبایل خود را به صورت انگلیسی وارد کنید"  data-step="3" data-intro="در این قسمت شماره همراه خود را با کیبورد لاتین وارد کنید">
-                                    <i class="fad fa-mobile-alt"></i>
+                            if (Session["UserPhoneRegister"] != null)
+                            {
+                                <div class="form-element-row">
+                                    <label for="phone-number" class="label-element">شماره موبایل</label>
+                                    <div class="form-element-with-icon">
+                                        <input type="text" value="@Session["UserPhoneRegister"].ToString()" style="font-family: sans-serif !important" maxlength="11" max="11" id="phone" name="phone" class="input-element numeric" placeholder="لطفا شماره موبایل خود را به صورت انگلیسی وارد کنید" data-step="3" data-intro="در این قسمت شماره همراه خود را با کیبورد لاتین وارد کنید">
+                                        <i class="fad fa-mobile-alt"></i>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            else
+                            {
+                                <div class="form-element-row">
+                                    <label for="phone-number" class="label-element">شماره موبایل</label>
+                                    <div class="form-element-with-icon">
+                                        <input type="text" style="font-family: sans-serif !important" maxlength="11" max="11" id="phone" name="phone" class="input-element numeric" placeholder="لطفا شماره موبایل خود را به صورت انگلیسی وارد کنید" data-step="3" data-intro="در این قسمت شماره همراه خود را با کیبورد لاتین وارد کنید">
+                                        <i class="fad fa-mobile-alt"></i>
+                                    </div>
+                                </div>
+                            }
 
                             <div class="form-element-row text-left">
-                                <button  style="cursor: pointer" class="btn-element btn-success-element btn-block"  data-step="4" data-intro="بر روی این دکمه کلیک  کنید">
+                                <button style="cursor: pointer" class="btn-element btn-success-element btn-block" data-step="4" data-intro="بر روی این دکمه کلیک  کنید">
                                     <i class="fad fa-user-edit"></i>
-                             ثبت و ساخت حساب کاربری
+                                    ثبت و ساخت حساب کاربری
                                 </button>
                             </div>
                         }
 
                         <div class="auth-form-footer">
                             <span>قبلا ثبت‌نام کرده‌اید؟</span>
-                            <a href="/Login" class="link--with-border-bottom"  data-step="5" data-intro="اگر قبلا ثبت نام کرده اید.بر روی این قسمت کلیک کنید">وارد شوید</a>
+                            <a href="/Login" class="link--with-border-bottom" data-step="5" data-intro="اگر قبلا ثبت نام کرده اید.بر روی این قسمت کلیک کنید">وارد شوید</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +96,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="copy-right-mini-footer">
-                            @Html.Partial("Body/P_CopyRight_Footer")
+                            @Html.Partial("Footer/P_CopyRight_Footer")
                         </div>
                     </div>
                 </div>
@@ -116,70 +129,70 @@
     <!-- JS Template -->
     <script src="/Helper/Layouts/assets/js/theme.js"></script>
     <!-- Here goes your custom.js -->
-<script src="/Helper/Layouts/assets/js/custom.js"></script>
+    <script src="/Helper/Layouts/assets/js/custom.js"></script>
 
-<script src="/Helper/Layouts/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="/Helper/Layouts/assets/js/jquery-3.5.1.min.js"></script>
 
-<script src="/Helper/Admin/Scripts/iziToast.min.js"></script>
-<script src="~/Helper/Layouts/assets/js/intro.min.js"></script>
+    <script src="/Helper/Admin/Scripts/iziToast.min.js"></script>
+    <script src="~/Helper/Layouts/assets/js/intro.min.js"></script>
 
 
 
-@*<script>
-    $(document).on('keydown', '.farsi', function (e) {
-        console.log(e.key);
-        if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab' || e.key == 'Backspace')
-            return;
+    @*<script>
+            $(document).on('keydown', '.farsi', function (e) {
+                console.log(e.key);
+                if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab' || e.key == 'Backspace')
+                    return;
 
-        if (!e.key.match(/^[ا آ ئ ب پ ت ث ج چ ح خ د ذ ر ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن و ه ی]+$/)) {
-            iziToast.error({
-                title: 'خطای ورودی اطلاعات',
-                message: 'لطفا کیبورد خود را فارسی کنید',
-                rtl: true, position: 'topRight',
+                if (!e.key.match(/^[ا آ ئ ب پ ت ث ج چ ح خ د ذ ر ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن و ه ی]+$/)) {
+                    iziToast.error({
+                        title: 'خطای ورودی اطلاعات',
+                        message: 'لطفا کیبورد خود را فارسی کنید',
+                        rtl: true, position: 'topRight',
+                    });
+                    e.preventDefault();
+                }
+
             });
-            e.preventDefault();
-        }
+        </script>
 
-    });
-</script>
+        <script>
+            $(document).on('keydown', '.numeric', function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    (e.keyCode === 65 && e.ctrlKey === true) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
 
-<script>
-    $(document).on('keydown', '.numeric', function (e) {
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-            (e.keyCode === 65 && e.ctrlKey === true) ||
-            (e.keyCode >= 35 && e.keyCode <= 40)) {
-            return;
-        }
-
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            iziToast.error({
-                title: 'خطای ورودی اطلاعات',
-                message: 'لطفا فقط عدد (انگلیسی) وارد کنید',
-                rtl: true, position: 'topRight',
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    iziToast.error({
+                        title: 'خطای ورودی اطلاعات',
+                        message: 'لطفا فقط عدد (انگلیسی) وارد کنید',
+                        rtl: true, position: 'topRight',
+                    });
+                    e.preventDefault();
+                }
             });
-            e.preventDefault();
-        }
-    });
-</script>
-<script>
-    $(document).on('keydown', '.engelish', function (e) {
-        console.log(e.key);
-        if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab')
-            return;
+        </script>
+        <script>
+            $(document).on('keydown', '.engelish', function (e) {
+                console.log(e.key);
+                if (e.key == 'Alt' || e.key == 'Shift' || e.key == 'Tab')
+                    return;
 
-        if (!e.key.match(/^[0-9 a-z A-Z]+$/)) {
-            iziToast.error({
-                title: 'خطای ورودی اطلاعات',
-                message: 'لطفا کیبورد خود را انگلیسی کنید',
-                rtl: true, position: 'topRight',
+                if (!e.key.match(/^[0-9 a-z A-Z]+$/)) {
+                    iziToast.error({
+                        title: 'خطای ورودی اطلاعات',
+                        message: 'لطفا کیبورد خود را انگلیسی کنید',
+                        rtl: true, position: 'topRight',
+                    });
+                    e.preventDefault();
+                }
+
             });
-            e.preventDefault();
-        }
-
-    });
 
 
-</script>*@
+        </script>*@
 
 </body>
 

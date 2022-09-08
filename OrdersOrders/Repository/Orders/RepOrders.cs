@@ -21,6 +21,7 @@ namespace OrdersOrders.Repository.Orders
             var code = "error";
             try
             {
+                var idusers = Guid.NewGuid();
                 var db = new Orders_Entities();
                 var tick = DateTime.Now.Ticks;
                 var query = db.Table_User.ToList().Exists(c => c.Phone == phone);
@@ -29,6 +30,8 @@ namespace OrdersOrders.Repository.Orders
                     var queryusers = db.Table_User.FirstOrDefault(c => c.Phone == phone);
                     if (queryusers != null)
                     {
+
+                        idusers = queryusers.Id;
                         #region Order
 
                         decimal sum = 0;
@@ -208,13 +211,13 @@ namespace OrdersOrders.Repository.Orders
 
 
                         LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                        return code + "&" + tick;
+                        return code + "&" + tick + "&" + idusers + "&" + id;
 
                         #endregion
                     }
                     else
                     {
-                        var idusers = Guid.NewGuid();
+                         idusers = Guid.NewGuid();
                         var queyadd = new Table_User
                         {
                             Id = idusers,
@@ -454,14 +457,14 @@ namespace OrdersOrders.Repository.Orders
 
                         }
                         LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                        return code + "&" + tick;
+                        return code + "&" + tick + "&" + idusers + "&" + id;
 
                         #endregion
                     }
                 }
                 else
                 {
-                    var idusers = Guid.NewGuid();
+                     idusers = Guid.NewGuid();
                     var queyadd = new Table_User
                     {
                         Id = idusers,
@@ -706,7 +709,7 @@ namespace OrdersOrders.Repository.Orders
 
                     }
                     LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                    return code + "&" + tick;
+                    return code + "&" + tick + "&" + idusers +  "&" + id;
 
                     #endregion
                 }

@@ -869,3 +869,12 @@ Application Write  : Time Span : RepositoryMainProductsById = 55 Datetime : 16/0
 Application Write  : Time Span : RepositoryMainProductsById = 7 Datetime : 16/06/1401 12:50:53 ب.ظ Line  : 
 Application Write  : Time Span : RepositoryMainProductsById = 6 Datetime : 16/06/1401 12:51:28 ب.ظ Line  : 
 
+Application Write  : Success Datetime : SMS Line  : Success
+Application Write  : Time Span : RepositoryMainProductsById = 22 Datetime : 17/06/1401 11:06:04 ق.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 17/06/1401 11:06:16 ق.ظ Line  : 50
+Application Write  : 421 Datetime : پنجشنبه, 17 شهریور 1401 Line  : 2
+Application Write  : Time Span : RepositoryMainProductsById = 238 Datetime : 17/06/1401 03:23:33 ب.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 17/06/1401 03:23:57 ب.ظ Line  : 50
+Application Write  : Time Span : RepositoryMainProductsById = 202 Datetime : 17/06/1401 03:25:09 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 169 Datetime : 17/06/1401 03:25:20 ب.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 17/06/1401 03:25:39 ب.ظ Line  : 50

@@ -3,7 +3,9 @@
 *.cache
 *.csproj
 *.csproj.resolveComRefrence.cache
+*/bin/*
+*/obj/*
+*.pdb
 */bin
 */obj
-*.pdb
 *.dll

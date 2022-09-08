@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Document\Publish\WebApplicationOrders_2022_09_04_v1.0.9.2</_PublishTargetUrl>
-    <History>True|2022-09-06T13:57:38.3752578Z;True|2022-09-06T18:26:31.7656681+04:30;True|2022-09-06T18:24:13.5941292+04:30;True|2022-09-04T17:04:08.1746861+04:30;True|2022-09-01T16:49:18.9960853+04:30;True|2022-09-01T12:10:59.7942524+04:30;True|2022-08-30T13:26:52.2432439+04:30;True|2022-08-30T13:24:35.4110714+04:30;True|2022-08-30T13:24:00.6731299+04:30;True|2022-08-30T13:10:23.2292344+04:30;True|2022-08-27T22:09:32.8716443+04:30;True|2022-08-27T22:05:56.9856098+04:30;True|2022-08-27T21:53:38.8224916+04:30;True|2022-08-27T17:38:06.1718035+04:30;True|2022-08-27T17:28:25.9326662+04:30;True|2022-08-27T17:20:04.5414284+04:30;True|2022-08-27T16:19:03.7837409+04:30;True|2022-08-24T20:43:44.0629375+04:30;True|2022-08-21T16:30:32.2956062+04:30;True|2022-08-21T10:11:56.0188153+04:30;True|2022-08-17T18:00:34.1096254+04:30;True|2022-08-17T17:06:02.6632969+04:30;True|2022-08-17T16:45:02.5540172+04:30;True|2022-08-17T15:48:10.1137560+04:30;True|2022-08-17T15:09:49.9135405+04:30;True|2022-08-14T16:44:19.7283083+04:30;True|2022-08-14T09:08:10.8353054+04:30;True|2022-08-14T08:15:09.6117988+04:30;True|2022-08-14T08:11:59.2375151+04:30;True|2022-08-14T08:05:02.9887369+04:30;True|2022-08-13T21:23:44.7573782+04:30;True|2022-08-11T09:39:16.8091534+04:30;True|2022-08-11T08:49:52.4470459+04:30;True|2022-08-10T19:40:43.8459460+04:30;True|2022-08-10T16:41:34.6203828+04:30;True|2022-08-10T15:04:55.3255160+04:30;True|2022-08-10T14:44:11.9118800+04:30;True|2022-08-08T18:47:32.7677668+04:30;True|2022-08-08T15:01:30.9592213+04:30;True|2022-08-08T13:59:32.1252501+04:30;True|2022-08-07T12:48:58.5123821+04:30;True|2022-08-07T12:45:51.1543896+04:30;True|2022-08-07T09:12:34.4860091+04:30;True|2022-08-07T01:06:52.7195355+04:30;True|2022-08-07T00:28:11.8627620+04:30;True|2022-08-04T18:56:25.4855948+04:30;True|2022-08-04T17:51:08.5979410+04:30;True|2022-08-04T17:46:36.1377074+04:30;True|2022-08-04T17:40:01.7803556+04:30;False|2022-08-04T17:38:23.9474374+04:30;False|2022-08-04T17:37:40.6392263+04:30;True|2022-08-04T17:29:08.2623848+04:30;True|2022-08-04T15:36:40.9489066+04:30;True|2022-08-04T15:33:06.1583083+04:30;True|2022-08-04T15:25:58.7614847+04:30;True|2022-08-04T15:20:33.6594666+04:30;True|2022-08-04T15:19:33.7710232+04:30;</History>
+    <History>True|2022-09-08T11:27:17.0420202Z;True|2022-09-08T15:26:57.1981603+04:30;True|2022-09-08T14:39:14.0129378+04:30;True|2022-09-08T14:32:33.5542401+04:30;True|2022-09-08T14:24:31.2366680+04:30;False|2022-09-08T14:23:58.1399309+04:30;False|2022-09-08T12:15:21.9554107+04:30;False|2022-09-08T12:14:05.6747109+04:30;True|2022-09-06T18:27:38.3752578+04:30;True|2022-09-06T18:26:31.7656681+04:30;True|2022-09-06T18:24:13.5941292+04:30;True|2022-09-04T17:04:08.1746861+04:30;True|2022-09-01T16:49:18.9960853+04:30;True|2022-09-01T12:10:59.7942524+04:30;True|2022-08-30T13:26:52.2432439+04:30;True|2022-08-30T13:24:35.4110714+04:30;True|2022-08-30T13:24:00.6731299+04:30;True|2022-08-30T13:10:23.2292344+04:30;True|2022-08-27T22:09:32.8716443+04:30;True|2022-08-27T22:05:56.9856098+04:30;True|2022-08-27T21:53:38.8224916+04:30;True|2022-08-27T17:38:06.1718035+04:30;True|2022-08-27T17:28:25.9326662+04:30;True|2022-08-27T17:20:04.5414284+04:30;True|2022-08-27T16:19:03.7837409+04:30;True|2022-08-24T20:43:44.0629375+04:30;True|2022-08-21T16:30:32.2956062+04:30;True|2022-08-21T10:11:56.0188153+04:30;True|2022-08-17T18:00:34.1096254+04:30;True|2022-08-17T17:06:02.6632969+04:30;True|2022-08-17T16:45:02.5540172+04:30;True|2022-08-17T15:48:10.1137560+04:30;True|2022-08-17T15:09:49.9135405+04:30;True|2022-08-14T16:44:19.7283083+04:30;True|2022-08-14T09:08:10.8353054+04:30;True|2022-08-14T08:15:09.6117988+04:30;True|2022-08-14T08:11:59.2375151+04:30;True|2022-08-14T08:05:02.9887369+04:30;True|2022-08-13T21:23:44.7573782+04:30;True|2022-08-11T09:39:16.8091534+04:30;True|2022-08-11T08:49:52.4470459+04:30;True|2022-08-10T19:40:43.8459460+04:30;True|2022-08-10T16:41:34.6203828+04:30;True|2022-08-10T15:04:55.3255160+04:30;True|2022-08-10T14:44:11.9118800+04:30;True|2022-08-08T18:47:32.7677668+04:30;True|2022-08-08T15:01:30.9592213+04:30;True|2022-08-08T13:59:32.1252501+04:30;True|2022-08-07T12:48:58.5123821+04:30;True|2022-08-07T12:45:51.1543896+04:30;True|2022-08-07T09:12:34.4860091+04:30;True|2022-08-07T01:06:52.7195355+04:30;True|2022-08-07T00:28:11.8627620+04:30;True|2022-08-04T18:56:25.4855948+04:30;True|2022-08-04T17:51:08.5979410+04:30;True|2022-08-04T17:46:36.1377074+04:30;True|2022-08-04T17:40:01.7803556+04:30;False|2022-08-04T17:38:23.9474374+04:30;False|2022-08-04T17:37:40.6392263+04:30;True|2022-08-04T17:29:08.2623848+04:30;True|2022-08-04T15:36:40.9489066+04:30;True|2022-08-04T15:33:06.1583083+04:30;True|2022-08-04T15:25:58.7614847+04:30;True|2022-08-04T15:20:33.6594666+04:30;True|2022-08-04T15:19:33.7710232+04:30;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Browsers/qt.browser">
@@ -29,6 +29,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/log4net.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
+    <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>10/19/2020 22:10:36</publishTime>
+    </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
@@ -36,76 +39,79 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="bin/OrdersDatabase.dll">
-      <publishTime>09/06/2022 18:23:54</publishTime>
+      <publishTime>09/08/2022 12:13:43</publishTime>
     </File>
     <File Include="bin/OrdersDatabase.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:41</publishTime>
     </File>
     <File Include="bin/OrdersDatabase.pdb">
-      <publishTime>09/06/2022 18:23:54</publishTime>
+      <publishTime>09/08/2022 12:13:43</publishTime>
     </File>
     <File Include="bin/OrdersExtentions.dll">
-      <publishTime>09/06/2022 18:23:54</publishTime>
+      <publishTime>09/08/2022 14:23:54</publishTime>
     </File>
     <File Include="bin/OrdersExtentions.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:44</publishTime>
     </File>
     <File Include="bin/OrdersExtentions.pdb">
-      <publishTime>09/06/2022 18:23:54</publishTime>
+      <publishTime>09/08/2022 14:23:54</publishTime>
     </File>
     <File Include="bin/OrdersGeneral.dll">
-      <publishTime>09/06/2022 18:23:56</publishTime>
+      <publishTime>09/08/2022 14:23:55</publishTime>
     </File>
     <File Include="bin/OrdersGeneral.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:45</publishTime>
     </File>
     <File Include="bin/OrdersGeneral.pdb">
-      <publishTime>09/06/2022 18:23:56</publishTime>
+      <publishTime>09/08/2022 14:23:55</publishTime>
     </File>
     <File Include="bin/OrdersInventory.dll">
-      <publishTime>09/06/2022 18:23:55</publishTime>
+      <publishTime>09/08/2022 14:23:55</publishTime>
     </File>
     <File Include="bin/OrdersInventory.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:41</publishTime>
     </File>
     <File Include="bin/OrdersInventory.pdb">
-      <publishTime>09/06/2022 18:23:55</publishTime>
+      <publishTime>09/08/2022 14:23:55</publishTime>
     </File>
     <File Include="bin/OrdersMellatPayment.dll">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>09/08/2022 12:13:43</publishTime>
     </File>
     <File Include="bin/OrdersMellatPayment.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:49</publishTime>
     </File>
     <File Include="bin/OrdersMellatPayment.pdb">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>09/08/2022 12:13:43</publishTime>
     </File>
     <File Include="bin/OrdersMellatPayment.XmlSerializers.dll">
-      <publishTime>09/06/2022 18:23:53</publishTime>
+      <publishTime>09/08/2022 12:13:44</publishTime>
     </File>
     <File Include="bin/OrdersOrders.dll">
-      <publishTime>09/06/2022 18:23:56</publishTime>
+      <publishTime>09/08/2022 15:57:10</publishTime>
     </File>
     <File Include="bin/OrdersOrders.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:46</publishTime>
     </File>
     <File Include="bin/OrdersOrders.pdb">
-      <publishTime>09/06/2022 18:23:56</publishTime>
+      <publishTime>09/08/2022 15:57:10</publishTime>
     </File>
     <File Include="bin/OrdersSettings.dll">
-      <publishTime>09/06/2022 18:23:55</publishTime>
+      <publishTime>09/08/2022 14:23:54</publishTime>
     </File>
     <File Include="bin/OrdersSettings.dll.config">
-      <publishTime>09/05/2022 21:27:09</publishTime>
+      <publishTime>08/24/2022 18:51:46</publishTime>
     </File>
     <File Include="bin/OrdersSettings.pdb">
-      <publishTime>09/06/2022 18:23:55</publishTime>
+      <publishTime>09/08/2022 14:23:54</publishTime>
     </File>
     <File Include="bin/PagedList.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="bin/PagedList.Mvc.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>06/07/2022 18:11:06</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -266,6 +272,30 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/SmsIrRestful.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>02/19/2020 13:35:18</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>02/19/2020 13:35:18</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>05/15/2018 17:59:44</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>10/19/2020 22:16:30</publishTime>
+    </File>
+    <File Include="bin/System.Text.Encodings.Web.dll">
+      <publishTime>10/19/2020 22:10:34</publishTime>
+    </File>
+    <File Include="bin/System.Text.Json.dll">
+      <publishTime>10/19/2020 22:12:12</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.Extensions.dll">
+      <publishTime>02/19/2020 13:35:18</publishTime>
+    </File>
+    <File Include="bin/System.ValueTuple.dll">
+      <publishTime>05/15/2018 17:59:52</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
@@ -285,13 +315,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="bin/WebApplicationHamtOrders.dll">
-      <publishTime>09/06/2022 18:26:28</publishTime>
+      <publishTime>09/08/2022 15:57:11</publishTime>
     </File>
     <File Include="bin/WebApplicationHamtOrders.dll.config">
-      <publishTime>08/04/2022 12:48:36</publishTime>
+      <publishTime>09/08/2022 15:24:34</publishTime>
     </File>
     <File Include="bin/WebApplicationHamtOrders.pdb">
-      <publishTime>09/06/2022 18:26:28</publishTime>
+      <publishTime>09/08/2022 15:57:11</publishTime>
+    </File>
+    <File Include="bin/WebApplicationHamtOrders.XmlSerializers.dll">
+      <publishTime>09/08/2022 15:57:12</publishTime>
     </File>
     <File Include="bin/ZarinPal.dll">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -399,7 +432,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Admin/Content/bootstrap.rtl.min.css">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Helper/Admin/Content/font.css">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -1014,13 +1047,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/bootstrap/css/bootstrap.min.css">
-      <publishTime>08/27/2022 17:48:46</publishTime>
+      <publishTime>09/08/2022 10:06:53</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/bootstrap/js/bootstrap.min.js">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/colors.css">
-      <publishTime>08/31/2022 12:14:57</publishTime>
+      <publishTime>09/03/2022 16:58:28</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/colors/amber.css">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -1035,7 +1068,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/colors/default.css">
-      <publishTime>08/31/2022 12:14:58</publishTime>
+      <publishTime>08/24/2022 20:31:47</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/colors/green.css">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -5922,10 +5955,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/theme.css">
-      <publishTime>09/06/2022 18:25:33</publishTime>
+      <publishTime>09/08/2022 10:59:09</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/css/whatsapp.css">
-      <publishTime>08/28/2022 21:17:53</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/fonts/BarcodeFont.ttf">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -6156,7 +6189,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/js/theme.js">
-      <publishTime>09/06/2022 18:26:22</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Helper/Layouts/assets/js/whatsapp.js">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -7929,7 +7962,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/AdminMenuManagement/Edit.cshtml">
-      <publishTime>09/05/2022 14:46:10</publishTime>
+      <publishTime>09/06/2022 16:11:27</publishTime>
     </File>
     <File Include="Views/AdminMenuManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -7938,7 +7971,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/24/2022 18:48:06</publishTime>
     </File>
     <File Include="Views/BannerManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:11:48</publishTime>
     </File>
     <File Include="Views/BannerManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -7959,7 +7992,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/BlogCategoriesManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:12:19</publishTime>
     </File>
     <File Include="Views/BlogCategoriesManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -7968,13 +8001,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/BlogManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/07/2022 09:32:07</publishTime>
     </File>
     <File Include="Views/BlogManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Carts/Index.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/05/2022 14:31:13</publishTime>
     </File>
     <File Include="Views/Categories/Id.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -7986,13 +8019,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Categories/SubCategory.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>08/30/2022 17:09:10</publishTime>
     </File>
     <File Include="Views/CategoriesManagement/Add.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/CategoriesManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:14:39</publishTime>
     </File>
     <File Include="Views/CategoriesManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8010,7 +8043,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ConfigurationManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:27:38</publishTime>
     </File>
     <File Include="Views/ConfigurationManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8031,10 +8064,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/20/2022 15:58:57</publishTime>
     </File>
     <File Include="Views/Dashboard/AddressAdd.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/03/2022 11:26:25</publishTime>
     </File>
     <File Include="Views/Dashboard/AddressUpdate.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/03/2022 15:58:07</publishTime>
     </File>
     <File Include="Views/Dashboard/ChangePassword.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8061,13 +8094,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/DiscountManager/CodeCreate.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/07/2022 15:42:20</publishTime>
     </File>
     <File Include="Views/DiscountManager/CodeEdit.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/07/2022 15:42:45</publishTime>
     </File>
     <File Include="Views/DiscountManager/CodeIndex.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/07/2022 15:49:31</publishTime>
     </File>
     <File Include="Views/DiscountManager/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8109,28 +8142,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Knowing/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:47:42</publishTime>
     </File>
     <File Include="Views/Knowing/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Layouts/_AdminLayouts.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/07/2022 09:21:19</publishTime>
     </File>
     <File Include="Views/Layouts/_MainLayouts.cshtml">
-      <publishTime>09/05/2022 21:30:05</publishTime>
+      <publishTime>09/08/2022 09:58:52</publishTime>
     </File>
     <File Include="Views/LinksManagement/Add.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/LinksManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:50:06</publishTime>
     </File>
     <File Include="Views/LinksManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/08/2022 11:01:23</publishTime>
     </File>
     <File Include="Views/MenuManagement/Add.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8139,7 +8172,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/MenuManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:51:48</publishTime>
     </File>
     <File Include="Views/MenuManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8151,7 +8184,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/MetaConfigurationManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:52:11</publishTime>
     </File>
     <File Include="Views/MetaConfigurationManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8166,7 +8199,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/MoreProductPropertyManagement/EditSize.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:53:27</publishTime>
     </File>
     <File Include="Views/MoreProductPropertyManagement/IndexColor.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8177,8 +8210,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Orders/ConnectingToMellat.cshtml">
       <publishTime>08/28/2022 10:00:59</publishTime>
     </File>
+    <File Include="Views/Orders/ConnectionToSaman.cshtml">
+      <publishTime>09/08/2022 15:31:24</publishTime>
+    </File>
     <File Include="Views/Orders/Index.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/07/2022 09:11:25</publishTime>
     </File>
     <File Include="Views/Orders/OrderFinished.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8202,10 +8238,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/23/2022 11:00:39</publishTime>
     </File>
     <File Include="Views/Product/Id.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/08/2022 12:30:58</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>08/31/2022 20:25:47</publishTime>
+      <publishTime>09/03/2022 16:58:29</publishTime>
     </File>
     <File Include="Views/Product/Search.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8217,10 +8253,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ProductManagment/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 14:58:57</publishTime>
     </File>
     <File Include="Views/ProductManagment/EditColorSize.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:32:33</publishTime>
     </File>
     <File Include="Views/ProductManagment/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8232,10 +8268,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ProductManagment/Property.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Views/ProductManagment/PropertyAdd.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Views/ProductManagment/Sliders.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8244,7 +8280,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ProductPropertyList/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:55:43</publishTime>
     </File>
     <File Include="Views/ProductPropertyList/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8253,7 +8289,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Register/Index.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/08/2022 14:28:09</publishTime>
     </File>
     <File Include="Views/Register/SubmitRegister.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8262,7 +8298,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ServiceManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 15:58:03</publishTime>
     </File>
     <File Include="Views/ServiceManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8271,10 +8307,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/SettingsManagement/Edit.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/06/2022 16:00:07</publishTime>
     </File>
     <File Include="Views/SettingsManagement/Index.cshtml">
-      <publishTime>09/05/2022 17:46:19</publishTime>
+      <publishTime>09/04/2022 13:09:44</publishTime>
     </File>
     <File Include="Views/Shared/Body/P_AdminLayout_Footer.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8313,7 +8349,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/23/2022 11:06:31</publishTime>
     </File>
     <File Include="Views/Shared/Body/P_LatestProducts.cshtml">
-      <publishTime>08/31/2022 12:50:17</publishTime>
+      <publishTime>09/03/2022 16:58:29</publishTime>
     </File>
     <File Include="Views/Shared/Body/P_MainLayout_Footer.cshtml">
       <publishTime>09/05/2022 17:46:19</publishTime>
@@ -8346,7 +8382,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Shared/Body/P_Products.cshtml">
-      <publishTime>09/06/2022 18:08:26</publishTime>
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Views/Shared/Body/P_Product_Price.cshtml">
       <publishTime>09/05/2022 17:46:19</publishTime>
@@ -8363,14 +8399,35 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Shared/Body/P_Social.cshtml">
       <publishTime>08/24/2022 21:18:33</publishTime>
     </File>
+    <File Include="Views/Shared/Footer/Admin/P_AdminLayout_Footer.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="Views/Shared/Footer/P_CopyRight_Footer.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
     <File Include="Views/Shared/Footer/P_Footer.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="Views/Shared/Footer/P_MainLayout_Footer.cshtml">
+      <publishTime>09/04/2022 13:01:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Footer/P_MainLayout_Script.cshtml">
+      <publishTime>09/03/2022 16:34:56</publishTime>
     </File>
     <File Include="Views/Shared/Footer/P_RayChat.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
+    <File Include="Views/Shared/Footer/P_Services.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
     <File Include="Views/Shared/Footer/P_Whatsapp.cshtml">
       <publishTime>08/28/2022 21:54:26</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/Admin/P_AdminLayout_Head.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/Admin/P_AdminLayout_Header.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/Shared/Head/P_Basket.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8378,8 +8435,26 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Shared/Head/P_Header.cshtml">
       <publishTime>08/27/2022 19:26:21</publishTime>
     </File>
+    <File Include="Views/Shared/Head/P_MainLayout_head.cshtml">
+      <publishTime>08/28/2022 20:57:22</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/P_MainLayout_header.cshtml">
+      <publishTime>08/28/2022 20:57:54</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/P_MainLayout_Header_MainMenu.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/P_MainLayout_Header_Mobile.cshtml">
+      <publishTime>08/28/2022 21:22:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Head/P_MainLayout_Mobile_Menu.cshtml">
+      <publishTime>08/28/2022 21:25:24</publishTime>
+    </File>
     <File Include="Views/Shared/Head/P_Search_Desktop.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
+    <File Include="Views/Shared/Order/P_AddressUpdate.cshtml">
+      <publishTime>09/03/2022 16:33:54</publishTime>
     </File>
     <File Include="Views/Shared/Product/P_Product_Selection.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8399,6 +8474,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Shared/P_AddressUpdate.cshtml">
       <publishTime>09/05/2022 17:46:19</publishTime>
     </File>
+    <File Include="Views/Shared/SingleProduct/P_DropdownSize.cshtml">
+      <publishTime>09/03/2022 16:45:36</publishTime>
+    </File>
+    <File Include="Views/Shared/SingleProduct/P_HelpSize.cshtml">
+      <publishTime>09/08/2022 10:00:02</publishTime>
+    </File>
     <File Include="Views/Shared/SingleProduct/P_ProductFooter.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
@@ -8408,14 +8489,38 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Shared/SingleProduct/P_ProductTabs.cshtml">
       <publishTime>08/28/2022 21:04:08</publishTime>
     </File>
+    <File Include="Views/Shared/SingleProduct/P_Product_Price.cshtml">
+      <publishTime>09/05/2022 11:17:18</publishTime>
+    </File>
+    <File Include="Views/Shared/SingleProduct/P_Ratings.cshtml">
+      <publishTime>08/18/2022 16:13:55</publishTime>
+    </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>08/04/2022 15:13:12</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/Add.cshtml">
+      <publishTime>09/08/2022 10:00:02</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/AddNewSizeGuideValues.cshtml">
+      <publishTime>09/05/2022 16:01:07</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/EditProductSizeGuide.cshtml">
+      <publishTime>09/08/2022 10:00:02</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/EditProductSizeGuideValue.cshtml">
+      <publishTime>09/06/2022 15:18:23</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/Index.cshtml">
+      <publishTime>09/08/2022 10:00:02</publishTime>
+    </File>
+    <File Include="Views/SizeGuideManagement/IndexProductSizeGuideValues.cshtml">
+      <publishTime>09/08/2022 10:00:02</publishTime>
     </File>
     <File Include="Views/SlidersManagement/Add.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/SlidersManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:01:44</publishTime>
     </File>
     <File Include="Views/SlidersManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8439,7 +8544,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/21/2022 12:08:24</publishTime>
     </File>
     <File Include="Views/TransferManagement/Edit.cshtml">
-      <publishTime>08/21/2022 12:28:48</publishTime>
+      <publishTime>09/06/2022 16:02:34</publishTime>
     </File>
     <File Include="Views/TransferManagement/Index.cshtml">
       <publishTime>08/21/2022 11:53:45</publishTime>
@@ -8451,7 +8556,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/UserManagement/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:08:36</publishTime>
     </File>
     <File Include="Views/UserManagement/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8468,14 +8573,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/VerficationPayment/Indexx.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
+    <File Include="Views/VerficationRefahPayment/Index.cshtml">
+      <publishTime>09/08/2022 15:57:00</publishTime>
+    </File>
     <File Include="Views/Verify/Index.cshtml">
-      <publishTime>08/27/2022 21:50:25</publishTime>
+      <publishTime>09/08/2022 11:01:23</publishTime>
     </File>
     <File Include="Views/ViewConfigurationAdmin/Add.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
     </File>
     <File Include="Views/ViewConfigurationAdmin/Edit.cshtml">
-      <publishTime>08/18/2022 16:13:55</publishTime>
+      <publishTime>09/06/2022 16:10:12</publishTime>
     </File>
     <File Include="Views/ViewConfigurationAdmin/Index.cshtml">
       <publishTime>08/18/2022 16:13:55</publishTime>
@@ -8495,8 +8603,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>08/04/2022 15:13:10</publishTime>
     </File>
+    <File Include="Web References/com/Reference.map">
+      <publishTime>09/08/2022 11:44:21</publishTime>
+    </File>
+    <File Include="Web References/Sep.InitPayment/Reference.map">
+      <publishTime>09/08/2022 14:05:52</publishTime>
+    </File>
+    <File Include="Web References/Sep.RefrencePayment/Reference.map">
+      <publishTime>09/08/2022 14:06:19</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>09/06/2022 18:24:00</publishTime>
+      <publishTime>09/08/2022 15:26:56</publishTime>
     </File>
   </ItemGroup>
 </Project>
