@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
-using System.Web.Mvc;
-using OrdersExtentions.Extensions;
+﻿using OrdersExtentions.Extensions;
 using OrdersMellatPayment;
 using OrdersMellatPayment.PaymentGetwayMellat;
 using OrdersOrders.Repository.Orders;
 using OrdersOrders.ViewModels.Orders;
-using OrdersSettings.Repository.Settings;
-using SepidyarHesabExtensions.Classes;
 using SepidyarHesabExtensions.Extentions;
-
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using RestSharp;
+using System.Net.Http;
 
 
 namespace WebApplicationHamtOrders.Controllers
@@ -31,6 +31,9 @@ namespace WebApplicationHamtOrders.Controllers
         public static readonly string TerminalId = ConfigurationManager.AppSettings["TerminalId"];
         public static readonly string UserName = ConfigurationManager.AppSettings["UserName"];
         public static readonly string UserPassword = ConfigurationManager.AppSettings["UserPassword"];
+        public static readonly string MID = ConfigurationManager.AppSettings["MID"];
+        public static readonly string UrlRedirection = ConfigurationManager.AppSettings["UrlRedirection"];
+
 
         public ActionResult Index()
         {
@@ -196,6 +199,15 @@ namespace WebApplicationHamtOrders.Controllers
                                                 Response.Write("<script>alert(" + a + ")</script>");
                                             }
                                             string configPayment = WebConfigurationManager.AppSettings["PaymentMethod"];
+
+                                            if (configPayment == "Saman")
+                                            {
+                                                var paryid = SplitResult[0];
+                                                var iduser = SplitResult[2];
+                                                var idOrders = SplitResult[3];
+                                                Response.Redirect(CallSaman(Amount, paryid, long.Parse(values.Phone), iduser, idOrders));
+                                            }
+
                                             if (configPayment == "Zarinpal")
                                             {
                                                 Response.Redirect(ZarinPalStart(values.Name, values.Family, values.Phone, SplitCode, Amount + long.Parse((transferpay).ToString())));
@@ -353,6 +365,55 @@ namespace WebApplicationHamtOrders.Controllers
         {
             return View();
         }
+        #endregion
+
+
+        #region Saman
+        public string CallSaman(long amount, string payid, long mobile, string userid, string orderid)
+        {
+            //3714954
+            var vm = new VMSamanPayment
+            {
+                Amount = amount,
+                MID = MID,
+                RedirectURL = UrlRedirection,
+                ResNum = payid,
+                CellNumber = mobile,
+                Action = "token",
+                UserId = userid,
+                OrderId = orderid,
+            };
+            LogWriter.Logger("Call Saman : "  + vm.Action,"","");
+            var result = SendViaToken(vm);
+            LogWriter.Logger("Token Saman : " + vm.Action, "", "");
+            vm.Action = result;
+            Session["SamanPayment"] = vm;
+            return "/Orders/ConnectionToSaman";
+        }
+
+        [HttpGet]
+        public ActionResult ConnectionToSaman()
+        {
+            if (Session["SamanPayment"] != null)
+            {
+               LogWriter.Logger("Session Saman : " , "", "");
+                var vm = Session["SamanPayment"] as VMSamanPayment;
+                return View(vm);
+            }
+            else
+            {
+                LogWriter.Logger("Session NULL : ", "", "");
+                return RedirectToAction("Index","Carts");
+            }
+        }
+        public string SendViaToken(VMSamanPayment txn)
+        {
+            var initPayment = new Sep.InitPayment.PaymentIFBinding();
+            string token = initPayment.RequestToken(txn.MID, txn.ResNum, long.Parse(txn.Amount.ToString()), 0, 0, 0, 0, 0, 0, txn.OrderId, txn.UserId, 0, txn.RedirectURL);
+            LogWriter.Logger("Token Req : " + token, "", "");
+            return token;
+        }
+
         #endregion
         public ActionResult OrderFinished()
         {
@@ -545,11 +606,11 @@ namespace WebApplicationHamtOrders.Controllers
                 }
             }
             Response.Redirect("/Carts");
-        }    
-        
-        
+        }
+
+
         [HttpPost]
-        public void UpdateCartsPost(string id,string entites)
+        public void UpdateCartsPost(string id, string entites)
         {
             var carts = new List<VMOrders.VmOrderSubmit>();
 

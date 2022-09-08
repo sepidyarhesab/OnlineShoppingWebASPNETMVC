@@ -1,0 +1,89 @@
+﻿@using OrdersOrders.ViewModels.Orders
+@using OrdersSettings.Repository.Settings
+@model OrdersOrders.ViewModels.Orders.VMSamanPayment
+@{
+    ViewBag.Title = "اتصال به بانک سامان|ConnectingToSaman";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+<div class="row mb-4">
+    <div class="col-xl-12 col-lg-10 col-md-10 mb-md-0 mb-3">
+        <div class="checkout-section shadow-around">
+            <div class="checkout-step">
+                <ul>
+                    <li>
+                        <a href="#"><span>سبد خرید</span></a>
+                    </li>
+                    <li>
+                        <span>اتمام خرید و ارسال</span>
+                    </li>
+                    <li class="active">
+                        <span>اتصال به درگاه بانکی</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="checkout-message">
+                <div class="checkout-message-success mb-3">
+                    <div class="icon-message failed-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    ارتباط با بانک ...<br />
+                    شما در حال انتقال به درگاه بانک سامان میباشید ...
+                </div>
+            </div>
+            <div class="block-empty__actions">
+                @{
+                    if (Model != null)
+                    {
+                        <script src="/Helper/Admin/jquery.min.js"></script>
+                        <form action="https://sep.shaparak.ir/payment.aspx" method="post" id="paymentform">
+                            <input type="hidden" value="@Model.Action" name="Token" />
+                            <input type="hidden" value="@Model.RedirectURL" name="RedirectURL" />
+                            <div class="px-3 py-4">
+                                <button type="submit" id="pay" class=" btn btn-danger">
+                                    پرداخت
+                                    مجدد<i class="fad fa-redo mr-3"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <script>
+                            $(document).ready(function () {
+                                setTimeout(function () {
+                                    $("#pay").trigger('click');
+                                },
+                                    3000);
+                            });</script>
+                    }
+                    if (Session["SamanPayment"] != null)
+                    {
+                        var vm = Session["SamanPayment"] as VMSamanPayment;
+                        if (vm != null)
+                        {
+                            <script src="/Helper/Admin/jquery.min.js"></script>
+                            <form action="https://sep.shaparak.ir/payment.aspx" method="post" id="paymentform">
+                                <input type="hidden" value="@vm.Action" name="Token" />
+                                <input type="hidden" value="@vm.RedirectURL" name="RedirectURL" />
+                                <div class="px-3 py-4">
+                                    <button type="submit" id="pay" class=" btn btn-danger">
+                                        پرداخت
+                                        مجدد<i class="fad fa-redo mr-3"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <script>
+                                $(document).ready(function () {
+                                    setTimeout(function () {
+                                        $("#pay").trigger('click');
+                                    },
+                                        3000);
+                                });</script>
+                        }
+
+
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

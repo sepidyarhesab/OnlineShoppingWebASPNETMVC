@@ -55,6 +55,7 @@
     <Compile Include="Repository\Orders\RepTransfer.cs" />
     <Compile Include="ViewModels\Orders\VMDiscount.cs" />
     <Compile Include="ViewModels\Orders\VMOrders.cs" />
+    <Compile Include="ViewModels\Orders\VMSamanPayment.cs" />
     <Compile Include="ViewModels\Orders\VMTransfer.cs" />
   </ItemGroup>
   <ItemGroup>

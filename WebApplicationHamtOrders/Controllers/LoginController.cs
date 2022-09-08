@@ -38,6 +38,7 @@ namespace WebApplicationHamtOrders.Controllers
                 {
                     if (result.Contains("Not Found"))
                     {
+                        Session["UserPhoneRegister"] = phone;
                         TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "لطفا ثبت نام کنید");
                         LogWriter.Logger(result, "", "");
                         return RedirectToAction("Index", "Register");
