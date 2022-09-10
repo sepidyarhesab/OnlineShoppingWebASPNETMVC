@@ -351,7 +351,8 @@
         if (x == "00000000-0000-0000-0000-000000000000") {
             document.getElementById("SizeDropDown").disabled = true;
             document.getElementById("color").focus();
-        } else {
+        }
+        else {
             $.ajax({
                 url: "/Product/DropDownSize",
                 type: "Post",
@@ -418,4 +419,4 @@
     };
 </script>
 
-@*@Html.Partial("SingleProduct/P_HelpSize")*@
+@Html.Partial("SingleProduct/P_HelpSize")

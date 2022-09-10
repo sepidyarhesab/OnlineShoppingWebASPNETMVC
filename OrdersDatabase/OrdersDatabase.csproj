@@ -193,6 +193,12 @@
     <Compile Include="Models\Table_User.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table_Version.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Version_Type.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Table_View_Configuration.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>

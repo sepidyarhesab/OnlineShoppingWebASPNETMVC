@@ -54,6 +54,7 @@ namespace WebApplicationHamtOrders.Controllers
             {
                 TempData["JavaScriptFunction"] =
                     IziToast.Error("خطایی رخ داده است", "خطا در ایجاد سطر به دلیل : " + result);
+                Response.Redirect("/SizeGuideManagement/Index");
             }
             else
             {
@@ -117,10 +118,12 @@ namespace WebApplicationHamtOrders.Controllers
                 if (result.Contains("Error"))
                 {
                     TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                    Response.Redirect("/SizeGuideManagement/Index");
                 }
                 else
                 {
                     TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                    Response.Redirect("/SizeGuideManagement/Index");
                 }
             }
             Response.Redirect("Index");
@@ -277,6 +280,7 @@ namespace WebApplicationHamtOrders.Controllers
             {
                 TempData["JavaScriptFunction"] =
                     IziToast.Error("خطایی رخ داده است", "خطا در ایجاد سطر به دلیل : " + result);
+                Response.Redirect("/SizeGuideManagement/IndexProductSizeGuideValues/" + Session["SizeGuideId"]);
             }
             else
             {
