@@ -38,6 +38,7 @@
                                 }
                             </ul>
                         </div>
+                       
                         <div class="top-header-menu">
                             @{
                                 if (User.Identity.IsAuthenticated)
@@ -88,7 +89,7 @@
                 @RenderBody()
 
             </div>
-            @Html.Partial("body/P_Social")
+            @Html.Partial("Body/P_Social")
         </main>
         <!-- Page Loader -->
         <div class="page-loader">

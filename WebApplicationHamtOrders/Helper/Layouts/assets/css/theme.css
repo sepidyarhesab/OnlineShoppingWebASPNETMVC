@@ -374,12 +374,13 @@ hr {
             max-width: 100%;
             -webkit-transition: .2s ease-in-out;
             transition: .2s ease-in-out;
+            border-radius: 10px;
         }
 
     .product-card .product-card-top .product-card-actions {
         position: absolute;
         top: 10px;
-        left: 15px;
+        left: 13px;
         width: 40px;
         border-radius: 2px;
         z-index: 1;
@@ -3946,7 +3947,7 @@ header.page-header {
 }
 
     .product-carousel.amazing-section {
-        border-radius: 0;
+        border-radius: 15px;
     }
 
         .product-carousel.amazing-section .swiper-container .swiper-slide {
@@ -6048,3 +6049,56 @@ footer.mini-footer {
     border-radius: 2px;
     color: white;
 }
+
+.product-card .product-card-top .product-cards-actions {
+    position: absolute;
+    top: 50px;
+    left: 13px;
+    width: 40px;
+    border-radius: 0px;
+    z-index: 1;
+}
+
+    .product-card .product-card-top .product-cards-actions button {
+        height: 30px;
+        width: 40px;
+        line-height: 45px;
+        background: #fff;
+        -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border: 0;
+        border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        margin-bottom: 7px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        background-color: #0040ff !important;
+    }
+
+        .product-card .product-card-top .product-cards-actions button.added {
+            visibility: visible;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .product-card .product-card-top .product-cards-actions button.add-to-wishlist.added {
+            color: #0040ff;
+            opacity: 1;
+        }
+
+        .product-card .product-card-top .product-cards-actions button.add-to-compare.added {
+            color: #0040ff;
+            opacity: 1;
+        }
+
+        .product-card .product-card-top .product-cards-actions button > i {
+            font-size: 15px;
+        }
+
+        .product-card .product-card-top .product-cards-actions button:focus {
+            outline: none;
+        }

@@ -1,0 +1,36 @@
+﻿@using OrdersInventory.Repository.Inventory
+
+@{
+    ViewBag.Title = "SelectCategoreis";
+    Layout = "~/Views/Layouts/_MainLayouts.cshtml";
+}
+
+
+
+<div class="row mb-5" style="border: 1px solid #ededed;
+                             border-radius: 8px;">
+    <div class="col-12">
+        <div class="section-title mb-2 mt-2 text-center">
+            دسته بندی
+        </div>
+    </div>
+    @{
+        var repp = new RepProducts();
+
+        var result = repp.RepositoryMainCategoreisDefault();
+        if (result.Count > 0)
+        {
+            foreach (var catecoreis in result)
+            {
+                <div class="col-md-6 mb-lg-0 mb-3">
+                    <div class="banner">
+                        <a href="@catecoreis.Url">
+                            <img src="@catecoreis.FileName" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+</div>

@@ -39,7 +39,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -191,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\ClosedXML.dll" />
-    <Content Include="bin\ClosedXML.pdb" />
     <Content Include="bin\DocumentFormat.OpenXml.dll" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\ExcelNumberFormat.dll" />
@@ -2012,6 +2011,7 @@
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\svg\solid\bxs-zoom-out.svg" />
     <Content Include="Helper\Layouts\assets\css\whatsapp.css" />
     <Content Include="Helper\Layouts\assets\img\amazing-1.png" />
+    <Content Include="Helper\Layouts\assets\img\icon-toman.svg" />
     <Content Include="Helper\Layouts\assets\img\Images-Szie.jpg" />
     <Content Include="Helper\Layouts\assets\img\instabanner.png" />
     <Content Include="Helper\Layouts\assets\img\telegram.png" />
@@ -2369,6 +2369,8 @@
     <Content Include="Static\Content\Images\Banner\Desktop\Banner_SP-637944295952418615.jpg" />
     <Content Include="Static\Content\Images\Banner\Mobile\Banner_SP-637944295952418615.jpg" />
     <Content Include="Static\Content\Images\BlogImages\Blog_sp-999.jpg" />
+    <Content Include="Static\Content\Images\Categories\2233.jpg" />
+    <Content Include="Static\Content\Images\Categories\333.jpg" />
     <Content Include="Static\Content\Images\Categories\Category_SP-637939998023241077.png" />
     <Content Include="Static\Content\Images\Categories\Category_SP-637939998132998106.png" />
     <Content Include="Static\Content\Images\Categories\Category_SP-637939998216688376.png" />
@@ -2527,6 +2529,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Views\VerficationRefahPayment\Index.cshtml" />
+    <Content Include="Views\Categories\SelectCategoreis.cshtml" />
     <None Include="Web References\Sep.InitPayment\initpayment.disco" />
     <Content Include="Web References\Sep.RefrencePayment\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

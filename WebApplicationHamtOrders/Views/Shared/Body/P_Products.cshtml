@@ -35,9 +35,12 @@
                                                                     </a>
                                                                     <div class="product-card-actions">
                                                                         <div class="btn btn-danger">
-                                                                            @item.Discount%
+                                                                            @item.Discount
+                                                                            <small>
+                                                                                %
+                                                                            </small>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>       
                                                                 </div>
                                                                 @{
                                                                     var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
@@ -51,9 +54,14 @@
                                                                             </h6>
                                                                             <div class="product-price product-price-clone">
                                                                                 <del>
-                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                                 </del>
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
+                                                                                </span>
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-card-bottom">
@@ -62,12 +70,17 @@
                                                                             </div>
                                                                             <div class="product-price">
                                                                                 <del>
-                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                                 </del>
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
+                                                                                </span>
+
                                                                             </div>
                                                                             <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                                <i class='bx bx-cart-alt' ></i>
+                                                                                <i class='bx bx-cart-alt'></i>
                                                                                 مشاهده کالا
                                                                             </a>
                                                                         </div>
@@ -81,7 +94,10 @@
                                                                                 </a>
                                                                             </h6>
                                                                             <div class="product-price product-price-clone">
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                                </span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-card-bottom">
@@ -89,10 +105,13 @@
                                                                                 موجودی  :  <span class="@item.QuantityClass">  @item.QuantityTitle</span>
                                                                             </div>
                                                                             <div class="product-price">
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                                </span>
                                                                             </div>
                                                                             <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                               <i class='bx bx-cart-alt' ></i>
+                                                                                <i class='bx bx-cart-alt'></i>
                                                                                 مشاهده کالا
                                                                             </a>
                                                                         </div>
@@ -122,7 +141,10 @@
                                                                     </a>
                                                                     <div class="product-card-actions">
                                                                         <div class="btn btn-danger">
-                                                                            @item.Discount%
+                                                                            @item.Discount
+                                                                            <small>
+                                                                                %
+                                                                            </small>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -138,9 +160,14 @@
                                                                             </h6>
                                                                             <div class="product-price product-price-clone">
                                                                                 <del>
-                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                                 </del>
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
+                                                                                </span>
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-card-bottom">
@@ -149,12 +176,17 @@
                                                                             </div>
                                                                             <div class="product-price">
                                                                                 <del>
-                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                                    @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                                 </del>
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
+                                                                                </span>
+
                                                                             </div>
                                                                             <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                               <i class='bx bx-cart-alt' ></i>
+                                                                                <i class='bx bx-cart-alt'></i>
                                                                                 مشاهده کالا
                                                                             </a>
                                                                         </div>
@@ -162,18 +194,16 @@
                                                                     else
                                                                     {
                                                                         <div class="product-card-middle">
-                                                                            <div class="ratings-container">
-                                                                                <div class="ratings">
-                                                                                    <div class="ratings-val" style="width: 65%;"></div>
-                                                                                </div>
-                                                                            </div>
                                                                             <h6 class="product-name">
                                                                                 <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })">
                                                                                     @item.PrimaryTitle
                                                                                 </a>
                                                                             </h6>
                                                                             <div class="product-price product-price-clone">
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                                </span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-card-bottom">
@@ -181,10 +211,13 @@
                                                                                 موجودی  :  <span class="@item.QuantityClass">  @item.QuantityTitle</span>
                                                                             </div>
                                                                             <div class="product-price">
-                                                                                @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                                <span>
+                                                                                    @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                                    <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                                </span>
                                                                             </div>
                                                                             <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                               <i class='bx bx-cart-alt' ></i>
+                                                                                <i class='bx bx-cart-alt'></i>
                                                                                 مشاهده کالا
                                                                             </a>
                                                                         </div>
@@ -272,12 +305,16 @@
                                                             <div class="product-card-bottom">
                                                                 <div class="product-price">
                                                                     <del>
-                                                                        @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                        @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                     </del>
-                                                                    @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                    <span>
+                                                                        @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                    </span>
                                                                 </div>
                                                                 <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                   <i class='bx bx-cart-alt' ></i>
+                                                                    <i class='bx bx-cart-alt'></i>
                                                                     مشاهده کالا
                                                                 </a>
                                                             </div>
@@ -286,10 +323,13 @@
                                                         {
                                                             <div class="product-card-bottom">
                                                                 <div class="product-price">
-                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                    <span>
+                                                                        @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                    </span>
                                                                 </div>
                                                                 <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                   <i class='bx bx-cart-alt' ></i>
+                                                                    <i class='bx bx-cart-alt'></i>
                                                                     مشاهده کالا
                                                                 </a>
                                                             </div>
@@ -349,12 +389,16 @@
                                                             <div class="product-card-bottom">
                                                                 <div class="product-price">
                                                                     <del>
-                                                                        @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                        @string.Format("{0:##,###}", item.Fee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23" />
                                                                     </del>
-                                                                    @string.Format("{0:##,###}", ProductFee, "Fee") تومان
+                                                                    <span>
+                                                                        @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                    </span>
                                                                 </div>
                                                                 <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                   <i class='bx bx-cart-alt' ></i>
+                                                                    <i class='bx bx-cart-alt'></i>
                                                                     مشاهده کالا
                                                                 </a>
                                                             </div>
@@ -363,10 +407,13 @@
                                                         {
                                                             <div class="product-card-bottom">
                                                                 <div class="product-price">
-                                                                    @string.Format("{0:##,###}", item.Fee, "Fee") تومان
+                                                                    <span>
+                                                                        @string.Format("{0:##,###}", ProductFee, "Fee")
+                                                                        <img src="~/Helper/Layouts/assets/img/icon-toman.svg" width="23"/>
+                                                                    </span>
                                                                 </div>
                                                                 <a href="@Url.RouteUrl("Product", new { id = item.Id.ToString() })" class="btn-add-to-cart">
-                                                                   <i class='bx bx-cart-alt' ></i>
+                                                                    <i class='bx bx-cart-alt'></i>
                                                                     مشاهده کالا
                                                                 </a>
                                                             </div>

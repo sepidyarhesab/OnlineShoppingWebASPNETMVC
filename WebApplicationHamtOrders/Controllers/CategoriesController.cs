@@ -165,5 +165,10 @@ namespace WebApplicationHamtOrders.Controllers
 
             return RedirectToAction("Index", "Default");
         }
+
+        public ActionResult SelectCategoreis()
+        {
+            return View();
+        }
     }
 }
