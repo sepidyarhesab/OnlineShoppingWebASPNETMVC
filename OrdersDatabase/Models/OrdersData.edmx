@@ -913,6 +913,40 @@
           <Property Name="ModifierDate" Type="datetime" Nullable="false" />
           <Property Name="Version" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Table_Version">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Type" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Major" Type="int" Nullable="false" />
+          <Property Name="Minor" Type="int" Nullable="false" />
+          <Property Name="Build" Type="int" Nullable="false" />
+          <Property Name="Revision" Type="int" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Version_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimaryTitle" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="SecondaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TertiaryTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsOk" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatorRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatorDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifierRef" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifierDate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Table_View_Configuration">
           <Key>
             <PropertyRef Name="Id" />
@@ -1032,6 +1066,8 @@
           <EntitySet Name="Table_Meta_Configuration" EntityType="Self.Table_Meta_Configuration" Schema="Settings" store:Type="Tables" />
           <EntitySet Name="Table_Settings" EntityType="Self.Table_Settings" Schema="Settings" store:Type="Tables" />
           <EntitySet Name="Table_SMS_Log" EntityType="Self.Table_SMS_Log" Schema="Settings" store:Type="Tables" />
+          <EntitySet Name="Table_Version" EntityType="Self.Table_Version" Schema="Settings" store:Type="Tables" />
+          <EntitySet Name="Table_Version_Type" EntityType="Self.Table_Version_Type" Schema="Settings" store:Type="Tables" />
           <EntitySet Name="Table_View_Configuration" EntityType="Self.Table_View_Configuration" Schema="Settings" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1980,6 +2016,8 @@
           <EntitySet Name="Table_Product_SizeGuide" EntityType="Orders_Model.Table_Product_SizeGuide" />
           <EntitySet Name="Table_Product_SizeGuideValues" EntityType="Orders_Model.Table_Product_SizeGuideValues" />
           <EntitySet Name="Table_Discount_Entities" EntityType="Orders_Model.Table_Discount_Entities" />
+          <EntitySet Name="Table_Version" EntityType="Orders_Model.Table_Version" />
+          <EntitySet Name="Table_Version_Type" EntityType="Orders_Model.Table_Version_Type" />
         </EntityContainer>
         <EntityType Name="Table_Order">
           <Key>
@@ -2066,6 +2104,40 @@
           <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifierRef" Type="Guid" Nullable="false" />
           <Property Name="ModifireDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_Version">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Guid" Nullable="false" />
+          <Property Name="Major" Type="Int32" Nullable="false" />
+          <Property Name="Minor" Type="Int32" Nullable="false" />
+          <Property Name="Build" Type="Int32" Nullable="false" />
+          <Property Name="Revision" Type="Int32" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Version_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryTitle" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TertiaryTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsOk" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorRef" Type="Guid" Nullable="false" />
+          <Property Name="CreatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifierRef" Type="Guid" Nullable="false" />
+          <Property Name="ModifierDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3043,6 +3115,42 @@
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
+                <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Version">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Version">
+              <MappingFragment StoreEntitySet="Table_Version">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Minor" ColumnName="Minor" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Version_Type">
+            <EntityTypeMapping TypeName="Orders_Model.Table_Version_Type">
+              <MappingFragment StoreEntitySet="Table_Version_Type">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ModifierDate" ColumnName="ModifierDate" />
+                <ScalarProperty Name="ModifierRef" ColumnName="ModifierRef" />
+                <ScalarProperty Name="CreatorDate" ColumnName="CreatorDate" />
+                <ScalarProperty Name="CreatorRef" ColumnName="CreatorRef" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+                <ScalarProperty Name="TertiaryTitle" ColumnName="TertiaryTitle" />
                 <ScalarProperty Name="SecondaryTitle" ColumnName="SecondaryTitle" />
                 <ScalarProperty Name="PrimaryTitle" ColumnName="PrimaryTitle" />
                 <ScalarProperty Name="Code" ColumnName="Code" />

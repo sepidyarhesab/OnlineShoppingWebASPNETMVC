@@ -1803,9 +1803,16 @@ namespace OrdersInventory.Repository.Inventory
 
 
                         list.Add(vm);
+                        var vmm = new VMProduct.ViewModelProductSize()
+                        {
+                            Id = Guid.Empty,
+                            PrimaryTitle = "--- بدون سایز ---",
+                            Code = "1",
+
+                        };
+                        list.Add(vmm);
                     }
-
-
+                    
                     return list;
                 }
 
@@ -1956,7 +1963,6 @@ namespace OrdersInventory.Repository.Inventory
 
                 var query = db.Table_Product_Summary
                     .Where(c => c.ProductRef == id && c.ColorRef == colorRef && c.Quantity != 0 && c.IsOk).OrderBy(c => c.Sort).ToList();
-
                 if (query.Count > 0)
                 {
                     foreach (var item in query)
