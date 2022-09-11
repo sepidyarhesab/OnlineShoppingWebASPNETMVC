@@ -102,19 +102,19 @@
             <div class="control-sidebar-bg"></div>
         </div>
 
-
+    @if (TempData["JavaScriptFunction"] != null)
+    {
+        <script>
+                    @Html.Raw(TempData["JavaScriptFunction"])
+            </script>
+    }
         <script src="/Helper/Admin/Scripts/jquery.min.js"></script>
         <script src="/Helper/Admin/Scripts/ckeditor.js"></script>
         <script src="/Helper/Admin/Scripts/bootstrap.rtl.min.js"></script>
         <script src="/Helper/Admin/Scripts/panel.js"></script>
         <script src="/Helper/Admin/Scripts/iziToast.min.js"></script>
         <script src="/Helper/Admin/Sweetalert2/sweetalert2.min.js"></script>
-        @if (TempData["JavaScriptFunction"] != null)
-        {
-            <script>
-                    @Html.Raw(TempData["JavaScriptFunction"])
-            </script>
-        }
+      
 
     </body>
 </html>

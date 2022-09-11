@@ -424,7 +424,8 @@ namespace WebApplicationHamtOrders.Controllers
 
             }
         }
-
+        //End----------------------------------------------
+        //Add items(Product) to a Order
         public ActionResult Add()
         {
             return View();
@@ -445,5 +446,6 @@ namespace WebApplicationHamtOrders.Controllers
             }
             Response.Redirect("AllOrders");
         }
+        //End--------------------------------------------------
     }
 }
