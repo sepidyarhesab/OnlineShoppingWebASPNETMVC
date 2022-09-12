@@ -599,5 +599,246 @@ namespace OrdersGeneral.Repository.General
                 return "Users";
             }
         }
+
+        public static string AddNewAddress(VMUser.VMUsers values, Guid userId, Guid Id)
+        {
+            try
+            {
+                var locaref = 0;
+                if (values.CityReff != 0)
+                {
+                    locaref = values.CityReff;
+                }
+                else
+                {
+                    locaref = values.CityRef;
+                }
+                var db = new Orders_Entities();
+                var random = new Random();
+                var userRef = userId;
+                var id = Guid.NewGuid();
+                var code = "SP-" + random.Next(20000, 29999);
+                var query = db.Table_Address.Add(new Table_Address()
+                {
+                    Id = id,
+                    Code = code,
+                    Address = values.Address,
+                    IsMain = values.IsMain,
+                    CityRef = locaref,
+                    Type = values.Type,
+                    PostalCode = values.PostalCode,
+                    UserRef = Id,
+                    IsOk = true,
+                    CreatorDate = DateTime.Now,
+                    CreatorRef = userRef,
+                    ModifireDate = DateTime.Now,
+                    ModifierRef = userRef,
+                    IsDelete = false,
+                    Version = 1,
+                });
+                db.Table_Address.Add(query);
+                db.SaveChanges();
+
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Application Error : " + e.Message;
+            }
+
+        }
+        //End-------------------------------------
+        //Repository show Address Admin
+        public static List<VMUser.VMUsers> RepListDashboardAddressAdmin(Guid id)
+        {
+            var list = new List<VMUser.VMUsers>();
+            try
+            {
+                var db = new Orders_Entities();
+                var queryaddress = db.Table_Address.Where(c => c.UserRef == id).AsNoTracking().ToList();
+                if (queryaddress.Count > 0)
+                {
+                    foreach (var item in queryaddress)
+                    {
+                        var vm = new VMUser.VMUsers()
+                        {
+                            Id = item.Id,
+                            Code = item.Code,
+                            Address = item.Address,
+                            PostalCode = item.PostalCode,
+                            Type = item.Type,
+                            UserRef = id,
+                            IsOk = item.IsOk,
+                            IsMain = item.IsMain,
+                        };
+                        if (item.Type == 1)
+                        {
+                            vm.Typee = "منزل";
+                        }
+
+                        if (item.Type == 2)
+                        {
+                            vm.Typee = "محل کار";
+                        }
+
+                        if (item.Type == 3)
+                        {
+                            vm.Typee = "محل کار";
+                        }
+
+                        var querycity = db.Table_Location.FirstOrDefault(c => c.LocationId == item.CityRef);
+                        if (querycity != null)
+                        {
+                            vm.CityTitle = querycity.Title;
+                        }
+
+                        if (item.IsMain)
+                        {
+                            vm.IsPayTitle = "اصلی";
+                            vm.IsPayClass = "product-card__badge--yes";
+                        }
+                        else
+                        {
+                            vm.IsPayTitle = "فرعی";
+                            vm.IsPayClass = "product-card__badge--no";
+                        }
+
+                        list.Add(vm);
+                    }
+
+                    return list;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
+
+            return list;
+
+        }
+        //End--------------------------------------
+        //Repository ChangeIsMainUserAddress
+        public static string ChangeIsMainUserAddressStatus(Guid Id)
+        {
+            var db = new Orders_Entities();
+            var Result = db.Table_Address.FirstOrDefault(c => c.Id == Id);
+            if (Result != null)
+            {
+
+                switch (Result.IsMain)
+                {
+                    case true:
+                    {
+                        Result.IsMain = false;
+                        break;
+                    }
+                    case false:
+                    {
+                        Result.IsMain= true;
+                        break;
+                    }
+                }
+
+
+            }
+
+            db.SaveChanges();
+
+            return "Sucsess";
+
+        }
+        //End-----------------------------------
+        //Repository Change Statuse User Address by Admin
+        public static string RepChangeStatusAddress(Guid Id)
+        {
+            var db = new Orders_Entities();
+            var Result = db.Table_Address.FirstOrDefault(c => c.Id == Id);
+            if (Result != null)
+            {
+
+                switch (Result.IsOk)
+                {
+                    case true:
+                    {
+                        Result.IsOk = false;
+                        break;
+                    }
+                    case false:
+                    {
+                        Result.IsOk = true;
+                        break;
+                    }
+                }
+
+
+            }
+
+            db.SaveChanges();
+
+            return "Sucsess";
+
+        }
+        //End-------------------------------
+        //Repository Edit Address by Admin
+        public static VMUser.VMUsers Edit(Guid Id)
+        {
+            
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Address.FirstOrDefault(c => c.Id == Id);
+                if (query != null)
+                {
+                    var vm = new VMUser.VMUsers
+                    {
+                        Id = query.Id,
+                        Code = query.Code,
+                        Address = query.Address,
+                        PostalCode = query.PostalCode,
+                        Type = query.Type,
+                        IsMain = query.IsMain,
+                        CityRef = query.CityRef,
+                    };
+                    return vm;
+                }
+
+                
+            }
+            catch (Exception e)
+            {
+                return new VMUser.VMUsers();
+            }
+            return new VMUser.VMUsers();
+        }
+        public static string RepositoryUpdateAdderss(Guid id, string address, string postalcode, int type, int cityref,
+            bool IsMain, Guid UserId)
+        {
+            var db = new Orders_Entities();
+            try
+            {
+                var query = db.Table_Address.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    query.Address = address;
+                    query.PostalCode = postalcode;
+                    query.Type = type;
+                    query.CityRef = cityref;
+                    query.IsMain = IsMain;
+                    query.ModifierRef = UserId;
+                    query.ModifireDate = DateTime.Now;
+
+                    db.SaveChanges();
+                }
+
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Success";
+            }
+        }
+
     }
 }

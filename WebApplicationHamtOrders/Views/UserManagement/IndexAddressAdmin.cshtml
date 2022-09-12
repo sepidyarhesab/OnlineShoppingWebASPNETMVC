@@ -1,12 +1,10 @@
 ﻿@using OrdersGeneral.Repository.General
 @using OrdersInventory.Repository.Inventory
 @model IEnumerable<OrdersGeneral.ViewModels.General.VMUser.VMUsers>
-
 @{
-    ViewBag.Title = "مدیریت کاربران|ManagementUsers";
+    ViewBag.Title = "IndexAddressAdmin";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
 }
-
 
 <section class="content-header">
     <h1>
@@ -20,7 +18,7 @@
 
             <div class="box box-info">
                 <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
-                    <h3 class="box-title"> مدیریت کاربران</h3>
+                    <h3 class="box-title"> مدیریت آدرس ها</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -30,7 +28,7 @@
                         <div class="search">
 
                             <form class="search__form" action="/UserManagement/Index" method="post">
-                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی کاربر کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی آدرس کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
                                 <button class="search__button" type="submit">
                                     <svg width="20px" height="20px">
                                         <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
@@ -56,8 +54,8 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="container-fluid">
-                        <a href="/UserManagement/Add" class="btn btn-success" style="width: 80%"> افزودن کاربر جدید &nbsp;<i class="fa fa-plus"></i></a>
-                        <a class="btn btn-danger " href="/AdminDashboard" style="width: 19%">برگشت</a>
+                        <a href="/UserManagement/AddressAddAdmin/@Session["UserID"]" class="btn btn-success" style="width: 80%"> افزودن آدرس جدید &nbsp;<i class="fa fa-plus"></i></a>
+                        <a class="btn btn-danger " href="/UserManagement/Index" style="width: 19%">برگشت</a>
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
@@ -68,31 +66,20 @@
                                             ردیف
                                         </th>
                                         <th class="text-center">
-                                            کد
+                                            نوع آدرس
                                         </th>
                                         <th class="text-center">
-                                            نام و نام خانوادگی
-                                        </th>
-                                        <th class="text-center">
-                                            شماره تماس
-                                        </th>
-                                        <th class="text-center">
-                                            کد ملی
-                                        </th>
-                                        <th class="text-center">
-                                            نقش
+                                            شهرستان
                                         </th>
                                         <th class="text-center">
                                             آدرس
                                         </th>
                                         <th class="text-center">
-                                            ثبت سفارش
+                                            کد پستی
                                         </th>
+
                                         <th class="text-center">
-                                            لیست سیاه
-                                        </th>
-                                        <th class="text-center">
-                                            دسترسی
+                                            اصلی
                                         </th>
                                         <th class="text-center">
                                             وضعیت
@@ -117,68 +104,62 @@
                                             var row = 1;
                                             foreach (var mangment in Model)
                                             {
-                                                                        <tr>
+                                                <tr>
+                                                    <!--row-->
+                                                    <td class="col-md-1 text-center">
+                                                        @row
+                                                    </td>
+                                                    <!--AddressType-->
+                                                    <td class="col-md-1 text-center copy">
+                                                        @mangment.Typee
+                                                    </td>
+                                                    @{
+                                                        var fullName = @mangment.Name + " " + @mangment.Family;
+                                                    }
+                                                    <!--city-->
+                                                    <td class="col-md-3 text-center copy" style="font-size: 12px;">
+                                                        @mangment.CityTitle
+                                                    </td>
+                                                    <!--Address-->
+                                                    <td class="col-md-3 text-center copy" style="font-size: 12px;">
+                                                        @mangment.Address
+                                                    </td>
+                                                    <!--PostalCode-->
+                                                    <td class="col-md-3 text-center copy" style="font-size: 12px;">
+                                                        @mangment.PostalCode
+                                                    </td>
+                                                    <!--IsMain-->
+                                                    <td class="col-md-3 text-center" style="font-size: 12px;">
+                                                        @if (mangment.IsMain)
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatusIsMain/@mangment.Id" class="btn btn-success">اصلی </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatusIsMain/@mangment.Id" class="btn btn-danger"> فرعی</a>
+                                                        }
+                                                    </td>
+                                                    <!--Status-->
+                                                    <td class="col-md-1 text-center">
+                                                        @if ((bool)mangment.IsOk)
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatusAddress/@mangment.Id" class="btn btn-success">فعال</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/UserManagement/ChangeStatusAddress/@mangment.Id" class="btn btn-danger">غیرفعال</a>
+                                                        }
+                                                    </td>
+                                                    <!--Edit-->
+                                                    <td class="text-center">
+                                                        <a class="btn btn-info glyphicon glyphicon-edit" href="/UserManagement/EditAddressAdmin/@mangment.Id"></a>
+                                                    </td>
+                                                    <!--Delete-->
+                                                    <td class="text-center">
+                                                        <a class="btn btn-danger " href="/UserManagement/DeleteAddressAdmin/@mangment.Id">×</a>
+                                                    </td>
 
-                                                                            <td class="col-md-1 text-center">
-                                                                                @row
-                                                                            </td>
-                                                                            <td class="col-md-1 text-center copy">
-                                                                                @mangment.Code
-                                                                            </td>
-                                                                            @{
-                                                                                var fullName = @mangment.Name + " " + @mangment.Family;
-                                                                            }
-                                                                            <td class="col-md-3 text-center copy" style="font-size: 12px;">
-                                                                                @fullName
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center copy" style="font-size: 12px;">
-                                                                                @mangment.Phone
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center copy" style="font-size: 12px;">
-                                                                                @mangment.IdentificationCode
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center" style="font-size: 12px;">
-                                                                                @mangment.RoleTitle
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center" style="font-size: 12px;">
-                                                                                <a href="/UserManagement/IndexAddressAdmin/@mangment.Id" class="btn btn-primary">نمایش آدرس </a>
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center" style="font-size: 12px;">
-                                                                                <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">سفارش جدید</a>
-                                                                            </td>
-                                                                            <td class="col-md-3 text-center" style="font-size: 12px;">
-                                                                                @if (mangment.IsInBlacklist)
-                                                                                {
-                                                                                    <a href="/UserManagement/ChangeBlackList/@mangment.Id" class="btn btn-danger">خروج از لیست </a>
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    <a href="/UserManagement/ChangeBlackList/@mangment.Id" class="btn btn-danger">  ورود به لیست</a>
-                                                                                }
-                                                                            </td>
-
-                                                                            <td class="text-center">
-                                                                                <a class="btn btn-warning" href="/MenuManagement/ListAccess/@mangment.Id">دسترسی</a>
-                                                                            </td>
-
-                                                                            <td class="col-md-1 text-center">
-                                                                                @if ((bool)mangment.IsOk)
-                                                                                {
-                                                                                    <a href="/UserManagement/ChangeStatus/@mangment.Id" class="btn btn-success">فعال</a>
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    <a href="/UserManagement/ChangeStatus/@mangment.Id" class="btn btn-danger">غیرفعال</a>
-                                                                                }
-                                                                            </td>
-                                                                            <td class="text-center">
-                                                                                <a class="btn btn-info glyphicon glyphicon-edit" href="/UserManagement/Edit/@mangment.Id"></a>
-                                                                            </td>
-                                                                            <td class="text-center">
-                                                                                <a class="btn btn-danger " href="/UserManagement/AddToDeleteUser/@mangment.Id">×</a>
-                                                                            </td>
-
-                                                                        </tr>
+                                                </tr>
 
                                                 row++;
 
@@ -186,20 +167,10 @@
 
                                         }
 
-
-
-
                                     }
-
-
 
                                 </tbody>
                             </table>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -344,3 +315,5 @@
         document.execCommand("copy");
     }
 </script>
+
+

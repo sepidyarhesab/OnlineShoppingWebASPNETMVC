@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using OrdersGeneral.Repository.General;
 using OrdersGeneral.ViewModels.General;
+using OrdersOrders.Repository.Orders;
+using OrdersOrders.ViewModels.Orders;
 using SepidyarHesabExtensions.Extentions;
 
 
@@ -70,7 +72,7 @@ namespace WebApplicationHamtOrders.Controllers
             }
 
         }
-       
+
         public void Delete(Guid Id)
         {
             var Result = RepUsers.DeleteUser(Id);
@@ -100,7 +102,7 @@ namespace WebApplicationHamtOrders.Controllers
                 Response.Redirect("/UserManagement");
             }
 
-           else if (result.Contains("true"))
+            else if (result.Contains("true"))
             {
                 TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "لطفا غیر فعال کنید");
                 Response.Redirect("/UserManagement");
@@ -167,7 +169,7 @@ namespace WebApplicationHamtOrders.Controllers
                         }
                         else
                         {
-                            
+
                         }
                     }
                     else
@@ -228,7 +230,156 @@ namespace WebApplicationHamtOrders.Controllers
 
 
         }
+        //End--------------------------------------
+        //Add new address for customers by Admin
+        public ActionResult AddressAddAdmin(Guid id)
+        {
+            Session["id"] = id;
+            return View();
+        }
 
-       
+        [HttpPost]
+        public void GenerateAddressAdmin(VMUser.VMUsers value)
+        {
+            var id = Session["id"].ToString();
+            Guid id1 = Guid.Parse(id);
+            var Userid = Guid.Parse(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                if (Userid != null)
+                {
+                    var result = RepUsers.AddNewAddress(value, Userid, id1);
+                    if (result.Contains("Success"))
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
+                        if (Session["UserLocationRef"] != null)
+                        {
+                            Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["id"]);
+                        }
+                        else
+                        {
+                            Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["id"]);
+                        }
+                    }
+                    else
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                        Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["id"]);
+                    }
+                }
+            }
+           
+        }
+        //End-----------------------------------------
+        //Index Address by Admin
+        public ActionResult IndexAddressAdmin(Guid id)
+        {
+            Session["UserID"] = id;
+            var query = RepUsers.RepListDashboardAddressAdmin(id);
+            return View(query);
+        }
+        //End--------------------------------------------
+        //Change IsMain For Address by Admin
+        public void ChangeStatusIsMain(Guid Id)
+        {
+            var Result = RepUsers.ChangeIsMainUserAddressStatus(Id);
+
+
+            if (Result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/UserManagement/IndexAddressAdmin/"+ Session["UserID"]);
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                Response.Redirect("/UserManagement/IndexAddressAdmin/"+ Session["UserID"]);
+            }
+
+        }
+        //End----------------------------------
+        //ChangeStatusAddress by Admin
+        public void ChangeStatusAddress(Guid Id)
+        {
+            var Result = RepUsers.RepChangeStatusAddress(Id);
+
+
+            if (Result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["UserID"]);
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["UserID"]);
+            }
+
+        }
+        //End----------------------------------
+        //Delete Address by Admin
+        public ActionResult DeleteAddressAdmin(Guid id)
+        {
+            var Userid = Guid.Parse(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                if (Userid != null)
+                {
+                    var result = RepAccountDashboard.DeleteAddress(id);
+                    if (result.Contains("success"))
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
+                        Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["UserID"]);
+                    }
+                    else
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                        Response.Redirect("/UserManagement/IndexAddressAdmin/" + Session["UserID"]);
+                    }
+                }
+            }
+            return View("Index");
+        }
+        //End---------------------------
+        //Open Edit Address and Update it
+        public ActionResult EditAddressAdmin(Guid id)
+        {
+            Session["UserID"] = id;
+            var query = RepUsers.Edit(id);
+            return View(query);
+        }
+
+        [HttpPost]
+        public ActionResult AddressUpdateAdmin(Guid Id, string Address, string PostalCode, int Type, int CityRef, bool IsMain)
+        {
+            var Userid = Guid.Parse(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                if (Userid != null)
+                {
+                    var result = RepUsers.RepositoryUpdateAdderss(Id, Address, PostalCode, Type, CityRef, IsMain, Userid);
+                    if (result.Contains("Success"))
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
+                        if (Session["UserLocationRef"] != null)
+                        {
+                            Response.Redirect("/UserManagement/IndexAddressAdmin/" + Userid);
+                        }
+                        else
+                        {
+                            Response.Redirect("/UserManagement/IndexAddressAdmin/" + Userid);
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                        Response.Redirect("/UserManagement/IndexAddressAdmin/" + Userid);
+                    }
+                }
+            }
+            return View("Index");
+        }
+
     }
 }
