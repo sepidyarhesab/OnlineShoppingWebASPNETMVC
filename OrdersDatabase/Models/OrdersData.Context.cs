@@ -75,6 +75,7 @@ namespace OrdersDatabase.Models
         public DbSet<Table_Discount_Entities> Table_Discount_Entities { get; set; }
         public DbSet<Table_Version> Table_Version { get; set; }
         public DbSet<Table_Version_Type> Table_Version_Type { get; set; }
+        public DbSet<Table_AppSettings> Table_AppSettings { get; set; }
     
         public virtual int SP_InsertOrder(Nullable<System.Guid> id, string code, string firstname, string lastname, string phone, string address, string productCode, string postalCode, Nullable<byte> status, string transactionCode, string deliveryCode, string note, string quantity, Nullable<bool> isPay, Nullable<decimal> discount, Nullable<decimal> tax, Nullable<decimal> duty, Nullable<decimal> addition, Nullable<decimal> price, Nullable<bool> isOk, Nullable<System.Guid> modifierRef, Nullable<System.DateTime> modifierDate, Nullable<System.Guid> creatorRef, Nullable<System.DateTime> creatorDate, Nullable<int> version)
         {

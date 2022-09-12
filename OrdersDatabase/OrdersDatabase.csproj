@@ -67,6 +67,9 @@
     <Compile Include="Models\Table_Address.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table_AppSettings.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Table_Banner.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>

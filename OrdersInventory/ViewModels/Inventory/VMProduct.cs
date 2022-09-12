@@ -33,7 +33,8 @@ namespace OrdersInventory.ViewModels.Inventory
             public Guid? CategoriesRef { get; set; }
             public string CategoreisTitle { get; set; }
             public string ColorCode { get; set; }
-            public Guid? ColorId { get; set; }
+            public Guid? ColorId { get; set; } 
+            public Guid? SizeId { get; set; }
     }
 
         public class FileUploadName

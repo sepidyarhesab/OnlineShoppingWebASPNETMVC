@@ -33,7 +33,7 @@
         footer
     var(--PrimaryColor)
 ------------------------------------*/
-@import url('/Helper/Layouts/assets/css/colors.css');
+@import url('/colors.css');
 
 
 @font-face {

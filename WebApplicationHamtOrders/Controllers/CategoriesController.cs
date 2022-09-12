@@ -25,7 +25,8 @@ namespace WebApplicationHamtOrders.Controllers
                 int pageSize = 16;
                 int pageNumber = (page ?? 1);
                 return View(results.ToPagedList(pageNumber, pageSize));
-            }else if (Session["CaregtoriesMinResearch"] != null)
+            }
+            else if (Session["CaregtoriesMinResearch"] != null)
             {
                 var results = result.OrderBy(c => c.Fee);
                 int pageSize = 16;
@@ -85,6 +86,42 @@ namespace WebApplicationHamtOrders.Controllers
             }
             return RedirectToAction("Index", "Default");
         }
+
+
+        //[HttpPost]
+        //public ActionResult SubCategory(Guid id, int? page, Guid color)
+        //{
+        //    if (color != null)
+        //    {
+        //        Session["Color"] = color;
+        //        var result = rep.RepositoryMainProductsBySubCategoreis(id).ToList();
+        //        if (result.)
+        //        {
+                    
+        //        }
+        //        Session["CategoriesCount"] = result.Count();
+        //        int pageSize = 16;
+        //        int pageNumber = (page ?? 1);
+        //        IOrderedEnumerable<VMProduct.VmMainProduct> order = result.OrderByDescending(c => c.Fee);
+        //        Session["CaregtoriesMaxResearch"] = order;
+        //        return View(order.ToPagedList(pageNumber, pageSize));
+
+        //    }
+        //    else
+        //    {
+
+        //        var result = rep.RepositoryMainProductsBySubCategoreis(id).ToList();
+        //        if (result.Count > 0)
+        //        {
+        //            int pageSize = 16;
+        //            int pageNumber = (page ?? 1);
+        //            return View(result.ToPagedList(pageNumber, pageSize));
+        //        }
+        //        return RedirectToAction("Index", "Default");
+
+        //    }
+        //    return RedirectToAction("Index", "Default");
+        //}
 
 
         public ActionResult MainCategory(Guid id, int PageId = 1)

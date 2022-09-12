@@ -5939,6 +5939,9 @@ namespace OrdersInventory.Repository.Inventory
                             c.ProductRef == product.Id && c.IsMain && c.IsOk && !c.IsDelete);
                         if (querySummary != null)
                         {
+                            vm.ColorId = querySummary.ColorRef;
+                            vm.SizeId = querySummary.SizeRef;
+
                             if (querySummary.Quantity > 0)
                             {
                                 vm.QuantityTitle = "موجود";
@@ -5954,6 +5957,8 @@ namespace OrdersInventory.Repository.Inventory
                         }
                         else
                         {
+                            vm.ColorId = querySummary.ColorRef;
+                            vm.SizeId = querySummary.SizeRef;
                             if (product.Quantity > 0)
                             {
                                 vm.QuantityTitle = "موجود";
