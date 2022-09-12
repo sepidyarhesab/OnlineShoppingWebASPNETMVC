@@ -19,79 +19,70 @@
                             <i class="fa fa-envelope"></i>
                             <h3 class="box-title">افزودن سفارش جدید</h3>
                         </div>
+                        <!--main box-->
                         <div class="box-body">
                             <div class="form-horizontal">
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-1" for="Firstname">نام</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line"  id="Name" name="Name" placeholder="نام" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                <!--Get Customer Information-->
+                                <div class="box-footer clearfix">
+                                    <div class="form-group">
+                                        <label class="control-label" for="User">اطلاعات کاربر:</label>
                                     </div>
-                                    <label class="control-label col-md-1" for="Lastname">نام خانوادگی</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="Family" name="Family" placeholder="نام خانوادگی" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <label class="control-label col-md-1" for="Phone">تلفن</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label class="control-label col-md-1" for="ProductCode">کد محصول</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="ProductCode" name="ProductCode" placeholder="کد محصول" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <label class="control-label col-md-1" for="Price">قیمت</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="Price" name="Price" placeholder="کد محصول" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <label class="control-label col-md-1" for="Quantity">تعداد</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="کد محصول" type="text" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-1" for="Firstname">نام</label>
+                                        <div class="col-md-3">
+                                            <input class="form-control text-box single-line" id="Name" name="Name" placeholder="نام" type="text" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <label class="control-label col-md-1" for="Lastname">نام خانوادگی</label>
+                                        <div class="col-md-3">
+                                            <input class="form-control text-box single-line" id="Family" name="Family" placeholder="نام خانوادگی" type="text" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <label class="control-label col-md-1" for="Phone">تلفن</label>
+                                        <div class="col-md-3">
+                                            <input class="form-control text-box single-line" id="Phone" name="Phone" placeholder="تلفن" type="text" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-1" for="IsPay">پرداخت شده؟</label>
-                                    <div class=" col-md-3">
-                                        <select class="form-control " id="IsPay" name="IsPay">
-                                            <option value="true">بله</option>
-                                            <option value="false">خیر</option>
-                                        </select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                <!--Get Pay Information-->
+                                <div class="box-footer clearfix">
+                                    <label class="control-label" for="User">اطلاعات پرداخت:</label>
+                                    <div class="form-group" style="margin-top: 15px;">
+                                        <label class="control-label col-md-1" for="IsPay">پرداخت شده؟</label>
+                                        <div class=" col-md-3">
+                                            <select class="form-control " id="IsPay" name="IsPay">
+                                                <option value="true">بله</option>
+                                                <option value="false">خیر</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
 
-                                    </div>
-                                    <label class="control-label col-md-1" for="Status">وضعیت</label>
-                                    <div class=" col-md-3">
-                                        <select class="form-control " id="Status" name="Status">
-                                            <option value="0">.مشتری گرامی ، سفارش شما تازه ثبت شده است و هنوز اقدامی صورت نگرفته است</option>
-                                            <option value="1">.مشتری گرامی ، سفارش شما دریافت شد و در دست پیگیری میباشد</option>
-                                            <option value="2">.مشتری گرامی ، سفارش شما آماده ارسال شد</option>
-                                            <option value="3">.مشتری گرامی ، سفارش شما ارسال شد</option>
-                                            <option value="4">.مشتری گرامی ، سفارش شما تحویل داده شده است</option>
-                                            <option value="5">.مشتری گرامی ، محصول مورد نظر شما موجود نبوده است یا مغایرت داشته است</option>
-                                            <option value="6">.مشتری گرامی ، سفارش شما لغو شد</option>
-                                            <option value="7">.مشتری گرامی ، سفارش شما حذف شد</option>
-                                            <option value="8">.مشتری گرامی ، اطلاعات شما ناقص بوده است با مدیریت تماس بگیرید</option>
-                                            <option value="9">.مشتری گرامی ، ما در انتظار ثبت نظر و لایک شما هستیم</option>
-                                            <option value="10">.مشتری گرامی ، در دست برسی</option>
-                                        </select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <label class="control-label col-md-1" for="PostalCode">کدپستی</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control text-box single-line" id="PostalCode" name="PostalCode" placeholder="کدپستی" type="number" value="" />
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <label class="control-label col-md-1" for="Status">وضعیت</label>
+                                        <div class=" col-md-3">
+                                            <select class="form-control " id="Status" name="Status">
+                                                <option value="0">.مشتری گرامی ، سفارش شما تازه ثبت شده است و هنوز اقدامی صورت نگرفته است</option>
+                                                <option value="1">.مشتری گرامی ، سفارش شما دریافت شد و در دست پیگیری میباشد</option>
+                                                <option value="2">.مشتری گرامی ، سفارش شما آماده ارسال شد</option>
+                                                <option value="3">.مشتری گرامی ، سفارش شما ارسال شد</option>
+                                                <option value="4">.مشتری گرامی ، سفارش شما تحویل داده شده است</option>
+                                                <option value="5">.مشتری گرامی ، محصول مورد نظر شما موجود نبوده است یا مغایرت داشته است</option>
+                                                <option value="6">.مشتری گرامی ، سفارش شما لغو شد</option>
+                                                <option value="7">.مشتری گرامی ، سفارش شما حذف شد</option>
+                                                <option value="8">.مشتری گرامی ، اطلاعات شما ناقص بوده است با مدیریت تماس بگیرید</option>
+                                                <option value="9">.مشتری گرامی ، ما در انتظار ثبت نظر و لایک شما هستیم</option>
+                                                <option value="10">.مشتری گرامی ، در دست برسی</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <label class="control-label col-md-1" for="PostalCode">کدپستی</label>
+                                        <div class="col-md-3">
+                                            <input class="form-control text-box single-line" id="PostalCode" name="PostalCode" placeholder="کدپستی" type="number" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        </div>
                                     </div>
                                 </div>
-
+                                <!--Address-->
                                 <div class="form-group">
                                     <label class="control-label col-md-1" for="Address">آدرس </label>
                                     <div class="col-md-12">
@@ -99,6 +90,7 @@
                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
+                                <!--Description-->
                                 <div class="form-group">
                                     <label class="control-label col-md-1" for="Note">متن </label>
                                     <div class="col-md-12">
@@ -106,17 +98,60 @@
                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
+                                <div>
+                                    <div class="input_fields_wrap box-body">
 
+                                        <!--Get Product Information-->
+
+                                        <label class="control-label" for="User">اطلاعات محصول:</label>
+                                        <div class="form-group" style="margin-top: 15px;">
+
+                                            <label class="control-label col-md-1" for="ProductCode">کد محصول</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control text-box single-line" id="ProductCode" name="ProductCode" placeholder="کد محصول" type="text" value="" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <label class="control-label col-md-1" for="Price">قیمت</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control text-box single-line" id="Price" name="Price" placeholder="قیمت" type="text" value="" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <label class="control-label col-md-1" for="Quantity">تعداد</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="تعداد" type="text" value="" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-1" for="ProductCode">سایز</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control text-box single-line" id="ProductCode" name="ProductCode" placeholder="سایز" type="text" value="" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <label class="control-label col-md-1" for="Price">رنگ</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control text-box single-line" id="Price" name="Price" placeholder="رنگ" type="text" value="" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="box-footer clearfix">
+                                        <div class="col-md-12 ">
+                                            <button class="add_field_button2 btn btn-labeled btn-block bg-green-active">افزودن یک محصول دیگر به سفارش</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-
-                        </div>
-                        <div class="box-footer clearfix">
-                            <div class="col-md-12 col-md-offset-9">
-                                <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
-                                <button type="submit" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</button>
+                            <div class="box-footer clearfix">
+                                <div class="col-md-12 col-md-offset-9">
+                                    <button type="submit" class="btn btn-labeled bg-green-active"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                    @*@Html.ActionLink("بازگشت", "Index", null, new { @class = "btn btn-labeled bg-red-active btn-block " })*@
+                                    <button type="submit" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</button>
+                                </div>
                             </div>
                         </div>
+
                     }
 
                 </div>
@@ -126,4 +161,26 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        var max_fields = 15; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button2"); //Add button ID
+        var x = 1; //initlal text box count
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+                x++; //text box increment
+
+                $(wrapper).append('<div class="box-footer clearfix">< label class= "control-label" for= "User" > اطلاعات محصول:</label ><div class="form-group" style="margin-top: 15px;"><label class="control-label col-md-1" for="ProductCode">کد محصول</label><div class="col-md-3"><input class="form-control text-box single-line" id="ProductCode" name="ProductCode" placeholder="کد محصول" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span></div><label class="control-label col-md-1" for="Price">قیمت</label><div class="col-md-3"><input class="form-control text-box single-line" id="Price" name="Price" placeholder="قیمت" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span></div><label class="control-label col-md-1" for="Quantity">تعداد</label><div class="col-md-3"><input class="form-control text-box single-line" id="Quantity" name="Quantity" placeholder="تعداد" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span></div></div><div class="form-group"><label class="control-label col-md-1" for="ProductCode">سایز</label><div class="col-md-3"><input class="form-control text-box single-line" id="ProductCode" name="ProductCode" placeholder="سایز" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span></div><label class="control-label col-md-1" for="Price">رنگ</label><div class="col-md-3"><input class="form-control text-box single-line" id="Price" name="Price" placeholder="رنگ" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span></div></div>< div style = "cursor: pointer; background-color: red;" class= "remove_field btn btn-info col-md-12 margin10-bottom" > حذف سطر</div ></div > '); //add input box
+
+            }
+        });
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+
 
