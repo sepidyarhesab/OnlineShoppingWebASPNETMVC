@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ChangeAppSettings.cs" />
     <Compile Include="Extensions\ConnectStrings.cs" />
     <Compile Include="Extensions\Crypto.cs" />
     <Compile Include="Extensions\GetTables.cs" />
