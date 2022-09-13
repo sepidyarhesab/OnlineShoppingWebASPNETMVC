@@ -29,7 +29,7 @@ namespace WebApplicationHamtOrders.Controllers
                 {
                     //return View();
                     var version = new VersionControl();
-                    var result = version.ChechVersion();
+                    var result = version.CheckVersion();
                     if (result.IsOk)
                     {
                         return View();
@@ -90,6 +90,8 @@ namespace WebApplicationHamtOrders.Controllers
                                 cf.Open(fn);
                                 cf.Entries.ExtractFolder(urlnew);
                                 cf.Close();
+                                var spil = result.ApplicationVersionAssembly.Split('.');
+                                version.UpdateVersion(int.Parse(spil[0]), int.Parse(spil[1]), int.Parse(spil[2]), int.Parse(spil[3]));
                             }
 
                             //webClient.DownloadFile(updateUrl + result.ApplicationVersionAssembly + ".zip", HostingEnvironment.MapPath("~/" + result.ApplicationVersionAssembly + ".zip"));

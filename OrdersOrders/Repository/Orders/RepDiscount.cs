@@ -884,6 +884,7 @@ namespace OrdersOrders.Repository.Orders
             var _FinalCarts = new List<VMOrders.VmOrderSubmit>();
             foreach (var itemCarts in carts)
             {
+                _discount = 0;
                 var vmCartRow = new VMOrders.VmOrderSubmit();
                 var queryProduct = db.Table_Product.FirstOrDefault(c => c.Id == itemCarts.ProductId);
                 if (queryProduct != null)
@@ -1013,6 +1014,7 @@ namespace OrdersOrders.Repository.Orders
             foreach (var itemCarts in carts)
             {
                 decimal _discountCode = 0;
+                _discount = 0;
                 var vmCartRow = new VMOrders.VmOrderSubmit();
                 var queryProduct = db.Table_Product.FirstOrDefault(c => c.Id == itemCarts.ProductId);
                 if (queryProduct != null)
@@ -1066,183 +1068,128 @@ namespace OrdersOrders.Repository.Orders
 
                 }
 
-
-
-                var queryDiscount = db.Table_Discount.FirstOrDefault(c => c.DiscountCode == code && c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now && c.IsOk && c.ProductRef == queryProduct.Id);
-                if (queryDiscount != null)
+                if (queryProduct.Discount > 0)
                 {
-                    #region DiscountPercent
-                    if (queryDiscount.Entities == "DiscountPercent" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
+                    vmCartRow.Message = "Error";
+                }
+                else
+                {
+                    var queryDiscount = db.Table_Discount.FirstOrDefault(c => c.DiscountCode == code && c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now && c.IsOk && c.ProductRef == queryProduct.Id);
+                    if (queryDiscount != null)
                     {
-                        if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
+                        #region DiscountPercent
+                        if (queryDiscount.Entities == "DiscountPercent" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
                         {
-                            if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
+                            if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
+                            {
+                                if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                                else
+                                {
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = false;
+                                    vmCartRow.Message = "Error";
+                                }
+                            }
+                            else
                             {
                                 _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
                                 vmCartRow.DisCode = queryDiscount.DiscountCode;
                                 vmCartRow.DisUse = true;
                                 vmCartRow.Message = "Success";
                             }
-                            else
+                        }
+
+
+
+
+                        #endregion
+
+                        #region DiscountFee
+
+                        if (queryDiscount.Entities == "DiscountFee" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
+                        {
+                            if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
                             {
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = false;
-                                vmCartRow.Message = "Error";
+                                if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
+                                {
+                                    _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                                else
+                                {
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = false;
+                                    vmCartRow.Message = "Error";
+                                }
                             }
-                        }
-                        else
-                        {
-                            _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
-                        }
-                    }
-
-
-
-
-                    #endregion
-
-                    #region DiscountFee
-
-                    if (queryDiscount.Entities == "DiscountFee" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
-                        {
-                            if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
+                            else
                             {
                                 _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
                                 vmCartRow.DisCode = queryDiscount.DiscountCode;
                                 vmCartRow.DisUse = true;
                                 vmCartRow.Message = "Success";
                             }
-                            else
+                        }
+
+
+                        #endregion
+
+                        #region DiscountUser
+
+                        if (queryDiscount.Entities == "DiscountUser" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
+                        {
+                            if (HttpContext.Current.User.Identity.IsAuthenticated)
                             {
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = false;
-                                vmCartRow.Message = "Error";
-                            }
-                        }
-                        else
-                        {
-                            _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
-                        }
-                    }
+                                var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                                if ((queryDiscount.Discount > 0 || queryDiscount.Discount != null) && queryDiscount.DiscountUser == userid)
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                                else
+                                {
+                                    vmCartRow.Message = "Error";
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = false;
+                                }
 
+                                if (queryDiscount.DiscountFee > 0 && queryDiscount.DiscountUser == userid)
+                                {
+                                    _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
 
-                    #endregion
-
-                    #region DiscountUser
-
-                    if (queryDiscount.Entities == "DiscountUser" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (HttpContext.Current.User.Identity.IsAuthenticated)
-                        {
-                            var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                            if ((queryDiscount.Discount > 0 || queryDiscount.Discount != null) && queryDiscount.DiscountUser == userid)
-                            {
-                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
-                            }
-                            else
-                            {
-                                vmCartRow.Message = "Error";
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = false;
-                            }
-
-                            if (queryDiscount.DiscountFee > 0 && queryDiscount.DiscountUser == userid)
-                            {
-                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
-                            }
-
-                        }
-                        else
-                        {
-                            vmCartRow.Message = "کاربر گرامی شما ورود نکرده اید.";
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = false;
-                        }
-
-                    }
-
-
-
-                    #endregion
-
-                    #region DiscountStep
-
-                    if (queryDiscount.Entities == "DiscountStep" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (queryDiscount.DiscountPercent > 0 && queryDiscount.DiscountCount > 0)
-                        {
-                            _discountCode = ((itemCarts.Fee * queryDiscount.DiscountPercent ?? 1) / 100) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
-                        }
-                        else
-                        {
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = false;
-                            vmCartRow.Message = "Error";
-                        }
-                    }
-
-
-
-                    #endregion
-
-                    #region DiscountTransfer
-
-                    if (queryDiscount.Entities == "DiscountTransfer" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
-                        {
-                            if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
-                            {
-                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
                             }
                             else
                             {
+                                vmCartRow.Message = "کاربر گرامی شما ورود نکرده اید.";
                                 vmCartRow.DisCode = queryDiscount.DiscountCode;
                                 vmCartRow.DisUse = false;
-                                vmCartRow.Message = "Error";
                             }
+
                         }
-                        else
+
+
+
+                        #endregion
+
+                        #region DiscountStep
+
+                        if (queryDiscount.Entities == "DiscountStep" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
                         {
-                            _discountCode = (queryDiscount.DiscountFee ?? 0) * itemCarts.Quantity;
-                            vmCartRow.DisCode = queryDiscount.DiscountCode;
-                            vmCartRow.DisUse = true;
-                            vmCartRow.Message = "Success";
-                        }
-                    }
-
-
-
-                    #endregion
-
-                    #region DiscountStepUsers
-
-                    if (queryDiscount.Entities == "DiscountStepUsers" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (HttpContext.Current.User.Identity.IsAuthenticated)
-                        {
-                            var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                            if (queryDiscount.DiscountPercent > 0 && queryDiscount.DiscountUser == userid && queryDiscount.DiscountCount > 0)
+                            if (queryDiscount.DiscountPercent > 0 && queryDiscount.DiscountCount > 0)
                             {
                                 _discountCode = ((itemCarts.Fee * queryDiscount.DiscountPercent ?? 1) / 100) * itemCarts.Quantity;
                                 vmCartRow.DisCode = queryDiscount.DiscountCode;
@@ -1255,78 +1202,142 @@ namespace OrdersOrders.Repository.Orders
                                 vmCartRow.DisUse = false;
                                 vmCartRow.Message = "Error";
                             }
-
-                        }
-                        else
-                        {
-                            vmCartRow.Message = "Error User Not Login";
                         }
 
-                    }
+
+
+                        #endregion
+
+                        //#region DiscountTransfer
+
+                        //if (queryDiscount.Entities == "DiscountTransfer" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
+                        //{
+                        //    if (queryDiscount.CategoriesRef != null && itemCarts.CategoryRef != null)
+                        //    {
+                        //        if (queryDiscount.CategoriesRef == itemCarts.CategoryRef)
+                        //        {
+                        //            _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                        //            vmCartRow.DisCode = queryDiscount.DiscountCode;
+                        //            vmCartRow.DisUse = true;
+                        //            vmCartRow.Message = "Success";
+                        //        }
+                        //        else
+                        //        {
+                        //            vmCartRow.DisCode = queryDiscount.DiscountCode;
+                        //            vmCartRow.DisUse = false;
+                        //            vmCartRow.Message = "Error";
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        _discountCode = (queryDiscount.DiscountFee ?? 0) * itemCarts.Quantity;
+                        //        vmCartRow.DisCode = queryDiscount.DiscountCode;
+                        //        vmCartRow.DisUse = true;
+                        //        vmCartRow.Message = "Success";
+                        //    }
+                        //}
 
 
 
-                    #endregion
+                        //#endregion
 
-                    #region AllDiscount
+                        #region DiscountStepUsers
 
-
-                    if (queryDiscount.Entities == "AllDiscount" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
-                    {
-                        if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        if (queryDiscount.Entities == "DiscountStepUsers" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
                         {
-                            var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                            if ((queryDiscount.Discount > 0 || queryDiscount.Discount != null) && queryDiscount.DiscountUser == userid)
+                            if (HttpContext.Current.User.Identity.IsAuthenticated)
                             {
-                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
-                            }
+                                var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                                if (queryDiscount.DiscountPercent > 0 && queryDiscount.DiscountUser == userid && queryDiscount.DiscountCount > 0)
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.DiscountPercent ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                                else
+                                {
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = false;
+                                    vmCartRow.Message = "Error";
+                                }
 
-                            if (queryDiscount.DiscountFee > 0 && queryDiscount.DiscountUser == userid)
-                            {
-                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
-                            }
-                        }
-                        else
-                        {
-                            if (queryDiscount.Discount > 0)
-                            {
-                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
-                            }
-
-                            if (queryDiscount.DiscountFee > 0)
-                            {
-                                _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
-                                vmCartRow.DisCode = queryDiscount.DiscountCode;
-                                vmCartRow.DisUse = true;
-                                vmCartRow.Message = "Success";
                             }
                             else
                             {
-                                _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
-                                vmCartRow.Message = "Error";
+                                vmCartRow.Message = "Error User Not Login";
                             }
+
                         }
 
 
 
+                        #endregion
+
+                        #region AllDiscount
+
+
+                        if (queryDiscount.Entities == "AllDiscount" && queryDiscount.ProductRef == queryProduct.Id && queryDiscount.DiscountQuantity > 0)
+                        {
+                            if (HttpContext.Current.User.Identity.IsAuthenticated)
+                            {
+                                var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                                if ((queryDiscount.Discount > 0 || queryDiscount.Discount != null) && queryDiscount.DiscountUser == userid)
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+
+                                if (queryDiscount.DiscountFee > 0 && queryDiscount.DiscountUser == userid)
+                                {
+                                    _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                            }
+                            else
+                            {
+                                if (queryDiscount.Discount > 0)
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+
+                                if (queryDiscount.DiscountFee > 0)
+                                {
+                                    _discountCode = (queryDiscount.DiscountFee ?? 1) * itemCarts.Quantity;
+                                    vmCartRow.DisCode = queryDiscount.DiscountCode;
+                                    vmCartRow.DisUse = true;
+                                    vmCartRow.Message = "Success";
+                                }
+                                else
+                                {
+                                    _discountCode = ((itemCarts.Fee * queryDiscount.Discount ?? 1) / 100) * itemCarts.Quantity;
+                                    vmCartRow.Message = "Error";
+                                }
+                            }
+
+
+
+                        }
+
+
+                        #endregion
                     }
+                    else
+                    {
+                        _discountCode = 0;
+                        vmCartRow.Message = "Error";
+                    }
+                }
 
 
-                    #endregion
-                }
-                else
-                {
-                    _discountCode = 0;
-                }
+                
 
 
                 vmCartRow.Quantity = itemCarts.Quantity;
@@ -1355,28 +1366,27 @@ namespace OrdersOrders.Repository.Orders
             //}
 
             _FinalSum += (_RowSum + _Transfer) - _sumdis;
-
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                _FinalOrder.DiscountFree = 0;
-                if (userid != Guid.Empty)
-                {
-                    var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == userid);
-                    if (!ordercheck)
-                    {
-                        var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
-                        if (disFree != null)
-                        {
-                            var a = (disFree.Discount * _FinalSum) / 100;
-                            _discountFree = _FinalSum - a ?? 0;
-                            _FinalSum = _discountFree;
-                            _FinalOrder.DiscountFree = a ?? 0;
-                            _FinalOrder.DiscountPercent = disFree.Discount ?? 0;
-                        }
-                    }
-                }
-            }
+            //if (HttpContext.Current.User.Identity.IsAuthenticated)
+            //{
+            //    var userid = Guid.Parse(HttpContext.Current.User.Identity.Name);
+            //    _FinalOrder.DiscountFree = 0;
+            //    if (userid != Guid.Empty)
+            //    {
+            //        var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == userid);
+            //        if (!ordercheck)
+            //        {
+            //            var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
+            //            if (disFree != null)
+            //            {
+            //                var a = (disFree.Discount * _FinalSum) / 100;
+            //                _discountFree = _FinalSum - a ?? 0;
+            //                _FinalSum = _discountFree;
+            //                _FinalOrder.DiscountFree = a ?? 0;
+            //                _FinalOrder.DiscountPercent = disFree.Discount ?? 0;
+            //            }
+            //        }
+            //    }
+            //}
 
             _FinalOrder.SumPay = _FinalSum;
             //_FinalOrder.sumdis = _sumdis;
