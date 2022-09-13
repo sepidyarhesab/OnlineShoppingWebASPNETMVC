@@ -1,0 +1,216 @@
+﻿@using OrdersOrders.Repository.Orders
+@model OrdersGeneral.ViewModels.General.VMUser.VMUsers
+@{
+    ViewBag.Title = "EditAddressAdmin";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h2>داشبورد</h2>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-lg-12 connectedSortable">
+                @{
+                    if (Model != null)
+                    {
+                        <div class="box box-info">
+                            @using (Html.BeginForm("AddressUpdateAdmin", "UserManagement", FormMethod.Post))
+                            {
+                                //var random = SepidyarHesabCodeGenerator.GenerateCode("","");
+                                @Html.AntiForgeryToken()
+                                <div class="box-header">
+                                    <i class="fa fa-envelope"></i>
+                                    <h3 class="box-title">ویرایش آدرس </h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-horizontal">
+                                        <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" for="PostalCode">کدپستی</label>
+                                            <div class="col-md-4">
+                                                <input class="form-control text-box single-line" id="PostalCode" name="PostalCode" placeholder="کدپستی" type="text" value="@Model.PostalCode" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+
+                                            <label class="control-label col-md-2" for="PrimaryTitle">نوع آدرس</label>
+                                            <div class="col-md-4">
+                                                <select name="Type" id="Type" class="form-control select2 select2-hidden-accessible" data-select2-id="select2-data-2-pary" tabindex="-1" aria-hidden="true">
+                                                    <option data-select2-id="select2-data-3-d0lf">--انتخاب آدرس--</option>
+                                                    <option value="1">منزل</option>
+                                                    <option value="2">محل کار</option>
+                                                    <option value="3">شرکت</option>
+                                                </select>
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <hr />
+
+                                            <label class="control-label col-md-2" for="PrimaryTitle">استان </label>
+                                            <div class="col-md-4">
+                                                <select name="ProvinceRef" id="ProvinceRef" class="form-control select2 select2-hidden-accessible" data-select2-id="select2-data-6-pary" onchange="dropdowncites(this)" tabindex="-1" aria-hidden="true">
+                                                    <option>یک استان انتخاب کنید ...</option>
+                                                    @{
+                                                        var city = RepAccountDashboard.SelectionCity();
+                                                        if (city.Count > 0)
+                                                        {
+                                                            foreach (var cites in city)
+                                                            {
+                                                                <option value="@cites.CityRef">@cites.CityTitle</option>
+                                                            }
+                                                        }
+                                                    }
+                                                </select>
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+
+                                            <div>
+                                                <label class="control-label col-md-2" for="Sex">شهرستان </label>
+                                                <div class="col-md-4">
+                                                    <div class="form-element-row mb-0">
+                                                        <select id="CityRef" name="CityRef" class="form-control select2 select2-hidden-accessible CityRef" data-select2-id="select2-data-8-pary" tabindex="-1" aria-hidden="true" disabled="disabled"></select>
+                                                    </div>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div>
+                                                <label class="control-label col-md-2" for="Phone">اصلی؟</label>
+                                                <div class="col-md-4">
+                                                    <div class="form-element-row" data-select2-id="select2-data-7-qgui">
+                                                        <select name="IsMain" id="IsMain" class="form-control select2 select2-hidden-accessible" data-select2-id="select2-data-3-pary" tabindex="-1" aria-hidden="true">
+                                                            <option value="true">بله</option>
+                                                            <option value="false">خیر</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                            @*<label class="control-label col-md-2" for="Password">رمز عبور</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line" id="Password" name="Password" placeholder="رمز عبور" type="text" value="" onfocusout="checkinput()" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>*@
+                                        </div>
+                                        <!--Address-->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" for="Address">آدرس </label>
+                                            <div class="col-md-10">
+                                                <textarea class="form-control text-box single-line" id="Address" name="Address" placeholder="آدرس" value="">@Model.Address</textarea>
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer clearfix">
+                                    <div class="col-md-12 col-md-offset-9">
+
+                                        <button type="submit" class="btn btn-labeled bg-green-active" id="Submit"> <i class="fa fa-check-square"></i> ذخیره</button>
+                                        <a href="/UserManagement/IndexAddressAdmin/@Session["id"]" class="btn btn-labeled bg-red-active"> <i class="fa fa-close"></i> بازگشت</a>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function dropdowncites(a) {
+        var x = (a.value || a.options[a.selectedIndex].value); //crossbrowser solution =)
+        $.ajax({
+            url: "/Orders/Province",
+            type: "Post",
+            data: { id: x }
+        }).done(function (result) {
+            $('.CityRef').removeAttr('disabled');
+            $('#btnSubmit').removeAttr("disabled", '');
+            $(".CityRef").html(result);
+        });
+    }
+</script>
+<script>
+    function checkinput() {
+        var _name = document.getElementById("Name");
+        var _family = document.getElementById("Family");
+        var _sex = document.getElementById("Sex");
+        var _phone = document.getElementById("Phone");
+        var _password = document.getElementById("Password");
+        var _submit = document.getElementById("Submit");
+        if (_name.value.length === 0) {
+            iziToast.error({
+                title: name + ' نام را وارد کنید ',
+                rtl: true,
+                position: 'topLeft'
+            });
+            _name.style.borderColor = "red";
+            _submit.disabled = true;
+        } else {
+            _name.style.borderColor = "green";
+            _submit.disabled = false;
+            if (_family.value.length === 0) {
+                iziToast.error({
+                    title: name + ' نام خانوادگی را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _family.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _family.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_sex.value.length === 0) {
+                iziToast.error({
+                    title: name + ' جنس را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _sex.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _sex.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_phone.value.length === 0) {
+                iziToast.error({
+                    title: name + ' تلفن را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _phone.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _phone.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+            if (_password.value.length === 0) {
+                iziToast.error({
+                    title: name + ' رمز را وارد کنید ',
+                    rtl: true,
+                    position: 'topLeft'
+                });
+                _password.style.borderColor = "red";
+                _submit.disabled = true;
+            } else {
+                _password.style.borderColor = "green";
+                _submit.disabled = false;
+            }
+
+        }
+
+    }
+</script>
+
+

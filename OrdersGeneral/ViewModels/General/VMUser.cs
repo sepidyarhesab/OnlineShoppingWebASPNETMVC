@@ -25,8 +25,15 @@ namespace OrdersGeneral.ViewModels.General
         public class VMUsers
         {
             public Guid Id { get; set; }
+            public Guid UserRef { get; set; }
             public string Code { get; set; }
+            public int CityReff { get; set; }
+            public int CityRef { get; set; }
+            public string CityTitle { get; set; }
+            public string IsPayTitle { get; set; }
+            public string IsPayClass { get; set; }
             public string IdentificationCode { get; set; }
+            public string Address { get; set; }
             public string Name { get; set; }
             public string Family { get; set; }
             public string Url { get; set; }
@@ -35,12 +42,16 @@ namespace OrdersGeneral.ViewModels.General
             public bool IsInBlacklist {get; set; }
             public bool IsDelete {get; set; }
             public bool Sex {get; set; }
+            public bool IsMain { get; set; }
             public string Phone { get; set; }
             public string Password { get; set; }
+            public string PostalCode { get; set; }
             public  Guid RoleRef { get; set; }
             public string RoleTitle { get; set; }
             public string FullName { get; set; }
-           
+            public int Type { get; set; }
+            public string Typee { get; set; }
+
         }
     }
 }

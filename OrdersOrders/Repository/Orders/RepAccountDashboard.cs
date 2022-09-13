@@ -301,7 +301,8 @@ namespace OrdersOrders.Repository.Orders
                     query.Type = type;
                     query.CityRef = cityref;
                     query.IsMain = IsMain;
-
+                    query.ModifierRef = id;
+                    query.ModifireDate = DateTime.Now;
                     db.SaveChanges();
                 }
 
@@ -467,6 +468,7 @@ namespace OrdersOrders.Repository.Orders
                         case true:
                         {
                             return "true";
+                            break;
 
                         }
                         case false:
@@ -474,6 +476,7 @@ namespace OrdersOrders.Repository.Orders
                             db.Table_Address.Remove(query);
                             db.SaveChanges();
                             return "success";
+                            break;
                         }
                     }
                 }
