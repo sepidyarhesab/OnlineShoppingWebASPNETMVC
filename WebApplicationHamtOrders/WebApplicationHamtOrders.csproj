@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Dynamicweb.WebP.2.0.0\build\Dynamicweb.WebP.props" Condition="Exists('..\packages\Dynamicweb.WebP.2.0.0\build\Dynamicweb.WebP.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,33 +45,250 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActiveDatabaseSoftware.ActiveQueryBuilder, Version=1.19.3.432, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\ActiveDatabaseSoftware.ActiveQueryBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveDatabaseSoftware.MSSQLMetadataProvider, Version=1.19.3.432, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\ActiveDatabaseSoftware.MSSQLMetadataProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveDatabaseSoftware.OracleMetadataProvider, Version=1.19.3.432, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\ActiveDatabaseSoftware.OracleMetadataProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.C1Excel.2, Version=2.0.20191.359, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.C1Excel.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.C1Report.2, Version=2.6.20142.54732, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.C1Report.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.C1Report.4, Version=4.0.20191.359, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.C1Report.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.C1Zip.4, Version=4.1.20142.108, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.C1Zip.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.4, Version=4.0.20191.359, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.Win.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.BarCode.4, Version=4.0.20191.359, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\C1.Win.BarCode.4.dll</HintPath>
+    </Reference>
+    <Reference Include="ChristieJdeInterface, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\ChristieJdeInterface.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudFiles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\CloudFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="cls_SecurityRole, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\cls_SecurityRole.dll</HintPath>
+    </Reference>
+    <Reference Include="CryptoClass, Version=1.0.5490.20567, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\CryptoClass.dll</HintPath>
+    </Reference>
+    <Reference Include="DataContracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\DataContracts.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="Dynamicweb, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.9.14.2\lib\netstandard2.0\Dynamicweb.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Caching, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Caching.3.1.0\lib\netstandard2.0\Dynamicweb.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Configuration.4.1.3\lib\netstandard2.0\Dynamicweb.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Core.4.0.3\lib\netstandard2.0\Dynamicweb.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Core.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Core.UI.3.0.1\lib\netstandard2.0\Dynamicweb.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Data.3.0.3\lib\netstandard2.0\Dynamicweb.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Diagnostics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Diagnostics.4.0.2\lib\netstandard2.0\Dynamicweb.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Environment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Environment.4.0.9\lib\netstandard2.0\Dynamicweb.Environment.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Extensibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Extensibility.5.0.3\lib\netstandard2.0\Dynamicweb.Extensibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Imaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Imaging.7.0.4\lib\netstandard2.0\Dynamicweb.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Indexing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Indexing.8.0.2\lib\netstandard2.0\Dynamicweb.Indexing.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Logging.6.0.1\lib\netstandard2.0\Dynamicweb.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Mailing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Mailing.5.0.6\lib\netstandard2.0\Dynamicweb.Mailing.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Scheduling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Scheduling.5.0.2\lib\netstandard2.0\Dynamicweb.Scheduling.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Security.12.5.7\lib\netstandard2.0\Dynamicweb.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.SmartSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.SmartSearch.2.1.0\lib\netstandard2.0\Dynamicweb.SmartSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Updates, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.Updates.1.0.2\lib\netstandard2.0\Dynamicweb.Updates.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.WebP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamicweb.WebP.2.0.0\lib\netstandard2.0\Dynamicweb.WebP.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.6.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.6.3\lib\net45\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
+    <Reference Include="Flurl, Version=1.0.10.0, Culture=neutral, PublicKeyToken=1308302a96879dfb, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=0.7.0.0, Culture=neutral, PublicKeyToken=1308302a96879dfb, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="FormCodeBehind, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\FormCodeBehind.dll</HintPath>
+    </Reference>
+    <Reference Include="FormCustomizer_Christie, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\FormCustomizer_Christie.dll</HintPath>
+    </Reference>
+    <Reference Include="FormCustomizer_Coinmach, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\FormCustomizer_Coinmach.dll</HintPath>
+    </Reference>
+    <Reference Include="FormCustomizer_GSP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\FormCustomizer_GSP.dll</HintPath>
+    </Reference>
+    <Reference Include="FormXMLBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\FormXMLBase.dll</HintPath>
+    </Reference>
+    <Reference Include="GCRMDACBIZ, Version=1.0.8201.13260, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GCRMDACBIZ.dll</HintPath>
+    </Reference>
+    <Reference Include="GCRMDACCustom, Version=1.0.8201.13254, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GCRMDACCustom.dll</HintPath>
+    </Reference>
+    <Reference Include="GCRMDACSQL, Version=1.0.8201.13255, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GCRMDACSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="GoServicePro.ShareFile.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GoServicePro.ShareFile.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="GoServicePro.TSPSolver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GoServicePro.TSPSolver.dll</HintPath>
+    </Reference>
+    <Reference Include="GSABizObjects-NET, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSABizObjects-NET.dll</HintPath>
+    </Reference>
+    <Reference Include="GSABizObjects-NET-Custom, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSABizObjects-NET-Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="GSADataAccess-NET, Version=5.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSADataAccess-NET.dll</HintPath>
+    </Reference>
+    <Reference Include="GSAScheduler-SQLLayer, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSAScheduler-SQLLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="GSASchedulerEngine, Version=5.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSASchedulerEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPCore.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPCoreWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPCoreWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPOpenStackLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPOpenStackLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPSchemaManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPSchemaManager.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPUIController, Version=2.3.93.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPUIController.dll</HintPath>
+    </Reference>
+    <Reference Include="GSPWebServices, Version=1.3.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\GSPWebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.28.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.28\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="InterfaceProcessor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\InterfaceProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.2.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="LocalFunctionXMLEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\LocalFunctionXMLEngine.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Marvin.JsonPatch, Version=0.7.0.0, Culture=neutral, PublicKeyToken=686c63b2d045ab44, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Marvin.JsonPatch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Microsoft.AspNet.SignalR.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\HiNetCloud.Microsoft.Web.Administration.22.8.26.8\lib\net48\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\OpenPop.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenStack.Swift, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\OpenStack.Swift.dll</HintPath>
+    </Reference>
+    <Reference Include="openstacknet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\openstacknet.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.108.0.1\lib\netstandard2.0\RestSharp.dll</HintPath>
+    <Reference Include="Plivo, Version=5.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Plivo.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Rackspace.Cloudfiles, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\Rackspace.Cloudfiles.dll</HintPath>
+    </Reference>
+    <Reference Include="RelayServices.Models, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\RelayServices.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Serializers.NewtonsoftJson, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.Serializers.NewtonsoftJson.108.0.1\lib\netstandard2.0\RestSharp.Serializers.NewtonsoftJson.dll</HintPath>
     </Reference>
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
@@ -81,42 +299,51 @@
     <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
     </Reference>
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    <Reference Include="ShareFile.Api.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\ShareFile.Api.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.5.0.0\lib\net461\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
+    <Reference Include="System.Data.OleDb, Version=4.0.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.OleDb.4.7.1\lib\net461\System.Data.OleDb.dll</HintPath>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Json.5.0.0\lib\net461\System.Net.Http.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
       <Private>True</Private>
@@ -127,20 +354,27 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Duplex, Version=4.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Duplex.4.8.0\lib\net461\System.ServiceModel.Duplex.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.ServiceModel.Http, Version=4.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Http.4.8.0\lib\net461\System.ServiceModel.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.ServiceModel.NetTcp, Version=4.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.NetTcp.4.8.0\lib\net461\System.ServiceModel.NetTcp.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel.Primitives, Version=4.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Primitives.4.8.0\lib\net461\System.ServiceModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Security, Version=4.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Security.4.8.0\lib\net461\System.ServiceModel.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -158,6 +392,24 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TrackWebServiceClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\TrackWebServiceClient.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackWebServiceClient.XmlSerializers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\TrackWebServiceClient.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackWSSample, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\TrackWSSample.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackWSSample.XmlSerializers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\TrackWSSample.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="UIDataContracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\UIDataContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="VT_Worker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoServicePro.UiController.2.6.75\lib\net472\VT_Worker.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="ZarinPal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ZarinPal-SDK.0.0.7\lib\ZarinPal.dll</HintPath>
@@ -2536,6 +2788,8 @@
     <Content Include="Views\UserManagement\EditAddressAdmin.cshtml" />
     <Content Include="Views\UserManagement\IndexAddressAdmin.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
+    <None Include="Web References\Sep.InitPayment\initpayment.disco" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2598,11 +2852,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="VersionControl.cs" />
     <Compile Include="Web References\com\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Sep.InitPayment\Reference.cs" />
+    <Compile Include="Web References\Sep.RefrencePayment\Reference.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2974,6 +3231,10 @@
     <Content Include="Views\SizeGuideManagement\IndexProductSizeGuideValues.cshtml" />
     <Content Include="Views\Orders\ConnectionToSaman.cshtml" />
     <None Include="Web References\com\ReferencePayment.wsdl" />
+    <None Include="Web References\Sep.InitPayment\initpayment.wsdl" />
+    <Content Include="Web References\Sep.InitPayment\Reference.map" />
+    <Content Include="Web References\Sep.RefrencePayment\Reference.map" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3072,6 +3333,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Dynamicweb.WebP.2.0.0\build\Dynamicweb.WebP.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Dynamicweb.WebP.2.0.0\build\Dynamicweb.WebP.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
