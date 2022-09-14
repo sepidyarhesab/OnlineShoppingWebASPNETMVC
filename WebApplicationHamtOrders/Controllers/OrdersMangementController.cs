@@ -426,8 +426,15 @@ namespace WebApplicationHamtOrders.Controllers
         }
         //End----------------------------------------------
         //Add items(Product) to a Order
-        public ActionResult Add()
+        public ActionResult Add(Guid id)
         {
+            Session["UserId"] = id;
+            //var db = new Orders_Entities();
+            //var qUser = db.Table_User.FirstOrDefault(c => c.Id == id);
+            //if (qUser != null)
+            //{
+            //    return View(qUser);
+            //}
             return View();
         }
 

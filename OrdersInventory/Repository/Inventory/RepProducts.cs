@@ -2436,6 +2436,17 @@ namespace OrdersInventory.Repository.Inventory
                         CategoriesRef = query.CategoriesRef,
                     };
 
+                    //var db = new Orders_Entities();
+                    var qsizeguide = db.Table_Product_SizeGuide.FirstOrDefault(c => c.CategoryRef == query.CategoriesRef);
+                    if (qsizeguide != null)
+                    {
+                        vm.IsSizeGuide = true;
+                    }
+                    else
+                    {
+                        vm.IsSizeGuide = false;
+                    }
+
                     var querySummary =
                         db.Table_Product_Summary.FirstOrDefault(c =>
                             c.ProductRef == query.Id && c.IsOk && c.IsMain && c.Quantity > 0);

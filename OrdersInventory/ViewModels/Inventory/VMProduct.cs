@@ -22,6 +22,7 @@ namespace OrdersInventory.ViewModels.Inventory
             public string QuantityTitle { get; set; }
             public string QuantityClass { get; set; }
             public bool IsOk { get; set; }
+            public bool IsSizeGuide { get; set; }
             public decimal Quantity { get; set; }
             public DateTime CreatorDateTime { get; set; }
             public decimal Sort { get; set; }
