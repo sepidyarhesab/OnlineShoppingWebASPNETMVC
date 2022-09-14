@@ -204,7 +204,7 @@ namespace WebApplicationHamtOrders.Controllers
                                                 var paryid = SplitResult[0];
                                                 var iduser = SplitResult[2];
                                                 var idOrders = SplitResult[3];
-                                                Response.Redirect(CallSaman(Amount, paryid, long.Parse(values.Phone), iduser, idOrders));
+                                                Response.Redirect(CallSaman(Amount + long.Parse((transferpay).ToString()), paryid, long.Parse(values.Phone), iduser, idOrders));
                                             }
 
                                             if (configPayment == "Zarinpal")

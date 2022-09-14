@@ -620,7 +620,6 @@
     <Content Include="Helper\Layouts\404.html" />
     <Content Include="Helper\Layouts\assets\css\plugins\bottom\styles.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\boxicons.min.css" />
-    <Content Include="Helper\Layouts\assets\css\colors.css" />
     <Content Include="Helper\Layouts\assets\css\fancybox.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\fonts\boxicons.svg" />
     <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
@@ -2594,7 +2593,6 @@
     <Content Include="Static\Content\Images\Footer\Footer.jpg" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962434505259329.png" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962449238401674.png" />
-    <Content Include="Static\Content\Images\Logo\Logo_SP-637830308030933133.png" />
     <Content Include="Static\Content\Images\Menu\account_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
@@ -2752,6 +2750,7 @@
     <Content Include="Views\UserManagement\EditAddressAdmin.cshtml" />
     <Content Include="Views\UserManagement\IndexAddressAdmin.cshtml" />
     <Content Include="Views\Dashboard\AddAddress.cshtml" />
+    <Content Include="Views\VerficationRefahPayment\Index.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
     <None Include="Web References\Sep.InitPayment\initpayment.disco" />
     <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
@@ -3213,11 +3212,11 @@
     <Folder Include="Models\" />
     <Folder Include="Static\Content\Excel\" />
     <Folder Include="Static\Content\Images\Factor\" />
+    <Folder Include="Static\Content\Images\Logo\" />
     <Folder Include="Static\Content\Images\Profile\" />
     <Folder Include="Static\Content\Images\Sliders\Mobile\" />
     <Folder Include="Views\Index\" />
     <Folder Include="Views\UpdateAssembly\" />
-    <Folder Include="Views\VerficationRefahPayment\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrdersDatabase\OrdersDatabase.csproj">
