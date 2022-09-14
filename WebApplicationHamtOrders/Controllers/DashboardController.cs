@@ -507,7 +507,6 @@ namespace WebApplicationHamtOrders.Controllers
                             Datetime = string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", queryOrder.CreatorDate),
                             Name = queryOrder.Firstname,
                             Family = queryOrder.Lastname,
-                            Address = queryOrder.Address,
                             Phone = queryOrder.Phone,
                             Note = queryOrder.Note,
                             PostalCode = queryOrder.PostalCode,
@@ -516,6 +515,13 @@ namespace WebApplicationHamtOrders.Controllers
                             OrderCode = queryOrder.Code,
                             Discounts = queryOrder.Discount,
                         };
+                        var address = Guid.Parse(queryOrder.Address);
+                        var quaryAdress = db.Table_Address.FirstOrDefault(c => c.Id == address);
+                        if (quaryAdress!=null)
+                        {
+                            vm.Address=quaryAdress.Address;
+                            vm.PostalCode = quaryAdress.PostalCode;
+                        }
 
                         var queryitem = db.Table_Product.FirstOrDefault(c => c.Code == item.ItemCode);
                         if (queryitem != null)

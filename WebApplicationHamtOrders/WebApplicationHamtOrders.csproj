@@ -2787,6 +2787,7 @@
     <Content Include="Views\UserManagement\AddressAddAdmin.cshtml" />
     <Content Include="Views\UserManagement\EditAddressAdmin.cshtml" />
     <Content Include="Views\UserManagement\IndexAddressAdmin.cshtml" />
+    <Content Include="Views\Dashboard\AddAddress.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
     <None Include="Web References\Sep.InitPayment\initpayment.disco" />
     <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
