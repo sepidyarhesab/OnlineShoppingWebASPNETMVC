@@ -563,8 +563,8 @@ pre {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: 15px;
-    margin-left: 15px
+    margin-right: -15px;
+    margin-left: -15px
 }
 
 .no-gutters {
@@ -4731,8 +4731,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff
+    background-color: var(--PrimaryColor);
+    border-color: var(--PrimaryColor);
 }
 
 .page-item.disabled .page-link {
@@ -9070,5 +9070,6 @@ a.text-dark:focus, a.text-dark:hover {
     .table-bordered td, .table-bordered th {
         border: 1px solid #ddd !important
     }
+    
 }
 /*# sourceMappingURL=bootstrap.min.css.map */

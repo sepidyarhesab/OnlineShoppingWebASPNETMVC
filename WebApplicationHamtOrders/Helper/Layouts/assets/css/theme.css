@@ -6102,3 +6102,7 @@ footer.mini-footer {
         .product-card .product-card-top .product-cards-actions button:focus {
             outline: none;
         }
+.row-social {
+    margin-right: 15px !important;
+    margin-left: 15px !important;
+}

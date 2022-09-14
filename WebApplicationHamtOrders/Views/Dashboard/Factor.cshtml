@@ -37,6 +37,7 @@
                                                 <th>جمع کل</th>
                                                 <th>فاکتور</th>
                                                 <th>دانلود</th>
+                                                @*<th>پرداخت فاکتور</th>*@
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -61,7 +62,8 @@
                                                             <td class="@mangment.IsPayClass">@mangment.IsPayTitle</td>
                                                             <td>@string.Format("{0:##,###}", mangment.Price, "Price") <small> ریال </small></td>
                                                             <td> <a href="/Dashboard/Factors/@mangment.Id">ارسال رسید پرداخت</a></td>
-                                                            <td> <a href="/Dashboard/PDF/@mangment.Id">دانلود فاکتور</a></td>
+                                                            <td> <a href="/OrdersMangement/CreatePDF/@mangment.Id">دانلود فاکتور</a></td>
+                                                            @*<td> <a href="/Dashboard/PDF/@mangment.Id">پرداخت</a></td>*@
                                                         </tr>
                                                     }
                                                 }

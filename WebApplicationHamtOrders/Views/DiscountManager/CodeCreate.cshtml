@@ -38,13 +38,17 @@
                             <div class="form-horizontal">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="DiscountCode">کد تخفیف</label>
+                                    <label class="control-label col-md-2" for="DiscountCode">کد تخفیف<small style="color: red"> * اجباری </small></label>
                                     <div class="col-md-4">
                                         <input class="form-control text-box single-line" id="DiscountCode" name="DiscountCode" placeholder="کد تخفیف" type="text" value="" />
                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
                                 <hr />
+                                <div class="form-group">
+                                    <p class="control-label col-md-5 text-blue" for="Discount">اگر مایلید روی کالای خود درصد تخفیف بگذارید داخل این فیلد را زیر پر کنید.</p>
+                                </div>
+                                <br />
                                 <div class="form-group">
                                     <label class="control-label col-md-2" for="Discount">درصد تخفیف</label>
                                     <div class="col-md-4">
@@ -54,6 +58,10 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
+                                    <p class="control-label col-md-5 text-blue" for="Discount">اگر مایلید روی کالای خود قیمت تخفیف بگذارید داخل این فیلد را زیر پر کنید.</p>
+                                </div>
+                                <br />
+                                <div class="form-group">
                                     <label class="control-label col-md-2" for="DiscountFee">مبلغ تخفیف</label>
                                     <div class="col-md-4">
                                         <input class="form-control text-box single-line" id="DiscountFee" name="DiscountFee" placeholder="مبلغ تخفیف" type="number" value="" />
@@ -62,7 +70,12 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="DiscountQuantity">تعداد کل تخفیف</label>
+                                    <p class="control-label col-md-3 text-blue" for="Discount">حتما تعداد کل تخفیف را وارد کنید.</p>
+                                    <p class="control-label col-md-7 text-blue" for="Discount">حتما مبنای تخفیف خود را انتخاب کنید.</p>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="DiscountQuantity">تعداد کل تخفیف<small style="color: red"> * اجباری </small></label>
                                     <div class="col-md-4">
                                         <input class="form-control text-box single-line" id="DiscountQuantity" name="DiscountQuantity" placeholder="تعداد کل تخفیف" type="number" value="" />
                                         <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
@@ -77,13 +90,17 @@
                                                     foreach (var item in Entities)
                                                     {
                                                         <option value="@item.SecondaryTitle">@item.PrimaryTitle</option>
-                                                    }                                    
+                                                    }
                                                 }
                                             }
                                         </select>
                                     </div>
                                 </div>
                                 <hr />
+                                <div class="form-group">
+                                    <p class="control-label col-md-7 text-blue" for="Discount">در صورت انتخاب تخفیف هایی که روی کاربر هستند یا مایلید روی کاربر اعمال شوند، کاربر خود را انتخاب کنید.</p>
+                                </div>
+                                <br />
                                 <div class="form-group">
                                     <label class="control-label col-md-2" for="DiscountUser">کاربر</label>
                                     <div class="col-md-4">
@@ -103,6 +120,14 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
+                                    <p class="control-label col-md-9 text-blue" for="Discount"> تخفیف های مرحله ایی: تعدادی تخفیف را بر اساس واحد تخفیف تعیین می کنید تا مرحله به مرحله 10 درصد از کل درصد تخفیف کل کم شود. </p>
+                                </div>
+                                <div class="form-group">
+                                    <p class="control-label col-md-3 text-blue" for="Discount">درصد تخفیف خود را وارد کنید.</p>
+                                    <p class="control-label col-md-6 text-blue" for="Discount"> تعداد تخفیف خود را وارد کنید.</p>
+                                </div>
+                                <br />
+                                <div class="form-group">
                                     <label class="control-label col-md-2" for="DiscountPercent">واحد درصد تخفیف</label>
                                     <div class="col-md-4">
                                         <input class="form-control text-box single-line" id="DiscountPercent" name="DiscountPercent" placeholder="واحد درصد تخفیف" type="number" value="" />
@@ -116,7 +141,11 @@
                                     </div>
                                 </div>
                                 <hr />
-
+                                <div class="form-group">
+                                    <p class="control-label col-md-5 text-blue" for="Discount">اگر مایلید روی کالای خاصی تخفیف بگذارید آن را انتخاب کنید.</p>
+                                    <p class="control-label col-md-6 text-blue" for="Discount">اگر مایلید روی دسته بندی خاصی تخفیف بگذارید آن را انتخاب کنید.</p>
+                                </div>
+                                <br />
                                 <div class="form-group">
                                     <label class="control-label col-md-2" for="ProductRef">محصول</label>
                                     <div class="col-md-4">
@@ -149,7 +178,11 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="StartDate1">از تاریخ</label>
+                                    <p class="control-label col-md-4 text-blue" for="Discount">تاریخ شروع و پایان تخفیف های خود را تعیین کنید.</p>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" for="StartDate1">از تاریخ<small style="color: red"> * اجباری </small></label>
                                     <div class="col-md-4">
 
                                         <div class="input-group">
@@ -161,7 +194,7 @@
                                                    data-targetselector="#StartDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="true" data-placement="right" />
                                         </div>
                                     </div>
-                                    <label class="control-label col-md-2" for="EndDate1">تا تاریخ</label>
+                                    <label class="control-label col-md-2" for="EndDate1">تا تاریخ<small style="color: red"> * اجباری </small></label>
                                     <div class="col-md-4">
 
                                         <div class="input-group">
