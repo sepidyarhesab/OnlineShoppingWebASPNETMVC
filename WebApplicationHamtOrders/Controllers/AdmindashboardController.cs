@@ -6,9 +6,6 @@ using System.Net;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using C1.C1Zip;
-using Dynamicweb.Content.Files;
-using Dynamicweb.Content.Versioning;
-using Microsoft.Web.Administration;
 using OrdersGeneral.Repository.General;
 using OrdersDatabase.Models;
 

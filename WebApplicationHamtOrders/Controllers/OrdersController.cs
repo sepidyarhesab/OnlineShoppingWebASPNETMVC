@@ -13,8 +13,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using RestSharp;
-using System.Net.Http;
+
 
 
 namespace WebApplicationHamtOrders.Controllers
