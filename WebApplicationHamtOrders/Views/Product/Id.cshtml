@@ -1,4 +1,5 @@
-﻿@using OrdersGeneral.Repository.General
+﻿@using OrdersDatabase.Models
+@using OrdersGeneral.Repository.General
 @using OrdersInventory.Repository.Inventory
 @using OrdersInventory.ViewModels.Inventory
 @model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
@@ -163,8 +164,8 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 mx-lg-0 mx-auto" style="border: 1px solid #f8f8f8 ">
                         <div class="box-info-product">
                             @{
-
-                                if (!item.PrimaryTitle.Contains("کیف"))
+                               
+                                if (@item.IsSizeGuide)
                                 {
                                     <div class="product-colors mb-3">
                                         <button class="link--with-border-bottom" data-toggle="modal"
@@ -173,6 +174,10 @@
                                             راهنمای سایز
                                         </button>
                                     </div>
+                                }
+                                else
+                                {
+
                                 }
                                 var type = RepSettings.RepositoryTypeSelect();
                                 if (type != Guid.Empty)

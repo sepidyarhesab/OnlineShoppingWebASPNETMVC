@@ -34,15 +34,37 @@ namespace WebApplicationHamtOrders.Controllers
                 var result = rep.RepositoryMainProductsMangmentSearch(search);
                 return View(result);
             }
+
             else
             {
-                var query = rep.RepositoryMainProductsMangment();
-                return View(query);
+                if (Session["SelectedProductId"] != null)
+                {
+                    var idd = Guid.Parse(Session["SelectedProductId"].ToString());
+                    var query = rep.RepositoryMainProductsMangment();
+                    var result = query.Where(c => c.Id == idd).ToList();
+                    if (result.Count > 0)
+                    {
+                        return View(result);
+
+                    }
+                    else
+                    {
+                        return View(query);
+
+                    }
+                }
+                else
+                {
+                    var query = rep.RepositoryMainProductsMangment();
+                    return View(query);
+                }
+
             }
         }
 
         public ActionResult Reload()
         {
+            Session["SelectedProductId"] = null;
             Session["SearchProduct"] = null;
             var query = rep.RepositoryMainProductsMangment();
             return View("Index", query);
@@ -147,7 +169,7 @@ namespace WebApplicationHamtOrders.Controllers
         }
         #endregion
 
-        
+
         #region changestatus
         public void ChangeStatus(Guid Id)
         {
@@ -179,7 +201,7 @@ namespace WebApplicationHamtOrders.Controllers
 
         #endregion
 
-        
+
         #region Picture
         public ActionResult Pictures(Guid id)
         {
@@ -314,7 +336,7 @@ namespace WebApplicationHamtOrders.Controllers
             if (Result.Contains("Error"))
             {
                 TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                Response.Redirect("/ProductManagment/Property/"+Session["PropertyId"]);
+                Response.Redirect("/ProductManagment/Property/" + Session["PropertyId"]);
             }
             else
             {
@@ -365,16 +387,16 @@ namespace WebApplicationHamtOrders.Controllers
         public void EditRow(VMProduct.VmMainProductMangement value)
         {
             var Userid = Guid.Parse(User.Identity.Name);
-                var result = rep.RepositoryMainProductManagemenetEditById(value, Userid);
-                if (result.Contains("Error"))
-                {
-                    TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                }
-                else
-                {
-                    TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                }
-           
+            var result = rep.RepositoryMainProductManagemenetEditById(value, Userid);
+            if (result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+            }
+
             Response.Redirect("/ProductManagment");
         }
 
@@ -450,7 +472,7 @@ namespace WebApplicationHamtOrders.Controllers
             {
                 Response.Redirect("/ProductManagment/");
             }
-            
+
         }
 
 
@@ -667,7 +689,7 @@ namespace WebApplicationHamtOrders.Controllers
                 LogWriter.LoggerImport("Model Valid", DateTime.Now.ToString(), "746");
                 if (postedFile != null && postedFile.ContentLength > (1024 * 1024 * 50))  // 50MB limit  
                 {
-                    LogWriter.LoggerImport("Model Poted File Lenght : " + postedFile.ContentLength , DateTime.Now.ToString(), "746");
+                    LogWriter.LoggerImport("Model Poted File Lenght : " + postedFile.ContentLength, DateTime.Now.ToString(), "746");
                     ModelState.AddModelError("postedFile", "Your file is to large. Maximum size allowed is 50MB !");
                 }
 
@@ -821,13 +843,20 @@ namespace WebApplicationHamtOrders.Controllers
             }
             else
             {
-                    LogWriter.LoggerImport("Model Not Vliad  " , DateTime.Now.ToString(), "746");
+                LogWriter.LoggerImport("Model Not Vliad  ", DateTime.Now.ToString(), "746");
             }
             //return View(postedFile);  
             //return Json("Success");
             Response.Redirect("/ProductManagment");
         }
         #endregion
+
+        //End-------------------------------------
+        //Get id for selected products
+        public void SetSessionSelectedProduct(Guid id)
+        {
+            Session["SelectedProductId"] = id;
+        }
     }
 
 

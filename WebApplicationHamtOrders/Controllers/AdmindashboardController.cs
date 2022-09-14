@@ -2,11 +2,12 @@
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
-using System.IO.Compression;
 using System.Net;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using C1.C1Zip;
+using Dynamicweb.Content.Files;
+using Dynamicweb.Content.Versioning;
 using Microsoft.Web.Administration;
 using OrdersGeneral.Repository.General;
 using OrdersDatabase.Models;
@@ -61,13 +62,13 @@ namespace WebApplicationHamtOrders.Controllers
                                 if (Directory.Exists(urlback+webUrl))
                                 {
                                     var zippath = urlback + webUrl + @"\Backup_" + result.ApplicationVersionDatabase + "_" + Guid.NewGuid() + ".zip";
-                                    ZipFile.CreateFromDirectory(urlnew, zippath);
+                                    //System.IO.Compression.ZipFile.CreateFromDirectory(urlnew, zippath);
                                 }
                                 else
                                 {
                                     Directory.CreateDirectory(urlback + webUrl);
                                     var zippath = urlback + webUrl + @"\Backup_" + result.ApplicationVersionDatabase + "_" + Guid.NewGuid() + ".zip";
-                                    ZipFile.CreateFromDirectory(urlnew, zippath);
+                                    //ZipFile.CreateFromDirectory(urlnew, zippath);
                                 }
 
                                 //zip.Create(zippath);
