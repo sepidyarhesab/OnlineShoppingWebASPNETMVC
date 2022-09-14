@@ -600,7 +600,6 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\WebApplicationHamtOrders.dll.config" />
-    <Fakes Include="Fakes\Dynamicweb.fakes" />
     <None Include="Helper\Admin\Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Helper\Admin\Scripts\jquery-3.1.0.js" />
     <Content Include="Helper\Admin\Scripts\jquery-3.1.0.min.js" />

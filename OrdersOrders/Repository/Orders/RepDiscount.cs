@@ -1070,7 +1070,7 @@ namespace OrdersOrders.Repository.Orders
 
                 if (queryProduct.Discount > 0)
                 {
-                    vmCartRow.Message = "Error";
+                    vmCartRow.Message = "Error DiscountMulti";
                 }
                 else
                 {

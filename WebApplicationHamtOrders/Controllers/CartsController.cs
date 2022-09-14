@@ -26,7 +26,7 @@ namespace WebApplicatioNewOrders.Controllers
                     var UserRef = Guid.Parse(User.Identity.Name);
                     if (Session["Carts"] != null)
                     {
-                        
+
                         var carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
                         var resuult = RepOrders.RepositoryCarts(carts, UserRef);
                         return View(resuult);
@@ -82,7 +82,14 @@ namespace WebApplicatioNewOrders.Controllers
                             }
                             else
                             {
-                                TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                                if (mes.Contains("DiscountMulti"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("این کد تخفیف قابل استفاده نیست", "مشتری عزیز ؛ به دلیل داشتن تخفیف در خرید فعلی شما قادر به استفاده از تخفیف دیگری نیستید");
+                                }
+                                else
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                                }
                             }
 
                         }
