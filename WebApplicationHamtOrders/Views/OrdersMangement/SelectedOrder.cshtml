@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "تمام سفارشات|AllOrders";
+    ViewBag.Title = "SelectedOrder";
     Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
 }
 
@@ -16,47 +16,22 @@
 
             <div class="box box-info">
                 <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
-                    <h3 class="box-title">تمام سفارشات</h3>
+                    @{
+                        if (Model != null)
+                        {
+                                        <h3 class="box-title">سفارش با کد رهگیری @Model.Code/  @Model.Name @Model.Family</h3>
+                        }
+                    }
+
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
                     <br />
 
-                    <div class="site-header__search">
-                        <div class="search">
-
-                            <form class="search__form" action="/OrdersMangement/AllOrders" method="post">
-                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی سفارش کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
-                                <button class="search__button" type="submit">
-                                    <svg width="20px" height="20px">
-                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
-                                    </svg>
-                                </button>
-                                <div class="search__border"></div>
-                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
-                                    بازیابی مجدد
-                                </button>
-                            </form>
-
-                        </div>
-
-                    </div>
-                    <script>
-
-                        function reload() {
-                            window.location.href = "/OrdersMangement/AllOrders";
-                        }
-
-                    </script>
-
+                  
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <div class="container-fluid">
-                        <a href="#" class="btn btn-success" style="width: 80%"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
-                        <a class="btn btn-danger " href="/AdminDashboard" style="width: 19%">برگشت</a>
-                    </div>
-
                     <div class="table-responsive">
                         <table class="table no-margin">
                             <thead>
@@ -118,8 +93,8 @@
                                     {
 
                                         var row = 1;
-                                        foreach (var mangment in Model)
-                                        {
+                                        //foreach (var mangment in Model)
+                                        //{
                                             <tr>
                                                 <td>
                                                     <input type="checkbox" value="">
@@ -128,37 +103,37 @@
                                                     @row
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <a style="cursor: pointer" onclick="window.open('/OrdersMangement/SelectedOrder/@mangment.Id','_blank','height=500px,width=1100px,scrollbars=1');"> @mangment.Name @mangment.Family</a>
+                                                    @Model.Name @Model.Family
                                                 </td>
                                                 <td class="col-md-3" style="font-size: 12px;">
-                                                    <a style="cursor: pointer" onclick="window.open('/OrdersMangement/SelectedOrder/@mangment.Id','_blank','height=500px,width=1100px,scrollbars=1');">  @mangment.Code</a>
+                                                    @Model.Code
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <a href="tel:@mangment.Phone"> @mangment.Phone</a>
+                                                    <a href="tel:@Model.Phone"> @Model.Phone</a>
                                                 </td>
                                                 <td class="col-md-4">
-                                                    @mangment.CityTitle
+                                                    @Model.CityTitle
                                                 </td>
                                                 <td class="col-md-4">
-                                                    @mangment.Address
+                                                    @Model.Address
                                                 </td>
                                                 <td class="col-md-4">
-                                                    @mangment.PostalCode
+                                                    @Model.PostalCode
                                                 </td>
                                                 <td class="col-md-1">
-                                                    @mangment.Note
+                                                    @Model.Note
                                                 </td>
                                                 <td class="col-md-1">
-                                                    @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", mangment.CreatorDateTime, "Date")
+                                                    @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", Model.CreatorDateTime, "Date")
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <a href="/OrdersMangement/ChangeStatus/@mangment.Id">
-                                                        <span class="btn btn-success">@mangment.Status</span>
+                                                    <a href="/OrdersMangement/ChangeStatusSelectedOrder/@Model.Id">
+                                                        <span class="btn btn-success">@Model.Status</span>
                                                     </a>
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <a href="/OrdersMangement/ChangeStatusIsPay/@mangment.Id">
-                                                        <span class="@mangment.IsPayClass">@mangment.IsPayTitle</span>
+                                                    <a href="/OrdersMangement/ChangeStatusIsPaySelectedOrder/@Model.Id">
+                                                        <span class="@Model.IsPayClass">@Model.IsPayTitle</span>
                                                     </a>
 
                                                 </td>
@@ -180,7 +155,7 @@
                                                                 </div>
                                                                 @using (Html.BeginForm("SendSmsPostalCode", "OrdersMangement", FormMethod.Post))
                                                                 {
-                                                                    <input type="hidden" name="mobile" id="mobile" value="@mangment.Phone" />
+                                                                    <input type="hidden" name="mobile" id="mobile" value="@Model.Phone" />
                                                                     <div class="modal-body">
                                                                         <input class="form-control" type="text" placeholder="لطفا شماره مرسوله پستی را وارد کنید" id="postalcode" name="postalcode" />
                                                                     </div>
@@ -201,9 +176,9 @@
                                                 </td>
                                                 <td class="col-md-1">
                                                     @{
-                                                        if (mangment.Discount > 0)
+                                                        if (Model.Discount > 0)
                                                         {
-                                                            <span>@string.Format("{0:##,###}", mangment.Discount, "Fee") <small> تومان </small></span>
+                                                            <span>@string.Format("{0:##,###}", Model.Discount, "Fee") <small> تومان </small></span>
                                                         }
                                                         else
                                                         {
@@ -214,19 +189,19 @@
 
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <span>@string.Format("{0:##,###}", mangment.Price, "Fee") <small> تومان </small></span>
+                                                    <span>@string.Format("{0:##,###}", Model.Price, "Fee") <small> تومان </small></span>
 
                                                 </td>
                                                 <td class="col-md-1">
-                                                    <a href="/OrdersMangement/Invoice/@mangment.Id">
+                                                    <a href="/OrdersMangement/Invoice/@Model.Id">
                                                         <span class="btn btn-success">نمایش فاکتور</span>
                                                     </a>
                                                 </td>
 
                                             </tr>
-                                            row++;
+                                                        row++;
 
-                                        }
+                                                        //}
                                     }
                                 }
 
@@ -301,3 +276,4 @@
 
     </script>
 }
+
