@@ -28,6 +28,7 @@ namespace WebApplicationHamtOrders.Controllers
 
         public ActionResult Index()
         {
+            
             if (Session["SearchProduct"] != null)
             {
                 string search = Session["SearchProduct"].ToString();
@@ -55,8 +56,17 @@ namespace WebApplicationHamtOrders.Controllers
                 }
                 else
                 {
-                    var query = rep.RepositoryMainProductsMangment();
-                    return View(query);
+                    if (Session["SelectedProductIdNewPage"] != null)
+                    {
+
+                        return RedirectToAction("/SelectedProduct/" + Session["SelectedProductIdNewPage"]);
+                    }
+                    else
+                    {
+                        var query = rep.RepositoryMainProductsMangment();
+                        return View(query);
+                    }
+                    
                 }
 
             }
@@ -856,6 +866,14 @@ namespace WebApplicationHamtOrders.Controllers
         public void SetSessionSelectedProduct(Guid id)
         {
             Session["SelectedProductId"] = id;
+        }
+        //End-----------------------------------
+        //open selected product in a new page
+        public ActionResult SelectedProduct(Guid id)
+        {
+            Session["SelectedProductIdNewPage"] = id;
+            var query = rep.RepositorySelectedProductsMangment(id);
+            return View(query);
         }
     }
 
