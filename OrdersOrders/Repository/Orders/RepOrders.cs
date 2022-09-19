@@ -812,7 +812,42 @@ namespace OrdersOrders.Repository.Orders
                 return "Error : " + e.Message;
             }
         }
+        //End--------------------------------------------
+        //Repository Change Statuse IsPay
+        public static string RepChangeStatusIsPay(Guid id)
+        {
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Order.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    switch (query.IsPay)
+                    {
+                        case true:
+                        {
+                            query.IsPay = false;
+                            db.SaveChanges();
+                            break;
+                        }
+                        case false:
+                        {
+                            query.IsPay = true;
+                            db.SaveChanges();
+                            break;
+                        }
+                    }
 
+                }
+
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Application Error : " + e.Message;
+            }
+        }
+        //End------------------------------------------------
         public static List<VMOrders.VmOrderMangment> RepositoryListOrders(string phone)
         {
             var list = new List<VMOrders.VmOrderMangment>();
@@ -899,7 +934,7 @@ namespace OrdersOrders.Repository.Orders
 
                         }
 
-                        if (order.IsOk)
+                        if (order.IsPay)
                         {
                             vm.IsPayClass = "label label-success";
                             vm.IsPayTitle = "پرداخت شده";
@@ -1909,6 +1944,148 @@ namespace OrdersOrders.Repository.Orders
                 return "Application Error : " + e.Message;
             }
         }
+        //End------------------------------------
+        //Repository Show Selected Order
+        public static VMOrders.VmOrderMangment RepositorySelectedOrdersAdmin(Guid id)
+        {
+            var vmm = new VMOrders.VmOrderMangment();
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Order.AsNoTracking().FirstOrDefault(c => c.Id==id);
+                if (query != null)
+                {
+                   
+                        var vm = new VMOrders.VmOrderMangment
+                        {
+                            Id = query.Id,
+                            Code = query.Code,
+                            Family = query.Lastname,
+                            Name = query.Firstname,
+                            Note = query.Note,
+                            PageId = query.Note,
+                            Phone = query.Phone,
+                            ModifierDateTime = query.ModifierDate,
+                            CreatorDateTime = query.CreatorDate,
+                            Discount = query.Discount,
+                            Address = query.Address,
+                            Price = query.Price
+                        };
+
+
+                        try
+                        {
+                            var a = Guid.Parse(query.Address);
+                            var queryaddress = db.Table_Address.FirstOrDefault(c => c.Id == a);
+                            if (queryaddress != null)
+                            {
+                                vm.Address = queryaddress.Address;
+                                vm.PostalCode = queryaddress.PostalCode;
+                            }
+
+                            var querycity = db.Table_Location.FirstOrDefault(c => c.LocationId == queryaddress.CityRef);
+                            if (querycity != null)
+                            {
+                                vm.CityTitle = querycity.Title;
+                            }
+
+                        }
+                        catch (Exception e)
+                        {
+                            vm.Address = query.Address;
+                        }
+
+                        switch (query.Status)
+                        {
+                            case 0:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما تازه ثبت شده است و هنوز اقدامی صورت نگرفته است" + " " + " 0 ";
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما دریافت شد و در دست پیگیری میباشد" + " " + " 1 ";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما آماده ارسال شد" + "  " + " 2 ";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما ارسال شد" + " " + " 3 ";
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما تحویل داده شده است" + " " + " 4 ";
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    vm.Status = ".مشتری گرامی ، محصول مورد نظر شما موجود نبوده است یا مغایرت داشته است" + " " + " 5 ";
+                                    break;
+                                }
+                            case 6:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما لغو شد" + " " + " 6 ";
+                                    break;
+                                }
+                            case 7:
+                                {
+                                    vm.Status = ".مشتری گرامی ، سفارش شما حذف شد" + " " + " 7 ";
+                                    break;
+                                }
+                            case 8:
+                                {
+                                    vm.Status = ".مشتری گرامی ، اطلاعات شما ناقص بوده است با مدیریت تماس بگیرید" + " " + " 8 ";
+                                    break;
+                                }
+                            case 9:
+                                {
+                                    vm.Status = ".مشتری گرامی ، ما در انتظار ثبت نظر و لایک شما هستیم" + " " + " 9 ";
+                                    break;
+                                }
+                            case 10:
+                                {
+                                    vm.Status = ".مشتری گرامی ، در دست برسی" + "  " + " 10 ";
+                                    break;
+                                }
+
+                        }
+
+                        if (query.IsPay == true)
+                        {
+                            vm.IsPayClass = "btn btn-success";
+                            vm.IsPayTitle = "پرداخت شده";
+                        }
+                        else
+                        {
+                            vm.IsPayClass = "btn btn-danger";
+                            vm.IsPayTitle = "پرداخت نشده";
+                        }
+
+                        vmm = vm;
+                }
+
+                return vmm;
+            }
+            catch (Exception e)
+            {
+                if (e.InnerException != null)
+                {
+                    LogWriter.Logger("Application Error : " + e.InnerException.Message, "", "");
+                }
+                else
+                {
+                    LogWriter.Logger("Application Error : " + e.Message, "", "");
+                }
+                return vmm;
+
+            }
+        }
+
 
     }
 

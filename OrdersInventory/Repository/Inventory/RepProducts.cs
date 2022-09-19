@@ -6288,6 +6288,113 @@ namespace OrdersInventory.Repository.Inventory
 
         #endregion
         //End------------------------------------
+        //Repository Show selected products in a new page
+        public VMProduct.VmMainProductMangement RepositorySelectedProductsMangment(Guid id)
+        {
+            var vmm = new VMProduct.VmMainProductMangement();
+            try
+            {
 
+                var query = db.Table_Product
+                    .AsNoTracking().FirstOrDefault(c=>c.Id==id);
+                if (query != null)
+                {
+                    
+                        var vm = new VMProduct.VmMainProductMangement
+                        {
+                            Id = query.Id,
+                            Code =query.Code,
+                            IsOk = query.IsOk,
+                            PrimaryTitle = query.PrimaryTitle,
+                            SecondaryTitle = query.SecondaryTitle,
+                            TertiaryTitle = query.TertiaryTitle,
+                            Url = query.Url,
+                            CreatorDateTime = query.CreatorDate,
+                            Discount = query.Discount,
+                            Note = query.Note,
+                        };
+
+                        var querySummary =
+                            db.Table_Product_Summary.FirstOrDefault(c =>
+                                c.ProductRef == query.Id && c.IsOk && c.IsMain);
+                        if (querySummary != null)
+                        {
+                            if (querySummary.Quantity > 0)
+                            {
+                                vm.QuantityTitle = "موجود";
+                                vm.QuantityClass = "product-card__badge--yes";
+                            }
+                            else
+                            {
+                                vm.QuantityTitle = "ناموجود";
+                                vm.QuantityClass = "product-card__badge--no";
+                            }
+
+                            vm.Quantity = querySummary.Quantity;
+                            vm.Fee = querySummary.Fee;
+
+                        }
+                        else
+                        {
+                            if (query.Quantity > 0)
+                            {
+                                vm.QuantityTitle = "موجود";
+                                vm.QuantityClass = "product-card__badge--yes";
+                            }
+                            else
+                            {
+                                vm.QuantityTitle = "ناموجود";
+                                vm.QuantityClass = "product-card__badge--no";
+                            }
+
+                            vm.Quantity = query.Quantity;
+                            vm.Fee = query.Fee;
+                        }
+
+                        var queryfile =
+                            db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == query.Id);
+                        if (queryfile != null)
+                        {
+                            vm.FileName = "/Static/Content/Images/Products/" + queryfile.FileName +
+                                          queryfile.FileExtensions;
+                        }
+                        else
+                        {
+                            vm.FileName = "/Static/Content/Images/";
+                        }
+
+                        if (query.IsOk == true)
+                        {
+                            vm.IsOkTitle = "فعال";
+                            vm.IsOkClass = "btn btn-success";
+                        }
+                        else
+                        {
+                            vm.IsOkTitle = "غیرفعال";
+                            vm.IsOkClass = "btn btn-danger";
+                        }
+
+                        var queryCategories =
+                            db.Table_Product_Category.AsNoTracking()
+                                .FirstOrDefault(c => c.Id == query.CategoriesRef);
+                        if (queryCategories != null)
+                        {
+                            vm.CategoreisTitle = queryCategories.PrimaryTitle;
+                            vm.CategoriesRef = queryCategories.Id;
+
+                        }
+
+                        vmm = vm;
+                }
+
+                return vmm;
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return vmm;
+        }
     }
 }
