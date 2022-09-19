@@ -867,14 +867,14 @@ namespace WebApplicationHamtOrders.Controllers
         {
             Session["SelectedProductId"] = id;
         }
-        //End-----------------------------------
-        //open selected product in a new page
+
         public ActionResult SelectedProduct(Guid id)
         {
             Session["SelectedProductIdNewPage"] = id;
             var query = rep.RepositorySelectedProductsMangment(id);
             return View(query);
         }
+
     }
 
 
