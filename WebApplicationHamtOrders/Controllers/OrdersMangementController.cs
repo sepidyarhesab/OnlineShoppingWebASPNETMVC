@@ -24,8 +24,16 @@ namespace WebApplicationHamtOrders.Controllers
         // GET: OrdersMangement
         public ActionResult Index()
         {
-            var query = RepOrders.RepositoryListOrdersAdmin();
-            return View(query);
+            if (Session["SelectedOrderId"]!=null)
+            {
+                return RedirectToAction("/OrdersMangement/SelectedOrder/" + Session["SelectedOrderId"]);
+            }
+            else
+            {
+                var query = RepOrders.RepositoryListOrdersAdmin();
+                return View(query);
+            }
+            
         }
 
         [HttpPost]
@@ -168,6 +176,24 @@ namespace WebApplicationHamtOrders.Controllers
             Response.Redirect("/OrdersMangement");
             return View();
         }
+
+        //End---------------------------------------
+        //change statuse IsPay
+        public void ChangeStatusIsPay(Guid id)
+        {
+            var result = RepOrders.RepChangeStatusIsPay(id);
+            if (result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/OrdersMangement");
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                Response.Redirect("/OrdersMangement/AllOrders");
+            }
+        }
+        //End----------------------------------------
         public ActionResult Invoice(Guid id)
         {
             var db = new Orders_Entities();
@@ -454,5 +480,99 @@ namespace WebApplicationHamtOrders.Controllers
             Response.Redirect("AllOrders");
         }
         //End--------------------------------------------------
+        //Show Selected Order for Edit
+        public ActionResult SelectedOrder(Guid id)
+        {
+            Session["SelectedOrderId"] = id;
+            var query = RepOrders.RepositorySelectedOrdersAdmin(id);
+            return View(query);
+        }
+        //End---------------------------------------
+        //change statuse IsPay for selected order
+        public void ChangeStatusIsPaySelectedOrder(Guid id)
+        {
+            var result = RepOrders.RepChangeStatusIsPay(id);
+            if (result.Contains("Error"))
+            {
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/OrdersMangement/SelectedOrder/"+id);
+            }
+            else
+            {
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
+                Response.Redirect("/OrdersMangement/SelectedOrder/"+id);
+            }
+        }
+        //End----------------------------------------
+        //ChangeStatusSelectedOrder
+        public void ChangeStatusSelectedOrder(Guid id)
+        {
+            var db = new Orders_Entities();
+            var query = db.Table_Order.FirstOrDefault(c => c.Id == id);
+            if (query != null)
+            {
+                switch (query.Status)
+                {
+                    case 0:
+                        {
+                            query.Status = 1;
+                            break;
+                        }
+                    case 1:
+                        {
+                            query.Status = 2;
+                            break;
+                        }
+                    case 2:
+                        {
+                            query.Status = 3;
+                            break;
+                        }
+                    case 3:
+                        {
+                            query.Status = 4;
+                            break;
+                        }
+                    case 4:
+                        {
+                            query.Status = 5;
+                            break;
+                        }
+                    case 5:
+                        {
+                            query.Status = 6;
+                            break;
+                        }
+                    case 6:
+                        {
+                            query.Status = 7;
+                            break;
+                        }
+                    case 7:
+                        {
+                            query.Status = 8;
+                            break;
+                        }
+                    case 8:
+                        {
+                            query.Status = 9;
+                            break;
+                        }
+                    case 9:
+                        {
+                            query.Status = 10;
+                            break;
+                        }
+                    case 10:
+                        {
+                            query.Status = 0;
+                            break;
+                        }
+                }
+                db.SaveChanges();
+            }
+            Response.Redirect("/OrdersMangement/SelectedOrder/"+id);
+           
+        }
     }
 }

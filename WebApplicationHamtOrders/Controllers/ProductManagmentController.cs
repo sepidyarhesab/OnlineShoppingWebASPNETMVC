@@ -28,6 +28,7 @@ namespace WebApplicationHamtOrders.Controllers
 
         public ActionResult Index()
         {
+            
             if (Session["SearchProduct"] != null)
             {
                 string search = Session["SearchProduct"].ToString();
@@ -55,8 +56,17 @@ namespace WebApplicationHamtOrders.Controllers
                 }
                 else
                 {
-                    var query = rep.RepositoryMainProductsMangment();
-                    return View(query);
+                    if (Session["SelectedProductIdNewPage"] != null)
+                    {
+
+                        return RedirectToAction("/SelectedProduct/" + Session["SelectedProductIdNewPage"]);
+                    }
+                    else
+                    {
+                        var query = rep.RepositoryMainProductsMangment();
+                        return View(query);
+                    }
+                    
                 }
 
             }
@@ -405,154 +415,7 @@ namespace WebApplicationHamtOrders.Controllers
 
         #endregion
 
-        #region Set
-        public ActionResult Set(Guid id)
-        {
-            Session["SetId"] = id;
-            if (User.Identity.IsAuthenticated)
-            {
-                var result = rep.RepositoryProductSet(id);
-                if (result != null)
-                {
-                    return View(result);
-                }
-                else
-                {
-                    TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                    return View("Index");
-                }
-            }
-            return RedirectToAction("Index", "Login");
 
-
-        }
-
-        public ActionResult EditSet(Guid id)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var result = rep.RepositoryProductSetEdit(id);
-                if (result != null)
-                {
-                    return View(result);
-                }
-                else
-                {
-                    TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                    return View("Index");
-                }
-            }
-            return RedirectToAction("Index", "Login");
-        }
-
-        [HttpPost]
-        public void EditSetRow(VMProduct.ViewModelProductSet value)
-        {
-            var Userid = Guid.Parse(User.Identity.Name);
-            var result = rep.RepositoryProductSetEdit(value, Userid);
-            if (result.Contains("Error"))
-            {
-                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                Response.Redirect("/ProductManagment/Set/" + Session["SetId"]);
-            }
-            else
-            {
-                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                Response.Redirect("/ProductManagment/Set/" + Session["SetId"]);
-            }
-
-            Response.Redirect("/ProductManagment/Set/" + Session["SetId"]);
-        }
-
-        public ActionResult AddSet()
-        {
-            return View();
-        }
-        [HttpPost]
-        public void AddSett(VMProduct.ViewModelProductSet value)
-        {
-            var Userid = Guid.Parse(User.Identity.Name);
-            if (value.Ref!=Guid.Empty)
-            {
-                //var Ref = Guid.Parse(TempData["SetId"].ToString());
-                var result = rep.GenerateSet(value, Userid);
-
-
-                if (result.Contains("Success"))
-                {
-                    TempData["JavaScriptFunction"] =
-                        IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                    Response.Redirect("/ProductManagment/Set/" + Guid.Parse(value.Ref.ToString()));
-                }
-                else
-                {
-                    if (result.Contains("QueryNull"))
-                    {
-                        TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "محصول قبلا انتخاب شده است");
-                        Response.Redirect("/ProductManagment/");
-                    }
-                    else
-                    {
-                        TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                        Response.Redirect("/ProductManagment");
-                    }
-                    
-                }
-            }
-        }
-
-        public void DeleteSet(Guid id)
-        {
-            var Result = rep.DeleteSet(id);
-
-            if (Result.Contains("Error"))
-            {
-                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                Response.Redirect("/ProductManagment/Set/" + Session["SetId"]);
-            }
-            else
-            {
-                TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                Response.Redirect("/ProductManagment/Set/" + Session["SetId"]);
-            }
-
-
-
-        }
-        public void ChangeSet(Guid Id)
-        {
-            var Result = rep.ChangeSet(Id);
-            if (Result.Contains("Error"))
-            {
-                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
-                if (Session["SetId"] != null)
-                {
-                    var pid = Session["SetId"].ToString();
-                    Response.Redirect("/ProductManagment/Set/" + pid);
-                }
-                else
-                {
-                    Response.Redirect("/ProductManagment");
-                }
-            }
-            else
-            {
-                if (Session["SetId"] != null)
-                {
-                    var pid = Session["SetId"].ToString();
-                    TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");
-                    Response.Redirect("/ProductManagment/Set/" + pid);
-                }
-                else
-                {
-                    Response.Redirect("/ProductManagment");
-                }
-
-            }
-
-        }
-
-        #endregion
         #region ColorSize
         public ActionResult ColorSize(Guid id)
         {
@@ -1004,8 +867,14 @@ namespace WebApplicationHamtOrders.Controllers
         {
             Session["SelectedProductId"] = id;
         }
-
-
+        //End-----------------------------------
+        //open selected product in a new page
+        public ActionResult SelectedProduct(Guid id)
+        {
+            Session["SelectedProductIdNewPage"] = id;
+            var query = rep.RepositorySelectedProductsMangment(id);
+            return View(query);
+        }
     }
 
 
