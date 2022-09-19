@@ -38,7 +38,7 @@ namespace WebApplicationHamtOrders.Controllers
             var rep = new RepProducts();
 
             var query = rep.RepositoryMainProductsById(id);
-            if (query.Count > 0)
+            if (query!=null)
             {
                 return View(query);
             }

@@ -2,36 +2,33 @@
 @using OrdersInventory.Repository.Inventory
 @using OrdersInventory.ViewModels.Inventory
 
-
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
 @{
     if (Model != null)
     {
-        ViewBag.Title = Model.First().PrimaryTitle;
+        ViewBag.Title = Model.PrimaryTitle;
         Layout = "~/Views/Layouts/_MainLayouts.cshtml";
 
         var rep = new RepProducts();
 
-        foreach (var item in Model)
-        {
+        
             <div class="page-header">
                 <div class="page-header__container container">
                     <div class="page-header__breadcrumb">
                         <nav class="card mb-0 contact-us box-shadows" style="padding: 10px" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
+                                <li class="breadcrumb-Model">
                                     <a href="/Default">خانه</a>
                                     <svg class="breadcrumb-arrow" width="6px" height="9px">
                                         <use xlink:href="/helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
                                     </svg>
                                 </li>
-                                <li class="breadcrumb-item">
-                                    <a href="/Product/Id/@item.Id">@item.CategoreisTitle</a>
+                                <li class="breadcrumb-Model">
+                                    <a href="/Product/Id/@Model.Id">@Model.CategoreisTitle</a>
                                     <svg class="breadcrumb-arrow" width="6px" height="9px">
                                         <use xlink:href="/helper/Layouts/images/sprite.svg#arrow-rounded-right-6x9"></use>
                                     </svg>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="/Product/Id/@item.Id">@item.PrimaryTitle</a></li>
+                                <li class="breadcrumb-Model active" aria-current="page"><a href="/Product/Id/@Model.Id">@Model.PrimaryTitle</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -46,14 +43,14 @@
                                 <div class="product-gallery">
                                     <div class="product-gallery__featured">
                                         <div class="owl-carousel" id="product-image">
-                                            <a href="@item.FileName" target="_blank"><img src="@item.FileName" alt="@item.PrimaryTitle"> </a>
+                                            <a href="@Model.FileName" target="_blank"><img src="@Model.FileName" alt="@Model.PrimaryTitle"> </a>
                                             @{
 
-                                                if (item.FileList.Count > 0)
+                                                if (Model.FileList != null)
                                                 {
-                                                    foreach (var fileUploadName in item.FileList)
+                                                    foreach (var fileUploadName in Model.FileList)
                                                     {
-                                                        <a href="@fileUploadName.FileName" target="_blank"><img src="@fileUploadName.FileName" alt="@item.PrimaryTitle"> </a>
+                                                        <a href="@fileUploadName.FileName" target="_blank"><img src="@fileUploadName.FileName" alt="@Model.PrimaryTitle"> </a>
                                                     }
                                                 }
                                             }
@@ -61,14 +58,14 @@
                                     </div>
                                     <div class="product-gallery__carousel">
                                         <div class="owl-carousel" id="product-carousel">
-                                            <a href="" class="product-gallery__carousel-item"><img class="product-gallery__carousel-image" src="@item.FileName" alt="@item.PrimaryTitle"> </a>
+                                            <a href="" class="product-gallery__carousel-Model"><img class="product-gallery__carousel-image" src="@Model.FileName" alt="@Model.PrimaryTitle"> </a>
                                             @{
 
-                                                if (item.FileList.Count > 0)
+                                                if (Model.FileList != null)
                                                 {
-                                                    foreach (var fileUploadName in item.FileList)
+                                                    foreach (var fileUploadName in Model.FileList)
                                                     {
-                                                        <a href="" class="product-gallery__carousel-item"><img class="product-gallery__carousel-image" src="@fileUploadName.FileName" alt="@item.PrimaryTitle"> </a>
+                                                        <a href="" class="product-gallery__carousel-Model"><img class="product-gallery__carousel-image" src="@fileUploadName.FileName" alt="@Model.PrimaryTitle"> </a>
                                                     }
                                                 }
                                             }
@@ -80,42 +77,42 @@
 
                             <div class="product__info ">
                                 <div>
-                                    <h1 class="product__name ">@item.PrimaryTitle</h1>
+                                    <h1 class="product__name ">@Model.PrimaryTitle</h1>
                                     @*<div class="product__rating">
-                                        <div class="product__rating-legend"><a href="">@item.Code</a></div>
+                                        <div class="product__rating-legend"><a href="">@Model.Code</a></div>
                                     </div>*@
-                                    <div class="product__description">@item.SecondaryTitle</div>
+                                    <div class="product__description">@Model.SecondaryTitle</div>
                                 </div>
 
                                 <ul class="product__meta">
-                                    <li class="product__meta-availability">موجودی: <span id="spanquantity" class="@item.QuantityClass">@item.QuantityTitle</span></li>
-                                    <li>کد: @item.Code</li>
+                                    <li class="product__meta-availability">موجودی: <span id="spanquantity" class="@Model.QuantityClass">@Model.QuantityTitle</span></li>
+                                    <li>کد: @Model.Code</li>
                                 </ul>
                             </div>
                             <!-- .product__info / end -->
                             <!-- .product__sidebar -->
                             <div class="product__sidebar">
-                                <div class="product__availability">موجودی: <span class="@item.QuantityClass">@item.QuantityTitle</span></div>
+                                <div class="product__availability">موجودی: <span class="@Model.QuantityClass">@Model.QuantityTitle</span></div>
 
                                 @{
-                                    var ProductFee = (item.Fee - ((item.Fee * item.Discount) / 100));
-                                    if (item.Discount > 0)
+                                    var ProductFee = (Model.Fee - ((Model.Fee * Model.Discount) / 100));
+                                    if (Model.Discount > 0)
                                     {
                                         <div class="widget-products__prices ">
-                                            <del class="product__prices">@string.Format("{0:##,###}", item.Fee, "Fee") تومان</del>
+                                            <del class="product__prices">@string.Format("{0:##,###}", Model.Fee, "Fee") تومان</del>
                                             <br />
                                             <span class="product__prices" style="color:red;">@string.Format("{0:##,###}", ProductFee, "Fee") تومان</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <span class="product__prices">@string.Format("{0:##,###}", item.Fee, "Fee") تومان </span>
+                                        <span class="product__prices">@string.Format("{0:##,###}", Model.Fee, "Fee") تومان </span>
                                     }
                                 }
                                 @{
-                                    if (item.Discount > 0)
+                                    if (Model.Discount > 0)
                                     {
-                                        <div class="product-card__prices mb-3"> @item.Discount % تخفیف</div>
+                                        <div class="product-card__prices mb-3"> @Model.Discount % تخفیف</div>
 
                                     }
                                     else
@@ -170,7 +167,7 @@
                                     <div class="form-group product__option">
                                         <label class="product__option-label" for="product-quantity">تعداد</label>
                                         <div class="product__actions btn-block">
-                                            <div class="product__actions-item center-block" style="width: 45% !important">
+                                            <div class="product__actions-Model center-block" style="width: 45% !important">
                                                 <div class="input-number product__quantity" style="width: 100% !important">
                                                     <input id="product-quantity" class="input-number__input form-control form-control-lg" style="width: 100% !important" type="number" min="1" value="1">
                                                     <div class="input-number__add"></div>
@@ -178,7 +175,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="product__actions-item product__actions-item--addtocart btn-block">
+                                            <div class="product__actions-Model product__actions-Model--addtocart btn-block">
                                                 <label id="Quantities" class="product__option-label text-danger" for="product-quantity"></label>
                                             </div>
 
@@ -187,14 +184,14 @@
                                                 if (type == Guid.Parse("aa7490c8-31b2-47a4-951b-2a52a4488738"))
                                                 {
 
-                                                    <div class="product__actions-item product__actions-item--addtocart btn-block">
-                                                        <button id="btnAddToCartsWithSize" class="btn btn-primary btn-lg btn-block" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                                                    <div class="product__actions-Model product__actions-Model--addtocart btn-block">
+                                                        <button id="btnAddToCartsWithSize" class="btn btn-primary btn-lg btn-block" onclick="AddToCartWithSize('@Model.Code', '@Model.PrimaryTitle', '@Model.Fee', '@Model.Id', '@Model.CategoriesRef');">افزودن به سبد</button>
                                                     </div>
                                                 }
                                                 else
                                                 {
-                                                    <div class="product__actions-item product__actions-item--addtocart btn-block">
-                                                        <button class="btn btn-primary btn-lg btn-block" onclick="AddToCart('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                                                    <div class="product__actions-Model product__actions-Model--addtocart btn-block">
+                                                        <button class="btn btn-primary btn-lg btn-block" onclick="AddToCart('@Model.Code', '@Model.PrimaryTitle', '@Model.Fee', '@Model.Id', '@Model.CategoriesRef');">افزودن به سبد</button>
                                                     </div>
                                                 }
                                             }
@@ -202,8 +199,8 @@
 
 
 
-                                            @*<div class="product__actions-item product__actions-item--addtocart btn-block">
-                                                <button class="btn btn-primary btn  btn-block" onclick="AddToFavorites('@item.Code','@item.PrimaryTitle');">افزودن به علاقه مندی</button>
+                                            @*<div class="product__actions-Model product__actions-Model--addtocart btn-block">
+                                                <button class="btn btn-primary btn  btn-block" onclick="AddToFavorites('@Model.Code','@Model.PrimaryTitle');">افزودن به علاقه مندی</button>
                                             </div>*@
 
                                         </div>
@@ -227,22 +224,22 @@
                 <div>
                     <nav class="card mb-0 contact-us box-shadows" style="padding: 10px" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item" style="font-size: 16px;">
+                            <li class="breadcrumb-Model" style="font-size: 16px;">
                                 <small style="font-size: 10px"> نام کالا : </small>
-                                @item.PrimaryTitle
+                                @Model.PrimaryTitle
                             </li>
-                            <li class="breadcrumb-item text-danger" style="font-size: 16px;">
+                            <li class="breadcrumb-Model text-danger" style="font-size: 16px;">
                                 <small style="font-size: 10px"> قیمت : </small>
-                                @item.Fee<small style="font-size: 8px"> تومان </small>
+                                @Model.Fee<small style="font-size: 8px"> تومان </small>
                             </li>
                         </ol>
-                        <button class="btn btn-primary btn-block" onclick="AddToCartWithSize('@item.Code', '@item.PrimaryTitle', '@item.Fee', '@item.Id', '@item.CategoriesRef');">افزودن به سبد</button>
+                        <button class="btn btn-primary btn-block" onclick="AddToCartWithSize('@Model.Code', '@Model.PrimaryTitle', '@Model.Fee', '@Model.Id', '@Model.CategoriesRef');">افزودن به سبد</button>
 
                     </nav>
 
                 </div>
             </div>
-        }
+       
 
 
 

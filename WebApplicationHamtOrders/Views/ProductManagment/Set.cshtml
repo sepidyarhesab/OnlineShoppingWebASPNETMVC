@@ -1,0 +1,159 @@
+﻿@using OrdersGeneral.Repository.General
+@using OrdersInventory.Repository.Inventory
+
+@{
+    ViewBag.Title = "Set";
+    Layout = "~/Views/Layouts/_AdminLayouts.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        داشبورد
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title"> ست محصول</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="site-header__search">
+                        <div class="search">
+
+                            <form class="search__form" action="/ProductManagment/Index" method="post">
+                                <input class="search__input" name="Search" id="Search" placeholder="جستجوی محصول کافیست کلمه کلیدی را وارد کنید ..." aria-label="Site search" type="text" autocomplete="off">
+                                <button class="search__button" type="submit">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Helper/Layouts/images/sprite.svg#search-20"></use>
+                                    </svg>
+                                </button>
+                                <div class="search__border"></div>
+                                <button class="btn btn-danger" style="margin-left: -104px;" onclick="reload()">
+                                    بازیابی مجدد
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <script>
+
+                        function reload() {
+                            window.location.href = "/ProductManagment/Reload";
+                        }
+                    </script>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="container-fluid">
+                   
+                            <a href="/ProductManagment/AddSet/" class="margin-btn btn btn-success col-md-7"> افزودن &nbsp;<i class="fa fa-plus"></i></a>
+
+                        <a class="margin-btn btn btn-danger col-md-2" href="/ProductManagment">برگشت</a>
+                    </div>
+                    <div class="box-body">
+
+
+                        <div class="table-responsive">
+
+
+
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+
+                                            <input class="ckbox" type="checkbox" value="">
+
+                                        </th>
+                                        <th>
+                                            کد
+                                        </th>
+                                        <th>
+                                            نام محصول
+                                        </th>
+                                        <th>وضعیت</th>
+                                        <th>ویرایش</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        
+                                        if (Model != null)
+                                        {
+                                            var rep = new RepProducts();
+
+                                            var row = 1;
+                                            foreach (var mangment in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" value="">
+                                                    </td>
+
+                                                    <td class="col-md-3 copy">
+                                                        @mangment.Code
+                                                    </td>
+                                                    <td class="col-md-3 copy" style="font-size: 12px;">
+                                                        @mangment.ProductTitle
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <a href="/ProductManagment/ChangeSet/@mangment.Id" class="@mangment.IsOkClass">@mangment.IsOkTitle</a>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-info glyphicon glyphicon-edit" href="/ProductManagment/EditSet/@mangment.Id"></a>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-danger" href="/ProductManagment/DeleteSet/@mangment.Id">×</a>
+                                                    </td>
+                                                </tr>
+                                                row++;
+
+                                            }
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+                            <script>
+                                function selected(str) {
+                                    /*alert(str);*/
+                                    $.ajax({
+                                        url: "/ProductManagment/SetSessionSelectedProduct",
+                                        type: "Post",
+                                        data: { id: str}
+                                    }).done();
+                                }
+                            </script>
+                            @*<script>
+                                    function loadMsg(e) {
+                                        alert(e);
+                                        $(e).closest("tr").css('background-color', 'gray');
+                                        $(e).css('background-color', 'red');
+                                    }
+                                </script>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

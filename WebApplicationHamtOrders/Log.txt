@@ -25,3 +25,58 @@ Application Write  : Call Saman : token Datetime :  Line  :
 Application Write  : Token Req : -18 Datetime :  Line  : 
 Application Write  : Token Saman : token Datetime :  Line  : 
 Application Write  : Session Saman :  Datetime :  Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 207 Datetime : 27/06/1401 11:14:49 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 789 Datetime : 27/06/1401 12:32:27 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 25 Datetime : 27/06/1401 12:50:18 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 23 Datetime : 27/06/1401 12:50:47 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 33 Datetime : 27/06/1401 12:51:02 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 37 Datetime : 27/06/1401 12:51:38 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 187 Datetime : 27/06/1401 12:51:56 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 35 Datetime : 27/06/1401 12:52:19 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 62 Datetime : 27/06/1401 01:10:42 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 28 Datetime : 27/06/1401 01:11:44 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 24 Datetime : 27/06/1401 01:13:19 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 18 Datetime : 27/06/1401 01:13:34 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 64 Datetime : 28/06/1401 10:25:38 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 25 Datetime : 28/06/1401 10:26:51 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 16 Datetime : 28/06/1401 10:28:55 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 4302 Datetime : 28/06/1401 10:30:27 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 218 Datetime : 28/06/1401 10:32:33 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 335 Datetime : 28/06/1401 11:14:48 ق.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 319 Datetime : 28/06/1401 01:23:53 ب.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 01:24:10 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 01:24:57 ب.ظ Line  : 50
+Application Write  : Success Datetime : SMS Line  : Success
+Application Write  : Time Span : RepositoryMainProductsById = 118 Datetime : 28/06/1401 03:08:29 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 6045 Datetime : 28/06/1401 03:10:09 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 402 Datetime : 28/06/1401 03:10:16 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 7015 Datetime : 28/06/1401 03:13:10 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 55 Datetime : 28/06/1401 03:14:43 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 140 Datetime : 28/06/1401 03:15:17 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 13 Datetime : 28/06/1401 03:16:03 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 44 Datetime : 28/06/1401 03:16:45 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 11 Datetime : 28/06/1401 03:17:01 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 12 Datetime : 28/06/1401 03:17:11 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 28 Datetime : 28/06/1401 03:28:32 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 10 Datetime : 28/06/1401 03:28:38 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 45 Datetime : 28/06/1401 03:30:35 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 37 Datetime : 28/06/1401 03:32:05 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 10 Datetime : 28/06/1401 03:32:34 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 25 Datetime : 28/06/1401 03:33:03 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 4991 Datetime : 28/06/1401 03:33:54 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 266 Datetime : 28/06/1401 03:36:02 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 215 Datetime : 28/06/1401 03:37:35 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 94 Datetime : 28/06/1401 03:42:32 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 48 Datetime : 28/06/1401 03:43:43 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 27 Datetime : 28/06/1401 03:44:00 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 19 Datetime : 28/06/1401 03:45:00 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 9 Datetime : 28/06/1401 03:45:16 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 4451 Datetime : 28/06/1401 03:53:56 ب.ظ Line  : 
+Application Write  : Time Span : RepositoryMainProductsById = 215 Datetime : 28/06/1401 03:55:29 ب.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 03:56:44 ب.ظ Line  : 50
+Application Write  : Time Span : RepositoryMainProductsById = 57 Datetime : 28/06/1401 04:09:16 ب.ظ Line  : 
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 04:09:23 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 04:09:27 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 04:09:32 ب.ظ Line  : 50
+Application Write  : MAMAD:be jaaane bacham pooore Datetime : 28/06/1401 04:09:43 ب.ظ Line  : 50
+Application Write  : Time Span : RepositoryMainProductsById = 275 Datetime : 28/06/1401 04:20:12 ب.ظ Line  : 

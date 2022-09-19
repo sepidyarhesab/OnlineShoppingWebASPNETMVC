@@ -938,10 +938,6 @@ namespace OrdersOrders.Repository.Orders
                         vmCartRow.ColorTitle = "بدون رنگ";
                         vmCartRow.SizeTitle = "بدون سایز";
                     }
-
-
-
-
                 }
 
                 vmCartRow.Quantity = itemCarts.Quantity;
@@ -972,7 +968,7 @@ namespace OrdersOrders.Repository.Orders
             _FinalOrder.DiscountFree = 0;
             if (_user != Guid.Empty)
             {
-                var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == _user);
+                var ordercheck = db.Table_Order.ToList().Exists(c => c.CreatorRef == _user && c.IsPay == true);
                 if (!ordercheck)
                 {
                     var disFree = db.Table_Discount.FirstOrDefault(c => c.Entities == "DiscountFree" && c.IsOk);
@@ -995,7 +991,6 @@ namespace OrdersOrders.Repository.Orders
         }
 
         #endregion
-
 
 
         public static VMOrders.VmOrderCarts RepositoryCartsDiscount(List<VMOrders.VmOrderSubmit> carts, string code)
@@ -1158,7 +1153,7 @@ namespace OrdersOrders.Repository.Orders
                                 }
                                 else
                                 {
-                                    vmCartRow.Message = "Error";
+                                    vmCartRow.Message = "Error DiscountUser";
                                     vmCartRow.DisCode = queryDiscount.DiscountCode;
                                     vmCartRow.DisUse = false;
                                 }
@@ -1174,7 +1169,7 @@ namespace OrdersOrders.Repository.Orders
                             }
                             else
                             {
-                                vmCartRow.Message = "کاربر گرامی شما ورود نکرده اید.";
+                                vmCartRow.Message = "Error UserNotLogin";
                                 vmCartRow.DisCode = queryDiscount.DiscountCode;
                                 vmCartRow.DisUse = false;
                             }
@@ -1265,7 +1260,7 @@ namespace OrdersOrders.Repository.Orders
                             }
                             else
                             {
-                                vmCartRow.Message = "Error User Not Login";
+                                vmCartRow.Message = "Error UserNotLogin";
                             }
 
                         }

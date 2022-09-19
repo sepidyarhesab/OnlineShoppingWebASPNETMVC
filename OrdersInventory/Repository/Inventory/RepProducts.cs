@@ -1812,7 +1812,7 @@ namespace OrdersInventory.Repository.Inventory
                         };
                         list.Add(vmm);
                     }
-                    
+
                     return list;
                 }
 
@@ -2411,9 +2411,9 @@ namespace OrdersInventory.Repository.Inventory
             return list;
         }
 
-        public List<VMProduct.VmMainProduct> RepositoryMainProductsById(Guid id)
+        public VMProduct.VmMainProduct RepositoryMainProductsById(Guid id)
         {
-            var list = new List<VMProduct.VmMainProduct>();
+            var list = new VMProduct.VmMainProduct();
             try
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -2549,7 +2549,7 @@ namespace OrdersInventory.Repository.Inventory
 
                     }
 
-                    list.Add(vm);
+                    list = vm;
                     watch.Stop();
                     //This is the time it took in miliseconds
                     var elapsedTime = watch.ElapsedMilliseconds;
@@ -6288,6 +6288,321 @@ namespace OrdersInventory.Repository.Inventory
 
         #endregion
         //End------------------------------------
+
+        #region Set
+
+        public List<VMProduct.ViewModelProductSet> RepositoryProductSet(Guid id)
+        {
+            var list = new List<VMProduct.ViewModelProductSet>();
+            try
+            {
+                var query = db.Table_Product_Set.Where(c => c.Ref == id).AsNoTracking().ToList();
+                if (query.Count > 0)
+                {
+                    foreach (var item in query)
+                    {
+                        var vm = new VMProduct.ViewModelProductSet()
+                        {
+                            Id = item.Id,
+                            Code = item.Code,
+                            Ref = item.Ref,
+                            ProductRef = item.ProductRef,
+                            IsOk = item.IsOk,
+                            IsDelete = item.IsDelete,
+                            ModifierRef = item.ModifierRef,
+                            CreatorRef = item.CreatorRef,
+                            CreatorDate = item.CreatorDate,
+                            ModifierDate = item.CreatorDate,
+                            Version = item.Version,
+                        };
+                        switch (item.IsOk)
+                        {
+                            case true:
+                                {
+                                    vm.IsOkClass = "label label-success";
+                                    vm.IsOkTitle = "فعال";
+                                    break;
+                                }
+                            case false:
+                                {
+                                    vm.IsOkClass = "label label-danger";
+                                    vm.IsOkTitle = "غیر فعال";
+                                    break;
+                                }
+                        }
+
+                        var queryProduct = db.Table_Product.FirstOrDefault(c => c.Id == item.ProductRef);
+                        if (queryProduct != null)
+                        {
+                            vm.ProductTitle = queryProduct.PrimaryTitle;
+                        }
+                        list.Add(vm);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return list;
+        }
+
+        public VMProduct.ViewModelProductSet RepositoryProductSetEdit(Guid id)
+        {
+            try
+            {
+                var query = db.Table_Product_Set.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    var vm = new VMProduct.ViewModelProductSet()
+                    {
+                        Id = query.Id,
+                        Code = query.Code,
+                        ProductRef = query.ProductRef,
+                    };
+                    return vm;
+                }
+                return new VMProduct.ViewModelProductSet();
+            }
+            catch (Exception e)
+            {
+
+            }
+            return new VMProduct.ViewModelProductSet();
+        }
+
+        public string RepositoryProductSetEdit(VMProduct.ViewModelProductSet values, Guid userid)
+        {
+            try
+            {
+                var userRef = userid;
+                var query = db.Table_Product_Set.FirstOrDefault(c => c.Id == values.Id);
+                if (query != null)
+                {
+                    query.ProductRef = values.ProductRef;
+                    query.ModifireDate = DateTime.Now;
+                    query.ModifierRef = userRef;
+                    query.Version++;
+
+                    db.SaveChanges();
+                }
+
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Application Error : " + e.Message;
+            }
+
+
+
+        }
+
+        public string GenerateSet(VMProduct.ViewModelProductSet value, Guid Userid)
+        {
+            try
+            {
+                var query = db.Table_Product_Set.ToList().Exists(c =>c.Ref 
+                == value.Ref && c.ProductRef == value.ProductRef);
+                if (!query)
+                {
+                    var querySet = db.Table_Product_Set.Add(new Table_Product_Set()
+                    {
+                        Code = SepidyarHesabCodeGenerator.GenerateCode("Inventory", "Table_Product_Set"),
+                        ProductRef = value.ProductRef,
+                        IsDelete = false,
+                        IsOk = true,
+                        CreatorDate = DateTime.Now,
+                        CreatorRef = Userid,
+                        Id = Guid.NewGuid(),
+                        ModifierRef = Userid,
+                        ModifireDate = DateTime.Now,
+                        Version = 1,
+                        IsMain = false,
+                        Ref = value.Ref,
+                    });
+                    db.Table_Product_Set.Add(querySet);
+                    db.SaveChanges();
+                    return "Success";
+                }
+                else
+                {
+                    return "Error QueryNull";
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                return "Application Error : " + e.Message;
+            }
+
+        }
+
+        public string DeleteSet(Guid id)
+        {
+            try
+            {
+                var query = db.Table_Product_Set.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    switch (query.IsOk)
+                    {
+                        case true:
+                            {
+                                return "true";
+
+                            }
+                        case false:
+                            {
+                                db.Table_Product_Set.Remove(query);
+                                db.SaveChanges();
+                                return "success";
+                            }
+                    }
+                }
+
+                return "success";
+            }
+            catch (Exception e)
+            {
+
+                return "Application Error : " + e.Message;
+
+            }
+        }
+
+        public string ChangeSet(Guid Id)
+        {
+
+            var Result = db.Table_Product_Set.FirstOrDefault(c => c.Id == Id);
+            if (Result != null)
+            {
+                switch (Result.IsOk)
+                {
+                    case true:
+                        {
+                            Result.IsOk = false;
+                            db.SaveChanges();
+                            break;
+                        }
+                    case false:
+                        {
+                            Result.IsOk = true;
+                            db.SaveChanges();
+                            break;
+                        }
+                }
+            }
+
+
+            return "Sucsess";
+        }
+
+        public List<VMProduct.VmMainProduct> RepositoryProductsSet(Guid Ref)
+        {
+            var list = new List<VMProduct.VmMainProduct>();
+            try
+            {
+                var queryset = db.Table_Product_Set.Where(c => c.Ref == Ref && c.IsOk).AsNoTracking().ToList();
+                if (queryset.Count > 0)
+                {
+                    foreach (var item in queryset)
+                    {
+                        var query = db.Table_Product.FirstOrDefault(c => c.Id == item.ProductRef && c.IsOk);
+                        if (query != null)
+                        {
+                            var vm = new VMProduct.VmMainProduct
+                            {
+                                Id = query.Id,
+                                Code = query.Code,
+                                IsOk = query.IsOk,
+                                PrimaryTitle = query.PrimaryTitle,
+                                SecondaryTitle = query.SecondaryTitle,
+                                TertiaryTitle = query.TertiaryTitle,
+                                Url = query.Url,
+                                CreatorDateTime = query.CreatorDate,
+                                Note = query.Note,
+                                Discount = query.Discount,
+                            };
+
+                            var queryfile =
+                                db.Table_File_Upload.FirstOrDefault(c =>
+                                    c.IsOk && c.Ref == query.Id && c.IsMain);
+                            if (queryfile != null)
+                            {
+                                vm.FileName = "/Static/Content/Images/Products/" + queryfile.FileName +
+                                              queryfile.FileExtensions;
+                            }
+                            else
+                            {
+                                vm.FileName = "/Static/Content/Images/";
+                            }
+
+                            var querySummary =
+                                db.Table_Product_Summary.FirstOrDefault(c =>
+                                    c.ProductRef == query.Id && c.IsOk && c.IsMain);
+                            if (querySummary != null)
+                            {
+                                if (querySummary.Quantity > 0)
+                                {
+                                    vm.QuantityTitle = "موجود";
+                                    vm.QuantityClass = "product-card__badge--yes";
+                                }
+                                else
+                                {
+                                    vm.QuantityTitle = "ناموجود";
+                                    vm.QuantityClass = "product-card__badge--no";
+                                }
+
+
+                                vm.Fee = querySummary.Fee;
+
+                            }
+                            else
+                            {
+                                if (query.Quantity > 0)
+                                {
+                                    vm.QuantityTitle = "موجود";
+                                    vm.QuantityClass = "product-card__badge--yes";
+                                }
+                                else
+                                {
+                                    vm.QuantityTitle = "ناموجود";
+                                    vm.QuantityClass = "product-card__badge--no";
+                                }
+
+
+                                vm.Fee = query.Fee;
+                            }
+
+                            var queryCategories =
+                                db.Table_Product_Category.AsNoTracking()
+                                    .FirstOrDefault(c => c.Id == query.CategoriesRef);
+                            if (queryCategories != null)
+                            {
+                                vm.CategoreisTitle = queryCategories.PrimaryTitle;
+                                vm.CategoriesRef = queryCategories.Id;
+
+                            }
+                            list.Add(vm);
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return list;
+        }
+
+        #endregion
+
 
     }
 }

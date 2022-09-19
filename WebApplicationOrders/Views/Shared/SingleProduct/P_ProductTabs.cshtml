@@ -2,246 +2,249 @@
 @using OrdersGeneral.Repository.General
 @using OrdersInventory.Repository.Inventory
 
-
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
 @{
     if (Model != null)
     {
         var rep = new RepProducts();
 
-        foreach (var item in Model)
-        {
-            <div class="product-tabs">
-                <div class="product-tabs__list" style="border: 2px solid #f0f0f0; border-radius: 2px;">
-                    <a href="#tab-specification" class="product-tabs__item">مشخصات کالا</a>
-                    <a href="#tab-reviews" class="product-tabs__item">نقد و بررسی ها</a>
-                </div>
-                <div class="product-tabs__content">
-                    <div class="product-tabs__pane" id="tab-specification">
-                        <div class="spec">
-                            <h3 class="spec__header">مشخصات کالا</h3>
-                            <div class="spec__section">
-                                <h4 class="spec__section-title">@item.PrimaryTitle</h4>
-                                <h4 class="spec__section-title">@item.SecondaryTitle</h4>
-                                <hr />
-                                <div class="spec__section-title" style="overflow: hidden;">@Html.Raw(item.Note)</div>
-                                @{
-
-                                    foreach (var property in item.PropertyList)
+        <div class="product-tabs">
+            <div class="product-tabs__list" style="border: 2px solid #f0f0f0; border-radius: 2px;">
+                <a href="#tab-specification" class="product-tabs__item">مشخصات کالا</a>
+                <a href="#tab-reviews" class="product-tabs__item">نقد و بررسی ها</a>
+            </div>
+            <div class="product-tabs__content">
+                <div class="product-tabs__pane" id="tab-specification">
+                    <div class="spec">
+                        <h3 class="spec__header">مشخصات کالا</h3>
+                        <div class="spec__section">
+                            <h4 class="spec__section-title">@Model.PrimaryTitle</h4>
+                            <h4 class="spec__section-title">@Model.SecondaryTitle</h4>
+                            <hr/>
+                            <div class="spec__section-title" style="overflow: hidden;">@Html.Raw(Model.Note)</div>
+                            @{
+                                if (Model.PropertyList != null)
+                                {
+                                    foreach (var property in Model.PropertyList)
                                     {
                                         <div class="spec__row">
                                             <div class="spec__name">@property.Key</div>
                                             <div class="spec__value">@property.Value</div>
                                         </div>
                                     }
-
                                 }
-                            </div>
+                                else
+                                {
+                                    
+                                }
+                                
+
+                            }
                         </div>
                     </div>
-
                 </div>
 
             </div>
 
-            <section class="post__section">
-                @{
-                    var db = new Orders_Entities();
-                    var commentsCount = db.Table_Comments.Where(C => C.IsOk).Count();
-                    if (commentsCount != 0)
-                    {
-                        <h4 class="post__section-title">دیدگاه <span>(@commentsCount)</span></h4>
-                    }
-                    else
-                    {
-                        <h4></h4>
-                    }
+        </div>
 
+        <section class="post__section">
+            @{
+                var db = new Orders_Entities();
+                var commentsCount = db.Table_Comments.Where(C => C.IsOk).Count();
+                if (commentsCount != 0)
+                {
+                    <h4 class="post__section-title">دیدگاه <span>(@commentsCount)</span></h4>
+                }
+                else
+                {
+                    <h4></h4>
                 }
 
+            }
 
 
-                <ol class="comments-list comments-list--level--0">
 
-                    @{
+            <ol class="comments-list comments-list--level--0">
 
-                        var resultComments = RepComments.RepositoryCommentsClient(item.Id);
-                        if (resultComments.Count > 0)
+                @{
+
+                    var resultComments = RepComments.RepositoryCommentsClient(Model.Id);
+                    if (resultComments.Count > 0)
+                    {
+                        foreach (var comment in resultComments)
                         {
-                            foreach (var comment in resultComments)
-                            {
 
-                                <li class="comments-list__item border-comment-item">
-                                    <div class="comment">
-                                        <div class="comment__avatar">
-                                            <a href=""><img src="/Helper/Layouts/images/avatars/avatar-1.jpg" alt="avatar"></a>
+                            <li class="comments-list__item border-comment-item">
+                                <div class="comment">
+                                    <div class="comment__avatar">
+                                        <a href=""><img src="/Helper/Layouts/images/avatars/avatar-1.jpg" alt="avatar"></a>
+                                    </div>
+                                    <div class="comment__content">
+                                        <div class="comment__header">
+                                            <div class="comment__author"><a href="">@comment.Name</a></div>
+                                            <div class="comment__reply">
+                                                @*<button type="button" class="btn btn-xs btn-light">پاسخ</button>*@
+                                            </div>
                                         </div>
-                                        <div class="comment__content">
-                                            <div class="comment__header">
-                                                <div class="comment__author"><a href="">@comment.Name</a></div>
-                                                <div class="comment__reply">
-                                                    @*<button type="button" class="btn btn-xs btn-light">پاسخ</button>*@
+                                        <div class="review__rating">
+                                            <div class="rating">
+                                                <div class="rating__body">
+
+                                                    @*@Html.Partial("Body/P_Ratings", comment)*@
+
+
+
+                                                    <div class="rating__star rating__star--only-edge rating__star--active">
+                                                        <div class="rating__fill">
+                                                            <div class="fake-svg-icon"></div>
+                                                        </div>
+                                                        <div class="rating__stroke">
+                                                            <div class="fake-svg-icon"></div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="review__rating">
-                                                <div class="rating">
-                                                    <div class="rating__body">
+                                        </div>
+                                        <div class="comment__text">@comment.Note</div>
+                                        <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", comment.CreatorDate, "Date")</div>
+                                    </div>
+                                </div>
 
-                                                        @Html.Partial("SingleProduct/P_Ratings", comment)
+
+                                @{
+                                    var resultCommentsReplay = RepComments.RepositoryCommentsClientByCommentId(comment.Id);
+                                    if (resultCommentsReplay.Count > 0)
+                                    {
+                                        <div class="comment-list__children">
+                                            @foreach (var commentReplay in resultCommentsReplay)
+                                            {
 
 
-
-                                                        <div class="rating__star rating__star--only-edge rating__star--active">
-                                                            <div class="rating__fill">
-                                                                <div class="fake-svg-icon"></div>
+                                                <ol class="comments-list comments-list--level--1">
+                                                    <li class="comments-list__item">
+                                                        <div class="comment">
+                                                            <div class="comment__avatar">
+                                                                <a href=""><img src="/Helper/Layouts/images/avatars/avatar-2.jpg" alt="avatar"></a>
                                                             </div>
-                                                            <div class="rating__stroke">
-                                                                <div class="fake-svg-icon"></div>
+                                                            <div class="comment__content">
+                                                                <div class="comment__header">
+                                                                    <div class="comment__author"><a href="">@commentReplay.Name</a></div>
+                                                                    <div class="comment__reply">
+                                                                        @*<button type="button" class="btn btn-xs btn-light">پاسخ</button>*@
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment__text">
+                                                                    @commentReplay.Note
+                                                                </div>
+                                                                <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", commentReplay.CreatorDate, "Date")</div>
                                                             </div>
                                                         </div>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="comment__text">@comment.Note</div>
-                                            <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", comment.CreatorDate, "Date")</div>
-                                        </div>
-                                    </div>
+
+                                                        @{
+                                                            var resultCommentsReplay2 = RepComments.RepositoryCommentsClientByCommentId(commentReplay.Id);
+                                                            if (resultCommentsReplay2.Count > 0)
+                                                            {
+                                                                <div class="comment-list__children">
+                                                                    @foreach (var commentReplay2 in resultCommentsReplay2)
+                                                                    {
 
 
-                                    @{
-                                        var resultCommentsReplay = RepComments.RepositoryCommentsClientByCommentId(comment.Id);
-                                        if (resultCommentsReplay.Count > 0)
-                                        {
-                                            <div class="comment-list__children">
-                                                @foreach (var commentReplay in resultCommentsReplay)
-                                                {
-
-
-                                                    <ol class="comments-list comments-list--level--1">
-                                                        <li class="comments-list__item">
-                                                            <div class="comment">
-                                                                <div class="comment__avatar">
-                                                                    <a href=""><img src="/Helper/Layouts/images/avatars/avatar-2.jpg" alt="avatar"></a>
-                                                                </div>
-                                                                <div class="comment__content">
-                                                                    <div class="comment__header">
-                                                                        <div class="comment__author"><a href="">@commentReplay.Name</a></div>
-                                                                        <div class="comment__reply">
-                                                                            @*<button type="button" class="btn btn-xs btn-light">پاسخ</button>*@
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="comment__text">
-                                                                        @commentReplay.Note
-                                                                    </div>
-                                                                    <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", commentReplay.CreatorDate, "Date")</div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            @{
-                                                                var resultCommentsReplay2 = RepComments.RepositoryCommentsClientByCommentId(commentReplay.Id);
-                                                                if (resultCommentsReplay2.Count > 0)
-                                                                {
-                                                                    <div class="comment-list__children">
-                                                                        @foreach (var commentReplay2 in resultCommentsReplay2)
-                                                                        {
-
-
-                                                                            <ol class="comments-list comments-list--level--1">
-                                                                                <li class="comments-list__item">
-                                                                                    <div class="comment">
-                                                                                        <div class="comment__avatar">
-                                                                                            <a href=""><img src="/Helper/Layouts/images/avatars/avatar-2.jpg" alt="avatar"></a>
-                                                                                        </div>
-                                                                                        <div class="comment__content">
-                                                                                            <div class="comment__header">
-                                                                                                <div class="comment__author"><a href="">@commentReplay2.Name</a></div>
-
-                                                                                            </div>
-                                                                                            <div class="comment__text">
-                                                                                                @commentReplay2.Note
-                                                                                            </div>
-                                                                                            <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", commentReplay2.CreatorDate, "Date")</div>
-                                                                                        </div>
+                                                                        <ol class="comments-list comments-list--level--1">
+                                                                            <li class="comments-list__item">
+                                                                                <div class="comment">
+                                                                                    <div class="comment__avatar">
+                                                                                        <a href=""><img src="/Helper/Layouts/images/avatars/avatar-2.jpg" alt="avatar"></a>
                                                                                     </div>
-                                                                                </li>
+                                                                                    <div class="comment__content">
+                                                                                        <div class="comment__header">
+                                                                                            <div class="comment__author"><a href="">@commentReplay2.Name</a></div>
 
-                                                                            </ol>
+                                                                                        </div>
+                                                                                        <div class="comment__text">
+                                                                                            @commentReplay2.Note
+                                                                                        </div>
+                                                                                        <div class="comment__date"> @string.Format("{0:dddd dd MMMM yyyy - hh:mm:ss}", commentReplay2.CreatorDate, "Date")</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
 
-                                                                        }
-                                                                    </div>
-                                                                }
+                                                                        </ol>
+
+                                                                    }
+                                                                </div>
                                                             }
+                                                        }
 
-                                                        </li>
+                                                    </li>
 
-                                                    </ol>
+                                                </ol>
 
-                                                }
-                                            </div>
-                                        }
+                                            }
+                                        </div>
                                     }
-                                    <!--Child-->
+                                }
+                                <!--Child-->
 
 
-                                </li>
+                            </li>
 
 
-                            }
                         }
                     }
+                }
 
 
 
-                </ol>
-            </section>
-            <section class="post__section">
-                @*<h4 class="post__section-title">یک دیدگاه بنویسید</h4>*@
-                @{
-                    using (Html.BeginForm("GenerateComments", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="reviews-view__form">
-                            <h3 class="reviews-view__header">یک نقد و بررسی بنویسید</h3>
-                            <div class="row">
-                                <div class="col-12 col-lg-12 col-xl-12">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="Likes">تعداد ستاره</label>
-                                            <select id="Likes" name="Likes" class="form-control">
-                                                <option value="5">امتیاز 5 ستاره</option>
-                                                <option value="4">امتیاز 4 ستاره</option>
-                                                <option value="3">امتیاز 3 ستاره</option>
-                                                <option value="2">امتیاز 2 ستاره</option>
-                                                <option value="1">امتیاز 1 ستاره</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="Name">نام شما<small style="color: red"> * اجباری</small></label>
-                                            <input type="text" class="form-control" id="Name" name="Name" placeholder="نام شما">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="Phone">شماره موبایل<small style="color: red"> * اجباری</small></label>
-                                            <input type="text" class="form-control" id="Phone" name="Phone" placeholder="شماره موبایل">
-                                        </div>
+            </ol>
+        </section>
+        <section class="post__section">
+            @*<h4 class="post__section-title">یک دیدگاه بنویسید</h4>*@
+            @{
+                using (Html.BeginForm("GenerateComments", "Product", FormMethod.Post, new {enctype = "multipart/form-data"}))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="reviews-view__form">
+                        <h3 class="reviews-view__header">یک نقد و بررسی بنویسید</h3>
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="Likes">تعداد ستاره</label>
+                                        <select id="Likes" name="Likes" class="form-control">
+                                            <option value="5">امتیاز 5 ستاره</option>
+                                            <option value="4">امتیاز 4 ستاره</option>
+                                            <option value="3">امتیاز 3 ستاره</option>
+                                            <option value="2">امتیاز 2 ستاره</option>
+                                            <option value="1">امتیاز 1 ستاره</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="Note">نقد و بررسی شما<small style="color: red"> * اجباری</small></label>
-                                        <textarea class="form-control" id="Note" name="Note" rows="6"></textarea>
+                                    <div class="form-group col-md-4">
+                                        <label for="Name">نام شما<small style="color: red"> * اجباری</small></label>
+                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="نام شما">
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <button type="submit" class="btn btn-primary btn-lg">ارسال نقد و بررسی</button>
+                                    <div class="form-group col-md-4">
+                                        <label for="Phone">شماره موبایل<small style="color: red"> * اجباری</small></label>
+                                        <input type="text" class="form-control" id="Phone" name="Phone" placeholder="شماره موبایل">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Note">نقد و بررسی شما<small style="color: red"> * اجباری</small></label>
+                                    <textarea class="form-control" id="Note" name="Note" rows="6"></textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary btn-lg">ارسال نقد و بررسی</button>
                                 </div>
                             </div>
                         </div>
-                    }
-
+                    </div>
                 }
 
-            </section>
-        }
+            }
+
+        </section>
+
     }
 }
 

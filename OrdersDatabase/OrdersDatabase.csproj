@@ -148,6 +148,9 @@
     <Compile Include="Models\Table_Product_Selection.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table_Product_Set.cs">
+      <DependentUpon>OrdersData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Table_Product_Size.cs">
       <DependentUpon>OrdersData.tt</DependentUpon>
     </Compile>

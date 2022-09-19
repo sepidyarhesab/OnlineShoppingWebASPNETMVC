@@ -86,6 +86,20 @@ namespace WebApplicatioNewOrders.Controllers
                                 {
                                     TempData["JavaScriptFunction"] = IziToast.Error("این کد تخفیف قابل استفاده نیست", "مشتری عزیز ؛ به دلیل داشتن تخفیف در خرید فعلی شما قادر به استفاده از تخفیف دیگری نیستید");
                                 }
+
+                                if (mes.Contains("UserNotLogin"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کاربر عزیز شما وارد حساب کاربری خود نشده اید.", "لطفا وارد حساب کاربری خود شوید.");
+                                }
+                                if (mes.Contains("DiscountStep"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                                }
+                                if (mes.Contains("DiscountUser"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف شما منقضی شده است یا به اتمام رسیده است.", "کاربر عزیز کد تخفیف شما منقضی شده است یا به اتمام رسیده است.");
+                                }
+                             
                                 else
                                 {
                                     TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");

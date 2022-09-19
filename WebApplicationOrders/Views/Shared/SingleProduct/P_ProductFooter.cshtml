@@ -1,26 +1,21 @@
 ﻿@using OrdersInventory.Repository.Inventory
 
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
 @{
     if (Model != null)
     {
         var rep = new RepProducts();
 
-        foreach (var item in Model)
-        {
-
-
-            <div class="product__footer">
+        <div class="product__footer">
                 <div class="product__tags tags">
-                    <div class="tags__list"><a>@item.SecondaryTitle</a></div>
+                    <div class="tags__list"><a>@Model.SecondaryTitle</a></div>
 
                 </div>
                 <div class="product__share-links share-links">
                     <ul class="share-links__list">
-                        <li class="share-links__item share-links__item--type--like"><a href="">پیامک</a></li>
-                        <li class="share-links__item share-links__item--type--tweet"><a href="">واتس آپ</a></li>
-                        <li class="share-links__item share-links__item--type--counter"><a href="">ایمیل</a></li>
-                        <li class="share-links__item share-links__item--type--pin "><a class="color" h>کپی لینک</a></li>
+                        <li class="share-links__Model share-links__Model--type--like"><a href="">پیامک</a></li>
+                        <li class="share-links__Model share-links__Model--type--tweet"><a href="">واتس آپ</a></li>
+                        <li class="share-links__Model share-links__Model--type--counter"><a href="">ایمیل</a></li>
+                        <li class="share-links__Model share-links__Model--type--pin "><a class="color" h>کپی لینک</a></li>
 
                     </ul>
                 </div>
@@ -59,6 +54,6 @@
 
 
             </div>
-        }
+        
     }
 }

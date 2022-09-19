@@ -1,6 +1,6 @@
 ﻿@using OrdersDatabase.Models
 @using OrdersInventory.Repository.Inventory
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@*@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>*@
 
 <!-- addAddressModal -->
 @{
@@ -8,9 +8,7 @@
     {
         var rep = new RepProducts();
 
-        foreach (var item in Model)
-        {
-            var guide = RepProductsSizeGuide.RepositoryClientProductCategorySizeGuideValuesList(item.CategoriesRef);
+            var guide = RepProductsSizeGuide.RepositoryClientProductCategorySizeGuideValuesList(Model.CategoriesRef);
             if (guide != null)
             {
 
@@ -96,7 +94,6 @@
 
             }
 
-        }
     }
     else
     {

@@ -4,14 +4,13 @@
 
 <!-- product-tab-content -->
 
-@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>
+@*@model IEnumerable<OrdersInventory.ViewModels.Inventory.VMProduct.VmMainProduct>*@
 @{
     if (Model != null)
     {
         var rep = new RepProducts();
 
-        foreach (var item in Model)
-        {
+        
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="product-tab-content">
@@ -48,10 +47,10 @@
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0">
-                                                    @item.PrimaryTitle
+                                                    @Model.PrimaryTitle
                                                 </h5>
                                                 <h6 class="mb-0">
-                                                    @item.SecondaryTitle
+                                                    @Model.SecondaryTitle
                                                 </h6>
                                             </div>
 
@@ -59,7 +58,7 @@
                                                  data-parent="#accordionDescription">
                                                 <div class="card-body">
                                                     <p>
-                                                        @Html.Raw(item.Note)
+                                                        @Html.Raw(Model.Note)
                                                     </p>
                                                 </div>
                                             </div>
@@ -73,7 +72,7 @@
                                     <section>
                                         <h3 class="params-title">مشخصات کلی</h3>
                                         @{
-                                            foreach (var property in item.PropertyList)
+                                            foreach (var property in Model.PropertyList)
                                             {
                                                 <ul class="params-list">
                                                     <li>
@@ -176,7 +175,7 @@
                                 <div class="comments-list">
                                     @{
 
-                                        var resultComments = RepComments.RepositoryCommentsClient(item.Id);
+                                        var resultComments = RepComments.RepositoryCommentsClient(Model.Id);
                                         if (resultComments.Count > 0)
                                         {
                                             foreach (var comment in resultComments)
@@ -218,7 +217,7 @@
                     </div>
                 </div>
             </div>
-        }
+        
     }
 }
 

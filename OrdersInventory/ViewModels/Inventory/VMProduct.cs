@@ -246,7 +246,23 @@ namespace OrdersInventory.ViewModels.Inventory
         }
 
 
-
+        public class ViewModelProductSet
+        {
+            public Guid Id { get; set; }
+            public Guid Ref { get; set; }
+            public Guid ProductRef { get; set; }
+            public string Code { get; set; }
+            public string IsOkClass { get; set; }
+            public string IsOkTitle { get; set; }
+            public string ProductTitle { get; set; }
+            public DateTime CreatorDate { get; set; }
+            public DateTime ModifierDate { get; set; }
+            public bool IsOk { get; set; }
+            public bool IsDelete { get; set; }
+            public int Version { get; set; }
+            public Guid CreatorRef { get; set; }
+            public Guid ModifierRef { get; set; }
+        }
 
 
 

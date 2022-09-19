@@ -2750,6 +2750,10 @@
     <Content Include="Views\UserManagement\IndexAddressAdmin.cshtml" />
     <Content Include="Views\Dashboard\AddAddress.cshtml" />
     <Content Include="Views\VerficationRefahPayment\Index.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductSet.cshtml" />
+    <Content Include="Views\ProductManagment\Set.cshtml" />
+    <Content Include="Views\ProductManagment\EditSet.cshtml" />
+    <Content Include="Views\ProductManagment\AddSet.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
     <None Include="Web References\Sep.InitPayment\initpayment.disco" />
     <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
@@ -3208,12 +3212,14 @@
   <ItemGroup>
     <Folder Include="App_Browsers\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Extenstions\" />
     <Folder Include="Models\" />
     <Folder Include="Static\Content\Excel\" />
     <Folder Include="Static\Content\Images\Factor\" />
     <Folder Include="Static\Content\Images\Logo\" />
     <Folder Include="Static\Content\Images\Profile\" />
     <Folder Include="Static\Content\Images\Sliders\Mobile\" />
+    <Folder Include="Update\" />
     <Folder Include="Views\Index\" />
     <Folder Include="Views\UpdateAssembly\" />
   </ItemGroup>
