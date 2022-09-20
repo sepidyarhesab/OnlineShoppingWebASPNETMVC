@@ -76,7 +76,12 @@ namespace WebApplicatioNewOrders.Controllers
                         if (resuult.CartsItems.Count > 0)
                         {
                             var mes = resuult.CartsItems.First().Message;
+                            var mess = resuult.Message;
                             if (mes.Contains("Success"))
+                            {
+                                TempData["JavaScriptFunction"] = IziToast.Success("کد تخفیف با موفقیت اعمال شد.", "کد تخفیف با موفقیت اعمال شد.");
+                            }
+                            if (mess.Contains("Success"))
                             {
                                 TempData["JavaScriptFunction"] = IziToast.Success("کد تخفیف با موفقیت اعمال شد.", "کد تخفیف با موفقیت اعمال شد.");
                             }
@@ -99,7 +104,37 @@ namespace WebApplicatioNewOrders.Controllers
                                 {
                                     TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف شما منقضی شده است یا به اتمام رسیده است.", "کاربر عزیز کد تخفیف شما منقضی شده است یا به اتمام رسیده است.");
                                 }
-                             
+                                if (mes.Contains("DiscountStep"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                                }
+
+
+                                if (mess.Contains("NoDiscountFactorUser"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف شما منقضی شده است یا به اتمام رسیده است.", "کاربر عزیز کد تخفیف شما منقضی شده است یا به اتمام رسیده است.");
+                                }
+                                if (mess.Contains("NoDiscountFactor"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف شما منقضی شده است یا به اتمام رسیده است.", "کد تخفیف شما منقضی شده است یا به اتمام رسیده است.");
+                                }
+                                if (mess.Contains("NoEoQDiscountFactor"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("این کد تخفیف فعال نمی باشد.", "این کد تخفیف فعال نمی باشد.");
+                                }
+                                if (mess.Contains("NoEoQDiscountFactorUser"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("این کد تخفیف فعال نمی باشد.", "این کد تخفیف فعال نمی باشد.");
+                                }
+                                if (mess.Contains("Error"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");
+                                } 
+                                if (mess.Contains("UserNotLogin"))
+                                {
+                                    TempData["JavaScriptFunction"] = IziToast.Error("کاربر عزیز شما وارد حساب کاربری خود نشده اید.", "لطفا وارد حساب کاربری خود شوید.");
+                                }
+
                                 else
                                 {
                                     TempData["JavaScriptFunction"] = IziToast.Error("کد تخفیف منقضی شده است یا به اتمام رسیده است.", "کد تخفیف منقضی شده است یا به اتمام رسیده است.");

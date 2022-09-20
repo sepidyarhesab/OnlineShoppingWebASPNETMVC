@@ -1,24 +1,24 @@
 ﻿@using System.Security.Policy
+@using DocumentFormat.OpenXml.Wordprocessing
 @using OrdersInventory.Repository.Inventory
 
 @{
     if (Model != null)
     {
-        <section class="product-carousel mb-3">
-            <div class="section-title">
-                <i class="fad fa-retweet"></i>
-                ست های محصول
-            </div>
-            <div class="swiper-container slider-lg">
-                <div class="swiper-wrapper">
-
-                    @{
-                        //var Ref = (Guid)ViewData["Ref"];
-                        Guid Ref = Guid.Parse(@Model.ToString());
-                        var repp = new RepProducts();
-                        var query = repp.RepositoryProductsSet(Ref);
-                        if (query != null)
-                        {
+        //var Ref = (Guid)ViewData["Ref"];
+        Guid Ref = Guid.Parse(@Model.ToString());
+        var repp = new RepProducts();
+        var query = repp.RepositoryProductsSet(Ref);
+        if (query != null)
+        {
+            <section class="product-carousel mb-3">
+                <div class="section-title">
+                    <i class="fad fa-retweet"></i>
+                    ست های محصول
+                </div>
+                <div class="swiper-container slider-lg">
+                    <div class="swiper-wrapper">
+                        @{
                             foreach (var product in query)
                             {
                                 <div class="swiper-slide">
@@ -73,21 +73,21 @@
                                 </div>
                             }
                         }
-                        else
-                        {
-
-                        }
-                    }
-
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </section>
+            </section>
+        }
+        else
+        {
+            <div></div>
+        }
     }
+
     else
     {
-        
+        <div></div>
     }
 }

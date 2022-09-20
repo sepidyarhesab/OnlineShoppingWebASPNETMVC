@@ -88,6 +88,7 @@ namespace WebApplicationHamtOrders.Controllers
                                     var carts = new List<VMOrders.VmOrderSubmit>();
                                     if (Session["Carts"] != null)
                                     {
+
                                         #region Generate Invoice
                                         var persian = values.Phone.PersianToEnglish();
                                         carts = Session["Carts"] as List<VMOrders.VmOrderSubmit>;
@@ -103,7 +104,7 @@ namespace WebApplicationHamtOrders.Controllers
                                         {
                                             transferpay = decimal.Parse(Session["TransferPay"].ToString());
                                         }
-                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, Browser, IPAddress, resuult.Discount);
+                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, Browser, IPAddress, resuult.Discount,resuult.DisCode,resuult.DisUse);
                                         if (result.Contains("Error"))
                                         {
                                             Session["OrderCode"] = "Error";

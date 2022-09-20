@@ -69,7 +69,7 @@ namespace WebApplicationOrders.Controllers
                                         var resuult = RepOrders.RepositoryCartsCode(carts, codedis);
                                         decimal transferpay = 0;
                                        
-                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, "", "", resuult.Discount);
+                                        var result = RepOrders.RepositorySubmitOrders(values, resuult.CartsItems, file, persian, transferpay, "", "", resuult.Discount,resuult.DisCode,resuult.DisUse);
                                         if (result.Contains("Error"))
                                         {
                                             Session["OrderCode"] = "Error";

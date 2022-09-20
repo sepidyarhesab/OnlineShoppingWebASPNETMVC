@@ -201,7 +201,8 @@ namespace OrdersInventory.Repository.Inventory
             }
         }
 
-        public string RepositoryMainProductListManagemenetEditById(VMProduct.ViewModelProductPropertyList values, Guid UserId)
+        public string RepositoryMainProductListManagemenetEditById(VMProduct.ViewModelProductPropertyList values,
+            Guid UserId)
         {
 
             var userRef = UserId;
@@ -228,8 +229,9 @@ namespace OrdersInventory.Repository.Inventory
 
 
         }
+
         public string RepositoryMainProductManagemenetEditById(VMProduct.VmMainProductMangement values,
-             Guid userid)
+            Guid userid)
         {
             try
             {
@@ -362,7 +364,8 @@ namespace OrdersInventory.Repository.Inventory
             }
         }
 
-        public string RepositoryCategoryMangmentEditById(VMProduct.ViewModelCategoreis values, HttpPostedFileBase FileNameDesktop, Guid userId)
+        public string RepositoryCategoryMangmentEditById(VMProduct.ViewModelCategoreis values,
+            HttpPostedFileBase FileNameDesktop, Guid userId)
         {
             try
             {
@@ -402,19 +405,27 @@ namespace OrdersInventory.Repository.Inventory
                         {
                             foreach (var fileUpload in qPics)
                             {
-                                if (File.Exists(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName + fileUpload.FileExtensions)))
+                                if (File.Exists(HttpContext.Current.Server.MapPath(
+                                        ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName +
+                                        fileUpload.FileExtensions)))
                                 {
-                                    File.Delete(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName + fileUpload.FileExtensions));
+                                    File.Delete(HttpContext.Current.Server.MapPath(
+                                        ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName +
+                                        fileUpload.FileExtensions));
                                 }
+
                                 db.Table_File_Upload.Remove(fileUpload);
                                 db.SaveChanges();
                             }
                         }
+
                         filelenght = FileNameDesktop.ContentLength;
-                        filename = "Category_" + SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload");
+                        filename = "Category_" +
+                                   SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload");
                         fileExtention = Path.GetExtension(FileNameDesktop.FileName);
                         string pathCombine =
-                            HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + filename + fileExtention);
+                            HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories +
+                                                               filename + fileExtention);
                         FileNameDesktop.SaveAs(pathCombine);
                         //if (qPics != null)
                         //{
@@ -500,6 +511,7 @@ namespace OrdersInventory.Repository.Inventory
 
 
         }
+
         public string Delete(Guid id)
         {
             try
@@ -522,14 +534,20 @@ namespace OrdersInventory.Repository.Inventory
                                 {
                                     foreach (var fileUpload in qPics)
                                     {
-                                        if (File.Exists(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainProduct + fileUpload.FileName + fileUpload.FileExtensions)))
+                                        if (File.Exists(HttpContext.Current.Server.MapPath(
+                                                ServerPath.ServerPathFileUploadMainProduct + fileUpload.FileName +
+                                                fileUpload.FileExtensions)))
                                         {
-                                            File.Delete(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainProduct + fileUpload.FileName + fileUpload.FileExtensions));
+                                            File.Delete(HttpContext.Current.Server.MapPath(
+                                                ServerPath.ServerPathFileUploadMainProduct + fileUpload.FileName +
+                                                fileUpload.FileExtensions));
                                         }
+
                                         db.Table_File_Upload.Remove(fileUpload);
                                         db.SaveChanges();
                                     }
                                 }
+
                                 db.Table_Product.Remove(query);
                                 db.SaveChanges();
                                 break;
@@ -761,14 +779,20 @@ namespace OrdersInventory.Repository.Inventory
                                 {
                                     foreach (var fileUpload in qPics)
                                     {
-                                        if (File.Exists(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName + fileUpload.FileExtensions)))
+                                        if (File.Exists(HttpContext.Current.Server.MapPath(
+                                                ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName +
+                                                fileUpload.FileExtensions)))
                                         {
-                                            File.Delete(HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName + fileUpload.FileExtensions));
+                                            File.Delete(HttpContext.Current.Server.MapPath(
+                                                ServerPath.ServerPathFileUploadMainCategories + fileUpload.FileName +
+                                                fileUpload.FileExtensions));
                                         }
+
                                         db.Table_File_Upload.Remove(fileUpload);
                                         db.SaveChanges();
                                     }
                                 }
+
                                 db.Table_Product_Category.Remove(query);
                                 db.SaveChanges();
                                 break;
@@ -915,6 +939,7 @@ namespace OrdersInventory.Repository.Inventory
                                 break;
                             }
                     }
+
                     db.SaveChanges();
                     return "Sucsess";
                 }
@@ -926,6 +951,7 @@ namespace OrdersInventory.Repository.Inventory
 
             }
         }
+
         public string ChangeConfigurationStatus(Guid id)
         {
 
@@ -983,6 +1009,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return "Sucsess";
         }
+
         public string ChangeColorStatus(Guid Id)
         {
 
@@ -1119,6 +1146,7 @@ namespace OrdersInventory.Repository.Inventory
             return "Success";
 
         }
+
         public string AddNewRow(VMProduct.VmMainProductMangement values, HttpPostedFileBase file, Guid Userid)
         {
             try
@@ -1242,6 +1270,7 @@ namespace OrdersInventory.Repository.Inventory
                         db.SaveChanges();
                     }
                 }
+
                 return "Success";
             }
             catch (Exception e)
@@ -1249,6 +1278,7 @@ namespace OrdersInventory.Repository.Inventory
                 return "Application Error : " + e.Message;
             }
         }
+
         public List<VMProduct.VmMainProduct> RepositoryMainProductsWithFilter()
         {
             var list = new List<VMProduct.VmMainProduct>();
@@ -1370,6 +1400,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.VmMainProduct> RepositoryMainProducts()
         {
             var list = new List<VMProduct.VmMainProduct>();
@@ -1455,6 +1486,7 @@ namespace OrdersInventory.Repository.Inventory
                             vm.CategoriesRef = queryCategories.Id;
 
                         }
+
                         list.Add(vm);
                     }
                 }
@@ -1505,6 +1537,7 @@ namespace OrdersInventory.Repository.Inventory
 
                             vm.ViewModelSubCategoreis = listsubcategorie;
                         }
+
                         var queryFiles =
                             db.Table_File_Upload.FirstOrDefault(c => c.Ref == category.Id);
                         if (queryFiles != null)
@@ -1560,7 +1593,7 @@ namespace OrdersInventory.Repository.Inventory
                         if (queryFiles != null)
                         {
                             vm.FileName = "/Static/Content/images/Categories/" + queryFiles.FileName +
-                                                 queryFiles.FileExtensions;
+                                          queryFiles.FileExtensions;
                         }
                         else
                         {
@@ -1619,7 +1652,7 @@ namespace OrdersInventory.Repository.Inventory
                         if (queryFiles != null)
                         {
                             vm.FileName = ServerPath.ServerPathFileUploadMainCategories + queryFiles.FileName +
-                                                 queryFiles.FileExtensions;
+                                          queryFiles.FileExtensions;
                         }
                         else
                         {
@@ -1663,7 +1696,8 @@ namespace OrdersInventory.Repository.Inventory
                 var search = searchnew.Replace("	", "");
                 var searcha = string.IsNullOrWhiteSpace(searchnew);
 
-                var query = db.Table_Product_Category.OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking()
+                var query = db.Table_Product_Category.OrderByDescending(c => c.CreatorDate)
+                    .Where(c => c.Code == search || c.PrimaryTitle.Contains(search)).AsNoTracking()
                     .ToList();
 
                 if (query.Count > 0)
@@ -1691,7 +1725,7 @@ namespace OrdersInventory.Repository.Inventory
                         if (queryFiles != null)
                         {
                             vm.FileName = "/Static/Content/images/Categories/Desktop/" + queryFiles.FileName +
-                                                 queryFiles.FileExtensions;
+                                          queryFiles.FileExtensions;
                         }
                         else
                         {
@@ -1812,7 +1846,7 @@ namespace OrdersInventory.Repository.Inventory
                         };
                         list.Add(vmm);
                     }
-                    
+
                     return list;
                 }
 
@@ -1874,7 +1908,8 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
 
-                var query = db.Table_Product_Summary.Where(c => c.ProductRef == id && c.IsOk).OrderBy(c => c.Sort).ToList();
+                var query = db.Table_Product_Summary.Where(c => c.ProductRef == id && c.IsOk).OrderBy(c => c.Sort)
+                    .ToList();
 
                 if (query.Count > 0)
                 {
@@ -1962,7 +1997,8 @@ namespace OrdersInventory.Repository.Inventory
             {
 
                 var query = db.Table_Product_Summary
-                    .Where(c => c.ProductRef == id && c.ColorRef == colorRef && c.Quantity != 0 && c.IsOk).OrderBy(c => c.Sort).ToList();
+                    .Where(c => c.ProductRef == id && c.ColorRef == colorRef && c.Quantity != 0 && c.IsOk)
+                    .OrderBy(c => c.Sort).ToList();
                 if (query.Count > 0)
                 {
                     foreach (var item in query)
@@ -2125,7 +2161,8 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
 
-                var query = db.Table_Product_Summary.Where(c => c.ProductRef == id).OrderByDescending(c => c.Sort).ToList();
+                var query = db.Table_Product_Summary.Where(c => c.ProductRef == id).OrderByDescending(c => c.Sort)
+                    .ToList();
                 if (query.Count > 0)
                 {
                     foreach (var item in query)
@@ -2177,6 +2214,7 @@ namespace OrdersInventory.Repository.Inventory
                             vm.IsMainClass = "btn btn-danger";
                             vm.IsMainTitle = "غیر اصلی";
                         }
+
                         list.Add(vm);
                     }
 
@@ -2186,6 +2224,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return list;
         }
 
@@ -2316,6 +2355,7 @@ namespace OrdersInventory.Repository.Inventory
                         vm.IsMainClass = "btn btn-danger";
                         vm.IsMainTitle = "غیر اصلی";
                     }
+
                     return vm;
 
 
@@ -2325,6 +2365,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return new VMProduct.VmMainProductMangement();
         }
 
@@ -2411,9 +2452,9 @@ namespace OrdersInventory.Repository.Inventory
             return list;
         }
 
-        public List<VMProduct.VmMainProduct> RepositoryMainProductsById(Guid id)
+        public VMProduct.VmMainProduct RepositoryMainProductsById(Guid id)
         {
-            var list = new List<VMProduct.VmMainProduct>();
+            var list = new VMProduct.VmMainProduct();
             try
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -2437,7 +2478,8 @@ namespace OrdersInventory.Repository.Inventory
                     };
 
                     //var db = new Orders_Entities();
-                    var qsizeguide = db.Table_Product_SizeGuide.FirstOrDefault(c => c.CategoryRef == query.CategoriesRef);
+                    var qsizeguide =
+                        db.Table_Product_SizeGuide.FirstOrDefault(c => c.CategoryRef == query.CategoriesRef);
                     if (qsizeguide != null)
                     {
                         vm.IsSizeGuide = true;
@@ -2549,11 +2591,12 @@ namespace OrdersInventory.Repository.Inventory
 
                     }
 
-                    list.Add(vm);
+                    list = vm;
                     watch.Stop();
                     //This is the time it took in miliseconds
                     var elapsedTime = watch.ElapsedMilliseconds;
-                    LogWriter.Logger("Time Span : RepositoryMainProductsById = " + elapsedTime, DateTime.Now.ToString(), "");
+                    LogWriter.Logger("Time Span : RepositoryMainProductsById = " + elapsedTime, DateTime.Now.ToString(),
+                        "");
                 }
             }
             catch (Exception e)
@@ -2633,6 +2676,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.ViewModelProductSize> RepositoryMainSizeMangmentSearch(string searchnew)
         {
             var list = new List<VMProduct.ViewModelProductSize>();
@@ -2641,7 +2685,9 @@ namespace OrdersInventory.Repository.Inventory
                 var search = searchnew.Replace("	", "");
 
                 var query = db.Table_Product_Size
-                    .OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search) || c.SizeTitle.Contains(search)).AsNoTracking().ToList();
+                    .OrderByDescending(c => c.CreatorDate).Where(c =>
+                        c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search) ||
+                        c.SizeTitle.Contains(search)).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var product in query)
@@ -2710,6 +2756,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.ViewModelProductColor> RepositoryMainColorMangmentSearch(string searchnew)
         {
             var list = new List<VMProduct.ViewModelProductColor>();
@@ -2718,7 +2765,9 @@ namespace OrdersInventory.Repository.Inventory
                 var search = searchnew.Replace("	", "");
 
                 var query = db.Table_Product_Color
-                    .OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search) || c.ColorCode.Contains(search)).AsNoTracking().ToList();
+                    .OrderByDescending(c => c.CreatorDate).Where(c =>
+                        c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search) ||
+                        c.ColorCode.Contains(search)).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var product in query)
@@ -2949,6 +2998,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.VmMainProductMangement> RepositoryMainProductsMangmentByConfigRefAndSearchKeySearch(
             Guid id, string SearchKey, string searchnew)
         {
@@ -3534,6 +3584,7 @@ namespace OrdersInventory.Repository.Inventory
                             vm.CodeProduct = queryProduct.Code;
                             vm.PrimaryTitle = queryProduct.PrimaryTitle;
                         }
+
                         var querySize = db.Table_Product_Size.FirstOrDefault(c => c.Id == summary.SizeRef);
                         if (querySize != null)
                         {
@@ -3547,6 +3598,7 @@ namespace OrdersInventory.Repository.Inventory
                             vm.Color = queryColor.PrimaryTitle;
                             vm.ColorRef = queryColor.Id;
                         }
+
                         list.Add(vm);
                     }
 
@@ -3573,7 +3625,9 @@ namespace OrdersInventory.Repository.Inventory
                 var search = searchnew.Replace("	", "");
 
                 var query = db.Table_Product
-                    .OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search)).AsNoTracking().ToList();
+                    .OrderByDescending(c => c.CreatorDate).Where(c =>
+                        c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search))
+                    .AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var product in query)
@@ -3863,6 +3917,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return new VMProduct.ViewModelConfiguration();
         }
 
@@ -3897,6 +3952,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return new VMProduct.ViewModelProductSize();
         }
 
@@ -3932,6 +3988,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return list;
         }
 
@@ -3979,6 +4036,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return new VMProduct.ViewModelCategoreis();
         }
 
@@ -4014,6 +4072,7 @@ namespace OrdersInventory.Repository.Inventory
                                     break;
                                 }
                         }
+
                         switch (item.IsMain)
                         {
                             case true:
@@ -4029,6 +4088,7 @@ namespace OrdersInventory.Repository.Inventory
                                     break;
                                 }
                         }
+
                         list.Add(vm);
                     }
                 }
@@ -4074,6 +4134,7 @@ namespace OrdersInventory.Repository.Inventory
                                     break;
                                 }
                         }
+
                         switch (item.IsMain)
                         {
                             case true:
@@ -4118,7 +4179,8 @@ namespace OrdersInventory.Repository.Inventory
                 filename = "Id_" + idpic + "PId_" + id;
                 fileExtention = Path.GetExtension(file.FileName);
                 string pathCombine =
-                    HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainProduct + filename + fileExtention);
+                    HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainProduct + filename +
+                                                       fileExtention);
                 file.SaveAs(pathCombine);
                 var qAddPic = db.Table_File_Upload.Add(new Table_File_Upload());
 
@@ -4175,6 +4237,7 @@ namespace OrdersInventory.Repository.Inventory
                 db.SaveChanges();
 
             }
+
             return "Success";
         }
 
@@ -4203,8 +4266,10 @@ namespace OrdersInventory.Repository.Inventory
                 db.SaveChanges();
 
             }
+
             return "Success";
         }
+
         public string ChangeStatusPicturesIsMain(Guid id)
         {
             var query = db.Table_File_Upload.FirstOrDefault(c => c.Id == id);
@@ -4230,6 +4295,7 @@ namespace OrdersInventory.Repository.Inventory
                 db.SaveChanges();
 
             }
+
             return "Success";
         }
 
@@ -4269,6 +4335,7 @@ namespace OrdersInventory.Repository.Inventory
 
 
             }
+
             return "Success";
         }
 
@@ -4278,7 +4345,8 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
                 var query = db.Table_Product.Where(c =>
-                        c.PrimaryTitle.Contains(values) || c.Code.Contains(values) || c.SecondaryTitle.Contains(values) && c.IsOk)
+                        c.PrimaryTitle.Contains(values) || c.Code.Contains(values) ||
+                        c.SecondaryTitle.Contains(values) && c.IsOk)
                     .AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
@@ -4312,7 +4380,8 @@ namespace OrdersInventory.Repository.Inventory
                         }
 
                         var list2 = new List<VMProduct.FileUploadName>();
-                        var queryFullPictures = db.Table_File_Upload.Where(c => c.IsOk && c.Ref == item.Id && !c.IsMain).AsNoTracking().ToList();
+                        var queryFullPictures = db.Table_File_Upload.Where(c => c.IsOk && c.Ref == item.Id && !c.IsMain)
+                            .AsNoTracking().ToList();
                         if (queryFullPictures.Count > 0)
                         {
                             foreach (var fileUpload in queryFullPictures)
@@ -4334,7 +4403,8 @@ namespace OrdersInventory.Repository.Inventory
 
 
                         var list3 = new List<VMProduct.ProductProperty>();
-                        var queryFullProperty = db.Table_Product_Property.Where(c => c.IsOk && c.Ref == item.Id && c.Entity == "Property").AsNoTracking().ToList();
+                        var queryFullProperty = db.Table_Product_Property
+                            .Where(c => c.IsOk && c.Ref == item.Id && c.Entity == "Property").AsNoTracking().ToList();
                         if (queryFullProperty.Count > 0)
                         {
                             foreach (var property in queryFullProperty)
@@ -4385,6 +4455,7 @@ namespace OrdersInventory.Repository.Inventory
                                 vm.QuantityTitle = "ناموجود";
                                 vm.QuantityClass = "product-card__badge--no";
                             }
+
                             vm.Fee = querySummary.Fee;
                         }
 
@@ -4398,6 +4469,7 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return list;
         }
 
@@ -4634,13 +4706,15 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.ViewModelConfiguration> RepositoryMainConfigurationSearch(string searchnew)
         {
             var list = new List<VMProduct.ViewModelConfiguration>();
             try
             {
                 var search = searchnew.Replace("	", "");
-                var query = db.Table_Selection_Configuration.OrderByDescending(c => c.CreatorDate).Where(c => c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search))
+                var query = db.Table_Selection_Configuration.OrderByDescending(c => c.CreatorDate).Where(c =>
+                        c.Code == search || c.PrimaryTitle.Contains(search) || c.SecondaryTitle.Contains(search))
                     .OrderBy(c => c.Sort).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
@@ -4692,14 +4766,16 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
 
-                var query = db.Table_Product_Selection.Where(c => c.IsOk && !c.IsDelete && c.ConfigurationRef == configRef)
+                var query = db.Table_Product_Selection
+                    .Where(c => c.IsOk && !c.IsDelete && c.ConfigurationRef == configRef)
                     .OrderBy(c => c.Sort).AsNoTracking().ToList();
                 if (query.Count > 0)
                 {
                     foreach (var selection in query)
                     {
-                        var queryProduct = db.Table_Product.Where(c => c.IsOk && !c.IsDelete && c.Id == selection.ProductRef)
-                               .OrderByDescending(c => c.ModifierDate).AsNoTracking().ToList();
+                        var queryProduct = db.Table_Product
+                            .Where(c => c.IsOk && !c.IsDelete && c.Id == selection.ProductRef)
+                            .OrderByDescending(c => c.ModifierDate).AsNoTracking().ToList();
                         if (queryProduct.Count > 0)
                         {
                             foreach (var product in queryProduct)
@@ -4771,7 +4847,8 @@ namespace OrdersInventory.Repository.Inventory
 
 
                                 var queryCategories =
-                                    db.Table_Product_Category.AsNoTracking().FirstOrDefault(c => c.Id == product.CategoriesRef);
+                                    db.Table_Product_Category.AsNoTracking()
+                                        .FirstOrDefault(c => c.Id == product.CategoriesRef);
                                 if (queryCategories != null)
                                 {
                                     vm.CategoreisTitle = queryCategories.PrimaryTitle;
@@ -4800,6 +4877,7 @@ namespace OrdersInventory.Repository.Inventory
 
 
         #region Discount
+
         public List<VMProduct.ViewModelDiscount> RepositoryDiscountManagment()
         {
             var list = new List<VMProduct.ViewModelDiscount>();
@@ -4840,8 +4918,10 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return list;
         }
+
         public string AddNewDiscount(VMProduct.ViewModelDiscount values, Guid userId)
         {
             try
@@ -4863,6 +4943,7 @@ namespace OrdersInventory.Repository.Inventory
                             break;
                         }
                 }
+
                 var query = db.Table_Price_DisCount.Add(new Table_Price_DisCount()
                 {
                     Id = id,
@@ -4922,8 +5003,10 @@ namespace OrdersInventory.Repository.Inventory
             {
 
             }
+
             return list;
         }
+
         public string RepositoryDiscountMangmentEditById(VMProduct.ViewModelDiscount values, Guid Userid)
         {
             try
@@ -5010,6 +5093,7 @@ namespace OrdersInventory.Repository.Inventory
                 return "Application Error : " + e.Message;
             }
         }
+
         public string DeleteProductDiscount(Guid id)
         {
             try
@@ -5050,6 +5134,7 @@ namespace OrdersInventory.Repository.Inventory
 
 
         }
+
         public string ChangeProductDiscountStatus(Guid Id)
         {
 
@@ -5079,6 +5164,7 @@ namespace OrdersInventory.Repository.Inventory
             return "Sucsess";
 
         }
+
         public List<VMProduct.ViewModelProductDiscount> RepositoryMainProductDiscount()
         {
             var list = new List<VMProduct.ViewModelProductDiscount>();
@@ -5261,6 +5347,7 @@ namespace OrdersInventory.Repository.Inventory
 
             return list;
         }
+
         public List<VMProduct.VmMainProductMangement> RepositoryMainProductsMangmentByProductRefAndSearchKey(
             Guid id, string SearchKey)
         {
@@ -5501,7 +5588,9 @@ namespace OrdersInventory.Repository.Inventory
 
         //    return message;
         //}
+
         #endregion
+
         #region CategoreisProduct
 
         public List<VMProduct.VmMainProduct> RepositoryMainSelectionCategoreisProducts(Guid? catRef)
@@ -5654,6 +5743,7 @@ namespace OrdersInventory.Repository.Inventory
                             break;
                         }
                 }
+
                 var query = db.Table_Product_Category.Add(new Table_Product_Category
                 {
                     Id = id,
@@ -5687,7 +5777,8 @@ namespace OrdersInventory.Repository.Inventory
                     var codee = SepidyarHesabCodeGenerator.GenerateCode("General", "Table_File_Upload");
                     var idfile = Guid.NewGuid();
                     string pathCombine =
-                        HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + filename + fileExtention);
+                        HttpContext.Current.Server.MapPath(ServerPath.ServerPathFileUploadMainCategories + filename +
+                                                           fileExtention);
                     file.SaveAs(pathCombine);
                     var qAddPic = db.Table_File_Upload.Add(new Table_File_Upload
                     {
@@ -5810,7 +5901,7 @@ namespace OrdersInventory.Repository.Inventory
                         var SubId = selection.Id;
                         decimal a = 0;
                         var queryProduct = db.Table_Product.Where(c => c.CategoriesRef == SubId)
-                               .OrderByDescending(c => c.CreatorDate).AsNoTracking().ToList();
+                            .OrderByDescending(c => c.CreatorDate).AsNoTracking().ToList();
                         if (queryProduct.Count > 0)
                         {
                             foreach (var product in queryProduct)
@@ -5847,7 +5938,8 @@ namespace OrdersInventory.Repository.Inventory
 
 
                                 var queryCategories =
-                                    db.Table_Product_Category.AsNoTracking().FirstOrDefault(c => c.Id == product.CategoriesRef);
+                                    db.Table_Product_Category.AsNoTracking()
+                                        .FirstOrDefault(c => c.Id == product.CategoriesRef);
                                 if (queryCategories != null)
                                 {
                                     vm.CategoreisTitle = queryCategories.PrimaryTitle;
@@ -5980,6 +6072,7 @@ namespace OrdersInventory.Repository.Inventory
                                 vm.QuantityTitle = "ناموجود";
                                 vm.QuantityClass = "product-card__badge--no";
                             }
+
                             vm.Fee = product.Fee;
                         }
 
@@ -5999,7 +6092,8 @@ namespace OrdersInventory.Repository.Inventory
 
 
                         var queryCategories =
-                            db.Table_Product_Category.FirstOrDefault(c => c.Id == product.CategoriesRef && c.IsOk && !c.IsDelete);
+                            db.Table_Product_Category.FirstOrDefault(c =>
+                                c.Id == product.CategoriesRef && c.IsOk && !c.IsDelete);
                         if (queryCategories != null)
                         {
                             vm.CategoreisTitle = queryCategories.PrimaryTitle;
@@ -6008,7 +6102,8 @@ namespace OrdersInventory.Repository.Inventory
                         }
                         else
                         {
-                            LogWriter.Logger("Application Error : " + "Table_Product_Category null", DateTime.Now.ToString(), "5846");
+                            LogWriter.Logger("Application Error : " + "Table_Product_Category null",
+                                DateTime.Now.ToString(), "5846");
                         }
 
                         list.Add(vm);
@@ -6023,7 +6118,8 @@ namespace OrdersInventory.Repository.Inventory
             {
                 if (e.InnerException != null)
                 {
-                    LogWriter.Logger("Application Error : " + e.InnerException.Message, DateTime.Now.ToString(), "5849");
+                    LogWriter.Logger("Application Error : " + e.InnerException.Message, DateTime.Now.ToString(),
+                        "5849");
                 }
                 else
                 {
@@ -6037,7 +6133,7 @@ namespace OrdersInventory.Repository.Inventory
         #endregion
 
 
-        #region Product Show All Configuration 
+        #region Product Show All Configuration
 
         public List<VMProduct.VmMainProductMangement> RepositoryMainProductShowAllProductByConfigurationRef(Guid id)
         {
@@ -6045,7 +6141,8 @@ namespace OrdersInventory.Repository.Inventory
             try
             {
 
-                var query = db.Table_Product_Selection.Where(c => c.ConfigurationRef == id).OrderByDescending(c => c.ModifierDate).AsNoTracking().ToList();
+                var query = db.Table_Product_Selection.Where(c => c.ConfigurationRef == id)
+                    .OrderByDescending(c => c.ModifierDate).AsNoTracking().ToList();
 
                 if (query.Count > 0)
                 {
@@ -6084,6 +6181,7 @@ namespace OrdersInventory.Repository.Inventory
                                     vm.QuantityTitle = "ناموجود";
                                     vm.QuantityClass = "product-card__badge--no";
                                 }
+
                                 vm.Quantity = querySummary.Quantity;
                                 vm.Fee = querySummary.Fee;
                             }
@@ -6287,8 +6385,10 @@ namespace OrdersInventory.Repository.Inventory
         }
 
         #endregion
+
         //End------------------------------------
         //Repository Show selected products in a new page
+
         public VMProduct.VmMainProductMangement RepositorySelectedProductsMangment(Guid id)
         {
             var vmm = new VMProduct.VmMainProductMangement();
@@ -6296,95 +6396,108 @@ namespace OrdersInventory.Repository.Inventory
             {
 
                 var query = db.Table_Product
-                    .AsNoTracking().FirstOrDefault(c=>c.Id==id);
+                    .AsNoTracking().FirstOrDefault(c => c.Id == id);
                 if (query != null)
                 {
-                    
-                        var vm = new VMProduct.VmMainProductMangement
+
+                    var vm = new VMProduct.VmMainProductMangement
+                    {
+                        Id = query.Id,
+                        Code = query.Code,
+                        IsOk = query.IsOk,
+                        PrimaryTitle = query.PrimaryTitle,
+                        SecondaryTitle = query.SecondaryTitle,
+                        TertiaryTitle = query.TertiaryTitle,
+                        Url = query.Url,
+                        CreatorDateTime = query.CreatorDate,
+                        Discount = query.Discount,
+                        Note = query.Note,
+                    };
+
+                    var querySummary =
+                        db.Table_Product_Summary.FirstOrDefault(c =>
+                            c.ProductRef == query.Id && c.IsOk && c.IsMain);
+                    if (querySummary != null)
+                    {
+                        if (querySummary.Quantity > 0)
                         {
-                            Id = query.Id,
-                            Code =query.Code,
-                            IsOk = query.IsOk,
-                            PrimaryTitle = query.PrimaryTitle,
-                            SecondaryTitle = query.SecondaryTitle,
-                            TertiaryTitle = query.TertiaryTitle,
-                            Url = query.Url,
-                            CreatorDateTime = query.CreatorDate,
-                            Discount = query.Discount,
-                            Note = query.Note,
-                        };
-
-                        var querySummary =
-                            db.Table_Product_Summary.FirstOrDefault(c =>
-                                c.ProductRef == query.Id && c.IsOk && c.IsMain);
-                        if (querySummary != null)
-                        {
-                            if (querySummary.Quantity > 0)
-                            {
-                                vm.QuantityTitle = "موجود";
-                                vm.QuantityClass = "product-card__badge--yes";
-                            }
-                            else
-                            {
-                                vm.QuantityTitle = "ناموجود";
-                                vm.QuantityClass = "product-card__badge--no";
-                            }
-
-                            vm.Quantity = querySummary.Quantity;
-                            vm.Fee = querySummary.Fee;
-
+                            vm.QuantityTitle = "موجود";
+                            vm.QuantityClass = "product-card__badge--yes";
                         }
                         else
                         {
-                            if (query.Quantity > 0)
-                            {
-                                vm.QuantityTitle = "موجود";
-                                vm.QuantityClass = "product-card__badge--yes";
-                            }
-                            else
-                            {
-                                vm.QuantityTitle = "ناموجود";
-                                vm.QuantityClass = "product-card__badge--no";
-                            }
+                            vm.QuantityTitle = "ناموجود";
+                            vm.QuantityClass = "product-card__badge--no";
+                        }
 
+                        vm.Quantity = querySummary.Quantity;
+                        vm.Fee = querySummary.Fee;
 
-                        var queryfile =
-                            db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == query.Id);
-                        if (queryfile != null)
+                    }
+                    else
+                    {
+                        if (query.Quantity > 0)
                         {
-                            vm.FileName = "/Static/Content/Images/Products/" + queryfile.FileName +
-                                          queryfile.FileExtensions;
+                            vm.QuantityTitle = "موجود";
+                            vm.QuantityClass = "product-card__badge--yes";
                         }
                         else
                         {
-                            vm.FileName = "/Static/Content/Images/";
+                            vm.QuantityTitle = "ناموجود";
+                            vm.QuantityClass = "product-card__badge--no";
                         }
 
-                        if (query.IsOk == true)
-                        {
-                            vm.IsOkTitle = "فعال";
-                            vm.IsOkClass = "btn btn-success";
-                        }
-                        else
-                        {
-                            vm.IsOkTitle = "غیرفعال";
-                            vm.IsOkClass = "btn btn-danger";
-                        }
+                        vm.Quantity = query.Quantity;
+                        vm.Fee = query.Fee;
+                    }
 
-                        var queryCategories =
-                            db.Table_Product_Category.AsNoTracking()
-                                .FirstOrDefault(c => c.Id == query.CategoriesRef);
-                        if (queryCategories != null)
-                        {
-                            vm.CategoreisTitle = queryCategories.PrimaryTitle;
-                            vm.CategoriesRef = queryCategories.Id;
+                    var queryfile =
+                        db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == query.Id);
+                    if (queryfile != null)
+                    {
+                        vm.FileName = "/Static/Content/Images/Products/" + queryfile.FileName +
+                                      queryfile.FileExtensions;
+                    }
+                    else
+                    {
+                        vm.FileName = "/Static/Content/Images/";
+                    }
 
-                        }
+                    if (query.IsOk == true)
+                    {
+                        vm.IsOkTitle = "فعال";
+                        vm.IsOkClass = "btn btn-success";
+                    }
+                    else
+                    {
+                        vm.IsOkTitle = "غیرفعال";
+                        vm.IsOkClass = "btn btn-danger";
+                    }
 
-                        vmm = vm;
+                    var queryCategories =
+                        db.Table_Product_Category.AsNoTracking()
+                            .FirstOrDefault(c => c.Id == query.CategoriesRef);
+                    if (queryCategories != null)
+                    {
+                        vm.CategoreisTitle = queryCategories.PrimaryTitle;
+                        vm.CategoriesRef = queryCategories.Id;
+
+                    }
+
+                    vmm = vm;
                 }
 
                 return vmm;
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return vmm;
+        }
+
+
         #region Set
 
         public List<VMProduct.ViewModelProductSet> RepositoryProductSet(Guid id)
@@ -6435,16 +6548,11 @@ namespace OrdersInventory.Repository.Inventory
                         list.Add(vm);
                     }
                 }
-
             }
             catch (Exception e)
             {
 
             }
-
-
-            return vmm;
-        }
 
             return list;
         }
@@ -6504,7 +6612,7 @@ namespace OrdersInventory.Repository.Inventory
         {
             try
             {
-                var query = db.Table_Product_Set.ToList().Exists(c =>c.Ref 
+                var query = db.Table_Product_Set.ToList().Exists(c => c.Ref
                 == value.Ref && c.ProductRef == value.ProductRef);
                 if (!query)
                 {
@@ -6692,49 +6800,6 @@ namespace OrdersInventory.Repository.Inventory
                         }
                     }
                 }
-
-
-                            vm.Quantity = query.Quantity;
-                            vm.Fee = query.Fee;
-                        }
-
-                        var queryfile =
-                            db.Table_File_Upload.FirstOrDefault(c => c.IsOk && c.Ref == query.Id);
-                        if (queryfile != null)
-                        {
-                            vm.FileName = "/Static/Content/Images/Products/" + queryfile.FileName +
-                                          queryfile.FileExtensions;
-                        }
-                        else
-                        {
-                            vm.FileName = "/Static/Content/Images/";
-                        }
-
-                        if (query.IsOk == true)
-                        {
-                            vm.IsOkTitle = "فعال";
-                            vm.IsOkClass = "btn btn-success";
-                        }
-                        else
-                        {
-                            vm.IsOkTitle = "غیرفعال";
-                            vm.IsOkClass = "btn btn-danger";
-                        }
-
-                        var queryCategories =
-                            db.Table_Product_Category.AsNoTracking()
-                                .FirstOrDefault(c => c.Id == query.CategoriesRef);
-                        if (queryCategories != null)
-                        {
-                            vm.CategoreisTitle = queryCategories.PrimaryTitle;
-                            vm.CategoriesRef = queryCategories.Id;
-
-                        }
-
-                        vmm = vm;
-                }
-
-                return vmm;
 
             }
             catch (Exception e)

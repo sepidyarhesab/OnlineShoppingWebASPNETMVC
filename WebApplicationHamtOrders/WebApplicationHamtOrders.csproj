@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.C1Zip.4.5.2, Version=4.5.20222.576, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.C1Zip.4.5.20222.576\lib\net452\C1.C1Zip.4.5.2.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
@@ -309,7 +312,6 @@
     <Content Include="Helper\Layouts\404.html" />
     <Content Include="Helper\Layouts\assets\css\plugins\bottom\styles.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\boxicons.min.css" />
-    <Content Include="Helper\Layouts\assets\css\colors.css" />
     <Content Include="Helper\Layouts\assets\css\fancybox.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\fonts\boxicons.svg" />
     <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
@@ -2285,7 +2287,6 @@
     <Content Include="Static\Content\Images\Footer\Footer.jpg" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962434505259329.png" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962449238401674.png" />
-    <Content Include="Static\Content\Images\Logo\Logo_SP-637830308030933133.png" />
     <Content Include="Static\Content\Images\Menu\account_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
@@ -2421,6 +2422,11 @@
     <Content Include="Static\Content\Images\Services\Category_SP-637940016552269167.png" />
     <Content Include="Static\Content\Images\Services\Category_SP-637940016651301450.png" />
     <Content Include="Static\Content\Images\Services\Category_SP-637940016765780146.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637981431469020355.jpg" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637984063999845572.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637984068556335335.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuid_SP-637981557713934746.jpg" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuid_SP-637987673464422843.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529179662153.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529404848484.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637939294505258747.png" />
@@ -2443,7 +2449,10 @@
     <Content Include="Views\ProductManagment\Set.cshtml" />
     <Content Include="Views\ProductManagment\SelectedProduct.cshtml" />
     <Content Include="Views\AppSettings\Index.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductSet.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
+    <None Include="Web References\Sep.InitPayment\initpayment.disco" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2514,6 +2523,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Sep.InitPayment\Reference.cs" />
+    <Compile Include="Web References\Sep.RefrencePayment\Reference.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2885,6 +2896,10 @@
     <Content Include="Views\SizeGuideManagement\IndexProductSizeGuideValues.cshtml" />
     <Content Include="Views\Orders\ConnectionToSaman.cshtml" />
     <None Include="Web References\com\ReferencePayment.wsdl" />
+    <None Include="Web References\Sep.InitPayment\initpayment.wsdl" />
+    <Content Include="Web References\Sep.InitPayment\Reference.map" />
+    <Content Include="Web References\Sep.RefrencePayment\Reference.map" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2899,6 +2914,7 @@
     <Folder Include="Models\" />
     <Folder Include="Static\Content\Excel\" />
     <Folder Include="Static\Content\Images\Factor\" />
+    <Folder Include="Static\Content\Images\Logo\" />
     <Folder Include="Static\Content\Images\Profile\" />
     <Folder Include="Static\Content\Images\Sliders\Mobile\" />
     <Folder Include="Update\" />

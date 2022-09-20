@@ -92,7 +92,10 @@ namespace OrdersOrders.ViewModels.Orders
             public decimal Transfer { get; set; }
             public decimal SumPay { get; set; }
             //public decimal sumdis { get; set; }
-            public decimal TransferDis { get; set; }
+            public string Message { get; set; }
+            public string DisCode { get; set; }
+            public bool DisUse { get; set; }
+
         }
 
 

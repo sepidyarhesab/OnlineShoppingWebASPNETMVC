@@ -16,7 +16,7 @@ namespace OrdersOrders.Repository.Orders
 {
     public static class RepOrders
     {
-        public static string RepositorySubmitOrders(VMOrders.VmOrderSubmit values, List<VMOrders.VmOrderSubmit> carts, HttpPostedFileBase file, string phone, decimal transfer, string browser, string ip, decimal sumdis)
+        public static string RepositorySubmitOrders(VMOrders.VmOrderSubmit values, List<VMOrders.VmOrderSubmit> carts, HttpPostedFileBase file, string phone, decimal transfer, string browser, string ip, decimal sumdis, string DisCode, bool DisUse)
         {
             var code = "error";
             try
@@ -39,11 +39,40 @@ namespace OrdersOrders.Repository.Orders
                         {
                             var sum2 = cart.Quantity * cart.Fee;
                             sum += sum2;
-                            if (cart.DisCode != "" || cart.DisCode != null)
+                            if (cart.DisCode != "" && cart.DisCode != null)
                             {
                                 if (cart.DisUse)
                                 {
                                     var queryDis = db.Table_Discount.FirstOrDefault(c => c.DiscountCode == cart.DisCode);
+                                    if (queryDis != null)
+                                    {
+                                        if (queryDis.DiscountQuantity > 0)
+                                        {
+                                            queryDis.DiscountQuantity--;
+                                            if (queryDis.DiscountQuantity == 0)
+                                            {
+                                                queryDis.IsOk = false;
+                                            }
+                                        }
+
+                                        if (queryDis.DiscountCount > 0)
+                                        {
+                                            queryDis.DiscountPercent = queryDis.DiscountPercent - 10;
+                                            queryDis.DiscountCount--;
+                                            if (queryDis.DiscountCount == 0)
+                                            {
+                                                queryDis.IsOk = false;
+                                            }
+                                        }
+                                        db.SaveChanges();
+                                    }
+                                }
+                            }
+                            else if (DisCode != "" && DisCode != null)
+                            {
+                                if (DisUse)
+                                {
+                                    var queryDis = db.Table_Discount.FirstOrDefault(c => c.DiscountCode == DisCode);
                                     if (queryDis != null)
                                     {
                                         if (queryDis.DiscountQuantity > 0)
@@ -217,7 +246,7 @@ namespace OrdersOrders.Repository.Orders
                     }
                     else
                     {
-                         idusers = Guid.NewGuid();
+                        idusers = Guid.NewGuid();
                         var queyadd = new Table_User
                         {
                             Id = idusers,
@@ -464,7 +493,7 @@ namespace OrdersOrders.Repository.Orders
                 }
                 else
                 {
-                     idusers = Guid.NewGuid();
+                    idusers = Guid.NewGuid();
                     var queyadd = new Table_User
                     {
                         Id = idusers,
@@ -709,7 +738,7 @@ namespace OrdersOrders.Repository.Orders
 
                     }
                     LogWriter.Orders("--------------------------------------------------------------------------------------------------------------------------------------", "----------", "---------------------");
-                    return code + "&" + tick + "&" + idusers +  "&" + id;
+                    return code + "&" + tick + "&" + idusers + "&" + id;
 
                     #endregion
                 }
@@ -825,17 +854,17 @@ namespace OrdersOrders.Repository.Orders
                     switch (query.IsPay)
                     {
                         case true:
-                        {
-                            query.IsPay = false;
-                            db.SaveChanges();
-                            break;
-                        }
+                            {
+                                query.IsPay = false;
+                                db.SaveChanges();
+                                break;
+                            }
                         case false:
-                        {
-                            query.IsPay = true;
-                            db.SaveChanges();
-                            break;
-                        }
+                            {
+                                query.IsPay = true;
+                                db.SaveChanges();
+                                break;
+                            }
                     }
 
                 }
@@ -1241,7 +1270,7 @@ namespace OrdersOrders.Repository.Orders
             var list = new VMOrders.VmOrderCarts();
             try
             {
-                list = RepDiscount.RepositoryCartsNoDiscount(carts,UserRef);
+                list = RepDiscount.RepositoryCartsNoDiscount(carts, UserRef);
             }
             catch (Exception e)
             {
@@ -1952,121 +1981,121 @@ namespace OrdersOrders.Repository.Orders
             try
             {
                 var db = new Orders_Entities();
-                var query = db.Table_Order.AsNoTracking().FirstOrDefault(c => c.Id==id);
+                var query = db.Table_Order.AsNoTracking().FirstOrDefault(c => c.Id == id);
                 if (query != null)
                 {
-                   
-                        var vm = new VMOrders.VmOrderMangment
-                        {
-                            Id = query.Id,
-                            Code = query.Code,
-                            Family = query.Lastname,
-                            Name = query.Firstname,
-                            Note = query.Note,
-                            PageId = query.Note,
-                            Phone = query.Phone,
-                            ModifierDateTime = query.ModifierDate,
-                            CreatorDateTime = query.CreatorDate,
-                            Discount = query.Discount,
-                            Address = query.Address,
-                            Price = query.Price
-                        };
+
+                    var vm = new VMOrders.VmOrderMangment
+                    {
+                        Id = query.Id,
+                        Code = query.Code,
+                        Family = query.Lastname,
+                        Name = query.Firstname,
+                        Note = query.Note,
+                        PageId = query.Note,
+                        Phone = query.Phone,
+                        ModifierDateTime = query.ModifierDate,
+                        CreatorDateTime = query.CreatorDate,
+                        Discount = query.Discount,
+                        Address = query.Address,
+                        Price = query.Price
+                    };
 
 
-                        try
+                    try
+                    {
+                        var a = Guid.Parse(query.Address);
+                        var queryaddress = db.Table_Address.FirstOrDefault(c => c.Id == a);
+                        if (queryaddress != null)
                         {
-                            var a = Guid.Parse(query.Address);
-                            var queryaddress = db.Table_Address.FirstOrDefault(c => c.Id == a);
-                            if (queryaddress != null)
+                            vm.Address = queryaddress.Address;
+                            vm.PostalCode = queryaddress.PostalCode;
+                        }
+
+                        var querycity = db.Table_Location.FirstOrDefault(c => c.LocationId == queryaddress.CityRef);
+                        if (querycity != null)
+                        {
+                            vm.CityTitle = querycity.Title;
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        vm.Address = query.Address;
+                    }
+
+                    switch (query.Status)
+                    {
+                        case 0:
                             {
-                                vm.Address = queryaddress.Address;
-                                vm.PostalCode = queryaddress.PostalCode;
+                                vm.Status = ".مشتری گرامی ، سفارش شما تازه ثبت شده است و هنوز اقدامی صورت نگرفته است" + " " + " 0 ";
+                                break;
+                            }
+                        case 1:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما دریافت شد و در دست پیگیری میباشد" + " " + " 1 ";
+                                break;
+                            }
+                        case 2:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما آماده ارسال شد" + "  " + " 2 ";
+                                break;
+                            }
+                        case 3:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما ارسال شد" + " " + " 3 ";
+                                break;
+                            }
+                        case 4:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما تحویل داده شده است" + " " + " 4 ";
+                                break;
+                            }
+                        case 5:
+                            {
+                                vm.Status = ".مشتری گرامی ، محصول مورد نظر شما موجود نبوده است یا مغایرت داشته است" + " " + " 5 ";
+                                break;
+                            }
+                        case 6:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما لغو شد" + " " + " 6 ";
+                                break;
+                            }
+                        case 7:
+                            {
+                                vm.Status = ".مشتری گرامی ، سفارش شما حذف شد" + " " + " 7 ";
+                                break;
+                            }
+                        case 8:
+                            {
+                                vm.Status = ".مشتری گرامی ، اطلاعات شما ناقص بوده است با مدیریت تماس بگیرید" + " " + " 8 ";
+                                break;
+                            }
+                        case 9:
+                            {
+                                vm.Status = ".مشتری گرامی ، ما در انتظار ثبت نظر و لایک شما هستیم" + " " + " 9 ";
+                                break;
+                            }
+                        case 10:
+                            {
+                                vm.Status = ".مشتری گرامی ، در دست برسی" + "  " + " 10 ";
+                                break;
                             }
 
-                            var querycity = db.Table_Location.FirstOrDefault(c => c.LocationId == queryaddress.CityRef);
-                            if (querycity != null)
-                            {
-                                vm.CityTitle = querycity.Title;
-                            }
+                    }
 
-                        }
-                        catch (Exception e)
-                        {
-                            vm.Address = query.Address;
-                        }
+                    if (query.IsPay == true)
+                    {
+                        vm.IsPayClass = "btn btn-success";
+                        vm.IsPayTitle = "پرداخت شده";
+                    }
+                    else
+                    {
+                        vm.IsPayClass = "btn btn-danger";
+                        vm.IsPayTitle = "پرداخت نشده";
+                    }
 
-                        switch (query.Status)
-                        {
-                            case 0:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما تازه ثبت شده است و هنوز اقدامی صورت نگرفته است" + " " + " 0 ";
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما دریافت شد و در دست پیگیری میباشد" + " " + " 1 ";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما آماده ارسال شد" + "  " + " 2 ";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما ارسال شد" + " " + " 3 ";
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما تحویل داده شده است" + " " + " 4 ";
-                                    break;
-                                }
-                            case 5:
-                                {
-                                    vm.Status = ".مشتری گرامی ، محصول مورد نظر شما موجود نبوده است یا مغایرت داشته است" + " " + " 5 ";
-                                    break;
-                                }
-                            case 6:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما لغو شد" + " " + " 6 ";
-                                    break;
-                                }
-                            case 7:
-                                {
-                                    vm.Status = ".مشتری گرامی ، سفارش شما حذف شد" + " " + " 7 ";
-                                    break;
-                                }
-                            case 8:
-                                {
-                                    vm.Status = ".مشتری گرامی ، اطلاعات شما ناقص بوده است با مدیریت تماس بگیرید" + " " + " 8 ";
-                                    break;
-                                }
-                            case 9:
-                                {
-                                    vm.Status = ".مشتری گرامی ، ما در انتظار ثبت نظر و لایک شما هستیم" + " " + " 9 ";
-                                    break;
-                                }
-                            case 10:
-                                {
-                                    vm.Status = ".مشتری گرامی ، در دست برسی" + "  " + " 10 ";
-                                    break;
-                                }
-
-                        }
-
-                        if (query.IsPay == true)
-                        {
-                            vm.IsPayClass = "btn btn-success";
-                            vm.IsPayTitle = "پرداخت شده";
-                        }
-                        else
-                        {
-                            vm.IsPayClass = "btn btn-danger";
-                            vm.IsPayTitle = "پرداخت نشده";
-                        }
-
-                        vmm = vm;
+                    vmm = vm;
                 }
 
                 return vmm;
