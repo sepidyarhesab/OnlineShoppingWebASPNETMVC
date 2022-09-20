@@ -6,5 +6,7 @@
 *.pdb
 */bin
 */obj
+*.csproj
+*.user
 
 
