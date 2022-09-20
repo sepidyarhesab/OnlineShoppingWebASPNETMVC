@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.C1Zip.4.5.2, Version=4.5.20222.576, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.C1Zip.4.5.20222.576\lib\net452\C1.C1Zip.4.5.2.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
@@ -190,83 +193,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\ClosedXML.dll" />
-    <Content Include="bin\ClosedXML.pdb" />
-    <Content Include="bin\DocumentFormat.OpenXml.dll" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\ExcelNumberFormat.dll" />
-    <Content Include="bin\log4net.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\OrdersDatabase.dll" />
-    <Content Include="bin\OrdersDatabase.pdb" />
-    <Content Include="bin\OrdersExtentions.dll" />
-    <Content Include="bin\OrdersExtentions.pdb" />
-    <Content Include="bin\OrdersGeneral.dll" />
-    <Content Include="bin\OrdersGeneral.pdb" />
-    <Content Include="bin\OrdersInventory.dll" />
-    <Content Include="bin\OrdersInventory.pdb" />
-    <Content Include="bin\OrdersMellatPayment.dll" />
-    <Content Include="bin\OrdersMellatPayment.pdb" />
-    <Content Include="bin\OrdersMellatPayment.XmlSerializers.dll" />
-    <Content Include="bin\OrdersOrders.dll" />
-    <Content Include="bin\OrdersOrders.pdb" />
-    <Content Include="bin\OrdersSettings.dll" />
-    <Content Include="bin\OrdersSettings.pdb" />
-    <Content Include="bin\PagedList.dll" />
-    <Content Include="bin\PagedList.Mvc.dll" />
-    <Content Include="bin\roslyn\csc.exe" />
-    <Content Include="bin\roslyn\csi.exe" />
-    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
-    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
-    <Content Include="bin\roslyn\System.AppContext.dll" />
-    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
-    <Content Include="bin\roslyn\System.Console.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.DiagnosticSource.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
-    <Content Include="bin\roslyn\System.Globalization.Calendars.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.ZipFile.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Net.Http.dll" />
-    <Content Include="bin\roslyn\System.Net.Sockets.dll" />
-    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
-    <Content Include="bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
-    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
-    <Content Include="bin\roslyn\System.Threading.Tasks.Extensions.dll" />
-    <Content Include="bin\roslyn\System.ValueTuple.dll" />
-    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
-    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
-    <Content Include="bin\roslyn\vbc.exe" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="bin\Rotativa.Core.dll" />
-    <Content Include="bin\Rotativa.dll" />
-    <Content Include="bin\Rotativa.MVC.dll" />
-    <Content Include="bin\SmsIrRestful.dll" />
-    <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
-    <Content Include="bin\System.Web.Webpages.dll" />
-    <Content Include="bin\System.Web.Webpages.Razor.dll" />
-    <Content Include="bin\WebApplicationHamtOrders.dll" />
-    <Content Include="bin\WebApplicationHamtOrders.pdb" />
-    <Content Include="bin\ZarinPal.dll" />
+    <Content Include="colors.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -366,24 +293,6 @@
     <Content Include="Helper\Admin\Scripts\iziToast.min.js" />
     <Content Include="Helper\Admin\Scripts\jalaali.js" />
     <Content Include="Helper\Admin\Scripts\jquery-2.1.1.min.js" />
-    <Content Include="bin\OrdersDatabase.dll.config" />
-    <Content Include="bin\OrdersExtentions.dll.config" />
-    <Content Include="bin\OrdersGeneral.dll.config" />
-    <Content Include="bin\OrdersInventory.dll.config" />
-    <Content Include="bin\OrdersMellatPayment.dll.config" />
-    <Content Include="bin\OrdersOrders.dll.config" />
-    <Content Include="bin\OrdersSettings.dll.config" />
-    <Content Include="bin\roslyn\csc.exe.config" />
-    <Content Include="bin\roslyn\csc.rsp" />
-    <Content Include="bin\roslyn\csi.exe.config" />
-    <Content Include="bin\roslyn\csi.rsp" />
-    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="bin\roslyn\vbc.exe.config" />
-    <Content Include="bin\roslyn\vbc.rsp" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="bin\WebApplicationHamtOrders.dll.config" />
     <None Include="Helper\Admin\Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Helper\Admin\Scripts\jquery-3.1.0.js" />
     <Content Include="Helper\Admin\Scripts\jquery-3.1.0.min.js" />
@@ -403,7 +312,6 @@
     <Content Include="Helper\Layouts\404.html" />
     <Content Include="Helper\Layouts\assets\css\plugins\bottom\styles.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\boxicons.min.css" />
-    <Content Include="Helper\Layouts\assets\css\colors.css" />
     <Content Include="Helper\Layouts\assets\css\fancybox.css" />
     <Content Include="Helper\Layouts\assets\css\plugins\boxicons\fonts\boxicons.svg" />
     <Content Include="Helper\Layouts\assets\css\HtmlPage1.html" />
@@ -2250,6 +2158,8 @@
     <Content Include="Helper\Layouts\shopping-complete-buy-success.html" />
     <Content Include="Helper\Layouts\single-product--file.html" />
     <Content Include="Helper\Layouts\single-product.html" />
+    <Content Include="Log.txt" />
+    <Content Include="Order.txt" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -2377,7 +2287,6 @@
     <Content Include="Static\Content\Images\Footer\Footer.jpg" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962434505259329.png" />
     <Content Include="Static\Content\Images\Knowing\Knowing_SP-637962449238401674.png" />
-    <Content Include="Static\Content\Images\Logo\Logo_SP-637830308030933133.png" />
     <Content Include="Static\Content\Images\Menu\account_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_100px.png" />
     <Content Include="Static\Content\Images\Menu\add_to_inbox_100px.png" />
@@ -2513,6 +2422,11 @@
     <Content Include="Static\Content\Images\Services\Category_SP-637940016552269167.png" />
     <Content Include="Static\Content\Images\Services\Category_SP-637940016651301450.png" />
     <Content Include="Static\Content\Images\Services\Category_SP-637940016765780146.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637981431469020355.jpg" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637984063999845572.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuide_SP-637984068556335335.png" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuid_SP-637981557713934746.jpg" />
+    <Content Include="Static\Content\Images\SizeGuide\SizeGuid_SP-637987673464422843.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529179662153.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637853529404848484.jpg" />
     <Content Include="Static\Content\Images\Sliders\Desktop\Slider_SP-637939294505258747.png" />
@@ -2530,7 +2444,15 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\ProductManagment\AddSet.cshtml" />
+    <Content Include="Views\ProductManagment\EditSet.cshtml" />
+    <Content Include="Views\ProductManagment\Set.cshtml" />
+    <Content Include="Views\ProductManagment\SelectedProduct.cshtml" />
+    <Content Include="Views\AppSettings\Index.cshtml" />
+    <Content Include="Views\Shared\SingleProduct\P_ProductSet.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
+    <None Include="Web References\Sep.InitPayment\initpayment.disco" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2538,6 +2460,7 @@
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdmindashboardController.cs" />
     <Compile Include="Controllers\AdminMenuManagementController.cs" />
+    <Compile Include="Controllers\AppSettingsController.cs" />
     <Compile Include="Controllers\BannerManagementController.cs" />
     <Compile Include="Controllers\BlogCategoriesController.cs" />
     <Compile Include="Controllers\BlogCategoriesManagementController.cs" />
@@ -2576,6 +2499,7 @@
     <Compile Include="Controllers\SocialManagementController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\TransferManagementController.cs" />
+    <Compile Include="Controllers\UpdateAssemblyController.cs" />
     <Compile Include="Controllers\UserManagementController.cs" />
     <Compile Include="Controllers\VerficationMellatPaymentController.cs" />
     <Compile Include="Controllers\VerficationPaymentController.cs" />
@@ -2593,11 +2517,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="VersionControl.cs" />
     <Compile Include="Web References\com\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Sep.InitPayment\Reference.cs" />
+    <Compile Include="Web References\Sep.RefrencePayment\Reference.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2969,6 +2896,10 @@
     <Content Include="Views\SizeGuideManagement\IndexProductSizeGuideValues.cshtml" />
     <Content Include="Views\Orders\ConnectionToSaman.cshtml" />
     <None Include="Web References\com\ReferencePayment.wsdl" />
+    <None Include="Web References\Sep.InitPayment\initpayment.wsdl" />
+    <Content Include="Web References\Sep.InitPayment\Reference.map" />
+    <Content Include="Web References\Sep.RefrencePayment\Reference.map" />
+    <None Include="Web References\Sep.RefrencePayment\referencepayment.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2979,12 +2910,16 @@
   <ItemGroup>
     <Folder Include="App_Browsers\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Extenstions\" />
     <Folder Include="Models\" />
     <Folder Include="Static\Content\Excel\" />
     <Folder Include="Static\Content\Images\Factor\" />
+    <Folder Include="Static\Content\Images\Logo\" />
     <Folder Include="Static\Content\Images\Profile\" />
     <Folder Include="Static\Content\Images\Sliders\Mobile\" />
+    <Folder Include="Update\" />
     <Folder Include="Views\Index\" />
+    <Folder Include="Views\UpdateAssembly\" />
     <Folder Include="Views\VerficationRefahPayment\" />
   </ItemGroup>
   <ItemGroup>
