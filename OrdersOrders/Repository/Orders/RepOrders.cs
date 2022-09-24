@@ -902,6 +902,8 @@ namespace OrdersOrders.Repository.Orders
                             ModifierDateTime = order.ModifierDate,
                             CreatorDateTime = order.CreatorDate,
                             Price = order.Price,
+                            NetPrice = order.NetPrice,
+                            Transaction = order.Addition,
                         };
                         switch (order.Status)
                         {
@@ -965,12 +967,12 @@ namespace OrdersOrders.Repository.Orders
 
                         if (order.IsPay)
                         {
-                            vm.IsPayClass = "label label-success";
+                            vm.IsPayClass = "text-success";
                             vm.IsPayTitle = "پرداخت شده";
                         }
                         else
                         {
-                            vm.IsPayClass = "label label-danger";
+                            vm.IsPayClass = "text-danger";
                             vm.IsPayTitle = "پرداخت نشده";
                         }
                         list.Add(vm);
@@ -2113,6 +2115,47 @@ namespace OrdersOrders.Repository.Orders
                 return vmm;
 
             }
+        }
+
+        public static string RepositoryPayOrders(Guid Id)
+        {
+            var code = "error";
+            var tick = DateTime.Now.Ticks;
+            try
+            {
+                var db = new Orders_Entities();
+                var query = db.Table_Order.FirstOrDefault(c => c.Id == Id);
+                if (query != null)
+                {
+                    var queryUser = db.Table_User.FirstOrDefault(c => c.Id == query.CreatorRef);
+                    if (queryUser != null)
+                    {
+                        code = "Success";
+                        return code + "&" + tick + "&" + query.CreatorRef + "&" + Id + "&" + query.Phone + "&" + queryUser.Name + "&" + queryUser.Family + "&" + query.Addition + "&" + query.NetPrice;
+                    }
+                    else
+                    {
+                        return "Error";
+                    }
+                }
+                else
+                {
+                    return "Error";
+                }
+            }
+            catch (Exception e)
+            {
+                if (e.InnerException != null)
+                {
+                    LogWriter.Logger("Application Order In Error : " + e.InnerException.Message, DateTime.Now.ToLongDateString(), "440");
+                }
+                else
+                {
+                    LogWriter.Logger("Application Order In Error : " + e.Message, DateTime.Now.ToLongDateString(), "440");
+                }
+                return "application Error :" + e.Message;
+            }
+
         }
 
 

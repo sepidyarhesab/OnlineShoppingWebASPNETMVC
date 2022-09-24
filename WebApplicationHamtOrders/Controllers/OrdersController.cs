@@ -268,6 +268,74 @@ namespace WebApplicationHamtOrders.Controllers
             return View("OrderFinished");
         }
 
+        public ActionResult PayOrder(Guid Id)
+        {
+            decimal transferpay = 0;
+            long Amount = 0;
+            decimal Discount = 0;
+            decimal Price = 0;
+            var result = RepOrders.RepositoryPayOrders(Id);
+            if (result.Contains("Error"))
+            {
+                Session["OrderCode"] = "Error";
+                Session["JavaScriptFunction"] = "Error";
+                TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "نرم افزار خطا داده است");
+                Response.Redirect("/Orders/OrderFinished");
+            }
+            else
+            {
+                Session["JavaScriptFunction"] = "Success";
+                TempData["JavaScriptFunction"] = IziToast.Success("عملیات با موفقیت انجام شد", "عملیات با موفقیت انجام شد");
+                var SplitResult = result.Split('&');
+                var SplitCode = SplitResult[0];
+                Session["OrderCode"] = SplitCode;
+                var SplitTransaction = SplitResult[1];
+
+                
+                string adminPhone = WebConfigurationManager.AppSettings["PhoneAdmin"];
+
+                string CompanyName = WebConfigurationManager.AppSettings["CompanyName"];
+
+                var UserPhone = SplitResult[4];
+                var UserName = SplitResult[5];
+                var UserFamily = SplitResult[6];
+                transferpay =decimal.Parse(SplitResult[7]);
+                Amount = long.Parse(SplitResult[8]);
+                var sms = new SmsProviders();
+                var a = sms.SendGenerateQuotationsAdmin(long.Parse(UserPhone), adminPhone, UserName + " " + UserFamily, CompanyName);
+                if (a == "Success")
+                {
+                    Response.Write("<script>alert(" + "Send" + ")</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert(" + a + ")</script>");
+                }
+                string configPayment = WebConfigurationManager.AppSettings["PaymentMethod"];
+
+                if (configPayment == "Saman")
+                {
+                    var paryid = SplitResult[0];
+                    var iduser = SplitResult[2];
+                    var idOrders = SplitResult[3];
+                    Response.Redirect(CallSaman(Amount + long.Parse((transferpay).ToString()), paryid, long.Parse(UserPhone), iduser, idOrders));
+                }
+
+                if (configPayment == "Zarinpal")
+                {
+                    Response.Redirect(ZarinPalStart(UserName, UserFamily, UserPhone, SplitCode, Amount + long.Parse((transferpay).ToString())));
+                }
+
+                if (configPayment == "Mellat")
+                {
+                    MellatStart(Amount + long.Parse((transferpay).ToString()), SplitTransaction, UserPhone.PersianToEnglish());
+                    return RedirectToAction("ConnectingToMellat");
+                }
+                //Response.Redirect("/Orders/OrderFinished");
+            }
+            return View("OrderFinished");
+        }
+
 
         public string ZarinPalStart(string name, string family, string phone, string code, long amount)
         {
@@ -677,16 +745,6 @@ namespace WebApplicationHamtOrders.Controllers
                 return PartialView("Body/P_Dropdown_Province");
             }
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 }

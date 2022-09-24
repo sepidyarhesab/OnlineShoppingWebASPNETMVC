@@ -9,7 +9,7 @@
         Guid Ref = Guid.Parse(@Model.ToString());
         var repp = new RepProducts();
         var query = repp.RepositoryProductsSet(Ref);
-        if (query != null)
+        if (query != null && query.Count > 0)
         {
             <section class="product-carousel mb-3">
                 <div class="section-title">

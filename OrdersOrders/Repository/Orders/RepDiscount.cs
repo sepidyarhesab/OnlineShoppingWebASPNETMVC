@@ -128,8 +128,8 @@ namespace OrdersOrders.Repository.Orders
                 var x = PersianDigits.PersianToEnglish(endd[1].Split(':')[1]);
                 var v = PersianDigits.PersianToEnglish(endd[1].Split(':')[2]);
                 var endtime = z + ':' + x + ':' + v;
-                var b = dr.Split(' ');
-                var end = b[0] + ' ' + endtime;
+                var splitE = dr.Split(' ');
+                var end = splitE[0] + ' ' + endtime;
                 var e = DateTime.Parse(end);
 
                 var start = values.StartDate1.Split(' ');
@@ -139,8 +139,8 @@ namespace OrdersOrders.Repository.Orders
                 var x1 = PersianDigits.PersianToEnglish(start[1].Split(':')[1]);
                 var v1 = PersianDigits.PersianToEnglish(start[1].Split(':')[2]);
                 var starttime = z1 + ':' + x1 + ':' + v1;
-                var c = dr1.Split(' ');
-                var starts = c[0] + ' ' + starttime;
+                var splitS = dr1.Split(' ');
+                var starts = splitS[0] + ' ' + starttime;
                 var s = DateTime.Parse(starts);
                 switch (values.IsOk)
                 {
@@ -160,39 +160,45 @@ namespace OrdersOrders.Repository.Orders
                 {
                     catRef = null;
                 }
-
-
-                var query = db.Table_Discount.Add(new Table_Discount()
+                var queryDiscount = db.Table_Discount.ToList().Exists(c=> c.DiscountCode == values.DiscountCode);
+                if (!queryDiscount)
                 {
-                    Id = id,
-                    Code = code,
-                    IsOk = isok,
-                    CreatorRef = userRef,
-                    ModifierRef = userRef,
-                    CreatorDate = DateTime.Now,
-                    ModifireDate = DateTime.Now,
-                    Sort = values.Sort,
-                    Version = 1,
-                    IsDelete = false,
-                    DiscountCode = values.DiscountCode,
-                    Discount = values.Discount,
-                    CategoriesRef = catRef,
-                    ProductRef = ProductRef,
-                    DiscountUser = values.DiscountUser,
-                    DiscountUsed = values.DiscountUsed,
-                    DiscountCount = values.DiscountCount,
-                    DiscountFee = values.DiscountFee,
-                    DiscountPercent = values.DiscountPercent,
-                    DiscountQuantity = values.DiscountQuantity,
-                    EndDate = e,
-                    StartDate = s,
-                    Entities = values.Entities,
-                    IsMain = values.IsMain
-                });
-                db.Table_Discount.Add(query);
-                db.SaveChanges();
+                    var query = db.Table_Discount.Add(new Table_Discount()
+                    {
+                        Id = id,
+                        Code = code,
+                        IsOk = isok,
+                        CreatorRef = userRef,
+                        ModifierRef = userRef,
+                        CreatorDate = DateTime.Now,
+                        ModifireDate = DateTime.Now,
+                        Sort = values.Sort,
+                        Version = 1,
+                        IsDelete = false,
+                        DiscountCode = values.DiscountCode,
+                        Discount = values.Discount,
+                        CategoriesRef = catRef,
+                        ProductRef = ProductRef,
+                        DiscountUser = values.DiscountUser,
+                        DiscountUsed = values.DiscountUsed,
+                        DiscountCount = values.DiscountCount,
+                        DiscountFee = values.DiscountFee,
+                        DiscountPercent = values.DiscountPercent,
+                        DiscountQuantity = values.DiscountQuantity,
+                        EndDate = e,
+                        StartDate = s,
+                        Entities = values.Entities,
+                        IsMain = values.IsMain
+                    });
+                    db.Table_Discount.Add(query);
+                    db.SaveChanges();
 
-                return "Success";
+                    return "Success";
+                }
+                else
+                {
+                    return "Error Code";
+                }
             }
             catch (Exception e)
             {

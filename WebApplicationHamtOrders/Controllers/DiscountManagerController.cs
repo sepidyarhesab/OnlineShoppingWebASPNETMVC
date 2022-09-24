@@ -254,6 +254,10 @@ namespace WebApplicationHamtOrders.Controllers
                 {
                     TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "خطا در ایجاد سطر به دلیل : " + result);
                 }
+                if (result.Contains("Error Code"))
+                {
+                    TempData["JavaScriptFunction"] = IziToast.Error("خطایی رخ داده است", "کد تکراری انتخاب کردید");
+                }
                 else
                 {
                     TempData["JavaScriptFunction"] = IziToast.Success("عملیات موفقیت امیز بود", "عملیات موفقیت امیز بود");

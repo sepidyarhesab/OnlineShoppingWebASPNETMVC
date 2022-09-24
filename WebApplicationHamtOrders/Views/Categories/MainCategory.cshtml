@@ -24,6 +24,10 @@
                             {
                                 <a>@Model.First().CategoreisTitle</a>
                             }
+                            else
+                            {
+                                
+                            }
                         }
                         <a>در حال نمایش  @Model.Count() محصول</a>
                     </nav>
@@ -32,10 +36,43 @@
                 <div class="col-md-2">
                     <div class="form-element-row" data-select2-id="select2-data-5-qgui">
                         <label class="label-element" style="display: inline !important">مرتب‌سازی بر اساس</label>
-                        <select name="status" id="status" class="select2 select2-hidden-accessible" data-select2-id="select2-data-1-pary" tabindex="-1" aria-hidden="true" onchange="pricefiltering(this);">
-                            <option value="Default" selected="selected">پیش فرض</option>
-                            <option value="Max">گران ترین</option>
-                            <option value="Min">ارزان ترین</option>
+                        <select class="form-control form-control-sm" name="status" id="status" onchange="insertParam('price', this);">
+                            @{
+                                if (Session["CustomCategoriesMaxResearchFiltering"] != null)
+                                {
+                                    switch (Session["CustomCategoriesMaxResearchFiltering"].ToString())
+                                    {
+                                        case "Max":
+                                            {
+                                                <option value="Default">پیش فرض</option>
+                                                <option value="Max" selected="selected">گران ترین</option>
+                                                <option value="Min">ارزان ترین</option>
+                                                break;
+                                            }
+                                        case "Min":
+                                            {
+                                                <option value="Default">پیش فرض</option>
+                                                <option value="Max">گران ترین</option>
+                                                <option value="Min" selected="selected">ارزان ترین</option>
+                                                break;
+                                            }
+                                        case "Default":
+                                            {
+                                                <option value="Default" selected="selected">پیش فرض</option>
+                                                <option value="Max">گران ترین</option>
+                                                <option value="Min">ارزان ترین</option>
+                                                break;
+                                            }
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="Default" selected="selected">پیش فرض</option>
+                                    <option value="Max">گران ترین</option>
+                                    <option value="Min">ارزان ترین</option>
+                                }
+                            }
+
                         </select>
                     </div>
                 </div>
@@ -137,24 +174,55 @@
 
 
 <script>
+    function insertParam(key, value) {
+        key = encodeURIComponent(key);
+        value = encodeURIComponent(value.value || value.options[value.selectedIndex].value);
+        // kvp looks like ['key1=value1', 'key2=value2', ...]
+        var kvp = document.location.search.substr(1).split('&');
+        let i = 0;
+
+        for (; i < kvp.length; i++) {
+            if (kvp[i].startsWith(key + '=')) {
+                let pair = kvp[i].split('=');
+                pair[1] = value;
+                kvp[i] = pair.join('=');
+                break;
+            }
+        }
+
+        if (i >= kvp.length) {
+            kvp[kvp.length] = [key, value].join('=');
+        }
+
+        // can return this or...
+        let params = kvp.join('&');
+
+        // reload page with new params
+        document.location.search = params;
+    }
     function pricefiltering(a) {
         var x = (a.value || a.options[a.selectedIndex].value);
+        alert(x);
         var url = window.location.href;
-        var myArray = url.split("/");
-        var word = myArray[5];
-        $.ajax({
-            url: "/Categories/MainCategory",
-            type: "Post",
-            data: { id: word, price: x }
-        }).done(function () {
-            setTimeout(function () {
-                $("#overlay").fadeOut(300);
-            }, 500);
-            location.reload(true);
-        }).fail(function () {
-            setTimeout(function () {
-                $("#overlay").fadeOut(300);
-            }, 500);
-        });
+        alert(url);
+        url.searchParams.append('x', 42);
+
+        //var myArray = url.split("/");
+        //alert(myArray[5]);
+        //var word = myArray[5];
+        //$.ajax({
+        //    url: "/SepidarProduct/CustomCategories",
+        //    type: "Post",
+        //    data: { id: word, price: x }
+        //}).done(function () {
+        //    setTimeout(function () {
+        //        $("#overlay").fadeOut(300);
+        //    }, 500);
+        //    location.reload(true);
+        //}).fail(function () {
+        //    setTimeout(function () {
+        //        $("#overlay").fadeOut(300);
+        //    }, 500);
+        //});
     }
 </script>

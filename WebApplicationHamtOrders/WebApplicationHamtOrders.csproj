@@ -2450,6 +2450,8 @@
     <Content Include="Views\ProductManagment\SelectedProduct.cshtml" />
     <Content Include="Views\AppSettings\Index.cshtml" />
     <Content Include="Views\Shared\SingleProduct\P_ProductSet.cshtml" />
+    <Content Include="Views\OrdersMangement\SelectedOrder.cshtml" />
+    <Content Include="Views\Categories\SelectCategoreis.cshtml" />
     <None Include="Web References\com\ReferencePayment.disco" />
     <None Include="Web References\Sep.InitPayment\initpayment.disco" />
     <None Include="Web References\Sep.RefrencePayment\referencepayment.disco" />

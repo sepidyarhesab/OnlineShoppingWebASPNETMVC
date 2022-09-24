@@ -24,16 +24,18 @@ namespace WebApplicationHamtOrders.Controllers
         // GET: OrdersMangement
         public ActionResult Index()
         {
-            if (Session["SelectedOrderId"]!=null)
-            {
-                return RedirectToAction("/OrdersMangement/SelectedOrder/" + Session["SelectedOrderId"]);
-            }
-            else
-            {
-                var query = RepOrders.RepositoryListOrdersAdmin();
-                return View(query);
-            }
-            
+            var query = RepOrders.RepositoryListOrdersAdmin();
+            return View(query);
+            //if (Session["SelectedOrderId"]!=null)
+            //{
+            //    return RedirectToAction("/OrdersMangement/SelectedOrder/" + Session["SelectedOrderId"]);
+            //}
+            //else
+            //{
+            //    var query = RepOrders.RepositoryListOrdersAdmin();
+            //    return View(query);
+            //}
+
         }
 
         [HttpPost]

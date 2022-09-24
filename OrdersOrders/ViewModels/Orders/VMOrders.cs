@@ -147,6 +147,8 @@ namespace OrdersOrders.ViewModels.Orders
             public decimal Discount { get; set; }
             public int Type { get; set; }
             public string Typee { get; set; }
+            public decimal? NetPrice { get; set; }
+            public decimal Transaction { get; set; }
             public List<VmOrderMangment> AddresList { get; set; }
         }
 

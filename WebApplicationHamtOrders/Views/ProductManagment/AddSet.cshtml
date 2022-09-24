@@ -16,7 +16,7 @@
                 <div class="box box-info">
                     @using (Html.BeginForm("AddSett", "ProductManagment", FormMethod.Post))
                     {
-                        
+
                         <input type="hidden" value="@Session["SetId"].ToString()" name="Ref" id="Ref" />
 
                         <div class="box-header">
@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-2" for="ProductRef">محصول</label>
                                     <div class="col-md-4">
-                                        <select class="form-control" id="ProductRef" name="ProductRef">
+                                        <select class="form-control selectpicker" id="ProductRef" name="ProductRef" data-show-subtext="true" data-live-search="true">
                                             @{
                                                 var Product = RepDiscount.RepositoryProductsDropDown();
 
@@ -37,8 +37,16 @@
                                                     <option selected="@(item.Code == "1" ? "selected" : string.Empty)" value="@item.Id">@item.PrimaryTitle</option>
                                                 }
                                             }
+
                                         </select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                        <script>
+                                            $(function () {
+                                                $('.selectpicker').selectpicker();
+                                            });
+
+                                        </script>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -59,4 +67,13 @@
         </div>
     </div>
 </section>
+<script>
+    $(function () {
+        $('.selectpicker').selectpicker();
+    });
 
+</script>
+<link href="~/Helper/Admin/Content/bootstrap-select.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>

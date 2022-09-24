@@ -76,6 +76,9 @@
 
                                         </th>
                                         <th>
+                                            ردیف
+                                        </th>
+                                        <th>
                                             کد
                                         </th>
                                         <th>
@@ -125,7 +128,7 @@
                                         <th>عکس</th>
                                         <th>وضعیت</th>
                                         <th>ویژگی</th>
-
+                                        <th>ست ها</th>
                                         <th>عکس ها</th>
                                         <th>ویرایش</th>
                                         <th>حذف</th>
@@ -153,6 +156,9 @@
                                                         <input type="checkbox" onchange="selected('@mangment.Id')" value="">
                                                     </td>
 
+                                                    <td class="col-md-3 copy">
+                                                        @row
+                                                    </td>
                                                     <td class="col-md-3 copy">
                                                         <a style="cursor: pointer" onclick="window.open('/ProductManagment/SelectedProduct/@mangment.Id','_blank','height=500px,width=1100px,scrollbars=1');"> @mangment.Code</a>
                                                     </td>
@@ -221,8 +227,11 @@
                                                         <a href="/ProductManagment/Property/@mangment.Id" class="btn btn-warning" onclick='loadMsg(this);'>ویژگی</a>
 
                                                     </td>
+                                                    <td class="col-md-1">
 
+                                                        <a href="/ProductManagment/Set/@mangment.Id" class="btn btn-warning" onclick='loadMsg(this);'>ست ها</a>
 
+                                                    </td>
                                                     <td class="col-md-1">
 
                                                         <a href="/ProductManagment/Pictures/@mangment.Id" class="btn btn-success">نمایش عکس</a>

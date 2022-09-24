@@ -298,6 +298,5 @@ namespace OrdersInventory.ViewModels.Inventory
         }
 
 
-
     }
 }

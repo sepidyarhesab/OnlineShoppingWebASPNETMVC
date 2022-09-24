@@ -11,7 +11,7 @@
         <div class="sidebar-widget">
             @Html.Partial("Body/P_Panel_Right")
         </div>
-        
+
     </div>
     <div class="col-lg-9 col-md-8">
         <div class="row mb-4">
@@ -33,11 +33,11 @@
                                                 <th>کد</th>
                                                 <th>تاریخ</th>
                                                 <th>وضعیت</th>
-                                                <th>پرداخت</th>
+                                                <th> وضعیت پرداخت</th>
                                                 <th>جمع کل</th>
                                                 <th>فاکتور</th>
                                                 <th>دانلود</th>
-                                                @*<th>پرداخت فاکتور</th>*@
+                                                <th>پرداخت فاکتور</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -54,16 +54,27 @@
                                                     var row = 1;
                                                     foreach (var mangment in query)
                                                     {
+                                                        decimal Fee = 0;
+                                                        Fee = mangment.Transaction + mangment.NetPrice ?? 0;
                                                         <tr>
-
                                                             <td>@mangment.Code</td>
                                                             <td>@string.Format("{0:dddd dd MMMM yyyy}", mangment.CreatorDateTime, "date")</td>
                                                             <td>@mangment.Status</td>
                                                             <td class="@mangment.IsPayClass">@mangment.IsPayTitle</td>
-                                                            <td>@string.Format("{0:##,###}", mangment.Price, "Price") <small> ریال </small></td>
+                                                            <td>@string.Format("{0:##,###}", Fee, "Price") <small> ریال </small></td>
                                                             <td> <a href="/Dashboard/Factors/@mangment.Id">ارسال رسید پرداخت</a></td>
                                                             <td> <a href="/OrdersMangement/CreatePDF/@mangment.Id">دانلود فاکتور</a></td>
-                                                            @*<td> <a href="/Dashboard/PDF/@mangment.Id">پرداخت</a></td>*@
+                                                            @{
+                                                                if (mangment.IsPay == true)
+                                                                {
+                                                                    <td> <a href="/Orders/PayOrder/@mangment.Id" class="text-black-50" disabled="disabled">پرداخت فاکتور</a></td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td> <a href="/Orders/PayOrder/@mangment.Id" class="text-danger">پرداخت فاکتور</a></td>
+                                                                }
+                                                            }
+
                                                         </tr>
                                                     }
                                                 }
